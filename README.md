@@ -27,16 +27,16 @@
 1. [Credits](#Credits)
 
 # [&#8686;](#top)
-## ***Introduction***
+# ***Introduction***
 
-### **Backend Development**
-Full Stack Frameworks with Django Milestone Project.
+## Full Stack Frameworks with Django Milestone Project.
+
 
 This is my Fourth and last of Milestone Projects that the developer must complete during Full Stack Web Development Program at The Code Institute.
 
 This project, is a full-stack site based around business logic. With an authentication and payment service mechanisms to purchase of a product/service.
 
-### **Main Technologies**
+## **Main Technologies**
 HTML, CSS, JavaScript, Python+Django
 
 Relational database (recommending MySQL or Postgres)
@@ -45,7 +45,7 @@ Stripe payments
 
 Additional libraries and APIs
 
-### **Mandatory Requirements**
+## **Mandatory Requirements**
 source: [code institute](https://codeinstitute.net/)
 1. Django Full Stack Project: Build a Django project backend by a relational database to create a website that allows users to store and manipulate data records about a particular domain.
 1. Multiple Apps: The project must be a brand new Django project, composed of multiple apps (an app for each potentially reusable component in your project).
@@ -62,8 +62,8 @@ source: [code institute](https://codeinstitute.net/)
 1. Security: Not include any passwords or secret keys in the project repository, turn off the Django DEBUG mode, which could expose secrets.
 
 # [&#8686;](#top)
-## ***UX*** 
-### **User Stories**
+# ***UX*** 
+## **User Stories**
 User goals
 
 As Registered user
@@ -71,68 +71,68 @@ As Registered user
 As an Administrator
 
 
-#### Site owner goals
+### Site owner goals
 
 
 # [&#8686;](#top)
-## ***Development Planes***
-### **Strategy**
-#### The website needs to enable the User to:
+# ***Development Planes***
+## **Strategy**
+### The website needs to enable the User to:
 
 
 #### The website needs to enable the company to:
 
 # [&#8686;](#top)
-### **Scope**
+## **Scope**
 Features to implement in terms of viability/feasibility. Below is a Dot Plot chart consisting of data points plotted on a scale of 1 represents least and 5 the most.
 [Line-plots](project_files/wireframes/line-plots.png)
 
-#### Functionality Requirements
+### Functionality Requirements
 
-#### Content Requirements
+### Content Requirements
 
 # [&#8686;](#top)
 
-### **Structure**
-### Site layout structure
+## **Structure**
+## Site layout structure
 [site-structure wireframe](project_files/wireframes/site-structure.png)
 
-### Site structure broken into more detailed, structured view below
+## Site structure broken into more detailed, structured view below
 
-#### **Wireframes**
-- ### [landing page wireframe](project_files/wireframes/landing-wireframe.png)
+### **Wireframes**
+- ## [landing page wireframe](project_files/wireframes/landing-wireframe.png)
 
 # [&#8686;](#top)
-## ***Design***
+# ***Design***
 
-### **Colour Scheme**
+## **Colour Scheme**
 
-### **Fonts**
+## **Fonts**
 
-### **Media**
+## **Media**
 
 # [&#8686;](#-)
-## ***Features***
+# ***Features***
 
-## Features to implement
+# Features to implement
 
 # [&#8686;](#top)
-## [TESTING](project_files/TESTING.md)
+# [TESTING](project_files/TESTING.md)
 - Testing information can be found in a separate testing file [TESTING.md](project_files/TESTING.md)
 - Bugs and Issues moved to the TESTING file here [TESTING.md](project_files/TESTING.md#Bugs)
 - W3C-Validation moved to the TESTING file here [TESTING.md](project_files/TESTING.md#Validation)  
 
 # [&#8686;](#top)
-## **Technologies and Frameworks**
+# **Technologies and Frameworks**
 
-### **Markup/Scripting/Programming languages**
+## **Markup/Scripting/Programming languages**
 - [HTML5](https://en.wikipedia.org/wiki/HTML5) Hypertext Markup Language (HTML)
 - [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) Cascading Style Sheets (CSS)
 - [JavaScript](https://www.javascript.com/) Interactive functionality.
 - [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) Backend programming.
 - [The Django template language](https://docs.djangoproject.com/en/3.2/ref/templates/language/) Django’s template language.
 
-### **Frameworks, Libraries & Programs Used**
+## **Frameworks, Libraries & Programs Used**
 - [Google Fonts:](https://fonts.google.com/) Making the web more beautiful.
 - [Font Awesome:](https://fontawesome.com/) to add icons to the website..
 - [Git](https://git-scm.com/) Git was used for version control.
@@ -143,7 +143,7 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 - [Django: The web framework](https://www.djangoproject.com/) Django is a high-level Python web framework.
 
 # [&#8686;](#top)
-## ***Deployment***
+# ***Deployment***
 Sources:
 
 https://docs.github.com/
@@ -151,25 +151,25 @@ https://docs.github.com/
 https://docs.mongodb.com/
 
 https://devcenter.heroku.com/categories/deployment
-### **Fork A repository**
+## **Fork A repository**
 A Fork is a copy of repository allows you to freely experiment with changes without effecting the original project.
 
 - Log-Into [GitHub](https://github.com/login "Link to GitHub login page") or [create an account](https://github.com/join "Link to GitHub create account page").
 - Locate the [GitHub Repository](https://github.com/Raivis80/Milestone-Project-3)"Link to GitHub Repo".
-- On GitHub, navigate to The [GitHub Repository](https://github.com/Raivis80/Milestone-Project-3)" Link to my Repo".
+- On GitHub, navigate to The [GitHub Repository](https://github.com/Raivis80/(REPO NAME))" Link to my Repo".
 - In the --right corner of the page, click Fork.
 
 Detailed Steps for forking a repository from GitHub can be found here: [here](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
-### **Creating a Clone Deploy Locally**
+## **Creating a Clone Deploy Locally**
 You can clone repository. When you clone repository, you copy repository to your Machine.
 - Log-Into [GitHub](https://github.com/login "Link to GitHub login page") or [create an account](https://github.com/join "Link to GitHub create account page").
-- Locate the [GitHub Repository](https://github.com/Raivis80/Milestone-Project-3)"Link to GitHub Repo".
+- Locate the [GitHub Repository](https://github.com/Raivis80/(REPO NAME))"Link to GitHub Repo".
 - In the GitHub repository, navigate to the Code dropdown tab.
 - Select the Download ZIP from dropdown and unzip in your working directory
    Or clone repository in terminal copy and paste following GitHubCLI link
 
    ```
-   gh repo clone Raivis80/Milestone-Project-3
+   gh repo clone Raivis80/(REPO NAME)
    ```
 - Run following command to install python packages are required to run this project requirements.txt 
 
@@ -185,34 +185,34 @@ Ensure to add env.py to a .gitignore file before pushing your code to your repos
  "Link to GitHub docs"
 <br>Detailed guides to get Started with Amazon can be found [Here](https://docs.mongodb.com/)
 
-### **Deploying on Heroku Pages**
+## **Deploying on Heroku Pages**
 - After Cloning the repository now you are able to deploy on Heroku pages
 - Before deployment Make sure to:
-    - pip freeze > requirements.txt | Create requirements.txt file in the same project directory
+    1. pip freeze > requirements.txt | Create requirements.txt file in the same project directory
    Make sure your manage.py file is connected to your mysql database
    Use this command to backup your current database and load it into a db.json file:
-- python3 manage.py dumpdata --exclude auth.permission --exclude contenttypes > db.json
-  | Connect your manage.py file to your postgres database
--  python3 manage.py loaddata db.json | Then use this command to load your data from the db.json file into postgres: 
-- pip3 install dj_database_url | Install environment variable to configure your Django application.
-   
-- pip3 install psycopg2-binary | Install PostgreSQL database adapter for the Python programming language
-- python3 manage.py loaddata categories and products | load fixtures after migrate performed
-- pip install gunicorn | Python Web Server Gateway Interface HTTP server.
-- Add to a  Procfile -> web: gunicorn butique_ado.wsgi:application
-- heroku login -i | run the heroku login  CLI command.
-- heroku config:set DISABLE_COLLECTSTATIC=1 --app (APP NAME) | Disable static file collection.
-- heroku git:remote -a (APP NAME)
-- git push heroku main
-Norw you can add app to automaticly oush updates from git.
-- Log-Into [Heroku](https://id.heroku.com/login) "Link to Heroku login page" or [create an account](https://signup.heroku.com/login) "Link to Heroku create account page".
-- Once logged in, Find and select "Deploy" tab 
-- After selecting "Deploy" tab find and Select Deployment method "GitHub"
-- Now find and Select Connect to GitHub repository and select repository to connect to
-- Now locate and select option and enable "Automattic Deploys"
-- You can now select "Deploy Branch"
-- After you have deployed, go on top of the page and locate settings tab and select it
-- Select within settings page "Reveal Config Vars and add following
+    1. python3 manage.py dumpdata --exclude auth.permission --exclude contenttypes > db.json
+    | Connect your manage.py file to your postgres database
+    1.  python3 manage.py loaddata db.json | Then use this command to load your data from the db.json file into postgres: 
+    1. pip3 install dj_database_url | Install environment variable to configure your Django application.
+    
+    1. pip3 install psycopg2-binary | Install PostgreSQL database adapter for the Python programming language
+    1. python3 manage.py loaddata categories and products | load fixtures after migrate performed
+    1. pip install gunicorn | Python Web Server Gateway Interface HTTP server.
+    1. Add to a  Procfile -> web: gunicorn butique_ado.wsgi:application
+    1. heroku login -i | run the heroku login  CLI command.
+    1. heroku config:set DISABLE_COLLECTSTATIC=1 --app (APP NAME) | Disable static file collection.
+    1. heroku git:remote -a (APP NAME)
+    1. git push heroku main
+Now you can add app to automaticly oush updates from git.
+1. Log-Into [Heroku](https://id.heroku.com/login) "Link to Heroku login page" or [create an account](https://signup.heroku.com/login) "Link to Heroku create account page".
+1. Once logged in, Find and select "Deploy" tab 
+1. After selecting "Deploy" tab find and Select Deployment method "GitHub"
+1. Now find and Select Connect to GitHub repository and select repository to connect to
+1. Now locate and select option and enable "Automattic Deploys"
+1. You can now select "Deploy Branch"
+1. After you have deployed, go on top of the page and locate settings tab and select it
+1. Select within settings page "Reveal Config Vars and add following
 
 | Config|	Vars |
 | -- | -- |
@@ -221,13 +221,14 @@ Norw you can add app to automaticly oush updates from git.
 | S3_SECRET_KEY |	Your S3 secret key |
 | STRIPE_SECRET | Your Stripe Key|
 
-Add all stripe keys to heroku config variables STRIPE_SECRET
+Add all stripe keys to heroku config variables STRIPE_SECRET.
+
 Make sure to enter your own SECRET_KEY, Amazon AWS S3 S3_SCRET_KEY variables.
 
 More Detailed information on GitHub Pages can be found here: [here](https://devcenter.heroku.com/categories/deployment) "Link to Heroku deployment docs"
 
-#### AWS-S3-deployment
-Creating an AWS Account
+### **AWS-S3-deployment**
+
 - create s3 bucket and enable ststic storage
 - in permissions tab 
     -  CORS configuration
@@ -250,12 +251,12 @@ Creating an AWS Account
     - policy generator
         1. s3 policy
         2. getObject
-        3. Amazon Resource Name (ARN)| arn:aws:s3:::raivis-boutique-ado
+        3. Amazon Resource Name (ARN)| arn:aws:s3:::(YOUR BUCKET NAME)
         4. Paste to bucket policy
             ```
             {
-                "Id": "Policy1636112685414",
-                "Version": "2012-10-17",
+                "Id": "Policy(ID NO)",
+                "Version": "DATE",
                 "Statement": [
                     {
                     "Sid": "Stmt1636112677613",
@@ -263,7 +264,7 @@ Creating an AWS Account
                         "s3:GetObject"
                     ],
                     "Effect": "Allow",
-                    "Resource": "arn:aws:s3:::raivis-boutique-ado/*",
+                    "Resource": "arn:aws:s3:::(YOUR BUCKET NAME)/*",
                     "Principal": "*"
                     }
                 ]
@@ -272,23 +273,23 @@ Creating an AWS Account
         1. allow Access to everyone
 - Manage access to AWS resources
     - Create group
-        - Create group | manage-buotique-addo
+        1.Create group | manage-(YOUR GROUP NAME)
     - Create access policy to access s3 bucket
-        - Go to Create Poicy  JSON and import_managed_policy
-        - Import s3 full access policy
-        - add this JSCON
+        1. Go to Create Poicy  JSON and import_managed_policy
+        1. Import s3 full access policy
+        1. add this JSCON
             ``` 
             "Resource": [
-                "arn:aws:s3:::(YOUR BUSKET)",
-                "arn:aws:s3:::(YOUR BUCKET)/*"
+                "arn:aws:s3:::(YOUR BUSKET NAME)",
+                "arn:aws:s3:::(YOUR BUCKET NAME)/*"
             ]
     - Assign group user access to the access files
-        - attach createdpolicy to the group
+        1. attach createdpolicy to the group
             - go to User Groups - permissins and sellect attach policy
-        - create user in the group | username: (YOUR)-staticfiles-user
-        - sellect programmatic access
-        - put user i manage-(YOUR USER)
-        - download CSV file with user access key and secret
+        1. create user in the group | username: (YOUR)-staticfiles-user
+        1. sellect programmatic access
+        1. put user i manage-(YOUR USER NAME)
+        1. download CSV file with user access key and secret
 Connect django to AWS
 -  pip3 install boto3
 -  pip3 install django-storages
@@ -321,15 +322,15 @@ Connect django to AWS
         STATIC_URL = f'htps://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
         MEDIA_URL = f'htps://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 cach media files
-    - in S3 create new folder "media"
-    - sellect and add all the images
-    - grant public read access to the files
+- in S3 create new folder "media"
+- sellect and add all the images
+- grant public read access to the files
 
 <br>Detailed guides to get Started with Amazon can be found [Here](https://docs.mongodb.com/)
 
 # [&#8686;](#top)
-## ***Credits***
-### **Code**
+# ***Credits***
+## **Code**
 
 At the beginning of this project I was referring back to code institute walkthrough Project Bautique Ado videos series for general and technical code instructions.
 As well ass some of the code syntax help and code tips sourced from following sources.
@@ -337,9 +338,9 @@ As well ass some of the code syntax help and code tips sourced from following so
 -  [stackoverflow.com](https://stackoverflow.com/): Useful website for code tips.
 -  [www.w3schools](https://www.w3schools.com/): Useful website for code tips.
 
-### **Content**
+## **Content**
 
-### **Acknowledgements**
+## **Acknowledgements**
 - Thanks to My Mentor Owonikoko Oluwaseun, for continuous support and inspire me to push myself beyond where I think I can go.
 - Tutor support at Code Institute for their support.
 
