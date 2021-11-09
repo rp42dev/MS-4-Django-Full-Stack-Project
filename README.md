@@ -34,7 +34,7 @@ Full Stack Frameworks with Django Milestone Project.
 
 This is my Fourth and last of Milestone Projects that the developer must complete during Full Stack Web Development Program at The Code Institute.
 
-This project, is a full-stack site based around business logic. With an authentication and paiyment service mechanisms to purchase of a product/service.
+This project, is a full-stack site based around business logic. With an authentication and payment service mechanisms to purchase of a product/service.
 
 ### **Main Technologies**
 HTML, CSS, JavaScript, Python+Django
@@ -129,7 +129,9 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 - [HTML5](https://en.wikipedia.org/wiki/HTML5) Hypertext Markup Language (HTML)
 - [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) Cascading Style Sheets (CSS)
 - [JavaScript](https://www.javascript.com/) Interactive functionality.
-- [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) Backend programming. 
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) Backend programming.
+- [The Django template language](https://docs.djangoproject.com/en/3.2/ref/templates/language/) Django’s template language.
+
 ### **Frameworks, Libraries & Programs Used**
 - [Google Fonts:](https://fonts.google.com/) Making the web more beautiful.
 - [Font Awesome:](https://fontawesome.com/) to add icons to the website..
@@ -137,7 +139,8 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 - [GitHub:](https://github.com/) used to store the projects code.
 - [gitpod.io](https://gitpod.io/) gitpod Was used for codding.
 - [Balsamiq:](https://balsamiq.com/) was used to create the wireframes.
-- [Heroku](https://heroku.com/) Application hosting platform.
+- [Heroku](https://heroku.com/) Application hosting platform. 
+- [Django: The web framework](https://www.djangoproject.com/) Django is a high-level Python web framework.
 
 # [&#8686;](#top)
 ## ***Deployment***
@@ -173,43 +176,35 @@ You can clone repository. When you clone repository, you copy repository to your
    ```
    python -m pip -r requirements.txt
    ```
-- SignIn/Create free MongoDB Atlas Database account
-   - Create Database for this project named "top-DB" with following collections
+Create your AWS Account. Create s3 bucket and enable ststic storage how to deploy AWS S3 [here](AWS-S3-deployment)
 
-   | Collection Name |
-   | ---------- |
-   | 1.  Categories |
-   | 2.  Posts     |
-   | 3.  Users      |
-
-- Create env.py protect your passwords using environment variables while connecting to databases with Python. File should contain following.
-
-![image](project_files/images/env.png)
-
-
-- Replace The SECRET_KEY with your own and MONGO_URI and CLOUDINARY_URL provided by mongoDB.
+- Make sure to enter your own SECRET_KEY, Amazon AWS S3 S3_SCRET_KEY variables.
 Ensure to add env.py to a .gitignore file before pushing your code to your repository.
 
 <br>Detailed Steps for cloning a repository from GitHub can be found here: [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
  "Link to GitHub docs"
-<br>Detailed guides to get Started with MongoDB can be found [Here](https://docs.mongodb.com/)
+<br>Detailed guides to get Started with Amazon can be found [Here](https://docs.mongodb.com/)
 
 ### **Deploying on Heroku Pages**
 - After Cloning the repository now you are able to deploy on Heroku pages
 - Before deployment Make sure to:
-    - Create requirements.txt file in the same project directory use the following command
-
-   ```
-   pip freeze > requirements.txt
-   ```
-
-   ![image](project_files/images/requirements.PNG)
-
-    - Create a Procfile in same directory that is required for all Heroku applications. to start the app. Enter Following in procfile.
-
-   ```
-   web: python app.py
-   ```
+    - pip freeze > requirements.txt | Create requirements.txt file in the same project directory
+   Make sure your manage.py file is connected to your mysql database
+   Use this command to backup your current database and load it into a db.json file:
+- python3 manage.py dumpdata --exclude auth.permission --exclude contenttypes > db.json
+  | Connect your manage.py file to your postgres database
+-  python3 manage.py loaddata db.json | Then use this command to load your data from the db.json file into postgres: 
+- pip3 install dj_database_url | Install environment variable to configure your Django application.
+   
+- pip3 install psycopg2-binary | Install PostgreSQL database adapter for the Python programming language
+- python3 manage.py loaddata categories and products | load fixtures after migrate performed
+- pip install gunicorn | Python Web Server Gateway Interface HTTP server.
+- Add to a  Procfile -> web: gunicorn butique_ado.wsgi:application
+- heroku login -i | run the heroku login  CLI command.
+- heroku config:set DISABLE_COLLECTSTATIC=1 --app (APP NAME) | Disable static file collection.
+- heroku git:remote -a (APP NAME)
+- git push heroku main
+Norw you can add app to automaticly oush updates from git.
 - Log-Into [Heroku](https://id.heroku.com/login) "Link to Heroku login page" or [create an account](https://signup.heroku.com/login) "Link to Heroku create account page".
 - Once logged in, Find and select "Deploy" tab 
 - After selecting "Deploy" tab find and Select Deployment method "GitHub"
@@ -221,29 +216,124 @@ Ensure to add env.py to a .gitignore file before pushing your code to your repos
 
 | Config|	Vars |
 | -- | -- |
-| IP | 0.0.0.0 |
-| PORT |	5000 |
-| CLOUD_NAME | Cloudinary cloud name |
-| API_KEY | Your Cloudinary API key |
-| API_SECRET | Your Cloudinary secret key|
+| ALOWED_HOSTS | Your heroku deployment URL |
 | SECRET_KEY |	Your secret key |
-| MONGO_URI |	Your Mongo Uri |
+| S3_SECRET_KEY |	Your S3 secret key |
+| STRIPE_SECRET | Your Stripe Key|
 
-Make sure to enter your own SECRET_KEY, MONGO_URI and CLOUDINARY_URL variables.
+Add all stripe keys to heroku config variables STRIPE_SECRET
+Make sure to enter your own SECRET_KEY, Amazon AWS S3 S3_SCRET_KEY variables.
 
 More Detailed information on GitHub Pages can be found here: [here](https://devcenter.heroku.com/categories/deployment) "Link to Heroku deployment docs"
+
+#### AWS-S3-deployment
+Creating an AWS Account
+- create s3 bucket and enable ststic storage
+- in permissions tab 
+    -  CORS configuration
+        ```[
+        {
+            "AllowedHeaders": [
+                "Authorization"
+            ],
+            "AllowedMethods": [
+                "GET"
+            ],
+            "AllowedOrigins": [
+                "*"
+            ],
+            "ExposeHeaders": []
+            }
+        ]
+        
+- Edit bucket policy
+    - policy generator
+        1. s3 policy
+        2. getObject
+        3. Amazon Resource Name (ARN)| arn:aws:s3:::raivis-boutique-ado
+        4. Paste to bucket policy
+            ```
+            {
+                "Id": "Policy1636112685414",
+                "Version": "2012-10-17",
+                "Statement": [
+                    {
+                    "Sid": "Stmt1636112677613",
+                    "Action": [
+                        "s3:GetObject"
+                    ],
+                    "Effect": "Allow",
+                    "Resource": "arn:aws:s3:::raivis-boutique-ado/*",
+                    "Principal": "*"
+                    }
+                ]
+                }
+    - Access control list
+        1. allow Access to everyone
+- Manage access to AWS resources
+    - Create group
+        - Create group | manage-buotique-addo
+    - Create access policy to access s3 bucket
+        - Go to Create Poicy  JSON and import_managed_policy
+        - Import s3 full access policy
+        - add this JSCON
+            ``` 
+            "Resource": [
+                "arn:aws:s3:::(YOUR BUSKET)",
+                "arn:aws:s3:::(YOUR BUCKET)/*"
+            ]
+    - Assign group user access to the access files
+        - attach createdpolicy to the group
+            - go to User Groups - permissins and sellect attach policy
+        - create user in the group | username: (YOUR)-staticfiles-user
+        - sellect programmatic access
+        - put user i manage-(YOUR USER)
+        - download CSV file with user access key and secret
+Connect django to AWS
+-  pip3 install boto3
+-  pip3 install django-storages
+- add 'storages' to settings installed apps.
+    - ```
+        if 'USE_AWS' in os.environ:
+            AWS_STORAGE_BUCKET_NAME = '(YOUR BUCKET NAME)'
+            AWS_S3_REGION_NAME = 'eu-west-1'
+            AWS_ACCESS_KEY_ID = os.environ('AWS_ACCESS_KEY_ID')
+            AWS_SECRET_ACCESS_KEY = os.environ('AWS_SECRET_ACCESS_KEY')
+            # Add this for config static
+            AWS_S3_CUSTOM = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+- add config variablet to heroku
+- create file "custom_storages.py"
+- add storage config to settings.py
+    - ```
+        # Cache control Optional
+        AWS_S3_OBJECT_PARAMETERS = {
+            'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+            'CacheControl': 'max-age=94608000',
+        }
+        # Static And Media Files
+        STATICFILES_STORAGE = 'custom_storage.StaticStorage'
+        STATICFILES_LOCATION = 'static'
+
+        DEFAULT_FILE_STORAGE = 'custom_storage.MediaStorage'
+        MEDIAFILES_LOCATION = 'media'
+
+        # Owerride static and media URL's in production
+        STATIC_URL = f'htps://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+        MEDIA_URL = f'htps://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+cach media files
+    - in S3 create new folder "media"
+    - sellect and add all the images
+    - grant public read access to the files
+
+<br>Detailed guides to get Started with Amazon can be found [Here](https://docs.mongodb.com/)
+
 # [&#8686;](#top)
 ## ***Credits***
 ### **Code**
 
-At the beginning of this project I was referring back to code institute Mini Project | Putting It All Together videos series for general python technical code instructions.
-Some of the code syntax help and code tips sourced from following sources.
--  [Crack Concepts regex tutoral](https://www.youtube.com/watch?v=9RksQ5YT7FM) Watch one video and understand everything about REGEX with examples.
--  [flask.palletsprojects.com](https://flask.palletsprojects.com/en/2.0.x/) Tutorials that shows how to create a small application with Flask
--  [Validation with WTForms](https://flask.palletsprojects.com/en/2.0.x/patterns/wtforms/) Form Validation with WTForms
--  [FileField provided by Flask-WTF](https://flask-wtf.readthedocs.io/en/0.15.x/form/#file-uploads) The FileField provided by Flask-WTF File Upload
-- [pymongo.readthedocs.io](https://pymongo.readthedocs.io/en/stable/tutorial.html) introductions to working with MongoDB and PyMongo.
-- [cloudinary.com](https://cloudinary.com/documentation/image_upload_api_reference) Cloudinar API uploading and managing media assets in the cloud.
+At the beginning of this project I was referring back to code institute walkthrough Project Bautique Ado videos series for general and technical code instructions.
+As well ass some of the code syntax help and code tips sourced from following sources.
+
 -  [stackoverflow.com](https://stackoverflow.com/): Useful website for code tips.
 -  [www.w3schools](https://www.w3schools.com/): Useful website for code tips.
 
