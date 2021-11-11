@@ -6,13 +6,12 @@
 
 1. [Introduction](#top)
 1. [Ux](#UX)
-   - [User Stories](#User-Stories)
-1. [Development Planes](#Development-Planes)
-   - [Strategy](#Strategy)
-   - [Scope](#Scope)
-   - [Structure](#Structure)
-1. [Wireframes](#Wireframes)
-1. [Design](#Design)
+    - [User Stories](#User-Stories)
+    - [Strategy](#Strategy)
+    - [Scope](#Scope)
+    - [Structure](#Structure)
+    - [Skeleton](#Skeleton)
+    - [Surfaice](#Surfaice)
 1. [Features](#Features)
 1. [Features to implement](#Features-to-implement)
 1. [Testing](#project_files/TESTING.md)
@@ -29,7 +28,7 @@
 # [&#8686;](#top)
 # ***Introduction***
 
-## Full Stack Frameworks with Django Milestone Project.
+## **Full Stack Frameworks with Django Milestone Project.**
 
 
 This is my Fourth and last of Milestone Projects that the developer must complete during Full Stack Web Development Program at The Code Institute.
@@ -64,57 +63,159 @@ source: [code institute](https://codeinstitute.net/)
 # [&#8686;](#top)
 # ***UX*** 
 ## **User Stories**
-User goals
 
-As Registered user
+### **As A Unregistered user**
+1. To understand purpose and Easly navigate the website.
+1. Find Products By name, Description etc..
+1. Good description (sizes, price, colours, shipping etc..) and Product photography.
+1. To be able make easy and secure payments as a guest user.
+1. To be able to contact the company for any query or issue.
 
-As an Administrator
+### **As A Registered user**
+1. All of the above and..
+1. Saving shopping-cart items for possible later purchase.
+1. Access to complete overview of existing orders.
+1. Self-manage of account details and shipping adresses for fast checkout.
+1. Access to order history and other documents.
 
+### **Site Owner goals**
+1. Get the business online and expand online presence. 
+1. Drive new customers to the website Provide guest checkout option.
+1. And Provide login for users to be able Save shopping-cart and user deteails for fast checkout.
+1. Maximize sales Conversion rate - Offer range of Special Offers and deals.
+1. Improve Sales - Offer customers a fast and secure payment option.
+1. Customer Support – Improve customer satisfaction through better service
 
-### Site owner goals
-
-
-# [&#8686;](#top)
-# ***Development Planes***
 ## **Strategy**
-### The website needs to enable the User to:
+# [&#8686;](#top)
+### **The website needs to enable the User to**
+1. Easy navigate and find the products that they are interested in buying.
+1. Easily select the product that user wishes to purchase.
+1. Register account to have personal account.
+1. Login and Save shopping-cart and shipping deteails for fast checkout.
+1. Be able to make instant and safe payments.
+1. Have The ability to contact company if they have a query.
 
-
-#### The website needs to enable the company to:
+### **The website needs to enable the company to**
+1. Get the business online and expand online presence. 
+1. Showcase brand, website needs to have great product images with clear description.
+1. And Provide users ability to create account and save shopping-cart and user deteails.
+1. Provide method for customers with a quick, simple and safe way to pay.
+1. Provide offers, special deals, and increase potentialy new and existing customer         retention and loyalty.
+1. Provide the customers with contact information and support.
 
 # [&#8686;](#top)
 ## **Scope**
 Features to implement in terms of viability/feasibility. Below is a Dot Plot chart consisting of data points plotted on a scale of 1 represents least and 5 the most.
+
 [Line-plots](project_files/wireframes/line-plots.png)
 
-### Functionality Requirements
+#### Functionality Requirements
+- Products in gallery with descriptions.
+    - On click to reveal individual item detailed view.
+    - Add to basket functionality
+- Website Navigation with internal site links.
+    - Internal links is Linked with Django placeholders in the template. 
+    - Responsive bootstrap website navigation menu.
+- User Registration/Log-In.
+   - Use of Allouth Django applications authentication, registration, account management.
+- User Profile.
+   - Edit, Delete User Acount Details,
+   - Wiew Shopping history Details.
+   - Ability to add, eddit remove shopping Cart Content.
 
-### Content Requirements
+- Django admin interface integration.
+   - Manage all the user accounts and shop items.
+- Ability for admin user adding/edditing or deleting shop items.
+   - For admin user Extended functionality to edit remove or add new items in temlate.
+- Integrate PostgreSQL Database.
+   - Content description and image links stored and managed PostgreSQL database
+- AWS-S3-deployment static file storage
+   - Use of cloud Storage 5GB Free Amazon S3 for all the images and static file storage.
+- Customer Support contact form.
+   - Javascript API form control implemented for this project
+- Social Media links to external resources.
+#### Content Requirements
+- NavBar
+   - Internal site navigation Links
+   - Login/Register link
+   - Site brand name 
+- Sign In
+   - In the "Username" field, enter a username
+   - Enter and confirm your password
+   - Click "Sign In" button
+- Create account
+   - In the "Username" field, enter a username
+   - Enter and confirm your password
+   - Enter email address.
+   - Click "Create new account" button
+- Landing Page
+   - Central Hero image
+   - Carousel recent uploads feature
+- User upload Thumbnail grid
+   - Displays user content in a responsive grid
+- Contact Form
+   - First and Last Name input fields
+   - Email Address input field
+   - Text area input field
+   - Submit button
+- My Posts
+   - All users posts display card type grid
+   - Individual Card feature image at the top
+   - Title, and description bebow the image
+   - Next at the bottom Buttons to delete and edit post details
+   - Delete	Post button feature confirm function for to prevent accidental deletion
+- Add New post
+   - Image upload functionality
+   - Title input field
+   - Text area field for content description
+   - Post content button
+- Edit Post
+   - Edit Title input field
+   - Text area field to Edit content description
+   - Edit content confirm button
+- Account
+   - Enter username input Field
+   - Enter Password input Field
+   - Confirm Check box
+   - Finaly Sebmit to delete button
+- Admin management Interface
+   - Manage/delete self profile
+   - Manage other User profile.
+   - Image upload functionality, Title input field
+   - Text area field for content description
+   - Post content button, Edit content button
+   - Edit/Delete	self/other user Posts
+- footer
+   - Copyright information
+   - Terms and privacy policy
+   - Social Links
+     - FaceBook, LinkedIn, Instagram
 
 # [&#8686;](#top)
 
 ## **Structure**
-## Site layout structure
 [site-structure wireframe](project_files/wireframes/site-structure.png)
 
-## Site structure broken into more detailed, structured view below
+### Site structure broken into more detailed, structured view below
 
+## **Skeleton**
 ### **Wireframes**
-- ## [landing page wireframe](project_files/wireframes/landing-wireframe.png)
+- [landing page wireframe](project_files/wireframes/landing-wireframe.png)
 
 # [&#8686;](#top)
-# ***Design***
+## **Surfaice**
 
-## **Colour Scheme**
+### **Colour Scheme**
 
-## **Fonts**
+### **Fonts**
 
-## **Media**
+### **Media**
 
 # [&#8686;](#-)
 # ***Features***
 
-# Features to implement
+## **Features to implement**
 
 # [&#8686;](#top)
 # [TESTING](project_files/TESTING.md)
@@ -188,31 +289,79 @@ Ensure to add env.py to a .gitignore file before pushing your code to your repos
 ## **Deploying on Heroku Pages**
 - After Cloning the repository now you are able to deploy on Heroku pages
 - Before deployment Make sure to:
-    1. pip freeze > requirements.txt | Create requirements.txt file in the same project directory
-   Make sure your manage.py file is connected to your mysql database
-   Use this command to backup your current database and load it into a db.json file:
-    1. python3 manage.py dumpdata --exclude auth.permission --exclude contenttypes > db.json
-    | Connect your manage.py file to your postgres database
-    1.  python3 manage.py loaddata db.json | Then use this command to load your data from the db.json file into postgres: 
-    1. pip3 install dj_database_url | Install environment variable to configure your Django application.
+    1. Create requirements.txt file in the same project directory
+
+        ```
+         pip freeze > requirements.txt 
+        ```
+    2. Make sure your manage.py file is connected to your mysql database
+        Use this command to backup your current database and load it into a db.json file:
+
+        ```
+        python3 manage.py dumpdata --exclude auth.permission --exclude contenttypes > db.json
+        ```
     
-    1. pip3 install psycopg2-binary | Install PostgreSQL database adapter for the Python programming language
-    1. python3 manage.py loaddata categories and products | load fixtures after migrate performed
-    1. pip install gunicorn | Python Web Server Gateway Interface HTTP server.
-    1. Add to a  Procfile -> web: gunicorn butique_ado.wsgi:application
-    1. heroku login -i | run the heroku login  CLI command.
-    1. heroku config:set DISABLE_COLLECTSTATIC=1 --app (APP NAME) | Disable static file collection.
-    1. heroku git:remote -a (APP NAME)
-    1. git push heroku main
+    3. Connect your manage.py file to your postgres database
+
+        ``` 
+        python3 manage.py loaddata db.json
+        ```
+
+    4. Install environment variable to configure your Django application.
+
+        ```
+        pip3 install dj_database_url
+        ```
+    
+    5. Install PostgreSQL database adapter for the Python programming language.
+
+        ```
+        pip3 install psycopg2-binary
+
+    6. bload fixtures after migrate performed.
+
+        ```
+        python3 manage.py loaddata categories and products 
+
+    7. Python Web Server Gateway Interface HTTP server.
+
+        ```
+        pip install gunicorn
+
+    8. Add to a  Procfile ->
+
+        ```
+        web: gunicorn butique_ado.wsgi:application
+
+    9. Run the heroku login  CLI command.
+
+        ```
+        heroku login -i
+
+    10. Disable static file collection.
+
+        ```
+        heroku config:set DISABLE_COLLECTSTATIC=1 --app (APP NAME)
+
+    11. Add to remote heroku main
+
+        ```
+        heroku git:remote -a (APP NAME)
+
+    12. And.
+    
+        ```
+        git push heroku main
+
 Now you can add app to automaticly oush updates from git.
 1. Log-Into [Heroku](https://id.heroku.com/login) "Link to Heroku login page" or [create an account](https://signup.heroku.com/login) "Link to Heroku create account page".
-1. Once logged in, Find and select "Deploy" tab 
-1. After selecting "Deploy" tab find and Select Deployment method "GitHub"
-1. Now find and Select Connect to GitHub repository and select repository to connect to
-1. Now locate and select option and enable "Automattic Deploys"
-1. You can now select "Deploy Branch"
-1. After you have deployed, go on top of the page and locate settings tab and select it
-1. Select within settings page "Reveal Config Vars and add following
+2. Once logged in, Find and select "Deploy" tab 
+3. After selecting "Deploy" tab find and Select Deployment method "GitHub"
+4. Now find and Select Connect to GitHub repository and select repository to connect to
+5. Now locate and select option and enable "Automattic Deploys"
+6. You can now select "Deploy Branch"
+7. After you have deployed, go on top of the page and locate settings tab and select it
+8. Select within settings page "Reveal Config Vars and add following
 
 | Config|	Vars |
 | -- | -- |
@@ -259,7 +408,7 @@ More Detailed information on GitHub Pages can be found here: [here](https://devc
                 "Version": "DATE",
                 "Statement": [
                     {
-                    "Sid": "Stmt1636112677613",
+                    "Sid": "Stmt(SId NUM)",
                     "Action": [
                         "s3:GetObject"
                     ],
@@ -273,11 +422,11 @@ More Detailed information on GitHub Pages can be found here: [here](https://devc
         1. allow Access to everyone
 - Manage access to AWS resources
     - Create group
-        1.Create group | manage-(YOUR GROUP NAME)
+        1. Create group | manage-(YOUR GROUP NAME)
     - Create access policy to access s3 bucket
         1. Go to Create Poicy  JSON and import_managed_policy
-        1. Import s3 full access policy
-        1. add this JSCON
+        2. Import s3 full access policy
+        3. add this JSCON
             ``` 
             "Resource": [
                 "arn:aws:s3:::(YOUR BUSKET NAME)",
@@ -286,10 +435,10 @@ More Detailed information on GitHub Pages can be found here: [here](https://devc
     - Assign group user access to the access files
         1. attach createdpolicy to the group
             - go to User Groups - permissins and sellect attach policy
-        1. create user in the group | username: (YOUR)-staticfiles-user
-        1. sellect programmatic access
-        1. put user i manage-(YOUR USER NAME)
-        1. download CSV file with user access key and secret
+        2. create user in the group | username: (YOUR)-staticfiles-user
+        3. sellect programmatic access
+        4. put user i manage-(YOUR USER NAME)
+       5. download CSV file with user access key and secret
 Connect django to AWS
 -  pip3 install boto3
 -  pip3 install django-storages
