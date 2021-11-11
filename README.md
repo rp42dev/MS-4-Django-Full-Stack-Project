@@ -30,7 +30,6 @@
 
 ## **Full Stack Frameworks with Django Milestone Project.**
 
-
 This is my Fourth and last of Milestone Projects that the developer must complete during Full Stack Web Development Program at The Code Institute.
 
 This project, is a full-stack site based around business logic. With an authentication and payment service mechanisms to purchase of a product/service.
@@ -65,9 +64,10 @@ source: [code institute](https://codeinstitute.net/)
 ## **User Stories**
 
 ### **As A Unregistered user**
-1. To understand purpose and Easly navigate the website.
-1. Find Products By name, Description etc..
-1. Good description (sizes, price, colours, shipping etc..) and Product photography.
+1. First time visitor is able to understand purpose of the website.
+1. User is able to easly navigate the website.
+1. User is able to find products by description and product name.
+1. Good product description and Product photography.
 1. To be able make easy and secure payments as a guest user.
 1. To be able to contact the company for any query or issue.
 
@@ -78,13 +78,20 @@ source: [code institute](https://codeinstitute.net/)
 1. Self-manage of account details and shipping adresses for fast checkout.
 1. Access to order history and other documents.
 
+### **As an Administrator**
+1. As an Administrator, I want to monitor shop items with ease.
+1. As an Administrator, I want to add/edit and delete items.
+1. As an Administrator, I want to be able to track all the purchases.
+1. As an Administrator, I want track and manage all the shipping information.
+1. As an Administrator, I want to be able to manage User access and accounts.
+
 ### **Site Owner goals**
 1. Get the business online and expand online presence. 
 1. Drive new customers to the website Provide guest checkout option.
-1. And Provide login for users to be able Save shopping-cart and user deteails for fast checkout.
-1. Maximize sales Conversion rate - Offer range of Special Offers and deals.
-1. Improve Sales - Offer customers a fast and secure payment option.
-1. Customer Support – Improve customer satisfaction through better service
+1. Provide users with ability to create account, save shopping-cart and user deteails for fast checkout.
+1. Maximize sales, Offer range of Special Offers and deals.
+1. Offer customers a fast and secure payment option.
+1. Customer Support Improve customer satisfaction through better service
 
 ## **Strategy**
 # [&#8686;](#top)
@@ -92,9 +99,18 @@ source: [code institute](https://codeinstitute.net/)
 1. Easy navigate and find the products that they are interested in buying.
 1. Easily select the product that user wishes to purchase.
 1. Register account to have personal account.
-1. Login and Save shopping-cart and shipping deteails for fast checkout.
-1. Be able to make instant and safe payments.
+1. Login and Save shopping-cart and shipping details for fast checkout.
+1. Update account details/shipping details or delete their account.
+1. Enable the User to track their order history.
+1. To be able to make instant and safe payments.
 1. Have The ability to contact company if they have a query.
+
+### **The website needs to enable the Administrator to**
+1. Enable administrator to monitor shop items with ease.
+1. Enable administrator to add/edit and delete shopping items in template or admin interface.
+1. Enable the Administrator to track all the purchases.
+1. Enable the Administrator to track shipping information.
+1. Update user account details or delete their accounts.
 
 ### **The website needs to enable the company to**
 1. Get the business online and expand online presence. 
@@ -108,89 +124,93 @@ source: [code institute](https://codeinstitute.net/)
 ## **Scope**
 Features to implement in terms of viability/feasibility. Below is a Dot Plot chart consisting of data points plotted on a scale of 1 represents least and 5 the most.
 
-[Line-plots](project_files/wireframes/line-plots.png)
+![Line-plots](project_files/images/wireframes/plot.jpg)
 
 #### Functionality Requirements
-- Products in gallery with descriptions.
-    - On click to reveal individual item detailed view.
-    - Add to basket functionality
 - Website Navigation with internal site links.
     - Internal links is Linked with Django placeholders in the template. 
     - Responsive bootstrap website navigation menu.
+- Products gallery with descriptions.
+    - On click to reveal individual item detailed view.
+    - Add to basket functionality
+- Checkout and shopping Cart.
+    - Implement Stripe payment processing platform APIs to accept manage payments.
+    - Implement the calculation logic that adds the shipping charge to the shopping cart totals.
+- Product Search function and sort
+    - Ability To search products by keyword.
+    - Ability to categorise products by categories.
 - User Registration/Log-In.
    - Use of Allouth Django applications authentication, registration, account management.
 - User Profile.
    - Edit, Delete User Acount Details,
    - Wiew Shopping history Details.
-   - Ability to add, eddit remove shopping Cart Content.
-
-- Django admin interface integration.
-   - Manage all the user accounts and shop items.
-- Ability for admin user adding/edditing or deleting shop items.
-   - For admin user Extended functionality to edit remove or add new items in temlate.
+   - Ability to add, Edit remove shopping Cart Content.
+- Django admin interface.
+   - To perform create, read, update and delete operations on the user accounts and shop items.
+- Ability for admin user adding/Editing or deleting shop items.
+   - Admin user Extended functionality to edit remove or add new items in the temlate.
 - Integrate PostgreSQL Database.
    - Content description and image links stored and managed PostgreSQL database
-- AWS-S3-deployment static file storage
-   - Use of cloud Storage 5GB Free Amazon S3 for all the images and static file storage.
+- Static file storage on AWS S3
+   - Use of cloud Storage Amazon S3 for all the media and static file storage.
 - Customer Support contact form.
-   - Javascript API form control implemented for this project
-- Social Media links to external resources.
+   - Ability for customer to contact support.
+.
 #### Content Requirements
-- NavBar
-   - Internal site navigation Links
-   - Login/Register link
-   - Site brand name 
-- Sign In
-   - In the "Username" field, enter a username
-   - Enter and confirm your password
-   - Click "Sign In" button
-- Create account
-   - In the "Username" field, enter a username
-   - Enter and confirm your password
-   - Enter email address.
-   - Click "Create new account" button
 - Landing Page
-   - Central Hero image
-   - Carousel recent uploads feature
-- User upload Thumbnail grid
-   - Displays user content in a responsive grid
+    - Navigation at the top
+        - Dropdown 
+            - Login/Register link
+            - logout if logged in
+            - Manage account details
+            - If admin link to add new product.
+        - Shopping cart
+        - Search field
+        - Categories link buttons
+    - Product gallery scroll down
+- Sign In
+    - Email field to enter email address
+    - Enter password
+    - Click "Sign In" button
+- Create account
+    - In the "Username" field, enter a username
+    - Enter Email address
+    - Enter and confirm your password
+    - Click "Create new account" button
+- Shopping cart
+    - Allows shopping customers to add a list of items for purchase.
+    - tHE customer can easily add and remove items from their shopping cart.
+    - Allow Registered users to save their favorite products for future purchases.
+    - Button to fast checkout.
+- Checkout 
+    - Stripe checkout for credit cards 
+    - Unregistered user will have to fill in shopping details each time shopper visits the shop.
+    - Registered user card and shipping details are saved and pre populated from saved profile details.
+- User Account
+    - View purchase history
+        - Individual Card with image, title, and description.
+    - Edit profile details and shipping address
+        - Edit/ Change Email/Password And shipping details.
+    - Delete profile
+
+- For Admin user all the products feature buttons with access to edit and delete        functionality.
+- Admin Add/Adit product
+    - Product Name
+    - Product Category
+    - product Price
+    - Image upload field
+    - Text area field for item description
+    - Post item button.
 - Contact Form
-   - First and Last Name input fields
-   - Email Address input field
-   - Text area input field
-   - Submit button
-- My Posts
-   - All users posts display card type grid
-   - Individual Card feature image at the top
-   - Title, and description bebow the image
-   - Next at the bottom Buttons to delete and edit post details
-   - Delete	Post button feature confirm function for to prevent accidental deletion
-- Add New post
-   - Image upload functionality
-   - Title input field
-   - Text area field for content description
-   - Post content button
-- Edit Post
-   - Edit Title input field
-   - Text area field to Edit content description
-   - Edit content confirm button
-- Account
-   - Enter username input Field
-   - Enter Password input Field
-   - Confirm Check box
-   - Finaly Sebmit to delete button
-- Admin management Interface
-   - Manage/delete self profile
-   - Manage other User profile.
-   - Image upload functionality, Title input field
-   - Text area field for content description
-   - Post content button, Edit content button
-   - Edit/Delete	self/other user Posts
+    - Name input field
+    - Email Address input field
+    - Text area input field
+    - Submit button
 - footer
-   - Copyright information
-   - Terms and privacy policy
-   - Social Links
-     - FaceBook, LinkedIn, Instagram
+    - Copyright information
+    - link to contact form
+    - Social Links
+        - FaceBook, LinkedIn, Instagram
 
 # [&#8686;](#top)
 
@@ -201,7 +221,15 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 
 ## **Skeleton**
 ### **Wireframes**
-- [landing page wireframe](project_files/wireframes/landing-wireframe.png)
+- ![landing page wireframe](project_files/images/wireframes/home-wf.png)
+- ![Shopping Categories](project_files/images/wireframes/categories.png)
+- ![Item Detailed view](project_files/images/wireframes/detailed.png)
+- ![Admin Shopping Categories](project_files/images/wireframes/admin-categories.png)
+- ![Admin Add New Item](project_files/images/wireframes/add.png)
+- ![Admin Edit Item](project_files/images/wireframes/edit.png)
+- ![Edit Account](project_files/images/wireframes/account.png)
+- ![Shopping Cart](project_files/images/wireframes/cart.png)
+- ![Checkout](project_files/images/wireframes/checkout.png)
 
 # [&#8686;](#top)
 ## **Surfaice**
