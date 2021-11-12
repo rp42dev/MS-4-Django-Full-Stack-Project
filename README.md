@@ -179,7 +179,7 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
     - Click "Create new account" button
 - Shopping cart
     - Allows shopping customers to add a list of items for purchase.
-    - tHE customer can easily add and remove items from their shopping cart.
+    - The customer can easily add and remove items from their shopping cart.
     - Allow Registered users to save their favorite products for future purchases.
     - Button to fast checkout.
 - Checkout 
@@ -215,7 +215,8 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 # [&#8686;](#top)
 
 ## **Structure**
-- ![site-structure wireframe](project_files/images/structure/structure.png)
+- ![site-structure](project_files/images/structure/structure.png)
+- ![Relational database structure](project_files/images/structure/structure-db.png)
 
 ### Site structure broken into more detailed, structured view below
 
@@ -318,71 +319,71 @@ Ensure to add env.py to a .gitignore file before pushing your code to your repos
 ## **Deploying on Heroku Pages**
 - After Cloning the repository now you are able to deploy on Heroku pages
 - Before deployment Make sure to:
-    1. Create requirements.txt file in the same project directory
+1. Create requirements.txt file in the same project directory
 
-        ```
-         pip freeze > requirements.txt 
-        ```
-    2. Make sure your manage.py file is connected to your mysql database
-        Use this command to backup your current database and load it into a db.json file:
+    ```
+        pip freeze > requirements.txt 
+    ```
+2. Make sure your manage.py file is connected to your mysql database
+    Use this command to backup your current database and load it into a db.json file:
 
-        ```
-        python3 manage.py dumpdata --exclude auth.permission --exclude contenttypes > db.json
-        ```
-    
-    3. Connect your manage.py file to your postgres database
+    ```
+    python3 manage.py dumpdata --exclude auth.permission --exclude contenttypes > db.json
+    ```
 
-        ``` 
-        python3 manage.py loaddata db.json
-        ```
+3. Connect your manage.py file to your postgres database
 
-    4. Install environment variable to configure your Django application.
+    ``` 
+    python3 manage.py loaddata db.json
+    ```
 
-        ```
-        pip3 install dj_database_url
-        ```
-    
-    5. Install PostgreSQL database adapter for the Python programming language.
+4. Install environment variable to configure your Django application.
 
-        ```
-        pip3 install psycopg2-binary
+    ```
+    pip3 install dj_database_url
+    ```
 
-    6. bload fixtures after migrate performed.
+5. Install PostgreSQL database adapter for the Python programming language.
 
-        ```
-        python3 manage.py loaddata categories and products 
+    ```
+    pip3 install psycopg2-binary
 
-    7. Python Web Server Gateway Interface HTTP server.
+6. bload fixtures after migrate performed.
 
-        ```
-        pip install gunicorn
+    ```
+    python3 manage.py loaddata categories and products 
 
-    8. Add to a  Procfile ->
+7. Python Web Server Gateway Interface HTTP server.
 
-        ```
-        web: gunicorn butique_ado.wsgi:application
+    ```
+    pip install gunicorn
 
-    9. Run the heroku login  CLI command.
+8. Add to a  Procfile ->
 
-        ```
-        heroku login -i
+    ```
+    web: gunicorn butique_ado.wsgi:application
 
-    10. Disable static file collection.
+9. Run the heroku login  CLI command.
 
-        ```
-        heroku config:set DISABLE_COLLECTSTATIC=1 --app (APP NAME)
+    ```
+    heroku login -i
 
-    11. Add to remote heroku main
+10. Disable static file collection.
 
-        ```
-        heroku git:remote -a (APP NAME)
+    ```
+    heroku config:set DISABLE_COLLECTSTATIC=1 --app (APP NAME)
 
-    12. And.
-    
-        ```
-        git push heroku main
+11. Add to remote heroku main
 
-Now you can add app to automaticly oush updates from git.
+    ```
+    heroku git:remote -a (APP NAME)
+
+12. And.
+
+    ```
+    git push heroku main
+
+Now you can add app to automaticly push updates from git.
 1. Log-Into [Heroku](https://id.heroku.com/login) "Link to Heroku login page" or [create an account](https://signup.heroku.com/login) "Link to Heroku create account page".
 2. Once logged in, Find and select "Deploy" tab 
 3. After selecting "Deploy" tab find and Select Deployment method "GitHub"
