@@ -197,7 +197,7 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 - Admin Add/Adit product
     - Product Name
     - Product Category
-    - product Price
+    - Product Price
     - Image upload field
     - Text area field for item description
     - Post item button.
@@ -215,7 +215,7 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 # [&#8686;](#top)
 
 ## **Structure**
-[site-structure wireframe](project_files/wireframes/site-structure.png)
+- ![site-structure wireframe](project_files/images/structure/structure.png)
 
 ### Site structure broken into more detailed, structured view below
 
@@ -227,7 +227,8 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 - ![Admin Shopping Categories](project_files/images/wireframes/admin-categories.png)
 - ![Admin Add New Item](project_files/images/wireframes/add.png)
 - ![Admin Edit Item](project_files/images/wireframes/edit.png)
-- ![Edit Account](project_files/images/wireframes/account.png)
+- ![Edit Account Details](project_files/images/wireframes/account-details.png)
+- ![My Account](project_files/images/wireframes/account.png)
 - ![Shopping Cart](project_files/images/wireframes/cart.png)
 - ![Checkout](project_files/images/wireframes/checkout.png)
 
