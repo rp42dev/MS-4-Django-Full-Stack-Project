@@ -1,5 +1,6 @@
  top
 ![top]()
+# *A Hat Shop*
 ## [View the live project here.]()
 
 ### Table of contents
@@ -34,6 +35,7 @@ This is my Fourth and last of Milestone Projects that the developer must complet
 
 This project, is a full-stack site based around business logic. With an authentication and payment service mechanisms to purchase of a product/service.
 
+It's all about the hat
 ## **Main Technologies**
 HTML, CSS, JavaScript, Python+Django
 
@@ -194,7 +196,7 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
     - Delete profile
 
 - For Admin user all the products feature buttons with access to edit and delete        functionality.
-- Admin Add/Adit product
+- Admin Add/Adit product forms
     - Product Name
     - Product Category
     - Product Price
@@ -215,29 +217,27 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 # [&#8686;](#top)
 
 ## **Structure**
-- ![site-structure](project_files/images/structure/structure.png)
-- ![Relational database structure](project_files/images/structure/structure-db.png)
-
-### Site structure broken into more detailed, structured view below
+![site-structure](project_files/images/structure/structure.png)
+![Relational database structure](project_files/images/structure/structure-db.png)
 
 ## **Skeleton**
 ### **Wireframes**
-- ![landing page wireframe](project_files/images/wireframes/home-wf.png)
-- ![Shopping Categories](project_files/images/wireframes/categories.png)
-- ![Item Detailed view](project_files/images/wireframes/detailed.png)
-- ![Admin Shopping Categories](project_files/images/wireframes/admin-categories.png)
-- ![Admin Add New Item](project_files/images/wireframes/add.png)
-- ![Admin Edit Item](project_files/images/wireframes/edit.png)
-- ![Edit Account Details](project_files/images/wireframes/account-details.png)
-- ![My Account](project_files/images/wireframes/account.png)
-- ![Shopping Cart](project_files/images/wireframes/cart.png)
-- ![Checkout](project_files/images/wireframes/checkout.png)
+![landing page wireframe](project_files/images/wireframes/home-wf.png)
+![Shopping Categories](project_files/images/wireframes/categories.png)
+![Item Detailed view](project_files/images/wireframes/detailed.png)
+![Admin Shopping Categories](project_files/images/wireframes/admin-categories.png)
+![Admin Add New Item](project_files/images/wireframes/add.png)
+![Admin Edit Item](project_files/images/wireframes/edit.png)
+![Edit Account Details](project_files/images/wireframes/account-details.png)
+![My Account](project_files/images/wireframes/account.png)
+![Shopping Cart](project_files/images/wireframes/cart.png)
+![Checkout](project_files/images/wireframes/checkout.png)
 
 # [&#8686;](#top)
 ## **Surfaice**
 
 ### **Colour Scheme**
-
+![Color Pallete](project_files/images/Capture.JPG)
 ### **Fonts**
 
 ### **Media**
@@ -518,7 +518,7 @@ As well ass some of the code syntax help and code tips sourced from following so
 -  [www.w3schools](https://www.w3schools.com/): Useful website for code tips.
 
 ## **Content**
-
+- Thanks to [coolors.co](https://coolors.co/000000-fca311-e5e5e5-ffffff) Color palete used for this project.
 ## **Acknowledgements**
 - Thanks to My Mentor Owonikoko Oluwaseun, for continuous support and inspire me to push myself beyond where I think I can go.
 - Tutor support at Code Institute for their support.
