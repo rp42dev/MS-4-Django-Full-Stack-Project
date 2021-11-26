@@ -269,6 +269,7 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 - [Git](https://git-scm.com/) Git was used for version control.
 - [GitHub:](https://github.com/) used to store the projects code.
 - [gitpod.io](https://gitpod.io/) gitpod Was used for codding.
+- [dbdocs](https://dbdocs.io/) Create DB diagram'
 - [Balsamiq:](https://balsamiq.com/) was used to create the wireframes.
 - [Heroku](https://heroku.com/) Application hosting platform. 
 - [Django: The web framework](https://www.djangoproject.com/) Django is a high-level Python web framework.
