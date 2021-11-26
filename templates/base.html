@@ -48,15 +48,19 @@
     </div>
     {% endif %}
                 <!-- Navigation-->
-                <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+                <nav class="navbar navbar-expand-lg navbar-dark fixed-top flex-column" id="mainNav">
                     <div class="container">
-                        <a class="navbar-brand" href="#">A hat Shop</a>
+                        <div><a class="navbar-brand" href="#">A hat Shop</a></div>
+                        
+                        
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                             Menu
                             <i class="fas fa-bars ms-1"></i>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarResponsive">
                             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                                {% block extr_nav %}
+                                {% endblock %}
                                 <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">home</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{% url 'shop' %}">shop</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#">About</a></li>
@@ -64,6 +68,8 @@
                             </ul>
                         </div>
                     </div>
+                    {% block extr_nav_lg %}
+                    {% endblock %}
                 </nav>
 
     {% block page_header %}
