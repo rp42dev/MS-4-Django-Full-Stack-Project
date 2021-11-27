@@ -50,9 +50,8 @@
                 <!-- Navigation-->
                 <nav class="navbar navbar-expand-lg navbar-dark fixed-top flex-column" id="mainNav">
                     <div class="container">
-                        <div><a class="navbar-brand" href="#">A hat Shop</a></div>
-                        
-                        
+                        <div><a class="navbar-brand" href="{% url 'home' %}">A hat Shop</a></div>
+                           
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                             Menu
                             <i class="fas fa-bars ms-1"></i>
@@ -63,8 +62,13 @@
                                 {% endblock %}
                                 <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">home</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{% url 'shop' %}">shop</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+
+                                {% if request.user.is_authenticated %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
+                                {% else %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Login</a></li>
+                                {% endif %}
+                                
                             </ul>
                         </div>
                     </div>
@@ -80,7 +84,7 @@
     {% endblock %}
                        
         <!-- Contact-->
-        <section class="page-section" id="contact">
+        <section class="page-section bg-black" id="contact">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Contact Us</h2>

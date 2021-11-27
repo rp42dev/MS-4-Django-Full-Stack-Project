@@ -3,9 +3,20 @@
 {% load i18n %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block page_header %}
+<!-- Header-->
+<header class="bg-black py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center">
 
-{% block content %}
-<h1>{% trans "Sign Up" %}</h1>
+          <h1 class="display-4 text-white fw-bolder">{% trans "Sign Up" %}</h1>
+
+        </div>
+    </div>
+</header>
+{% endblock %}
+{% block inner_content %}
+
 
 <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 

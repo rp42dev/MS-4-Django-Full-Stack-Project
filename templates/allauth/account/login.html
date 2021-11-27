@@ -5,9 +5,22 @@
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
-{% block content %}
+{% block page_header %}
+<!-- Header-->
+<header class="bg-black py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center">
 
-<h1>{% trans "Sign In" %}</h1>
+          <h1 class="display-4 text-white fw-bolder">{% trans "Sign In" %}</h1>
+
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+
+{% block inner_content %}
+
 
 {% get_providers as socialaccount_providers %}
 

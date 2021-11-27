@@ -3,9 +3,19 @@
 {% load i18n %}
 
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
+{% block page_header %}
+<!-- Header-->
+<header class="bg-black py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center">
 
-{% block content %}
-<h1>{% trans "Sign Out" %}</h1>
+          <h1 class="display-4 text-white fw-bolder">{% trans "Sign Out" %}</h1>
+
+        </div>
+    </div>
+</header>
+{% endblock %}
+{% block inner_content %}
 
 <p>{% trans 'Are you sure you want to sign out?' %}</p>
 
