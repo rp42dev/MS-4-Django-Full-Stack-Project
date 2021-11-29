@@ -1,17 +1,20 @@
 
 from django.contrib import admin
-from .models import Product, Category, ProductStatus
-
+from .models import Product, Category
 # Register your models here.
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = (
+    list_display = ( 
         'name',
         'category',
+        'style',
+        'style',
         'price',
-        'special_price',
         'image',
+        'item_special',
+        'special_price',
+        'item_count'
     )
 
 
@@ -22,13 +25,6 @@ class CategoryAdmin(admin.ModelAdmin):
     )
 
 
-class ProductStatusAdmin(admin.ModelAdmin):
-    list_display = (
-        'item',
-        'item_count',
-    )
-
-
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(ProductStatus, ProductStatusAdmin)
+
