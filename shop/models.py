@@ -25,8 +25,8 @@ class Product(models.Model):
     price = models.DecimalField(
         max_digits=6, decimal_places=2)
     image = models.ImageField(null=True, blank=True)
-    item_special = models.BooleanField(default=False)
-    special_price = models.DecimalField(
+    sale = models.BooleanField(default=False)
+    sale_price = models.DecimalField(
         max_digits=6, decimal_places=2,
         null=True, blank=True)
     item_count = models.IntegerField(

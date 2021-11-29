@@ -11,10 +11,9 @@ class ProductAdmin(admin.ModelAdmin):
         'style',
         'color',
         'price',
-        'image',
-        'item_special',
-        'special_price',
-        'item_count'
+        'sale',
+        'sale_price',
+        'item_count',
     )
 
 
@@ -27,4 +26,3 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
-
