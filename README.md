@@ -519,7 +519,20 @@ As well ass some of the code syntax help and code tips sourced from following so
 -  [www.w3schools](https://www.w3schools.com/): Useful website for code tips.
 
 ## **Content**
+In order to start this project I'm using following templates.
+
+- Landing Page Startup template [Here](https://startbootstrap.com/theme/agency)
+- Shop startup template [Here](https://startbootstrap.com/template/shop-homepage)
+- Shop item detailed template [Here](https://startbootstrap.com/template/shop-item)
 - Thanks to [coolors.co](https://coolors.co/000000-fca311-e5e5e5-ffffff) Color palete used for this project.
+
+Start Bootstrap was created by and is maintained by **[David Miller](https://davidmiller.io/)**.
+
+* <https://davidmiller.io>
+* <https://twitter.com/davidmillerhere>
+* <https://github.com/davidtmiller>
+
+Start Bootstrap is based on the [Bootstrap](https://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
 ## **Acknowledgements**
 - Thanks to My Mentor Owonikoko Oluwaseun, for continuous support and inspire me to push myself beyond where I think I can go.
 - Tutor support at Code Institute for their support.
