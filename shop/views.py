@@ -16,7 +16,8 @@ def shop(request):
                 products = Product.objects.all()
             else:
                 products = Product.objects.filter(category__name=cat)
-
+    else:
+        products = Product.objects.all()
     context = {
         'categories': categories,
         'products': products,
