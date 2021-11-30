@@ -6,6 +6,7 @@ from .models import Product, Category
 # Create your views here.
 def shop(request):
     """A view to return the shop page"""
+    cat = 'hats'
     categories = Category.objects.all()
     if request.GET:
         if 'category' in request.GET:
@@ -21,6 +22,7 @@ def shop(request):
     context = {
         'categories': categories,
         'products': products,
+        'current_cat': cat,
     }
     return render(request, 'shop/shop.html', context)
 

@@ -89,29 +89,49 @@ p {
   font-weight: 700;
 }
 #mainNav .navbar-brand {
-  color: #c5c5c5;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   letter-spacing: 0.0625em;
   text-transform: uppercase;
-  transition: color 2s;
 }
-#mainNav .navbar-brand:hover{
-  color: #c5c5c5 !important;
-}
+
 #mainNav .navbar-brand img {
   height: 1.5rem;
 }
 .nav-item .nav-link {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.95rem;
-  color: #c5c5c5 !important;
+  color: #c5c5c5;
   font-weight: 600;
   letter-spacing: 0.0625em;
 }
+
+.btn-dark:hover,
+.btn-dark:active,
+.btn-social:active,
+.btn-social:hover{
+  background-color: #fca311;
+  border-color: #fca311;
+}
+
+.btn:focus, .btn:active {
+  box-shadow: none !important;
+}
+
+.nav-item .disabled,
 .nav-item .nav-link.active,
 .nav-item .nav-link:hover{
+  color: #fca311;
+}
+
+.navbar-brand,
+.navbar-toggler{
   color: #c5c5c5;
+  transition: color 150ms;
+}
+.navbar-brand:hover,
+.navbar-toggler:hover{
+  color: #fca311;
 }
 
 @media (min-width: 992px) {
@@ -228,9 +248,11 @@ section#contact form#contactForm .form-group {
 .checkboxinput{
   padding: 1rem;
 }
-.form-group input,
+
+
 .form-group input.form-control,
 section#contact form#contactForm .form-group input.form-control {
+  border-color: #fca311;
   height: auto;
 }
 section#contact form#contactForm .form-group-textarea {
@@ -251,8 +273,10 @@ section#contact form#contactForm p.help-block {
 
 form .form-control:focus,
 section#contact form#contactForm .form-control:focus {
-  border-color: #c5c5c5;
   box-shadow: none;
+  border-color: #fca311;
+  box-shadow: 0px 0px 6px #fca311;
+  
 }
 
 form ::-webkit-input-placeholder,
@@ -283,6 +307,17 @@ section#contact form#contactForm :-ms-input-placeholder {
   color: #c5c5c5;
 }
 
+.form-check-input {
+  border-color: #fca311;
+}
+
+.form-check-input:focus,
+.form-check-input:checked {
+  background-color: #fca311;
+  border-color: #fca311;
+  box-shadow: 0px 0px 4px #fca311;
+}
+
 .footer {
   text-align: center;
   font-size: 0.9rem;
@@ -292,4 +327,5 @@ section#contact form#contactForm :-ms-input-placeholder {
 .card-body {
   flex: 0 1 auto;
   padding: 1rem 1rem;
+
 }
