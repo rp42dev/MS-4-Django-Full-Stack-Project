@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load thumbnail %}
 
 {% block extr_nav %}
 <li class="nav-item d-sm-none d-block"><a class="nav-link" href="{% url 'shop' %}?category=hats">All Hats</a></li>
@@ -53,7 +54,9 @@
                     <!-- Product image-->
                     <a class="h-100 my-auto" href="{% url 'shop_item' item.id %}">
                         <div class="h-100 d-flex align-items-center">
-                            <img class="card-img-top align-middle" src="{{ item.image.url }}" alt="..." />
+                            {% thumbnail item.image "250" as im %}
+                            <img class="card-img-top align-middle" src="{{ im.url }}" alt="..." />
+                            {% endthumbnail %}
                         </div>
                     </a>
                     <!-- Product details-->

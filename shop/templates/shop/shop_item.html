@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load thumbnail %}
 {% block page_header %}
 <!-- Header-->
 <header class="bg-black py-5">
@@ -21,8 +22,11 @@
             <div class="badge bg-danger text-white position-absolute w-auto" style="top: 0.5rem; right: 0.5rem">Sale
             </div>
             {% endif %}
-            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{ item.image.url }}"
+            {% thumbnail item.image "500" as im %}
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{ im.url }}"
                     alt="{{ item.name }}" /></div>
+            {% endthumbnail %}
+            
             <div class="col-md-6">
                 <div class="small mb-1">SKU: {{ item.sku }}</div>
                 <h1 class="display-5 fw-bolder">{{ item.name }}</h1>
@@ -67,7 +71,9 @@
                     <!-- Product image-->
                     <a class="h-100 my-auto" href="{% url 'shop_item' relate.id %}">
                         <div class="h-100 d-flex align-items-center"> 
-                            <img class="card-img-top align-middle" src="{{ relate.image.url }}" alt="..." />
+                            {% thumbnail relate.image "250" as im %}
+                                <img class="card-img-top align-middle" src="{{ im.url }}" alt="{{ relate.name }}" />
+                            {% endthumbnail %}
                         </div>
                     </a>
                     <!-- Product details-->

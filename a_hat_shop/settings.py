@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'crispy_forms',
+    'sorl.thumbnail',
     'home',
     'shop',
 ]
@@ -164,3 +165,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+THUMBNAIL_PRESERVE_FORMAT = True
+THUMBNAIL_QUALITY = 75
