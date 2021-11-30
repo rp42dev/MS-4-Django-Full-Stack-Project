@@ -2,19 +2,26 @@
 {% load static %}
 
 {% block extr_nav %}
-<li class="nav-item d-sm-none d-block"><a class="nav-link" href="#">category</a></li>
-<li class="nav-item d-sm-none d-block"><a class="nav-link" href="#">category</a></li>
-<li class="nav-item d-sm-none d-block"><a class="nav-link" href="#">category</a></li>
+<li class="nav-item d-sm-none d-block"><a class="nav-link" href="{% url 'shop' %}?category=hats">All Hats</a></li>
+{% for cat in categories %}
+
+<li class="nav-item d-sm-none d-block"><a class="nav-link" href="{% url 'shop' %}?category={{ cat.name }}">{{ cat.friendly_name }}</a></li>
+{% endfor %}
+<li class="nav-item d-sm-none d-block"><a class="nav-link" href="{% url 'shop' %}?category=sale">Hats Sale</a></li>
 {% endblock %}
+
 {% block extr_nav_lg %}
 <div class="d-sm-block d-none">
     <ul class="d-flex justify-content-center p-0 text-uppercase ms-auto py-4 py-lg-0">
-        <li class="nav-item"><a class="nav-link" href="#">All Hats</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Lady's Hats</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Man's Hats</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'shop' %}?category=hats">All Hats</a></li>
+        {% for cat in categories %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'shop' %}?category={{ cat.name }}">{{ cat.friendly_name }}</a></li>
+        {% endfor %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'shop' %}?category=sale">Hats Sale</a></li>
     </ul>
 </div>
 {% endblock %}
+
 {% block page_header %}
 <!-- Header-->
 <header class="bg-black py-5">
@@ -45,7 +52,7 @@
                     {% endif %}
                     <!-- Product image-->
                     <a class="h-100 my-auto" href="{% url 'shop_item' item.id %}">
-                        <div class="h-100 d-flex align-items-center"> 
+                        <div class="h-100 d-flex align-items-center">
                             <img class="card-img-top align-middle" src="{{ item.image.url }}" alt="..." />
                         </div>
                     </a>
@@ -53,7 +60,7 @@
                     <div class="card-body p-4">
                         <div class="text-center align-items-end">
                             <!-- Product name-->
-                            <h5 class="fw-bolder">{{ item.name }}</h5>
+                            <h5 class="fw-bolder text-capitalize">{{ item.name }}</h5>
 
                             <div class="d-flex justify-content-center small text-warning mb-2">
                                 <span class="fa fa-star checked"></span>
