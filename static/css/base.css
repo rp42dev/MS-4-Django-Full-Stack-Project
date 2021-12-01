@@ -101,7 +101,7 @@ p {
 .nav-item .nav-link {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.95rem;
-  color: #fca311;
+  color: #e5e5e5;
   font-weight: 600;
   letter-spacing: 0.0625em;
 }
@@ -140,17 +140,17 @@ p {
 .nav-item .disabled,
 .nav-item .nav-link.active,
 .nav-item .nav-link:hover{
-  color: #e5e5e5;
+  color: #fca311;
 }
 
 .navbar-brand,
 .navbar-toggler{
-  color: #fca311;
+  color: #e5e5e5;
   transition: color 150ms;
 }
 .navbar-brand:hover,
 .navbar-toggler:hover{
-  color: #e5e5e5;
+  color: #fca311;
 }
 
 @media (min-width: 992px) {
@@ -188,6 +188,7 @@ p {
     margin-right: 0;
   }
 }
+
 header.masthead {
   position: relative;
   min-height: 70vh;
@@ -266,6 +267,7 @@ section#promise {
   background-repeat: no-repeat;
   background-position: center;
 }
+
 section#promise .section-heading {
   color: #e5e5e5;
 }
@@ -289,7 +291,6 @@ form#contactForm .form-group-textarea {
 form#contactForm .form-group-textarea textarea {
   height: 100%;
   min-height: 10rem;
-  border-color: #fca311;
 }
 
 label {

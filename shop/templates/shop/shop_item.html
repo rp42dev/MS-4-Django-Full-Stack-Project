@@ -40,7 +40,16 @@
                     {% endif %}
                 </div>
                 <p class="lead">{{ item.description }}</p>
+                {% if item.item_count < 5 %}
+                <p class="text-danger">
+                    Only {{ item.item_count }} left in stock.
+                </p>
+                {% else %}
+                <p>{{ item.item_count }} items in stock</p>
+                {% endif %}
+                
                 <div class="d-flex">
+
                     <input class="quantity text-center me-3" id="inputQuantity" type="num" min="1" max="{{ item.item_count }}" value="1"
                         style="max-width: 3rem" />
                     <button class="btn btn-dark flex-shrink-0" type="button">
