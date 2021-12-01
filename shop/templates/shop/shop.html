@@ -44,7 +44,7 @@
 {% block page_header %}
 <!-- Header-->
 <header class="bg-black py-5">
-    <div class="container px-4 px-lg-5 my-5">
+    <div class="container px-4 px-lg-5 pt-5 my-5">
         <div class="text-center">
 
             <h1 class="display-4 text-white fw-bolder">Shop in style</h1>
@@ -66,7 +66,8 @@
                 <div class="card justify-content-end h-100">
                     <!-- Sale badge-->
                     {% if item.sale %}
-                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                        {% widthratio item.sale_price item.price 100 %}%
                     </div>
                     {% endif %}
                     <!-- Product image-->

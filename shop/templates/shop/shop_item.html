@@ -19,7 +19,8 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center position-relative">
             {% if item.sale %}
-            <div class="badge bg-danger text-white position-absolute w-auto" style="top: 0.5rem; right: 0.5rem">Sale
+            <div class="badge bg-danger text-white position-absolute w-auto" style="top: 0.5rem; right: 0.5rem">
+                {% widthratio item.sale_price item.price 100 %}%
             </div>
             {% endif %}
             {% thumbnail item.image "500" as im %}
@@ -40,7 +41,7 @@
                 </div>
                 <p class="lead">{{ item.description }}</p>
                 <div class="d-flex">
-                    <input class="text-center me-3" id="inputQuantity" type="num" value="1"
+                    <input class="quantity text-center me-3" id="inputQuantity" type="num" min="1" max="{{ item.item_count }}" value="1"
                         style="max-width: 3rem" />
                     <button class="btn btn-dark flex-shrink-0" type="button">
                         <i class="bi-cart-fill me-1"></i>
@@ -65,7 +66,8 @@
                 <div class="card justify-content-end h-100">
                     <!-- Sale badge-->
                     {% if relate.sale %}
-                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                        {% widthratio item.sale_price item.price 100 %}%
                     </div>
                     {% endif %}
                     <!-- Product image-->

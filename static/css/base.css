@@ -101,15 +101,34 @@ p {
 .nav-item .nav-link {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.95rem;
-  color: #c5c5c5;
+  color: #fca311;
   font-weight: 600;
   letter-spacing: 0.0625em;
 }
 
-.btn-dark:hover,
-.btn-dark:active,
+
+.btn-dark {
+  background-color: #000000;
+  border-color: #000000;
+  color: #fff;
+}
+
+.btn-social,
+.btn-social{
+  background-color: #fca311;
+  border-color: #fca311;
+  color: #fff;
+}
+
 .btn-social:active,
 .btn-social:hover{
+  background-color: #e5e5e5;
+  border-color: #e5e5e5;
+  color: #000000;
+}
+
+.btn-dark:hover,
+.btn-dark:active {
   background-color: #fca311;
   border-color: #fca311;
 }
@@ -121,17 +140,17 @@ p {
 .nav-item .disabled,
 .nav-item .nav-link.active,
 .nav-item .nav-link:hover{
-  color: #fca311;
+  color: #e5e5e5;
 }
 
 .navbar-brand,
 .navbar-toggler{
-  color: #c5c5c5;
+  color: #fca311;
   transition: color 150ms;
 }
 .navbar-brand:hover,
 .navbar-toggler:hover{
-  color: #fca311;
+  color: #e5e5e5;
 }
 
 @media (min-width: 992px) {
@@ -177,38 +196,53 @@ header.masthead {
   overflow: hidden;
 }
 
-header.masthead img {
+.bg {
   position: absolute;
-  top: 0%; left: 0%;
   min-height: 70vh;
   min-width: 100%;
   width: auto;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
   background-size: cover;
-  z-index: 	-1;
+}
+
+.bg-3 {
+  position: absolute;
+  min-height: 70vh;
+  min-width: 100%;
+  width: auto;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  opacity: .8;
+ 
 }
 
 header.masthead .masthead-subheading {
+  position: relative;
   font-size: 1.5rem;
   font-style: italic;
   line-height: 1.5rem;
   margin-bottom: 25px;
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  z-index: 100;
 }
 
 header.masthead .masthead-heading {
+  position: relative;
   font-size: 3.25rem;
   font-weight: 700;
   line-height: 3.25rem;
   margin-bottom: 2rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  z-index: 100;
 }
 
 @media (min-width: 768px) {
   header.masthead {
     min-height: 70vh;
   }
+  
   header.masthead .masthead-subheading {
     font-size: 2.25rem;
     font-style: italic;
@@ -227,18 +261,16 @@ header.masthead .masthead-heading {
   height: 2.75rem;
 }
 
-section#contact {
-  background-color: #000000;
+section#promise {
   background-image: url("../img/map-image.png");
   background-repeat: no-repeat;
   background-position: center;
 }
-section#contact .section-heading {
-  color: #fff;
+section#promise .section-heading {
+  color: #e5e5e5;
 }
 
-form .form-group,
-section#contact form#contactForm .form-group {
+form .form-group{
   margin-bottom: 1.5rem;
 }
 
@@ -250,44 +282,49 @@ section#contact form#contactForm .form-group {
 }
 
 
-.form-group input.form-control,
-section#contact form#contactForm .form-group input.form-control {
-  border-color: #fca311;
-  height: auto;
-}
-section#contact form#contactForm .form-group-textarea {
+form#contactForm .form-group-textarea {
   height: 100%;
 }
-section#contact form#contactForm .form-group-textarea textarea {
+
+form#contactForm .form-group-textarea textarea {
   height: 100%;
   min-height: 10rem;
+  border-color: #fca311;
 }
 
 label {
   display: none;
 }
 
-section#contact form#contactForm p.help-block {
+form#contactForm p.help-block {
   margin: 0;
 }
 
+.quantity {
+  border-radius: 2px;
+  border: 1px solid black;
+}
+
+.quantity:focus,
+.quantity:active,
 form .form-control:focus,
-section#contact form#contactForm .form-control:focus {
+form#contactForm .form-control:focus {
   box-shadow: none;
+  outline-color: #fca311;
   border-color: #fca311;
   box-shadow: 0px 0px 6px #fca311;
   
 }
 
 form ::-webkit-input-placeholder,
-section#contact form#contactForm ::-webkit-input-placeholder {
+form#contactForm ::-webkit-input-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   color: #c5c5c5 !important;
 }
 
 form :-moz-placeholder,
-section#contact form#contactForm :-moz-placeholder {
+form#contactForm :-moz-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   color: #c5c5c5;
@@ -301,21 +338,30 @@ section#contact form#contactForm ::-moz-placeholder {
 }
 
 form :-ms-input-placeholder,
-section#contact form#contactForm :-ms-input-placeholder {
+form#contactForm :-ms-input-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   color: #c5c5c5;
 }
 
-.form-check-input {
-  border-color: #fca311;
+
+.btn-submit {
+  background-color: #fca311;
+  color: #e5e5e5;
 }
+
+.btn-submit:active,
+.btn-submit:hover {
+  background-color: #e5e5e5;
+  color: #000000;
+}
+
 
 .form-check-input:focus,
 .form-check-input:checked {
-  background-color: #fca311;
-  border-color: #fca311;
-  box-shadow: 0px 0px 4px #fca311;
+  background-color: green;
+  border-color: green;
+  box-shadow: 0px 0px 4px green;
 }
 
 .footer {
@@ -328,4 +374,8 @@ section#contact form#contactForm :-ms-input-placeholder {
   flex: 0 1 auto;
   padding: 1rem 1rem;
 
+}
+
+.this-h {
+  padding-top: 60px;
 }
