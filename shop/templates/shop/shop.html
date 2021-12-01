@@ -27,12 +27,10 @@
                 {% if sort_by %}{{ sort_by }}{% else %}Sort By{% endif %}
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="Link">
-                <li><a class="dropdown-item" href="#">Name (A-Z)</a></li>
-                <li><a class="dropdown-item" href="#">Name (Z-A)</a></li>
-                <li><a class="dropdown-item" href="#">Category (A-Z)</a></li>
-                <li><a class="dropdown-item" href="#">Category (Z-A)</a></li>
-                <li><a class="dropdown-item" href="#">Price (low to high)</a></li>
-                <li><a class="dropdown-item" href="#">Price (high to low)</a></li>
+                <li><a class="dropdown-item" href="{% url 'shop' %}?category={{ current_cat }}&sort=name_asc">Name (A-Z)</a></li>
+                <li><a class="dropdown-item" href="{% url 'shop' %}?category={{ current_cat }}&sort=name_desc">Name (Z-A)</a></li>
+                <li><a class="dropdown-item" href="{% url 'shop' %}?category={{ current_cat }}&sort=price_asc">Price (low to high)</a></li>
+                <li><a class="dropdown-item" href="{% url 'shop' %}?category={{ current_cat }}&sort=price_desc">Price (high to low)</a></li>
                 <li><a class="dropdown-item" href="#">Rating (low to high)</a></li>
                 <li><a class="dropdown-item" href="#">Rating (high to low)</a></li>
             </ul>

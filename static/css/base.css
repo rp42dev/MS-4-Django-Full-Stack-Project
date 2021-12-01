@@ -380,3 +380,8 @@ form#contactForm :-ms-input-placeholder {
 .this-h {
   padding-top: 60px;
 }
+
+.badge{
+  transform: rotate(25deg);
+  border-radius: 9px 3px;
+}
