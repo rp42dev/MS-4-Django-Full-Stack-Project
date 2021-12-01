@@ -8,6 +8,7 @@ def shop(request):
     """A view to return the shop page"""
     products = Product.objects.all()
     categories = Category.objects.all()
+    sortkey = None
     cat = 'hats'
     shop = True
 
@@ -34,7 +35,8 @@ def shop(request):
         'categories': categories,
         'products': products,
         'current_cat': cat,
-        'shop': shop
+        'shop': shop,
+        'sortkey': sortkey,
     }
     return render(request, 'shop/shop.html', context)
 

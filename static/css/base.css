@@ -143,13 +143,29 @@ p {
   color: #fca311;
 }
 
+
+.dropdown-item,
 .navbar-brand,
 .navbar-toggler{
   color: #e5e5e5;
   transition: color 150ms;
 }
+
+
+.dropdown-item,
+.dropdown-menu{
+  background-color: #292929;
+}
+
+.orange {
+  color: #fca311 !important;
+}
+
+
+.dropdown-item:hover,
 .navbar-brand:hover,
 .navbar-toggler:hover{
+  background-color: #292929;
   color: #fca311;
 }
 
