@@ -2,15 +2,28 @@
 {% load static %}
 {% load thumbnail %}
 
+<!-- Shop search and general navigation -->
 {% block extr_nav %}
-<div class="d-block d-md-none">
+<li class="nav-item dropdown">
+    <form class="form" method="GET" action="{% url 'shop' %}">
+        <div class="input-group input-group-sm mb-3">
+            <input type="text" class="search py-0" name="search" placeholder="Searh" aria-label="Search store">
+            <div class="input-group-append">
+                <button class="btn search-btn py-0" type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </form>
+</li>
+<!-- Shop categories styles and query mobile navigation -->
+<ul class="d-block d-md-none navbar-nav">
     {% include 'includes/shop_nav.html' %}
-</div>
+</ul>
 {% endblock %}
 
+<!-- Shop categories styles and query large navigation -->
 {% block extr_nav_lg %}
 <div class=" d-none d-md-block">
-    <ul class="d-flex justify-content-center p-0 text-uppercase ms-auto py-lg-0">
+    <ul class="navbar-nav p-0 text-uppercase ms-auto py-lg-0">
         {% include 'includes/shop_nav.html' %}
     </ul>
 </div>

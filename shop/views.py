@@ -1,21 +1,37 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
+from django.db.models import Q
 
 from .models import Product, Category
 
 
 # Create your views here.
 def shop(request):
-    """A view to return the shop page"""
+    """A view to return the shop page
+    Queries by product category, style
+    Product sort functionality name, price
+    ascending order or descending order
+    """
     products = Product.objects.all()
-    categories = Category.objects.all()
     style_list = products.values('style').distinct()
-    sortkey = None
+    categories = Category.objects.all()
+    category = 'all'
     sort_name = None
-    style = 'select'
-    category  = 'all'
+    sortkey = None
+    style = None
+    query = None
     shop = True
     if request.GET:
+        if 'search' in request.GET:
+            query = request.GET['search']
+            if not query:
+                messages.error(request, "You didn't enter any search criteria!")
+                return redirect(reverse('shop'))
+            
+            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            products = products.filter(queries)
         if 'category' in request.GET:
+            # Query products By category
             category = request.GET['category']
             if category == 'sale':
                 products = products.filter(sale=True)
@@ -24,10 +40,13 @@ def shop(request):
             else:
                 products = products.filter(category__name=category)
         if 'style' in request.GET:
+            # Query products by Style
             style = request.GET['style']
             if style != 'select':
                 products = products.filter(style=style)
         if 'sort' in request.GET:
+            # Sort By name, price, rating. Sorting
+            # by descending and ascending order
             sortkey = request.GET['sort']
             if sortkey == 'name_asc':
                 sort_name = 'Name (A-Z)'
@@ -41,13 +60,14 @@ def shop(request):
             elif sortkey == 'price_desc':
                 sort_name = 'Price (H-L)'
                 products = products.order_by('-price')
+
     context = {
-        'categories': categories,
-        'products': products,
-        'cat': category,
-        'sortkey': sortkey,
-        'sort_name': sort_name,
         'style_list': style_list,
+        'categories': categories,
+        'sort_name': sort_name,
+        'products': products,
+        'sortkey': sortkey,
+        'cat': category,
         'style': style,
         'shop': shop,
     }

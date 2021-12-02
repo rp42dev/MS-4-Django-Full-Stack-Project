@@ -130,6 +130,18 @@ p {
 }
 
 
+.search {
+  padding-left: 6px;
+  border-radius: 12px;
+}
+
+.search-btn {
+  border-radius: 0px;
+  margin-left: -42px;
+}
+
+.search-btn:hover,
+.search-btn:active,
 .btn-dark:hover,
 .btn-dark:active {
   background-color: #fca311;
@@ -406,3 +418,4 @@ form#contactForm :-ms-input-placeholder {
   transform: rotate(25deg);
   border-radius: 9px 3px;
 }
+

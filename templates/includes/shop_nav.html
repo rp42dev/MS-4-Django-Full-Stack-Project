@@ -1,7 +1,9 @@
+
+<!-- Query By category -->
 <li class="nav-item py-2 dropdown">
-        <div class="drop-link dropdown {% if cat %}orange{% endif %}" href="#" id="cat" role="button"
+        <div class="drop-link dropdown orange" href="#" id="cat" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                {% if cat %}{{ cat }} hats{% else %}Categories{% endif %} <i class="fas fa-sort-down"></i>
+                {% if cat and cat != 'None' %}{{ cat }} hats{% else %}All Hats{% endif %} <i class="fas fa-sort-down"></i>
         </div>
         <ul class="dropdown-menu" aria-labelledby="cat">
                 <li class="nav-item"><a class="nav-link {% if cat == 'all' %}orange{% endif %}"
@@ -9,10 +11,10 @@
                                 All Hats
                         </a>
                 </li>
-                {% for cat in categories %}
-                <li class="nav-item"><a class="nav-link {% if cat == cat.name %}orange{% endif %}"
-                                href="{% url 'shop' %}?category={{ cat.name }}&style={{ style }}&sort={{ sortkey }}">
-                                {{ cat.friendly_name }}
+                {% for categ in categories %}
+                <li class="nav-item"><a class="nav-link {% if cat == categ.name %}orange{% endif %}"
+                                href="{% url 'shop' %}?category={{ categ.name }}&style={{ style }}&sort={{ sortkey }}">
+                                {{ categ.friendly_name }}
                         </a>
                 </li>
                 {% endfor %}
@@ -20,15 +22,16 @@
                                 href="{% url 'shop' %}?category=sale&style={{ style }}&sort={{ sortkey }}">Hats Sale</a></li>
         </ul>
 </li>
+<!-- Query products by Style -->
 <li class="nav-item py-2 dropdown">
-        <div class="drop-link dropdown {% if style and style != 'select' %}orange{% endif %}" href="#" id="style" role="button"
+        <div class="drop-link dropdown {% if style and style != 'None' %}orange{% endif %}" href="#" id="style" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                {% if style %}{{ style }} Style{% else %}Style{% endif %} <i class="fas fa-sort-down"></i>
+                {% if style and style != 'None' %}{{ style }} style{% else %}Sellect Style{% endif %} <i class="fas fa-sort-down"></i>
         </div>
         <ul class="dropdown-menu" aria-labelledby="style">
                 {% for st in style_list %}
                 <li class="nav-item">
-                        <a class="nav-link {% if cat == cat.name %}orange{% endif %}"
+                        <a class="nav-link {% if style == st.style %}orange{% endif %}"
                                 href="{% url 'shop' %}?category={{ cat }}&style={{ st.style }}&sort={{ sortkey }}">
                                 {{ st.style }}
                         </a>
@@ -36,6 +39,7 @@
                 {% endfor %}
         </ul>
 </li>
+<!-- Sort By name, price, rating Sorting descending and ascending orders -->
 <li class="nav-item py-2 dropdown">
         <div class="drop-link dropdown {% if sortkey and sortkey != 'None' %}orange{% endif %}" href="#" id="sort" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
