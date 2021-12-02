@@ -22,8 +22,6 @@
   --bs-white-rgb: 255, 243, 235;
 }
 
-
-
 html {
   scroll-padding-top: 4.5rem;
 }
@@ -59,6 +57,7 @@ p {
     padding: 9rem 0;
   }
 }
+
 .btn-xl {
   padding: 1.25rem 2.5rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -98,6 +97,9 @@ p {
 #mainNav .navbar-brand img {
   height: 1.5rem;
 }
+
+.drop-link,
+.drop-link,
 .nav-item .nav-link {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.95rem;
@@ -127,6 +129,7 @@ p {
   color: #000000;
 }
 
+
 .btn-dark:hover,
 .btn-dark:active {
   background-color: #fca311;
@@ -137,13 +140,15 @@ p {
   box-shadow: none !important;
 }
 
+
+.drop-link:hover,
 .nav-item .disabled,
 .nav-item .nav-link.active,
 .nav-item .nav-link:hover{
   color: #fca311;
 }
 
-
+.drop-link,
 .dropdown-item,
 .navbar-brand,
 .navbar-toggler{
@@ -160,7 +165,6 @@ p {
 .orange {
   color: #fca311 !important;
 }
-
 
 .dropdown-item:hover,
 .navbar-brand:hover,
@@ -255,11 +259,12 @@ header.masthead .masthead-heading {
   z-index: 100;
 }
 
+
 @media (min-width: 768px) {
   header.masthead {
     min-height: 70vh;
   }
-  
+
   header.masthead .masthead-subheading {
     font-size: 2.25rem;
     font-style: italic;

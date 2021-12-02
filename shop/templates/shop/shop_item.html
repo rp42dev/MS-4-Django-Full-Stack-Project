@@ -24,10 +24,10 @@
             </div>
             {% endif %}
             {% thumbnail item.image "500" as im %}
-                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{ im.url }}"
-                    alt="{{ item.name }}" /></div>
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{ im.url }}" alt="{{ item.name }}" />
+            </div>
             {% endthumbnail %}
-            
+
             <div class="col-md-6">
                 <div class="small mb-1">SKU: {{ item.sku }}</div>
                 <h1 class="display-5 fw-bolder">{{ item.name }}</h1>
@@ -47,11 +47,11 @@
                 {% else %}
                 <p>{{ item.item_count }} items in stock</p>
                 {% endif %}
-                
+
                 <div class="d-flex">
 
-                    <input class="quantity text-center me-3" id="inputQuantity" type="num" min="1" max="{{ item.item_count }}" value="1"
-                        style="max-width: 3rem" />
+                    <input class="quantity text-center me-3" id="inputQuantity" type="num" min="1"
+                        max="{{ item.item_count }}" value="1" style="max-width: 3rem" />
                     <button class="btn btn-dark flex-shrink-0" type="button">
                         <i class="bi-cart-fill me-1"></i>
                         Add to cart
@@ -63,15 +63,15 @@
 </section>
 <!-- Related items section-->
 <section class="py-5 bg-light">
-    <div class="container px-4 px-lg-5 mt-5">
-        
+    <div class="container px-2 px-sm-4 px-lg-5 mt-5">
+
         <h2 class="fw-bolder mb-4">Related products</h2>
-        
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+        <div class="row gx-2 gx-sm-4  gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
             {% for relate in related %}
             {% if relate.id != item.id %}
-            <div class="col mb-5">
+            <div class="col mb-2 mb-sm-4">
                 <div class="card justify-content-end h-100">
                     <!-- Sale badge-->
                     {% if relate.sale %}
@@ -81,9 +81,9 @@
                     {% endif %}
                     <!-- Product image-->
                     <a class="h-100 my-auto" href="{% url 'shop_item' relate.id %}">
-                        <div class="h-100 d-flex align-items-center"> 
+                        <div class="h-100 d-flex align-items-center">
                             {% thumbnail relate.image "250" as im %}
-                                <img class="card-img-top align-middle" src="{{ im.url }}" alt="{{ relate.name }}" />
+                            <img class="card-img-top align-middle" src="{{ im.url }}" alt="{{ relate.name }}" />
                             {% endthumbnail %}
                         </div>
                     </a>

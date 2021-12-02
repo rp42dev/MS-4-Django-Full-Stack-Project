@@ -1,0 +1,74 @@
+<li class="nav-item py-2 dropdown">
+        <div class="drop-link dropdown {% if cat %}orange{% endif %}" href="#" id="cat" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                {% if cat %}{{ cat }} hats{% else %}Categories{% endif %} <i class="fas fa-sort-down"></i>
+        </div>
+        <ul class="dropdown-menu" aria-labelledby="cat">
+                <li class="nav-item"><a class="nav-link {% if cat == 'all' %}orange{% endif %}"
+                                href="{% url 'shop' %}?category=all&style={{ style }}&sort={{ sortkey }}">
+                                All Hats
+                        </a>
+                </li>
+                {% for cat in categories %}
+                <li class="nav-item"><a class="nav-link {% if cat == cat.name %}orange{% endif %}"
+                                href="{% url 'shop' %}?category={{ cat.name }}&style={{ style }}&sort={{ sortkey }}">
+                                {{ cat.friendly_name }}
+                        </a>
+                </li>
+                {% endfor %}
+                <li class="nav-item"><a class="nav-link {% if cat == 'sale' %}orange{% endif %}"
+                                href="{% url 'shop' %}?category=sale&style={{ style }}&sort={{ sortkey }}">Hats Sale</a></li>
+        </ul>
+</li>
+<li class="nav-item py-2 dropdown">
+        <div class="drop-link dropdown {% if style and style != 'select' %}orange{% endif %}" href="#" id="style" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                {% if style %}{{ style }} Style{% else %}Style{% endif %} <i class="fas fa-sort-down"></i>
+        </div>
+        <ul class="dropdown-menu" aria-labelledby="style">
+                {% for st in style_list %}
+                <li class="nav-item">
+                        <a class="nav-link {% if cat == cat.name %}orange{% endif %}"
+                                href="{% url 'shop' %}?category={{ cat }}&style={{ st.style }}&sort={{ sortkey }}">
+                                {{ st.style }}
+                        </a>
+                </li>
+                {% endfor %}
+        </ul>
+</li>
+<li class="nav-item py-2 dropdown">
+        <div class="drop-link dropdown {% if sortkey and sortkey != 'None' %}orange{% endif %}" href="#" id="sort" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                {% if sortkey and sortkey != 'None' %}{{ sort_name }}{% else %}Sort By{% endif %} <i class="fas fa-sort-down"></i>
+        </div>
+        <ul class="dropdown-menu" aria-labelledby="sort">
+                <li><a class="dropdown-item {% if sortkey == 'name_asc' %}orange{% endif %}"
+                                href="{% url 'shop' %}?category={{ cat }}&style={{ style }}&sort=name_asc">
+                                Name (A-Z)
+                        </a>
+                </li>
+                <li><a class="dropdown-item {% if sortkey == 'name_desc' %}orange{% endif %}"
+                                href="{% url 'shop' %}?category={{ cat }}&style={{ style }}&sort=name_desc">
+                                Name (Z-A)
+                        </a>
+                </li>
+                <li><a class="dropdown-item {% if sortkey == 'price_asc'  %}orange{% endif %}"
+                                href="{% url 'shop' %}?category={{ cat }}&style={{ style }}&sort=price_asc">
+                                Price (low to high)
+                        </a>
+                </li>
+                <li><a class="dropdown-item {% if sortkey == 'price_desc' %}orange{% endif %}"
+                                href="{% url 'shop' %}?category={{ cat }}&style={{ style }}&sort=price_desc">
+                                Price (high to low)
+                        </a>
+                </li>
+                <li><a class="dropdown-item {% if sortkey == 'rating_asc' %}orange{% endif %}" href="#">
+                                Rating (low to high){{ sort }}
+                        </a>
+                </li>
+                <li><a class="dropdown-item {% if sortkey == 'rating_desc' %}orange{% endif %}" href="#">
+                                Rating (high to low)
+                        </a>
+                </li>
+        </ul>
+</li>
