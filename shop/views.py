@@ -18,16 +18,16 @@ def shop(request):
     category = 'all'
     sort_name = None
     sortkey = None
-    style = None
-    query = None
+    style = 'all'
+    query = 'None'
     shop = True
     if request.GET:
         if 'search' in request.GET:
             query = request.GET['search']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request, "You didn't enter any search criteria!")
                 return redirect(reverse('shop'))
-            
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
         if 'category' in request.GET:
@@ -42,7 +42,7 @@ def shop(request):
         if 'style' in request.GET:
             # Query products by Style
             style = request.GET['style']
-            if style != 'select':
+            if style != 'all':
                 products = products.filter(style=style)
         if 'sort' in request.GET:
             # Sort By name, price, rating. Sorting

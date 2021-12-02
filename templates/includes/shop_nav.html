@@ -29,6 +29,12 @@
                 {% if style and style != 'None' %}{{ style }} style{% else %}Sellect Style{% endif %} <i class="fas fa-sort-down"></i>
         </div>
         <ul class="dropdown-menu" aria-labelledby="style">
+                <li class="nav-item">
+                        <a class="nav-link {% if style == 'all' %}orange{% endif %}"
+                                href="{% url 'shop' %}?category={{ cat }}&style=all&sort={{ sortkey }}">
+                                All Styles
+                        </a>
+                </li>
                 {% for st in style_list %}
                 <li class="nav-item">
                         <a class="nav-link {% if style == st.style %}orange{% endif %}"
