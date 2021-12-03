@@ -8,6 +8,12 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-1 py-lg-0">
+                <h1 class="text-white">here</h1>
+                <div class="nav-item ">
+                    <a class="nav-link text-light" href="{% url 'cart' %}"><i class="fas fa-shopping-cart">
+                        </i>Here
+                    </a>
+                </div>
                 {% block extr_nav %}
                 {% endblock %}
                 <li class="nav-item"><a class="nav-link {% if request.get_full_path == '/' %}disabled{% endif %}"
@@ -26,8 +32,9 @@
                 {% endif %}
 
             </ul>
-            
+
         </div>
+
     </div>
     {% block extr_nav_lg %}
     {% endblock %}

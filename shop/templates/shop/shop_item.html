@@ -16,8 +16,8 @@
 {% block content %}
 <!-- Product section-->
 <section class="page-section">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 align-items-center position-relative">
+    <div class="container pb-5 px-4 px-lg-5">
+        <div class="item row gx-4 gx-lg-5 align-items-center position-relative">
             {% if item.sale %}
             <div class="badge bg-danger text-white position-absolute w-auto" style="top: 0.5rem; right: 0.5rem">
                 <h3 class="m-0">{% widthratio item.sale_price item.price 100 %}%</h3>
@@ -49,21 +49,24 @@
                 {% endif %}
 
                 <div class="d-flex">
-
-                    <input class="quantity text-center me-3" id="inputQuantity" type="num" min="1"
-                        max="{{ item.item_count }}" value="1" style="max-width: 3rem" />
-                    <button class="btn btn-dark flex-shrink-0" type="button">
-                        <i class="bi-cart-fill me-1"></i>
-                        Add to cart
-                    </button>
+                    <form class="form" action="{% url 'add_to_cart' item.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="text" class="hidden" name="redirect_url" value="{{ request.get_full_path }}">
+                        <input type="text" class="hidden" name="item_id" value="{{ item.id }}">
+                        <input class="quantity text-center me-3" name="quantity" id="inputQuantity" type="num" min="1"
+                            max="{{ item.item_count }}" value="1" style="max-width: 3rem" />
+                        <button class="btn btn-dark flex-shrink-0" type="submit" >
+                            <i class="bi-cart-fill me-1"></i>
+                            Add to cart
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Related items section-->
 
-    <div class="container px-2 px-sm-4 px-lg-5 mt-5">
+    <div class="container pt-5 px-2 px-sm-4 px-lg-5 mt-5">
 
         <h2 class="fw-bolder mb-4">Related products</h2>
 
