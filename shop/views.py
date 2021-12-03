@@ -1,3 +1,12 @@
+"""
+Shop app views
+    1. A view to the shop page
+        With a query and sorting functions
+    2. A view to the shop individual item page
+        Filter query to return reladed by style products
+"""
+
+
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q

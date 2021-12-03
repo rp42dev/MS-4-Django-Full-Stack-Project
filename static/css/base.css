@@ -36,6 +36,7 @@ p {
   line-height: 1.75;
 }
 
+/* Page section */
 .page-section {
   padding: 6rem 0;
 }
@@ -115,21 +116,8 @@ p {
   color: #fff;
 }
 
-.btn-social,
-.btn-social{
-  background-color: #fca311;
-  border-color: #fca311;
-  color: #fff;
-}
 
-.btn-social:active,
-.btn-social:hover{
-  background-color: #e5e5e5;
-  border-color: #e5e5e5;
-  color: #000000;
-}
-
-
+/* Extra Navigation Shop */
 .search {
   padding-left: 6px;
   border-radius: 12px;
@@ -151,7 +139,6 @@ p {
 .btn:focus, .btn:active {
   box-shadow: none !important;
 }
-
 
 .drop-link:hover,
 .nav-item .disabled,
@@ -185,6 +172,7 @@ p {
   color: #fca311;
 }
 
+/* Main Navigation */
 @media (min-width: 992px) {
   #mainNav {
     padding-top: 1.5rem;
@@ -221,6 +209,7 @@ p {
   }
 }
 
+/* Main Header Masthead */
 header.masthead {
   position: relative;
   min-height: 70vh;
@@ -295,15 +284,7 @@ header.masthead .masthead-heading {
   height: 2.75rem;
 }
 
-section#promise {
-  background-image: url("../img/map-image.png");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-section#promise .section-heading {
-  color: #e5e5e5;
-}
+/* Forms */
 
 form .form-group{
   margin-bottom: 1.5rem;
@@ -398,16 +379,43 @@ form#contactForm :-ms-input-placeholder {
   box-shadow: 0px 0px 4px green;
 }
 
+/* Footer section and Promise */
 .footer {
   text-align: center;
   font-size: 0.9rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+section#promise {
+  background-image: url("../img/map-image.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+section#promise .section-heading {
+  color: #e5e5e5;
+}
+
+
+.btn-social,
+.btn-social{
+  background-color: #fca311;
+  border-color: #fca311;
+  color: #fff;
+}
+
+.btn-social:active,
+.btn-social:hover{
+  background-color: #e5e5e5;
+  border-color: #e5e5e5;
+  color: #000000;
+}
+
+
+/* SHOP */
 .card-body {
   flex: 0 1 auto;
   padding: 1rem 1rem;
-
 }
 
 .this-h {
@@ -418,4 +426,3 @@ form#contactForm :-ms-input-placeholder {
   transform: rotate(25deg);
   border-radius: 9px 3px;
 }
-

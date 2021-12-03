@@ -15,8 +15,8 @@
 {% endblock %}
 {% block content %}
 <!-- Product section-->
-<section class="py-5">
-    <div class="container px-4 px-lg-5 my-5">
+<section class="page-section">
+    <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 align-items-center position-relative">
             {% if item.sale %}
             <div class="badge bg-danger text-white position-absolute w-auto" style="top: 0.5rem; right: 0.5rem">
@@ -60,9 +60,9 @@
             </div>
         </div>
     </div>
-</section>
-<!-- Related items section-->
-<section class="py-5 bg-light">
+
+    <!-- Related items section-->
+
     <div class="container px-2 px-sm-4 px-lg-5 mt-5">
 
         <h2 class="fw-bolder mb-4">Related products</h2>
@@ -80,12 +80,13 @@
                     </div>
                     {% endif %}
                     <!-- Product image-->
-                    <a class="h-100 my-auto" href="{% url 'shop_item' relate.id %}">
-                        <div class="h-100 d-flex align-items-center">
-                            {% thumbnail relate.image "250" as im %}
-                            <img class="card-img-top align-middle" src="{{ im.url }}" alt="{{ relate.name }}" />
-                            {% endthumbnail %}
-                        </div>
+
+                    <div class="h-100 d-flex align-items-center">
+                        {% thumbnail relate.image "250" as im %}
+                        <img class="card-img-top align-middle" src="{{ im.url }}" alt="{{ relate.name }}" />
+                        {% endthumbnail %}
+                    </div>
+                    <a class="card-img-overlay" href="{% url 'shop_item' relate.id %}">
                     </a>
                     <!-- Product details-->
                     <div class="card-body p-4">
@@ -111,8 +112,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent justify-self-end">
-                        <div class="text-center"><a class="btn btn-dark mt-auto" href="#">Add to cart</a>
-                        </div>
+
                     </div>
                 </div>
             </div>

@@ -6,4 +6,3 @@ urlpatterns = [
     path('', views.shop, name='shop'),
     path('<int:item_id>/', views.shop_item, name='shop_item'),
 ]
-

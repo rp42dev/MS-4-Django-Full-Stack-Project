@@ -241,9 +241,56 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 ### **Fonts**
 
 ### **Media**
+Image by <a href="https://pixabay.com/users/koczot-8279644/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3387253">Koczot</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3387253">Pixabay</a>
+
+
+Image by <a href="https://pixabay.com/users/alles-2597842/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4632733">Alexander Lesnitsky</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4632733">Pixabay</a>
+
+
+Image by <a href="https://pixabay.com/users/heatherdawnkemp-4440879/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3334230">Heather Kemp</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3334230">Pixabay</a>
+
+
+Image by <a href="https://pixabay.com/users/victoria_borodinova-6314823/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5780902">Press 👍👍 Thanks! 💖</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5780902">Pixabay</a>
+
+Photo by <a href="https://unsplash.com/@dtolokonov?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dmytro Tolokonov</a> on <a href="https://unsplash.com/s/photos/vintage-hat?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
+
+main 
+Image by <a href="https://pixabay.com/users/greendragon-gecko-6553018/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2819946">S Greendragon</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2819946">Pixabay</a>
+
+Image by <a href="https://pixabay.com/users/blende12-201217/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2268994">Gerhard G.</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2268994">Pixabay</a>
+
+Image by <a href="https://pixabay.com/users/juniorxy-14617424/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4694291">Júnior Castro Júnior</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4694291">Pixabay</a>
+
+Image by <a href="https://pixabay.com/users/mirelaschenk-2784640/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1469121">MirelaSchenk</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1469121">Pixabay</a>
+
+Image by <a href="https://pixabay.com/users/angle-weixin-2129673/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1226644">Angle-weixin</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1226644">Pixabay</a>
+  
+
+Image by <a href="https://pixabay.com/users/jean52photosstock-14428522/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5996646">Jean photosstock</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5996646">Pixabay</a>
+
+Image by <a href="https://pixabay.com/users/sergeitokmakov-3426571/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4883895">Sergei Tokmakov Terms.Law</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4883895">Pixabay</a>
+
+### *Templates*
+- [Landing Page Startup template ](https://startbootstrap.com/theme/agency)
+- [Shop startup template ](https://startbootstrap.com/template/shop-homepage)
+- [Shop item detailed template ](https://startbootstrap.com/template/shop-item)
 
 # [&#8686;](#-)
 # ***Features***
+Landing Page 
+- Added Parallax effects to hero secrion images
+Navigation 
+- Added link active to change color if active links
+Shop
+- Search functionality enables users to searsc by name and description keywords.
+- Sort products by Category, Style, Price (high to low) and (low to high), Product mane (a to z) and (z to a).
+Authentication anf forms
+- added srispy forms and customize form imputs to match site
+- Added javascript function for realtime input required field checks
+Toasts for messages
+- Added bootstrap toast messages template
+- Added message level checks levels 40 error, 30 warling, 25 success, and info for rest of the messages
 
 ## **Features to implement**
 
@@ -512,7 +559,7 @@ cach media files
 # ***Credits***
 ## **Code**
 
-At the beginning of this project I was referring back to code institute walkthrough Project Bautique Ado videos series for general and technical code instructions.
+I was referring back to code institute walkthrough Project Bautique Ado videos series for general and technical code instructions.
 As well ass some of the code syntax help and code tips sourced from following sources.
 
 -  [stackoverflow.com](https://stackoverflow.com/): Useful website for code tips.

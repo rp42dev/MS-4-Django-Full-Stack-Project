@@ -46,8 +46,8 @@
 {% block content %}
 
 <!-- Section-->
-<section class="py-5">
-    <div class="container px-2 px-sm-4 px-lg-5 mt-5">
+<section class="page-section">
+    <div class="container mt-2 mt-sm-4 px-2 px-sm-4 px-lg-5">
         <div class="row gx-2 gx-sm-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             {% for item in products %}
             <div class="col mb-2 mb-sm-4">
@@ -59,19 +59,20 @@
                     </div>
                     {% endif %}
                     <!-- Product image-->
-                    <a class="h-100 my-auto" href="{% url 'shop_item' item.id %}">
+                    
                         <div class="h-100 d-flex align-items-center">
                             {% thumbnail item.image "250" as im %}
                             <img class="card-img-top align-middle" src="{{ im.url }}" alt="..." />
                             {% endthumbnail %}
                         </div>
+                    <a class="card-img-overlay" href="{% url 'shop_item' item.id %}">
                     </a>
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center align-items-end">
                             <!-- Product name-->
                             <h5 class="fw-bolder text-capitalize">{{ item.name }}</h5>
-
+                            <a class="h-100 my-auto" href="{% url 'shop_item' item.id %}">
                             <div class="d-flex justify-content-center small text-warning mb-2">
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -79,6 +80,7 @@
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
                             </div>
+                        </a>
                             <!-- Product price-->
                             {% if item.sale %}
                             <span class="text-decoration-line-through text-danger">${{ item.price }}</span>
@@ -89,9 +91,7 @@
                         </div>
                     </div>
                     <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent justify-self-end">
-                        <div class="text-center"><a class="btn btn-dark mt-auto" href="#">Add to cart</a>
-                        </div>
+                    <div class="card-footer pt-0 border-top-0 bg-transparent justify-self-end"> 
                     </div>
                 </div>
             </div>

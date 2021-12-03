@@ -37,8 +37,6 @@
 </head>
 
 <body>
-
-
     <!-- Navigation-->
     <nav class="navbar navbar-expand-md fixed-top flex-column" id="mainNav">
         <div class="container">
@@ -68,26 +66,26 @@
                     {% endif %}
 
                 </ul>
-
             </div>
         </div>
         {% block extr_nav_lg %}
         {% endblock %}
     </nav>
 
+    <!-- Extra Header content -->
     {% block page_header %}
-
     {% endblock %}
 
+    <!-- Message Container -->
     {% if messages %}
-    
     {% include 'includes/toasts/message.html' %}
-
     {% endif %}
+
+    <!-- Main website page content -->
     {% block content %}
     {% endblock %}
 
-    <!-- promise-->
+    <!-- promise -->
     <section class="page-section bg-black" id="promise">
         <div class="container">
             <div class="text-center">

@@ -1,26 +1,22 @@
+<!-- Message toast -->
 <div aria-live="polite" aria-atomic="true" class="position-relative">
-    <!-- Position it: -->
-    <!-- - `.toast-container` for spacing between toasts -->
-    <!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
-    <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
     <div class="toast-container position-absolute top-0 end-0 p-3">
         <div class="toast show align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive"
             aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">
                     {% for message in messages %}
-                    {% with message.level as level %}
-
-                    {% if level == 40 %}
-                    <h5 class="text-danger"> {{ message }}</h5>
-                    {% elif level == 30 %}
-                    <h5 class="text-warning"> {{ message }}</h5>
-                    {% elif level == 25 %}
-                    <h5 class="text-success"> {{ message }}</h5>
-                    {% else %}
-                    <h5 class="text-info"> {{ message }}</h5>
-                    {% endif %}
-                    {% endwith %}
+                        {% with message.level as level %}
+                            {% if level == 40 %}
+                            <h5 class="text-danger">{{ message }}</h5>
+                            {% elif level == 30 %}
+                            <h5 class="text-warning">{{ message }}</h5>
+                            {% elif level == 25 %}
+                            <h5 class="text-success">{{ message }}</h5>
+                            {% else %}
+                            <h5 class="text-info">{{ message }}</h5>
+                            {% endif %}
+                        {% endwith %}
                     {% endfor %}
                 </div>
                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"

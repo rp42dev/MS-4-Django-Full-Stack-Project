@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'home',
     'shop',
+    'cart'
 ]
 
 MIDDLEWARE = [
