@@ -429,6 +429,7 @@ section#promise .section-heading {
   padding-top: 60px;
 }
 
+.cart-conteiner .badge,
 .item .badge,
 .card .badge{
   transform: rotate(25deg);

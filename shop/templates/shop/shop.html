@@ -62,13 +62,13 @@
                     
                         <div class="h-100 d-flex align-items-center">
                             {% thumbnail item.image "250" as im %}
-                            <img class="card-img-top align-middle" src="{{ im.url }}" alt="..." />
+                            <img class="card-img-top" src="{{ im.url }}" alt="..." />
                             {% endthumbnail %}
                         </div>
                     <a class="card-img-overlay" href="{% url 'shop_item' item.id %}">
                     </a>
                     <!-- Product details-->
-                    <div class="card-body p-4">
+                    <div class="card-body p-2">
                         <div class="text-center align-items-end">
                             <!-- Product name-->
                             <h5 class="fw-bolder text-capitalize">{{ item.name }}</h5>
