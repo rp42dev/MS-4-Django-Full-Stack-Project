@@ -22,8 +22,9 @@ def add_to_cart(request, item_id):
     redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
     update = product.item_count - quantity
-    product.item_count = 100
-    product.save()
+    # product.item_count = 100
+    # product.save()
+
     if update < 0:
         messages.error(
             request, f'Sorry, only {product.item_count} \
@@ -42,4 +43,33 @@ def add_to_cart(request, item_id):
     messages.success(
             request, f'{quantity} \
                 {product.name} added to the cart!')
+
     return redirect(redirect_url)
+
+
+def update_cart(request, item_id):
+    """update the quantity of the specified product to the specified amount"""
+
+    product = get_object_or_404(Product, pk=item_id)
+    action = request.POST.get('action')
+    cart = request.session.get('cart', {})
+
+    if action == 'minus':
+        if cart[item_id] == 1:
+            cart.pop(item_id)
+            product.item_count += 1
+            product.save()
+            messages.success(request, f'Removed {product.name} from your bag')
+        else:
+            cart[item_id] -= 1
+            product.item_count += 1
+            product.save()
+            messages.success(request, f'Updated {product.name} quantitu to {cart[item_id]}')
+    elif action == 'add':
+        cart[item_id] += 1
+        product.item_count -= 1
+        product.save()
+        messages.success(request, f'Updated {product.name} quantitu to {cart[item_id]}')
+
+    request.session['cart'] = cart
+    return redirect(reverse('cart'))

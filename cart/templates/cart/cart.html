@@ -47,7 +47,7 @@
                 <div class="col-3 text-center col-6 col-sm-3 order-2 order-sm-3">
                     <div class="row col">
                         <!-- Sale badge-->
-                        
+
                         {% if item.product.sale %}
                         <h1 class="text-danger">${{ item.subtotal }} </h1>
                         {% else %}
@@ -56,10 +56,10 @@
 
                     </div>
                     <div class="row col ">
-                        <p>Quantity {{ item.quantity }}</p>
+                        
+                        {% include 'includes/forms/add-remove.html' %}
                     </div>
                 </div>
-
 
             </div>
             <hr class="mt-1">

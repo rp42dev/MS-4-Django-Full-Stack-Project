@@ -291,6 +291,10 @@ Authentication anf forms
 Toasts for messages
 - Added bootstrap toast messages template
 - Added message level checks levels 40 error, 30 warling, 25 success, and info for rest of the messages
+cart
+- Add items to the cart session Item id, item count, item price#
+- In cart context perform various calculations such as item times count, 
+ item count times price, shipping price, discount prie total, and finaly grand total.
 
 ## **Features to implement**
 
