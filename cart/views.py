@@ -21,7 +21,17 @@ def add_to_cart(request, item_id):
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
-    print(item_id)
+    update = product.item_count - quantity
+    product.item_count = 100
+    product.save()
+    if update < 0:
+        messages.error(
+            request, f'Sorry, only {product.item_count} \
+                {product.name} available')
+        return redirect(redirect_url)
+    else:
+        product.item_count = update
+        product.save()
 
     if item_id in list(cart.keys()):
         cart[item_id] += quantity
@@ -29,5 +39,7 @@ def add_to_cart(request, item_id):
         cart[item_id] = quantity
 
     request.session['cart'] = cart
-
+    messages.success(
+            request, f'{quantity} \
+                {product.name} added to the cart!')
     return redirect(redirect_url)

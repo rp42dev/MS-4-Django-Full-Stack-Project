@@ -8,23 +8,33 @@ def cart_contents(request):
     item_count = 0
     cart = request.session.get('cart', {})
 
-    for item_id, item_data in cart.items():
-        if isinstance(item_data, int):
+    for item_id, quantity in cart.items():
+        
+        if isinstance(quantity, int):
             product = get_object_or_404(Product, pk=item_id)
-            total += item_data * product.price
-            item_count += item_data
+            
+            if product.sale:
+                subtotal = 0
+                total += quantity * product.sale_price
+                subtotal = quantity * product.sale_price
+            else:
+                subtotal = 0
+                total += quantity * product.price
+                subtotal = quantity * product.price
+            item_count += quantity
             cart_items.append({
                 'item_id': item_id,
-                'quantity': item_data,
+                'quantity': quantity,
                 'product': product,
+                'subtotal': subtotal,
             })
 
     if total < 50:
         delivery = total * Decimal(10 / 100)
-        free_deivery_delta = 50 * total
+        free_deivery = 50 * total
     else:
         delivery = 0
-        free_deivery_delta = 0
+        free_deivery = 0
 
     grand_total = delivery + total
 
@@ -33,8 +43,8 @@ def cart_contents(request):
         'total': total,
         'item_count': item_count,
         'delivery': delivery,
-        'free_deivery_delta': free_deivery_delta,
-        'free_deivery_treshold': 10,
+        'free_deivery': free_deivery,
+        'deivery_treshold': 10,
         'grand_total': grand_total,
     }
 
