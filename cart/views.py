@@ -22,7 +22,7 @@ def add_to_cart(request, item_id):
     redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
     update = product.item_count - quantity
-    # product.item_count = 100
+    # product.item_count = 10
     # product.save()
 
     if update < 0:
@@ -59,17 +59,28 @@ def update_cart(request, item_id):
             cart.pop(item_id)
             product.item_count += 1
             product.save()
-            messages.success(request, f'Removed {product.name} from your bag')
+            messages.success(
+                request, f'Removed {product.name}\
+                    from your bag')
         else:
             cart[item_id] -= 1
             product.item_count += 1
             product.save()
-            messages.success(request, f'Updated {product.name} quantitu to {cart[item_id]}')
+            messages.success(
+                request, f'The hat {product.name}\
+                     quantity was updated to {cart[item_id]}')
     elif action == 'add':
-        cart[item_id] += 1
-        product.item_count -= 1
-        product.save()
-        messages.success(request, f'Updated {product.name} quantitu to {cart[item_id]}')
+        if product.item_count != 0:
+            cart[item_id] += 1
+            product.item_count -= 1
+            product.save()
+            messages.success(
+                request, f'The hat {product.name}\
+                     quantity was updated to {cart[item_id]}')
+        else:
+            messages.error(
+                request, f'Sorry, the {product.name}\
+                    hat is currently out of stock')
 
     request.session['cart'] = cart
     return redirect(reverse('cart'))

@@ -21,16 +21,16 @@
             {% if cart_items %}
             {% for item in cart_items %}
 
-            <div class="cart-conteiner row align-items-center mt-5">
+            <div class="cart-conteiner shadow-sm rounded-3 bg-white row align-items-center mt-5">
 
                 <div class="col-6 col-sm-3 order-1 position-relative">
-                    {% thumbnail item.product.image "200" as im %}
+                    {% thumbnail item.product.image "100" as im %}
                     <a class="" href="{% url 'shop_item' item.product.id %}">
-
-                        <div class="h-100 d-flex align-items-center "><img class="card-img-top" src="{{ im.url }}"
-                                alt="{{ item.product.name }}" />
+                        <div class="h-100 d-flex align-items-center ">
+                            <img class="card-img-top" src="{{ im.url }}" alt="{{ item.product.name }}" />
                         </div>
                     </a>
+
                     {% if item.product.sale %}
                     <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
                         {% widthratio item.product.sale_price item.product.price 100 %}%
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="col-3 text-center col-6 col-sm-3 order-2 order-sm-3">
-                    <div class="row col">
+                    <div>
                         <!-- Sale badge-->
 
                         {% if item.product.sale %}
@@ -55,33 +55,31 @@
                         {% endif %}
 
                     </div>
-                    <div class="row col ">
-                        
+                    
+                    <div>
                         {% include 'includes/forms/add-remove.html' %}
                     </div>
                 </div>
 
             </div>
-            <hr class="mt-1">
+         
             {% endfor %}
 
             {% else %}
-            <div class="row">
 
+            <div class="row">
                 <div class="col-12 text-center">
                     <h3> Your cart is empty</h3>{{ grand_total|floatformat:2 }}
-
                 </div>
             </div>
 
             {% endif %}
         </div>
     </div>
+
     <div class="row">
-
-        <div class="col-12 text-center">
+        <div class="col-12 mt-5 text-center">
             <h1> Your Grand total is ${{ grand_total|floatformat:2 }}</h1>
-
         </div>
     </div>
 

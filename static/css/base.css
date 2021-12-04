@@ -2,11 +2,12 @@
 
 :root {
   --bs-warning: #fca311;
-  --bs-white: #fff;
+  --bs-white: #ffffff;
   --bs-gray: #292929;
   --bs-light: #e5e5e5;
   --bs-dark: #000000;
   --bs-danger: #d2042d;
+  --bs-success: #90be6d;
 
   --bs-primary: #292929;
   --bs-secondary: rgb(229, 229, 229);
@@ -15,11 +16,11 @@
   --bs-secondary-rgb: 229, 229, 229;
 
   --bs-warning-rgb: 252, 163, 17;
+  --bs-success-rgb: 144, 190, 1;
   --bs-danger-rgb: 210, 4, 45;
-  --bs-white-rgb: 255, 243, 235;
+  --bs-white-rgb: 255, 255, 255;
   --bs-light-rgb: 229, 229, 229;
   --bs-dark-rgb: 0, 0, 0;
-  --bs-white-rgb: 255, 243, 235;
 }
 
 html {
@@ -152,11 +153,13 @@ p {
 .navbar-brand,
 .navbar-toggler{
   color: #e5e5e5;
-  transition: color 150ms;
+  transition: color 0.2s ease-in-out;
 }
 
 .cart:hover,
+.cart:active,
 .drop-link:hover,
+.navbar-brand:hover,
 .nav-item .disabled,
 .nav-item .nav-link.active,
 .nav-item .nav-link:hover{
@@ -173,7 +176,6 @@ p {
 }
 
 .dropdown-item:hover,
-.navbar-brand:hover,
 .navbar-toggler:hover{
   background-color: #292929;
   color: #fca311;
@@ -266,7 +268,6 @@ header.masthead .masthead-heading {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   z-index: 100;
 }
-
 
 @media (min-width: 768px) {
   header.masthead {
@@ -445,4 +446,19 @@ section#promise .section-heading {
   border-radius: 9px 3px;
 }
 
+
+.toast-container {
+  z-index: 9999;
+}
 /* Cart */
+.count-btn{
+  color: #000000;
+  transition: color 0.2s ease-in-out;
+}
+
+.count-btn:hover{
+  background-color: #e5e5e5;
+  color: #fca311;
+}
+
+
