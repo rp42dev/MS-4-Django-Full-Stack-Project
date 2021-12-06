@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load thumbnail %}
+{% load crispy_forms_tags %}
 {% block page_header %}
 <!-- Header-->
 <header class="bg-black py-5">
@@ -18,9 +19,15 @@
 <!-- Product Detail section-->
 <section class="page-section">
     <div class="container pb-5 px-4 px-lg-5">
-        {% for field in user %}
-        {{ field }}
-        {% endfor %}
+        {{ request.user }}
+        <form class="mt-3" action="{% url 'user' %}" method="POST" id="profile-update-form">
+            {% csrf_token %}
+            {{ user_form|crispy }}
+            {{ address_form|crispy }}
+            
+            
+            <button class="btn btn-black rounded-0 text-uppercase float-right">Update Information</button>
+        </form>
     </div>
 
 </section>
