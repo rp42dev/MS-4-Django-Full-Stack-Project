@@ -1,0 +1,67 @@
+{% load static %}
+{% load thumbnail %}
+
+<!-- Related products -->
+
+<div class="row scroll-wrapper flex-nowrap ">
+    {% for relate in related %}
+    {% if relate.id != item.id %}
+    <div class="col-6 px-1 col-sm-4 mb-2 mb-sm-4">
+        <div class="card shadow-sm rounded-3 pt-2 justify-content-end h-100">
+            <!-- Sale badge-->
+            {% if relate.sale %}
+            <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                {% widthratio item.sale_price item.price 100 %}%
+            </div>
+            {% endif %}
+            <!-- Product image-->
+
+            <div class="h-100 d-flex align-items-center">
+                {% thumbnail relate.image "250" as im %}
+                <img class="card-img-top" src="{{ im.url }}" alt="{{ relate.name }}" />
+                {% endthumbnail %}
+            </div>
+            <a class="card-img-overlay" href="{% url 'shop_item' relate.id %}">
+            </a>
+            <!-- Product details-->
+            <div class="card-body p-2">
+                <div class="text-center align-items-end">
+                    <!-- Product name-->
+                    <h5 class="fw-bolder">{{ relate.name }}</h5>
+
+                    <div class="d-flex justify-content-center small text-warning mb-2">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                    <!-- Product price-->
+                    {% if relate.sale %}
+                    <span class="text-decoration-line-through text-danger">${{ relate.price }}</span>
+                    <span class="text-danger">${{ relate.sale_price }} </span>
+                    {% else %}
+                    <span>${{ relate.price }} </span>
+                    {% endif %}
+                </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer pt-0 border-top-0 bg-transparent justify-self-end">
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+
+    <!-- scrool sidewayss -->
+    <script>
+        const scrolling = document.querySelector(".scroll-wrapper");
+        scrolling.scrollLeft = 130
+        scrolling.addEventListener("wheel", (evt) => {
+            evt.preventDefault();
+            scrolling.scrollLeft += evt.deltaY;
+        });
+    </script>

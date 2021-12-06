@@ -7,7 +7,7 @@
   --bs-light: #e5e5e5;
   --bs-dark: #000000;
   --bs-danger: #d2042d;
-  --bs-success: #90be6d;
+  --bs-success: #6a994e;
 
   --bs-primary: #292929;
   --bs-secondary: rgb(229, 229, 229);
@@ -16,7 +16,7 @@
   --bs-secondary-rgb: 229, 229, 229;
 
   --bs-warning-rgb: 252, 163, 17;
-  --bs-success-rgb: 144, 190, 1;
+  --bs-success-rgb: 106, 153, 78;
   --bs-danger-rgb: 210, 4, 45;
   --bs-white-rgb: 255, 255, 255;
   --bs-light-rgb: 229, 229, 229;
@@ -448,7 +448,7 @@ section#promise .section-heading {
 
 
 .toast-container {
-  z-index: 9999;
+  z-index: 9;
 }
 /* Cart */
 .count-btn{
@@ -457,8 +457,20 @@ section#promise .section-heading {
 }
 
 .count-btn:hover{
-  background-color: #e5e5e5;
+  background-color: #fff;
   color: #fca311;
 }
 
+/* Horisontal scrool */
 
+.scroll-wrapper {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.scroll-wrapper .col {
+  margin-left: -100px;
+  display: inline-block;
+}

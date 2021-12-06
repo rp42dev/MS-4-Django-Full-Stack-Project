@@ -21,7 +21,7 @@
             {% if cart_items %}
             {% for item in cart_items %}
 
-            <div class="cart-conteiner shadow-sm rounded-3 bg-white row align-items-center mt-5">
+            <div class="cart-conteiner shadow-sm py-4 rounded-3 bg-white row align-items-center mt-2 mt-sm-4">
 
                 <div class="col-6 col-sm-3 order-1 position-relative">
                     {% thumbnail item.product.image "100" as im %}
@@ -55,14 +55,14 @@
                         {% endif %}
 
                     </div>
-                    
+
                     <div>
                         {% include 'includes/forms/add-remove.html' %}
                     </div>
                 </div>
 
             </div>
-         
+
             {% endfor %}
 
             {% else %}
