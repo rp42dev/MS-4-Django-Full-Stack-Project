@@ -84,15 +84,15 @@
         {% block extr_nav_lg %}
         {% endblock %}
     </nav>
+    <!-- Message Container -->
+    {% if messages %}
+    {% include 'includes/toasts/message.html' %}
+    {% endif %}
 
     <!-- Extra Header content -->
     {% block page_header %}
     {% endblock %}
 
-    <!-- Message Container -->
-    {% if messages %}
-    {% include 'includes/toasts/message.html' %}
-    {% endif %}
 
     <!-- Main website page content -->
     {% block content %}

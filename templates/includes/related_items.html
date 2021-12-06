@@ -3,15 +3,15 @@
 
 <!-- Related products -->
 
-<div class="row scroll-wrapper flex-nowrap ">
+<div class="row  gx-2 gx-sm-4 scroll-wrapper flex-nowrap ">
     {% for relate in related %}
     {% if relate.id != item.id %}
-    <div class="col-6 px-1 col-sm-4 mb-2 mb-sm-4">
+    <div class="col-6 col-sm-4 mb-2 mb-sm-4">
         <div class="card shadow-sm rounded-3 pt-2 justify-content-end h-100">
             <!-- Sale badge-->
             {% if relate.sale %}
             <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                {% widthratio item.sale_price item.price 100 %}%
+                {% widthratio relate.sale_price relate.price 100 %}%
             </div>
             {% endif %}
             <!-- Product image-->

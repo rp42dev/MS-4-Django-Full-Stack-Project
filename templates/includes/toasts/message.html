@@ -1,6 +1,6 @@
 <!-- Message toast -->
-<div aria-live="polite" aria-atomic="true" class="position-relative">
-    <div class="toast-container position-absolute top-0 end-0 p-3">
+<div aria-live="polite" aria-atomic="true" class="">
+    <div class="toast-container position-absolute end-0 p-3">
         {% for message in messages %}
         {% with message.level as level %}
 
@@ -44,7 +44,7 @@
                 <button type="button" class="btn-close btn-close-primary me-2 m-auto" data-bs-dismiss="toast"
                     aria-label="Close"></button>
             </div>
-            <div class="toast-body rounded-3 bg-white">
+            <div class="toast-body rounded-3">
                 <h5 class="text-success">{{ message }}</h5> 
             </div>
            

@@ -109,13 +109,11 @@ p {
   letter-spacing: 0.0625em;
 }
 
-
 .btn-dark {
   background-color: #000000;
   border-color: #000000;
   color: #fff;
 }
-
 
 /* Extra Navigation Shop */
 .search {
@@ -132,6 +130,7 @@ p {
 .search-btn:active,
 .btn-dark:hover,
 .btn-dark:active {
+  color: #000000;
   background-color: #fca311;
   border-color: #fca311;
 }
@@ -328,6 +327,7 @@ form#contactForm p.help-block {
   border: 1px solid black;
 }
 
+
 .quantity:focus,
 .quantity:active,
 form .form-control:focus,
@@ -449,6 +449,7 @@ section#promise .section-heading {
 
 .toast-container {
   z-index: 9;
+  top: 120px
 }
 /* Cart */
 .count-btn{
