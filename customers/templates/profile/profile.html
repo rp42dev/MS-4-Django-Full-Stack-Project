@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block page_header %}
+<!-- Header-->
+<header class="bg-black py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center">
+
+            <h1 class="display-4 text-white fw-bolder">User</h1>
+
+        </div>
+    </div>
+</header>
+{% endblock %}
+{% block content %}
+
+<!-- Product Detail section-->
+<section class="page-section">
+    <div class="container pb-5 px-4 px-lg-5">
+        {% for field in user %}
+        {{ field }}
+        {% endfor %}
+    </div>
+
+</section>
+
+{% endblock %}

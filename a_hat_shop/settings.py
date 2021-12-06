@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'home',
     'shop',
-    'cart'
+    'cart',
+    'customers',
 ]
 
 MIDDLEWARE = [
@@ -104,7 +105,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/account/login/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'user'
 
 
 WSGI_APPLICATION = 'a_hat_shop.wsgi.application'

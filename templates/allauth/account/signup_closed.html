@@ -1,10 +1,27 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+{% load static %}
 
 {% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
 
-{% block content %}
+{% block page_header %}
+<!-- Header-->
+<header class="bg-black py-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-center">
+
+      <h1 class="display-4 text-white fw-bolder">{% trans "Sign In" %}</h1>
+
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block inner_content %}
+
 <h1>{% trans "Sign Up Closed" %}</h1>
 
 <p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
