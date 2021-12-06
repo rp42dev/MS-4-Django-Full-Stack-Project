@@ -21,8 +21,8 @@ def shop(request):
     Product sort functionality name, price
     ascending order or descending order
     """
-    products = Product.objects.all()
-    style_list = products.values('style').distinct()
+    products = Product.objects.all().order_by('-id')
+    style_list = Product.objects.values('style').distinct()
     categories = Category.objects.all()
     category = 'all'
     sort_name = None
@@ -87,7 +87,7 @@ def shop(request):
 def shop_item(request, item_id):
     """A view to return the shop item detailed page"""
     item = get_object_or_404(Product, pk=item_id)
-    related = Product.objects.filter(style=item.style)
+    related = Product.objects.filter(style=item.style).order_by('-id')
     context = {
         'item': item,
         'related': related,
