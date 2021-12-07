@@ -85,7 +85,6 @@ def shop(request):
     return render(request, 'shop/shop.html', context)
 
 
-# Create your views here.
 def shop_item(request, item_id):
     """A view to return the shop item detailed page"""
     item = get_object_or_404(Product, pk=item_id)

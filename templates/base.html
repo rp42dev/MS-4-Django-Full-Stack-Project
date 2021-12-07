@@ -68,6 +68,11 @@
                             href="{% url 'shop' %}">shop</a></li>
 
                     {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                    <li class="nav-item"><a
+                        class="nav-link {% if request.get_full_path == '/shop/add/' %}disabled{% endif %}"
+                        href="{% url 'add_item' %}">Add Items</a></li>
+                    {% endif %}
                     <li class="nav-item"><a
                         class="nav-link {% if request.get_full_path == '/user/' %}disabled{% endif %}"
                         href="{% url 'user' %}">Profile</a></li>
