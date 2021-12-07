@@ -8,10 +8,12 @@ Shop app views
 
 
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 
 from .models import Product, Category
+from .forms import ItemForm
 
 
 # Create your views here.
@@ -93,3 +95,28 @@ def shop_item(request, item_id):
         'related': related,
     }
     return render(request, 'shop/shop_item.html', context)
+
+
+@login_required
+def add_item(request):
+    """add product to the store"""
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry only store owners can do that')
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        form = ItemForm(request.POST, request.FILES)
+        if form.is_valid():
+            item = form.save()
+            messages.success(request, 'Successfuly added new Item!')
+            return redirect(reverse('shop_item', args=[product.id]))
+        else:
+            messages.error(request, 'Failed so add Item. Please ensure the form is valid.')
+    else:
+        form = ItemForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'admin/add.html', context)

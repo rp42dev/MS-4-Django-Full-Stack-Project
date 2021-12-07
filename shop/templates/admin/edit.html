@@ -86,38 +86,4 @@
             </div>
         </div>
     </div>
-    <!-- Related products -->
-    <div class="container pt-5 px-2 px-sm-4 px-lg-5">
-
-        <h2 class="fw-bolder mb-4 text-capitalize">More {{ item.style }} hats</h2>
-
-        {% include 'includes/related_items.html' %}
-    </div>
-</section>
-
-<!-- From bootstrap.com -->
-<script>
-    (function () {
-        'use strict'
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var formToValidate = document.getElementById('ad-to-cart')
-        var num = document.getElementById('click-this')
-
-        num.addEventListener('click', function () {
-            formToValidate.classList.add('was-validated');
-            var forms = document.querySelectorAll('.was-validated')
-            // Loop over them and prevent submission
-            Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
-                        form.classList.add('was-validated')
-                    }, false)
-                })
-        })
-    })()
-</script>
 {% endblock %}
