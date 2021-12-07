@@ -25,7 +25,7 @@
             </div>
             {% endif %}
             {% thumbnail item.image "500" as im %}
-            <div class="col-md-6"><img class="card-img-top mb-md-0" src="{{ im.url }}" alt="{{ item.name }}" />
+            <div class="col-md-6 mb-4 mb-md-0"><img class="card-img-top mb-md-0" src="{{ im.url }}" alt="{{ item.name }}" />
             </div>
             {% endthumbnail %}
 
@@ -71,7 +71,7 @@
                         {% if request.user.is_superuser  %}
                        
                             <div class="col mt-4">
-                                <a class="btn btn-success btn-sm flex-shrink-0" href="">
+                                <a class="btn btn-success btn-sm flex-shrink-0" href="{% url 'edit_item' item.id %}">
                                     <i class="bi-cart-fill me-1"></i>
                                     Edit Item
                                 </a>

@@ -98,7 +98,7 @@ def shop_item(request, item_id):
 
 @login_required
 def add_item(request):
-    """add product to the store"""
+    """add items to the store"""
     if not request.user.is_superuser:
         messages.error(request, 'Sorry only store owners can do that')
         return redirect(reverse('home'))
@@ -108,7 +108,7 @@ def add_item(request):
         if form.is_valid():
             item = form.save()
             messages.success(request, 'Successfuly added new Item!')
-            return redirect(reverse('shop_item', args=[product.id]))
+            return redirect(reverse('shop_item', args=[item.id]))
         else:
             messages.error(request, 'Failed so add Item. Please ensure the form is valid.')
     else:
@@ -119,3 +119,31 @@ def add_item(request):
     }
 
     return render(request, 'admin/add.html', context)
+
+
+@login_required
+def edit_item(request, item_id):
+    """ Edit a item in the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry only store owners can do that')
+        return redirect(reverse('home'))
+
+    item = get_object_or_404(Product, pk=item_id)
+    if request.method == 'POST':
+        form = ItemForm(request.POST, request.FILES, instance=item)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated item!')
+            return redirect(reverse('shop_item', args=[item.id]))
+        else:
+            messages.error(request, 'Failed to update item. Please ensure the form is valid.')
+    else:
+        form = ItemForm(instance=item)
+        messages.info(request, f'You are editing {item.name}')
+
+    context = {
+        'form': form,
+        'item': item,
+    }
+
+    return render(request, 'admin/edit.html', context)

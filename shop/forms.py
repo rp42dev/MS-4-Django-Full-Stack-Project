@@ -23,5 +23,11 @@ class ItemForm(forms.ModelForm):
             else:
                 placeholder = field.label
             field.widget.attrs['placeholder'] = placeholder
-            field.widget.attrs['class'] = 'form-control'
-            field.label = False
+            field.widget.attrs['class'] = 'form-floating form-control checkboxinput'
+            if field_name != 'sale' and field_name != 'item_count':
+                field.label = False
+            elif field_name == 'item_count':
+                field.label
+            else:
+                field.widget.attrs['class'] = 'me-2 checkboxinput'
+                field.label

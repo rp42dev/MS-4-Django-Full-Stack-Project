@@ -17,27 +17,25 @@ from .forms import UserAddressForm
 @login_required
 def customers(request):
     """A view to return the user profile page"""
-    # user = get_object_or_404(UserProfile, user=request.user)
+    profile = get_object_or_404(UserAddress, user=request.user)
+    profile2 = request.user
 
     if request.method == 'POST':
-        # form = UserProfileForm(request.POST, instance=user)
-        user_form = EditProfileForm(request.POST, instance=request.user)
-        address_form = UserAddressForm(request.POST, instance=request.user)
-        if address_form.is_valid() and user_form.is_valid():
-            print(address_form)
-            user_form.save()
+        address_form = UserAddressForm(request.POST, instance=profile)
+        user_form = EditProfileForm(request.POST, instance=profile2)
+        if address_form.is_valid():
             address_form.save()
+            user_form.save()
             messages.success(request, 'Profile data updated successfully')
         else:
             messages.error(request, 'Update failed. Please ensure form is valid.')
     else:
-        user_form = EditProfileForm(request.POST, instance=request.user)
-        address_form = UserAddressForm(instance=request.user)
- 
+        address_form = UserAddressForm(instance=profile)
+        user_form = EditProfileForm(instance=profile2)
+
     context = {
-        'user_form': user_form,
         'address_form': address_form,
-        'user': request.user,
+        'user_form': user_form,
     }
     
     return render(request, 'profile/profile.html', context)
