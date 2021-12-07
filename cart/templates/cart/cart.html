@@ -49,9 +49,9 @@
                         <!-- Sale badge-->
 
                         {% if item.product.sale %}
-                        <h1 class="text-danger">${{ item.subtotal }} </h1>
+                        <h1 class="text-danger numbers-font fw-bolder">${{ item.subtotal }} </h1>
                         {% else %}
-                        <h1>${{ item.subtotal }}</h1>
+                        <h1 class="numbers-font fw-bolder">${{ item.subtotal }}</h1>
                         {% endif %}
 
                     </div>
@@ -79,9 +79,14 @@
 
     <div class="row">
         <div class="col-12 mt-5 text-center">
-            <h1> Your Grand total is ${{ grand_total|floatformat:2 }}</h1>
+            <h1 class="numbers-font fw-bold total"> ${{ grand_total|floatformat:2 }}</h1>
+            <button class="mt-4 btn btn-dark btn-xl text-uppercase flex-shrink-0" type="submit">
+                Checkout Now
+            </button>
         </div>
+
     </div>
+
 
 </section>
 {% endblock %}

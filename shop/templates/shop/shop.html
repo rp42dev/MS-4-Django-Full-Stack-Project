@@ -54,7 +54,7 @@
                 <div class="card shadow-sm rounded-3 pt-2 justify-content-end h-100">
                     <!-- Sale badge-->
                     {% if item.sale %}
-                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                    <div class="badge bg-danger text-white position-absolute numbers-font" style="top: 0.5rem; right: 0.5rem">
                         {% widthratio item.sale_price item.price 100 %}%
                     </div>
                     {% endif %}
@@ -83,10 +83,10 @@
                         </a>
                             <!-- Product price-->
                             {% if item.sale %}
-                            <span class="text-decoration-line-through text-danger">${{ item.price }}</span>
-                            <span class="text-danger">${{ item.sale_price }} </span>
+                            <span class="text-decoration-line-through text-danger numbers-font">${{ item.price }}</span>
+                            <span class="text-danger numbers-font">${{ item.sale_price }} </span>
                             {% else %}
-                            <span>${{ item.price }} </span>
+                            <span class="numbers-font">${{ item.price }} </span>
                             {% endif %}
                         </div>
                     </div>

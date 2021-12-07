@@ -21,7 +21,7 @@
         <div class="item row gx-4 gx-lg-5 align-items-center position-relative">
             {% if item.sale %}
             <div class="badge bg-danger text-white position-absolute w-auto" style="top: 0.5rem; right: 0.5rem">
-                <h3 class="m-0">{% widthratio item.sale_price item.price 100 %}%</h3>
+                <h3 class="m-0 numbers-font">{% widthratio item.sale_price item.price 100 %}%</h3>
             </div>
             {% endif %}
             {% thumbnail item.image "500" as im %}
@@ -34,10 +34,10 @@
                 <h1 class="display-5 fw-bolder">{{ item.name }}</h1>
                 <div class="fs-5 mb-5">
                     {% if item.sale %}
-                    <span class="text-decoration-line-through text-danger">${{ item.price }}</span>
-                    <span class="text-danger">${{ item.sale_price }} </span>
+                    <span class="text-decoration-line-through text-danger numbers-font">${{ item.price }}</span>
+                    <span class="text-danger numbers-font">${{ item.sale_price }} </span>
                     {% else %}
-                    <span>${{ item.price }} </span>
+                    <span class="numbers-font">${{ item.price }} </span>
                     {% endif %}
                 </div>
                 <p class="lead">{{ item.description }}</p>
@@ -63,7 +63,7 @@
                         <input id="click-this" class="quantity text-center me-3" name="quantity" id="inputQuantity"
                             type="number" min="1" max="{{ item.item_count }}" value="1" style="max-width: 3rem" />
 
-                        <button class="btn btn-dark btn-lg flex-shrink-0" type="submit">
+                        <button class="btn btn-dark btn-xl text-uppercase flex-shrink-0" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Add to cart
                         </button>

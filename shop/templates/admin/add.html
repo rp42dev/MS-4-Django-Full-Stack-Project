@@ -25,7 +25,7 @@
         <form class="mt-3" action="{% url 'add_item' %}" method="POST" enctype="multipart/form-data" id="add_item">
             {% csrf_token %}
             {{ form|crispy }}
-            <button class="btn btn-xl btn-dark text-uppercase float-right">Add Item</button>
+            <button class="btn btn-xl btn-dark text-uppercase float-right">Add new Item</button>
         </form>
 
     </div>

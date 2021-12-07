@@ -447,7 +447,6 @@ section#promise .section-heading {
   border-radius: 9px 3px;
 }
 
-
 .toast-container {
   z-index: 9;
   top: 90px
@@ -461,6 +460,14 @@ section#promise .section-heading {
 .count-btn:hover{
   background-color: #fff;
   color: #fca311;
+}
+
+.numbers-font {
+  font-family: 'Itim', cursive;
+}
+
+.total {
+  font-size: 4rem;
 }
 
 /* Horisontal scrool */

@@ -41,6 +41,11 @@ def shop(request):
                 return redirect(reverse('shop'))
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
+            if not products:
+                messages.error(
+                    request, f'Sorry did not find {query}\
+                        in the store. Try somthing else')
+                return redirect(reverse('shop'))
         if 'category' in request.GET:
             # Query products By category
             category = request.GET['category']
