@@ -36,6 +36,6 @@ def update_user_address(sender, instance, created, **kwargs):
     # Existing users Shipping Address save the profile data
     else:
         try:
-            instance.UserAddress.save()
+            instance.useraddress.save()
         except ObjectDoesNotExist:
             UserAddress.objects.create(user=instance)

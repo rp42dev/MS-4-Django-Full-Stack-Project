@@ -8,7 +8,7 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center">
 
-            <h1 class="display-4 text-white fw-bolder">User</h1>
+            <h1 class="display-4 text-white fw-bolder">Account Details</h1>
 
         </div>
     </div>
@@ -18,18 +18,20 @@
 
 <!-- Product Detail section-->
 <section class="page-section">
-    <div class="container pb-5 px-4 px-lg-5">
-        {{ request.user }}
-        <form class="mt-3" action="{% url 'user' %}" method="POST" id="profile-update-form">
-            {% csrf_token %}
-            {{ user_form|crispy }}
-            {{ address_form|crispy }}
-            
-            
-            <button class="btn btn-black rounded-0 text-uppercase float-right">Update Information</button>
-        </form>
-    </div>
+        <div class="row w-100">
+            <div class="col-12 mx-auto col-md-6">
+                
+                <h5 class="text-muted">Change User Details!</h5>
+                <form class="mt-3" action="{% url 'user' %}" method="POST" id="profile-update-form">
+                    {% csrf_token %}
+                    {{ user_form|crispy }}
+                    <h5 class="text-muted">Change Shipping Details!</h5>
+                    {{ address_form|crispy }}
 
+                    <button class="btn btn-xl btn-dark text-uppercase float-right">Update Information</button>
+                </form>
+            </div>
+        </div>
 </section>
 
 {% endblock %}

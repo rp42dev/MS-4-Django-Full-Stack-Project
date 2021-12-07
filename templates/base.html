@@ -69,6 +69,9 @@
 
                     {% if request.user.is_authenticated %}
                     <li class="nav-item"><a
+                        class="nav-link {% if request.get_full_path == '/user/' %}disabled{% endif %}"
+                        href="{% url 'user' %}">Profile</a></li>
+                    <li class="nav-item"><a
                             class="nav-link {% if request.get_full_path == '/accounts/logout/' %}disabled{% endif %}"
                             href="{% url 'account_logout' %}">Logout</a></li>
                     {% else %}

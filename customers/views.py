@@ -10,8 +10,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from .models import UserAddress
-from .forms import UserAddressForm
 from .forms import EditProfileForm
+from .forms import UserAddressForm
 
 
 @login_required
@@ -23,7 +23,8 @@ def customers(request):
         # form = UserProfileForm(request.POST, instance=user)
         user_form = EditProfileForm(request.POST, instance=request.user)
         address_form = UserAddressForm(request.POST, instance=request.user)
-        if form.is_valid():
+        if address_form.is_valid() and user_form.is_valid():
+            print(address_form)
             user_form.save()
             address_form.save()
             messages.success(request, 'Profile data updated successfully')
@@ -31,11 +32,12 @@ def customers(request):
             messages.error(request, 'Update failed. Please ensure form is valid.')
     else:
         user_form = EditProfileForm(request.POST, instance=request.user)
-        address_form = UserAddressForm(request.POST, instance=request.user)
+        address_form = UserAddressForm(instance=request.user)
+ 
     context = {
         'user_form': user_form,
         'address_form': address_form,
         'user': request.user,
     }
-
+    
     return render(request, 'profile/profile.html', context)

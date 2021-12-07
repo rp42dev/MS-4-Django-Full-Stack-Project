@@ -16,7 +16,6 @@ class EditProfileForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
-            
             'email': 'Email Address',
             'first_name': 'First Name',
             'last_name': 'Last Name',
