@@ -21,6 +21,7 @@ class ItemForm(forms.ModelForm):
             if field_name == 'sku':
                 placeholder = f'Latest { field_name} is "{last_sku.sku}"'
             else:
-                placeholder = field_name
+                placeholder = field.label
             field.widget.attrs['placeholder'] = placeholder
             field.widget.attrs['class'] = 'form-control'
+            field.label = False

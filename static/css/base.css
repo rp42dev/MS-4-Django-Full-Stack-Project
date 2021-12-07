@@ -293,14 +293,15 @@ header.masthead .masthead-heading {
 
 /* Forms */
 
-form .form-group{
+form .form-group {
   margin-bottom: 1.5rem;
 }
 
 .form-control {
   padding: 1.25rem;
 }
-.checkboxinput{
+
+.checkboxinput {
   padding: 1rem;
 }
 
@@ -315,7 +316,7 @@ form#contactForm .form-group-textarea textarea {
 }
 
 label {
-  display: none;
+  /* display: none; */
 }
 
 form#contactForm p.help-block {
