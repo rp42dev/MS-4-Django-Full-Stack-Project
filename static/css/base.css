@@ -448,8 +448,8 @@ section#promise .section-heading {
 }
 
 .toast-container {
-  z-index: 9;
-  top: 90px
+  z-index: 9999;
+  top: 99.99px
 }
 /* Cart */
 .count-btn{
