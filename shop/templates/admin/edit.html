@@ -21,15 +21,18 @@
 
     <div class="mx-auto col-12 col-sm-8 col-lg-6 px-4">
         <h5 class="">{{ item.name }}</h5>
-        <p class="text-muted text-italic">Update Informationm</p>
+        <p class="text-muted text-italic">Update Information</p>
+
         <form action="{% url 'edit_item' item.id %}" method="POST" enctype="multipart/form-data" id="add_item">
             {% csrf_token %}
             {{ form|crispy }}
             <button type="submit" class="btn btn-xl btn-dark text-uppercase">Update Item</button>
         </form>
-        <form class="form mt-3" action="">
-            {% csrf_token %}
 
+        <p class="text-danger mt-5 border-top border-danger text-italic">Permanently Delete {{ item.name }}</p>
+
+        <form class="form" action="{% url 'delete_item' item.id %}" method="POST">
+            {% csrf_token %}
             <input id="myCheck" class="form-check-input" type="checkbox" name="checkbox" id="invalidCheck"
                 onchange="check(this)" required>
             <label class="text-danger pe-1 form-check-label" for="invalidCheck">
@@ -37,8 +40,10 @@
             </label>
             <button id="btn-e" type="submit" class="btn btn-sm btn-danger text-uppercase disabled">Delete</button>
         </form>
+
     </div>
 </section>
+
 {% block postloadjs %}
 <script>
     function check(obj) {

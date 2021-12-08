@@ -128,7 +128,7 @@ def add_item(request):
 
 @login_required
 def edit_item(request, item_id):
-    """ Edit a item in the store """
+    """ Edit an item in the store """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry only store owners can do that')
         return redirect(reverse('home'))
@@ -152,3 +152,18 @@ def edit_item(request, item_id):
     }
 
     return render(request, 'admin/edit.html', context)
+
+
+@login_required
+def delete_item(request, item_id):
+    """ Delete an item from the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry only store owners can do that')
+        return redirect(reverse('home'))
+
+    item = get_object_or_404(Product, pk=item_id)
+
+    item.delete()
+    messages.success(request, f'Successfully Deleted the {item.name}!')
+
+    return redirect(reverse('shop'))
