@@ -32,6 +32,7 @@
             <div class="col-md-6">
                 <div class="small mb-1">SKU: {{ item.sku }}</div>
                 <h1 class="display-5 fw-bolder">{{ item.name }}</h1>
+                
                 <div class="fs-5 mb-5">
                     {% if item.sale %}
                     <span class="text-decoration-line-through text-danger numbers-font">${{ item.price }}</span>
@@ -40,6 +41,7 @@
                     <span class="numbers-font">${{ item.price }} </span>
                     {% endif %}
                 </div>
+
                 <p class="lead">{{ item.description }}</p>
                 {% if item.item_count == 0 %}
                 <p class="text-danger">{{ item.item_count }} Out of stock</p>

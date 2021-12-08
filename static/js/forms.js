@@ -5,9 +5,9 @@
         var inputs = document.querySelectorAll('.form-control')
         let file = document.querySelectorAll('.form-control-file')
 
-
         // Loop over each input and watch blue event
         var validation = Array.prototype.filter.call(inputs, function (input) {
+            // Image input gray placeholder
             if (input.name === 'image') {
                 file = input
                 file.classList.add('text-gray')
@@ -16,7 +16,7 @@
                 // reset
                 input.classList.remove('is-invalid')
                 input.classList.remove('is-valid')
-
+                //Display required message if not valid
                 if (input.checkValidity() === false) {
                     input.classList.add('is-invalid')
                     let parent = this.parentElement;
