@@ -10,7 +10,7 @@
   --bs-success: #6a994e;
 
   --bs-primary: #292929;
-  --bs-secondary: rgb(229, 229, 229);
+  --bs-secondary: #e5e5e5;
 
   --bs-primary-rgb: 41, 41, 41;
   --bs-secondary-rgb: 229, 229, 229;
@@ -127,22 +127,7 @@ p {
 
 
 /* Extra Navigation Shop */
-.search {
-  padding-left: 6px;
-  border-radius: 12px;
-}
 
-.search-btn {
-  border-radius: 0px;
-  margin-left: -42px;
-}
-
-.search-btn:hover,
-.search-btn:active{
-  color: #000000;
-  background-color: #fca311;
-  border-color: #fca311;
-}
 
 .btn:focus,
 .btn:active {
@@ -187,6 +172,23 @@ p {
 .btn:hover,
 .btm-active {
   color: #fca311;
+}
+
+.search {
+  padding-left: 6px;
+  border-radius: 12px;
+}
+
+.search-btn {
+  border-radius: 0px;
+  margin-left: -42px;
+}
+
+.search-btn:hover,
+.search-btn:active{
+  color: #000000;
+  background-color: #fca311;
+  border-color: #fca311;
 }
 
 .btn-dark:hover,
