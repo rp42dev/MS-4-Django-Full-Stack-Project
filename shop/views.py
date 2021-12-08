@@ -1,9 +1,19 @@
 """
 Shop app views
     1. A view to the shop page
-        With a query and sorting functions
+        With a query, sorting an search functions
     2. A view to the shop individual item page
+        Return single item by id to the template
         Filter query to return reladed by style products
+    3. A view to add items to the store
+        Return Product form field information to the template
+        Post and add new item o the Product model
+    4. A view for updating the existing items
+        Returning form field information to the template
+        Post updated information and update Product model
+    5. A view for deleting item from Product
+        Get single item by id in Post method
+        Delete item from Product model and return to the store page
 """
 
 
@@ -16,7 +26,6 @@ from .models import Product, Category
 from .forms import ItemForm
 
 
-# Create your views here.
 def shop(request):
     """A view to return the shop page
     Queries by product category, style
@@ -47,7 +56,6 @@ def shop(request):
                         in the store. Try somthing else')
                 return redirect(reverse('shop'))
         if 'category' in request.GET:
-            # Query products By category
             category = request.GET['category']
             if category == 'sale':
                 products = products.filter(sale=True)
@@ -56,13 +64,10 @@ def shop(request):
             else:
                 products = products.filter(category__name=category)
         if 'style' in request.GET:
-            # Query products by Style
             style = request.GET['style']
             if style != 'all':
                 products = products.filter(style=style)
         if 'sort' in request.GET:
-            # Sort By name, price, rating. Sorting
-            # by descending and ascending order
             sortkey = request.GET['sort']
             if sortkey == 'name_asc':
                 sort_name = 'Name (A-Z)'
@@ -91,7 +96,11 @@ def shop(request):
 
 
 def shop_item(request, item_id):
-    """A view to return the shop item detailed page"""
+    """
+    A view to return the shop item detailed page
+    Return related products by style to the template
+    """
+
     item = get_object_or_404(Product, pk=item_id)
     related = Product.objects.filter(style=item.style).order_by('-id')
     context = {
@@ -103,7 +112,13 @@ def shop_item(request, item_id):
 
 @login_required
 def add_item(request):
-    """add items to the store"""
+    """
+    Add items to the store requeres 
+    login and superuser privileges
+    Get for field date to template
+    POST the form field data and save
+    """
+
     if not request.user.is_superuser:
         messages.error(request, 'Sorry only store owners can do that')
         return redirect(reverse('home'))
@@ -128,7 +143,12 @@ def add_item(request):
 
 @login_required
 def edit_item(request, item_id):
-    """ Edit an item in the store """
+    """ 
+    Edit items from the store requeres 
+    login and superuser privileges
+    Get for field date to template
+    POST the form field data and save
+    """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry only store owners can do that')
         return redirect(reverse('home'))
@@ -156,7 +176,13 @@ def edit_item(request, item_id):
 
 @login_required
 def delete_item(request, item_id):
-    """ Delete an item from the store """
+    """ 
+    Delete an item from the store 
+    requeres login and superuser privileges
+    Submit POST to trigger delete_item function
+    Delete permanently item from Product models
+    """
+
     if not request.user.is_superuser:
         messages.error(request, 'Sorry only store owners can do that')
         return redirect(reverse('home'))
