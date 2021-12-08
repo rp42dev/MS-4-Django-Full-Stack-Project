@@ -11,7 +11,7 @@
 
   --bs-primary: #292929;
   --bs-secondary: rgb(229, 229, 229);
-  
+
   --bs-primary-rgb: 41, 41, 41;
   --bs-secondary-rgb: 229, 229, 229;
 
@@ -21,6 +21,12 @@
   --bs-white-rgb: 255, 255, 255;
   --bs-light-rgb: 229, 229, 229;
   --bs-dark-rgb: 0, 0, 0;
+}
+
+.text-italic {
+  font-weight: 400;
+  font-style: italic;
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 html {
@@ -50,12 +56,16 @@ p {
 .page-section {
   padding: 6rem 0;
 }
-.page-section h2.section-heading, .page-section .section-heading.h2 {
+
+.page-section h2.section-heading,
+.page-section .section-heading.h2 {
   font-size: 2.5rem;
   margin-top: 0;
   margin-bottom: 1rem;
 }
-.page-section h3.section-subheading, .page-section .section-subheading.h3 {
+
+.page-section h3.section-subheading,
+.page-section .section-subheading.h3 {
   font-size: 1rem;
   font-weight: 400;
   font-style: italic;
@@ -81,6 +91,7 @@ p {
   padding-bottom: 1rem;
   background-color: #000000;
 }
+
 #mainNav .navbar-toggler {
   padding: 0.75rem;
   font-size: 0.75rem;
@@ -88,6 +99,7 @@ p {
   text-transform: uppercase;
   font-weight: 700;
 }
+
 #mainNav .navbar-brand {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
@@ -135,7 +147,8 @@ p {
   border-color: #fca311;
 }
 
-.btn:focus, .btn:active {
+.btn:focus,
+.btn:active {
   box-shadow: none !important;
 }
 
@@ -150,7 +163,7 @@ p {
 .drop-link,
 .dropdown-item,
 .navbar-brand,
-.navbar-toggler{
+.navbar-toggler {
   color: #e5e5e5;
   transition: color 0.2s ease-in-out;
 }
@@ -161,12 +174,12 @@ p {
 .navbar-brand:hover,
 .nav-item .disabled,
 .nav-item .nav-link.active,
-.nav-item .nav-link:hover{
+.nav-item .nav-link:hover {
   color: #fca311;
 }
 
 .dropdown-item,
-.dropdown-menu{
+.dropdown-menu {
   background-color: #292929;
 }
 
@@ -175,7 +188,7 @@ p {
 }
 
 .dropdown-item:hover,
-.navbar-toggler:hover{
+.navbar-toggler:hover {
   background-color: #292929;
   color: #fca311;
 }
@@ -189,29 +202,36 @@ p {
     background-color: transparent;
     transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
   }
+
   #mainNav .navbar-brand {
     font-size: 1.5em;
     transition: font-size 0.3s ease-in-out;
   }
+
   #mainNav .navbar-brand img {
     height: 2rem;
     transition: height 0.3s ease-in-out;
   }
+
   #mainNav.navbar-shrink {
     padding-top: 1rem;
     padding-bottom: 1rem;
     background-color: #000000;
   }
+
   #mainNav.navbar-shrink .navbar-brand {
     font-size: 1.25em;
   }
+
   #mainNav.navbar-shrink .navbar-brand svg,
-#mainNav.navbar-shrink .navbar-brand img {
+  #mainNav.navbar-shrink .navbar-brand img {
     height: 1.5rem;
   }
+
   #mainNav .navbar-nav .nav-item {
     margin-right: 1rem;
   }
+
   #mainNav .navbar-nav .nav-item:last-child {
     margin-right: 0;
   }
@@ -245,7 +265,7 @@ header.masthead {
   background-position: right center;
   background-size: cover;
   opacity: .8;
- 
+
 }
 
 header.masthead .masthead-subheading {
@@ -279,6 +299,7 @@ header.masthead .masthead-heading {
     line-height: 2.25rem;
     margin-bottom: 2rem;
   }
+
   header.masthead .masthead-heading {
     font-size: 4.5rem;
     font-weight: 700;
@@ -292,31 +313,34 @@ header.masthead .masthead-heading {
 }
 
 /* Forms */
-
 form .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .form-control {
-  padding: 1.25rem;
+  padding: .6rem;
+  font-weight: 700;
+  text-transform: capitalize;
 }
 
 .checkboxinput {
   padding: 1rem;
 }
 
-
-form#contactForm .form-group-textarea {
-  height: 100%;
-}
-
-form#contactForm .form-group-textarea textarea {
-  height: 100%;
-  min-height: 10rem;
-}
-
 label {
-  /* display: none; */
+  font-size: .8rem;
+  color: #999;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.text-gray {
+  color: #999;
+}
+
+.form-group textarea {
+  height: 100%;
+  min-height: 6rem;
 }
 
 form#contactForm p.help-block {
@@ -328,41 +352,49 @@ form#contactForm p.help-block {
   border: 1px solid black;
 }
 
+@media (min-width: 768px) {
+  form .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-control {
+    padding: 1rem;
+  }
+  .form-group textarea {
+    height: 100%;
+    min-height: 10rem;
+  }
+}
 
 .quantity:focus,
 .quantity:active,
 form .form-control:focus,
-form#contactForm .form-control:focus {
+form .form-control:active {
   box-shadow: none;
   outline-color: #fca311;
   border-color: #fca311;
   box-shadow: 0px 0px 6px #fca311;
-  
 }
 
-form ::-webkit-input-placeholder,
-form#contactForm ::-webkit-input-placeholder {
+form ::-webkit-input-placeholder{
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   color: #c5c5c5 !important;
 }
 
-form :-moz-placeholder,
-form#contactForm :-moz-placeholder {
+form :-moz-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   color: #c5c5c5;
 }
 
-form ::-moz-placeholder,
-section#contact form#contactForm ::-moz-placeholder {
+form ::-moz-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   color: #c5c5c5;
 }
 
-form :-ms-input-placeholder,
-form#contactForm :-ms-input-placeholder {
+form :-ms-input-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   color: #c5c5c5;
@@ -416,14 +448,14 @@ section#promise .section-heading {
 }
 
 .btn-social,
-.btn-social{
+.btn-social {
   background-color: #fca311;
   border-color: #fca311;
   color: #fff;
 }
 
 .btn-social:active,
-.btn-social:hover{
+.btn-social:hover {
   background-color: #e5e5e5;
   border-color: #e5e5e5;
   color: #000000;
@@ -442,7 +474,7 @@ section#promise .section-heading {
 
 .cart-conteiner .badge,
 .item .badge,
-.card .badge{
+.card .badge {
   transform: rotate(25deg);
   border-radius: 9px 3px;
 }
@@ -451,13 +483,14 @@ section#promise .section-heading {
   z-index: 9999;
   top: 99.99px
 }
+
 /* Cart */
-.count-btn{
+.count-btn {
   color: #000000;
   transition: color 0.2s ease-in-out;
 }
 
-.count-btn:hover{
+.count-btn:hover {
   background-color: #fff;
   color: #fca311;
 }

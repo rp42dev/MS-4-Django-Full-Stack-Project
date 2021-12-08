@@ -8,7 +8,7 @@ class ItemForm(forms.ModelForm):
         model = Product
         fields = '__all__'
 
-    image = forms.ImageField(label='image', required=False)
+    image = forms.ImageField(label='image')
    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -23,7 +23,6 @@ class ItemForm(forms.ModelForm):
             else:
                 placeholder = field.label
             field.widget.attrs['placeholder'] = placeholder
-            field.widget.attrs['class'] = 'form-floating form-control checkboxinput'
             if field_name != 'sale' and field_name != 'item_count':
                 field.label = False
             elif field_name == 'item_count':
@@ -31,3 +30,5 @@ class ItemForm(forms.ModelForm):
             else:
                 field.widget.attrs['class'] = 'me-2 checkboxinput'
                 field.label
+            if field_name == 'image':
+                field.widget.attrs['class'] = 'form-control'
