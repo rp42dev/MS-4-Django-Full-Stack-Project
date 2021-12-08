@@ -25,10 +25,30 @@
         <form action="{% url 'edit_item' item.id %}" method="POST" enctype="multipart/form-data" id="add_item">
             {% csrf_token %}
             {{ form|crispy }}
-            <button class="btn btn-xl btn-dark text-uppercase float-right">Update Item</button>
+            <button type="submit" class="btn btn-xl btn-dark text-uppercase">Update Item</button>
         </form>
+        <form class="form mt-3" action="">
+            {% csrf_token %}
 
+            <input id="myCheck" class="form-check-input" type="checkbox" name="checkbox" id="invalidCheck"
+                onchange="check(this)" required>
+            <label class="text-danger pe-1 form-check-label" for="invalidCheck">
+                Check to Delete
+            </label>
+            <button id="btn-e" type="submit" class="btn btn-sm btn-danger text-uppercase disabled">Delete</button>
+        </form>
     </div>
 </section>
+{% block postloadjs %}
+<script>
+    function check(obj) {
+        if (obj.checked === true) {
+            document.querySelector('#btn-e').classList.remove('disabled')
+        } else {
+            document.querySelector('#btn-e').classList.add('disabled')
+        }
+    }
+</script>
+{% endblock %}
 
 {% endblock %}

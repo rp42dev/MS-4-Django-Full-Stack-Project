@@ -81,9 +81,13 @@ p {
 
 .btn-xl {
   padding: 1.25rem 2.5rem;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1.125rem;
+}
+
+.btn {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
+  letter-spacing: .06rem;
 }
 
 #mainNav {
@@ -121,11 +125,6 @@ p {
   letter-spacing: 0.0625em;
 }
 
-.btn-dark {
-  background-color: #000000;
-  border-color: #000000;
-  color: #fff;
-}
 
 /* Extra Navigation Shop */
 .search {
@@ -139,9 +138,7 @@ p {
 }
 
 .search-btn:hover,
-.search-btn:active,
-.btn-dark:hover,
-.btn-dark:active {
+.search-btn:active{
   color: #000000;
   background-color: #fca311;
   border-color: #fca311;
@@ -187,6 +184,13 @@ p {
   color: #fca311 !important;
 }
 
+.btn:hover,
+.btm-active {
+  color: #fca311;
+}
+
+.btn-dark:hover,
+.btn-dark:active,
 .dropdown-item:hover,
 .navbar-toggler:hover {
   background-color: #292929;
@@ -320,7 +324,6 @@ form .form-group {
 .form-control {
   padding: .6rem;
   font-weight: 700;
-  text-transform: capitalize;
 }
 
 .checkboxinput {
@@ -336,6 +339,10 @@ label {
 
 .text-gray {
   color: #999;
+}
+
+form p {
+  text-transform: capitalize;
 }
 
 .form-group textarea {

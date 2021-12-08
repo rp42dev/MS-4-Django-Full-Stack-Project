@@ -5,6 +5,7 @@
         var inputs = document.querySelectorAll('.form-control')
         let file = document.querySelectorAll('.form-control-file')
 
+
         // Loop over each input and watch blue event
         var validation = Array.prototype.filter.call(inputs, function (input) {
             if (input.name === 'image') {
@@ -26,8 +27,10 @@
                     } else {
                         var para = document.createElement("P");
                         para.classList.add('text-danger');
-                        para.innerHTML = "This Field is Required.";
+                        let str = `${input.name} Field is Required.`
+                        para.innerHTML = str;
                         parent.append(para);
+                        console.log(input)
                     }
 
                 } else {
@@ -38,8 +41,6 @@
                     if (elem[0]) {
                         elem[0].remove()
                     }
-
-
                 }
             }, false);
         });
