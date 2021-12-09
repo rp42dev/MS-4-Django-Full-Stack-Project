@@ -31,14 +31,14 @@
 
             <div class="col-md-6">
                 <div class="small mb-1">SKU: {{ item.sku }}</div>
-                <h1 class="display-5 fw-bolder">{{ item.name }}</h1>
+                <h1 class="display-5 fw-bolder text-capitalize">{{ item.name }}</h1>
                 
-                <div class="fs-5 mb-5">
+                <div class="fs-5 mb-3">
                     {% if item.sale %}
-                    <span class="text-decoration-line-through text-danger numbers-font">${{ item.price }}</span>
-                    <span class="text-danger numbers-font">${{ item.sale_price }} </span>
+                    <span class="text-decoration-line-through h3 text-danger numbers-font">${{ item.price }}</span>
+                    <span class="text-danger h3 numbers-font">${{ item.sale_price }} </span>
                     {% else %}
-                    <span class="numbers-font">${{ item.price }} </span>
+                    <span class="numbers-font h3">${{ item.price }} </span>
                     {% endif %}
                 </div>
 
@@ -88,6 +88,7 @@
             </div>
         </div>
     </div>
+
     <!-- Related products -->
     <div class="container pt-5 px-2 px-sm-4 px-lg-5">
 

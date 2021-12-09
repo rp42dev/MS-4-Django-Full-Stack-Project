@@ -278,23 +278,35 @@ Image by <a href="https://pixabay.com/users/sergeitokmakov-3426571/?utm_source=l
 
 # [&#8686;](#-)
 # ***Features***
-Landing Page 
-- Added Parallax effects to hero secrion images
+Home App
+- Hero section images with added Parallax effects on scroll.
+- Recently added hats horisontal scroll feature limited to letest 10 items.
+
 Navigation 
 - Added link active to change color if active links
-Shop
+- Shop has it's own navigation. Includes search and sorting functionatity.
+
+
+Shop App
 - Search functionality enables users to searsc by name and description keywords.
-- Sort products by Category, Style, Price (high to low) and (low to high), Product mane (a to z) and (z to a).
-Authentication anf forms
-- added srispy forms and customize form imputs to match site
-- Added javascript function for realtime input required field checks
+- Sort products by Category, Style, Price (high to low) and (low to high), Product mane (a to z) and (z to a)
+
+
+Cart App
+- Add items to the cart session Item id, item count, item price.
+- In cart context perform various calculations such as item times count, 
+ item count times price, shipping price, discount prie total, and finaly grand total.
+
+Custommers App
+- A customer is able to add or update profile information and shopping address iformation.
+
+Authentication and forms
+- added crispy forms and customize form imputs to match site.
+- Added javascript function for realtime input required field checks.
+
 Toasts for messages
 - Added bootstrap toast messages template
 - Added message level checks levels 40 error, 30 warling, 25 success, and info for rest of the messages
-cart
-- Add items to the cart session Item id, item count, item price#
-- In cart context perform various calculations such as item times count, 
- item count times price, shipping price, discount prie total, and finaly grand total.
 
 ## **Features to implement**
 
