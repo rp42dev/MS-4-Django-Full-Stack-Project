@@ -75,6 +75,7 @@ Friends and family members helped point out any bugs or issues.
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)
 ### **Solved issues or bugs**
-
+- fixed cart after removeing items and then going back using back button trying remove item again rised key error
+  added if cart has items in it check in cart views cart function.
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)

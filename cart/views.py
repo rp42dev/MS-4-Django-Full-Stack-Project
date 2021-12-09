@@ -7,6 +7,7 @@ Add to cart
 from django.shortcuts import render, redirect,\
     reverse, HttpResponse, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.views.decorators.http import require_POST
 from django.contrib import messages
 
 from shop.models import Product, Category
@@ -15,14 +16,19 @@ from shop.models import Product, Category
 def cart(request):
     """A view to return the cart page"""
     cart = request.session.get('cart', {})
+    url_back = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     if not cart:
         messages.error(
                     request, f'Sorry, the there is nothing in your cart.')
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        if url_back == None:
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        else:
+            return redirect(reverse('shop'))
     else:
         return render(request, 'cart/cart.html')
 
 
+@require_POST
 def add_to_cart(request, item_id):
     """ Add items to the shopping cart """
     product = get_object_or_404(Product, pk=item_id)
@@ -53,13 +59,14 @@ def add_to_cart(request, item_id):
     return redirect(redirect_url)
 
 
+@require_POST
 def update_cart(request, item_id):
     """update the quantity of the specified product to the specified amount"""
 
     product = get_object_or_404(Product, pk=item_id)
     cart = request.session.get('cart', {})
-    
-    if request.POST:
+
+    if request.POST and cart:
         action = request.POST.get('action')
 
         if action == 'minus':
