@@ -27,7 +27,7 @@
                     } else {
                         var para = document.createElement("P");
                         para.classList.add('text-danger');
-                        let str = `${input.name} Field is Required.`
+                        let str = `${input.placeholder} Field is Required.`
                         para.innerHTML = str;
                         parent.append(para);
                         console.log(input)

@@ -3,6 +3,7 @@ import uuid
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
+from django.utils import timezone
 
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
@@ -21,22 +22,22 @@ ORDER_STATUS_CHOICES= (
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
-    user_profile = models.ForeignKey(UserAddress, on_delete=models.SET_NULL,
+    user = models.ForeignKey(UserAddress, on_delete=models.SET_NULL,
                                      null=True, blank=True, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
-    address_line_1 = models.CharField(max_length=100, null=True, blank=True)
-    address_line_2 = models.CharField(max_length=100, null=True, blank=True)
-    town = models.CharField(max_length=60, null=True, blank=True)
+    address_line_1 = models.CharField(max_length=100, null=False, blank=False)
+    address_line_2 = models.CharField(max_length=100, null=False, blank=False)
+    town = models.CharField(max_length=60, null=False, blank=False)
     county = models.CharField(max_length=60, null=True, blank=True)
     postcode = models.CharField(max_length=30, null=True, blank=True)
-    country = CountryField(blank_label='Country', null=True, blank=True)
-    date = models.DateTimeField(auto_now_add=True)
+    country = CountryField(blank_label='Country', null=False, blank=False)
+    date = models.DateTimeField(default=timezone.now)
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     status = models.CharField(max_length=120, default='pending', choices= ORDER_STATUS_CHOICES)
-
+  
     def update_total(self):
         """
         Update grand total each time a line item is added,
