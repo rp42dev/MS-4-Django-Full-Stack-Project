@@ -27,6 +27,7 @@ class UserAddressForm(forms.ModelForm):
     class Meta:
         model = UserAddress
         exclude = ('user',)
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         """

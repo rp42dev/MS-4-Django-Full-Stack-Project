@@ -19,8 +19,8 @@ def cart(request):
     url_back = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     if not cart:
         messages.error(
-                    request, f'Sorry, the there is nothing in your cart.')
-        if url_back == None:
+                    request, 'Sorry, the there is nothing in your cart.')
+        if url_back != None:
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         else:
             return redirect(reverse('shop'))
@@ -96,8 +96,11 @@ def update_cart(request, item_id):
                 messages.error(
                     request, f'Sorry, the {product.name}\
                         hat is currently out of stock')
+
     request.session['cart'] = cart
     if cart:
         return redirect(reverse('cart'))
     else:
+        messages.error(
+                    request, 'Your cart is empty.')
         return redirect(reverse('shop'))
