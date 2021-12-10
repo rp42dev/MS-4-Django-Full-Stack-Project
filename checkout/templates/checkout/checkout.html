@@ -19,18 +19,87 @@
 <!-- Product Detail section-->
 <section class="page-section">
 
-    <div class="mx-auto col-12 col-sm-8 col-lg-6 px-4">
-        <h5 class="">Checkout</h5>
-        <p class="text-muted text-italic">Checkout nown</p>
+    <div class="container pb-5 px-4 px-lg-5">
+        <div class="item row gx-4 gx-lg-5 position-relative">
+            <h5 class="">Checkout</h5>
+            <p class="text-muted text-italic">Checkout now</p>
+            <div class="col-md-6 mb-4 mb-md-0">
+                <form class="mt-3" action="{% url 'checkout' %}" method="POST" id="pay-form">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                </form>
+            </div>
 
-        <form class="mt-3" action="{% url 'user' %}" method="POST" id="profile-update-form">
-            {% csrf_token %}
-            {{ form|crispy }}
+            <div class="col-md-6">
+                {% if cart_items %}
+            {% for item in cart_items %}
 
-            <button class="btn btn-xl btn-dark text-uppercase float-right">Update</button>
-        </form>
+            <div class="cart-conteiner bg-white row align-items-center mt-2 mt-sm-4">
+
+                <div class="col-6 col-sm-3 order-1 position-relative">
+                    {% thumbnail item.product.image "100" as im %}
+                    <a class="" href="{% url 'shop_item' item.product.id %}">
+                        <div class="h-100 d-flex align-items-center ">
+                            <img class="card-img-top" src="{{ im.url }}" alt="{{ item.product.name }}" />
+                        </div>
+                    </a>
+
+                    {% if item.product.sale %}
+                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                        {% widthratio item.product.sale_price item.product.price 100 %}%
+                    </div>
+                    {% endif %}
+                    {% endthumbnail %}
+                </div>
+
+                <div class="col-12 col-sm-6 order-3 order-sm-2">
+                    <p class="text-capitalize fw-bolder">{{ item.product.name }}</p>
+                    <p class="text-capitalize">SKU: {{ item.product.sku }}</p>
+
+                    
+                </div>
+
+                <div class="col-3 text-center col-6 col-sm-3 order-2 order-sm-3">
+                    <div>
+                        <!-- Sale badge-->
+
+                        {% if item.product.sale %}
+                        <p class="text-danger numbers-font fw-bolder">${{ item.subtotal }} </p>
+                        {% else %}
+                        <p class="numbers-font fw-bolder">${{ item.subtotal }}</p>
+                        {% endif %}
+                        <p class="">Quantity: {{ item.quantity }}</p>
+                    </div>
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+            {% endif %}
+             <div>
+                
+                <div class="mt-3">
+                    {% if before %}
+                    <p class="text-muted text-italic">Total amount after discounts:</p>
+                    <span class="text-decoration-line-through h3 text-danger numbers-font">${{ before }}</span>
+                    <span class="text-danger h3 numbers-font">${{ grand_total }} </span>
+                    {% else %}
+                    <p class="text-muted text-italic">Total amount:</p>
+                    <span class="numbers-font h3">${{ grand_total }} </span>
+                    {% endif %}
+                </div>
+
+                 {% if delivery != 0 %}
+                 {{ delivery }}
+                 {% else %}
+                 <p class="text-danger numbers-font">Free delivery over $50</p>
+                 {% endif %}
+                 <button class="btn btn-xl btn-dark text-uppercase float-right" form="pay-form">Pay now</button>
+            </div>
+           
+        </div>
     </div>
+
 </section>
-
-
 {% endblock %}

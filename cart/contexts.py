@@ -5,6 +5,7 @@ from shop.models import Product
 def cart_contents(request):
     cart_items = []
     total = 0
+    before = 0
     item_count = 0
     cart = request.session.get('cart', {})
 
@@ -17,6 +18,7 @@ def cart_contents(request):
                 subtotal = 0
                 total += quantity * product.sale_price
                 subtotal = quantity * product.sale_price
+                before += quantity * product.price
             else:
                 subtotal = 0
                 total += quantity * product.price
@@ -41,6 +43,7 @@ def cart_contents(request):
     context = {
         'cart_items': cart_items,
         'total': total,
+        'before': before,
         'item_count': item_count,
         'delivery': delivery,
         'free_deivery': free_deivery,

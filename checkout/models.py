@@ -63,9 +63,10 @@ class Order(models.Model):
     def __str__(self):
         return self.order_number
 
+
 class OrderLine(models.Model):
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
-    product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
+    item = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
     item_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
@@ -74,7 +75,7 @@ class OrderLine(models.Model):
         and update the order total.
         """
         if self.item.sale:
-            self.item_total = self.product.sale_price * self.quantity
+            self.item_total = self.item.sale_price * self.quantity
         else:
-            self.item_total = self.product.price * self.quantity
+            self.item_total = self.item.price * self.quantity
         super().save(*args, **kwargs)
