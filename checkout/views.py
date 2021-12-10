@@ -40,7 +40,7 @@ def checkout(request):
                         quantity=quantity,
                     )
                     order_line.save()
-                    order.status = 'PSH'
+                    order.status = 'Pending Shipment'
                     order.save()
                 except Product.DoesNotExist:
                     messages.error(request, (

@@ -13,17 +13,17 @@ from customers.models import UserAddress
 
 
 class Order(models.Model):
-    PENDING_PAYMENT = 'PP'
-    PENDING_SHIPMENT = 'PSH'
-    SHIPPED = 'SH'
-    CANCELLED = 'CA'
-    COMPLETED = 'CO'
+    PENDING_PAYMENT = 'Pending Payment'
+    PENDING_SHIPMENT = 'Pending Shipment'
+    SHIPPED = 'Shipped'
+    CANCELLED = 'Cancelled'
+    COMPLETED = 'Completed'
 
     ORDER_STATUS = [
         (PENDING_PAYMENT, 'Pending Payment'),
         (PENDING_SHIPMENT , 'Pending Shipment'),
         (SHIPPED, 'Shipped'),
-        (CANCELLED, 'Candelled'),
+        (CANCELLED, 'Cancelled'),
         (COMPLETED, 'Completed'),
     ]
 
