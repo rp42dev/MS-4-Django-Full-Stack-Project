@@ -10,8 +10,6 @@ from . forms import OrderForm
 from cart.contexts import cart_contents
 
 
-import json
-
 def checkout(request):
     """
     A view to return the checkout page
@@ -42,10 +40,7 @@ def checkout(request):
                         quantity=quantity,
                     )
                     order_line.save()
-                    profile = UserAddress.objects.get(user=request.user)
-                    order.user = profile
                     order.status = 'PSH'
-                    print(order.status)
                     order.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
@@ -99,21 +94,6 @@ def checkout_success(request, order_number):
         profile = UserAddress.objects.get(user=request.user)
         order.user = profile
         order.save()
-
-        # Save the user's info
-        if save_info:
-            profile_data = {
-                'default_phone_number': order.phone_number,
-                'default_country': order.country,
-                'default_postcode': order.postcode,
-                'default_town_or_city': order.town_or_city,
-                'default_street_address1': order.street_address1,
-                'default_street_address2': order.street_address2,
-                'default_county': order.county,
-            }
-            user_profile_form = UserProfileForm(profile_data, instance=profile)
-            if user_profile_form.is_valid():
-                user_profile_form.save()
 
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \

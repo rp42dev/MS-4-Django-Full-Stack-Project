@@ -16,32 +16,108 @@
 {% endblock %}
 {% block content %}
 
-<!-- Product Detail section-->
+<!-- item Detail section-->
 <section class="page-section">
 
-    <div class="container pb-5 px-4 px-lg-5">
-        <div class="item row gx-4 gx-lg-5 position-relative">
-            <h5 class="">Checkout</h5>
-            <p class="text-muted text-italic">Checkout now</p>
-            <p class="mb-0">Order #: {{ order.order_number }}</p>
-            <p class="mb-0">Date and Time: {{ order.date }}</p>
+    <div class="container bg-white p-4 px-lg-5">
+        <!-- Project One -->
+        <div class="row">
+            <h5 class="">Order: {{ order.order_number }}</h5>
+            <hr>
+            <div class="col-md-6">
+                <div class="item row gx-4 gx-lg-5 position-relative">
+                    <h5 class="text-muted text-italic">Shipping Address:</h5>
+                    <p class="mb-0">{{ order.full_name }}</p>
+                    <p class="mb-0">{{ order.address_line_1 }}</p>
+                    <p class="mb-0">{{ order.address_line_2 }}</p>
+                    <p class="mb-0">{{ order.town }}</p>
+                    <p class="mb-0">{{ order.county }}</p>
+                    <p class="mb-0">{{ order.country }}</p>
 
-            {% for item in order.lineitems.all %}
+                </div>
+            </div>
+            {% if from_profile %}
+            <div class="col-md-6">
+                <h5 class="text-muted text-italic">Order Summary:</h5>
+                <p class="mb-0">Full Name: {{ order.full_name }}</p>
+                <p class="mb-0">Email Address: {{ order.email}}</p>
+                <p class="mb-0">Date and Time: {{ order.date }}</p>
 
-            <p class="mb-0">{{ item.item.name }}</p>
-            <p class="mb-0">Quantity: {{ item.quantity }} </p>
-            <p class="mb-0">Ptrice: ${{ item.item.price }}</p>
-            <p class="mb-0">Ptrice on Sale: ${{ item.item.sale_price }}</p>
+                <p class="mb-0">Order Total: ${{ order.order_total }}</p>
+                <p class="mb-0">Order Grand Total: ${{ order.grand_total }}</p>
+                <p class="mb-0">Delivery Cost: {{ order.delivery_cost }}</p>
 
-            {% endfor %}
-            <p class="mb-0">Full Name {{ order.full_name }}</p>
-            <p class="mb-0">Order Total: ${{ order.order_total }}</p>
-            <p class="mb-0">Order Grand Total: ${{ order.grand_total }}</p>
-            <p class="mb-0">Delivery Cost: {{ order.delivery_cost }}</p>
-        
+
+            </div>
+            {% endif %}
+
 
         </div>
+    
+    <hr>
+    
+
+    <h5 class="text-muted text-italic">Order Details:</h5>
+        {% for item in order.lineitems.all %}
+        <div class="cart-conteiner bg-white row align-items-center mt-2 mt-sm-4">
+
+            <div class="col-6 col-sm-3 order-1 position-relative">
+                {% thumbnail item.item.image "100" as im %}
+                <a class="" href="{% url 'shop_item' item.item.id %}">
+                    <div class="h-100 d-flex align-items-center ">
+                        <img class="card-img-top" src="{{ im.url }}" alt="{{ item.item.name }}" />
+                    </div>
+                </a>
+
+                {% if item.item.sale %}
+                <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                    {% widthratio item.item.sale_price item.item.price 100 %}%
+                </div>
+                {% endif %}
+                {% endthumbnail %}
+            </div>
+
+            <div class="col-12 col-sm-6 order-3 order-sm-2">
+                <p class="text-capitalize fw-bolder">{{ item.item.name }}</p>
+                <p class="text-capitalize">SKU: {{ item.item.sku }}</p>
+            </div>
+
+            <div class="col-3 col-6 col-sm-3 order-2 order-sm-3">
+                <div>
+                    {% if item.item.sale %}
+                    <p class="text-danger mb-0 numbers-font ">${{ item.item.sale_price }} </p>
+                    {% else %}
+                    <p class="numbers-font mb-0">${{ item.item.prace }}</p>
+                    {% endif %}
+                    <p class="mb-0 numbers-font">Quantity: {{ item.quantity }}</p>
+                    <p class="numbers-font mb-0">Sub total ${{ item.item_total }} </p>
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+        <hr>
+        <div class="cart-conteiner bg-white row align-items-center mt-2 mt-sm-4">
+
+            <div class="col-6 col-sm-3 order-1 position-relative">
+                <div>
+                    <button class="btn btn-dark">Confirm reception</button>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 order-3 order-sm-2">
+
+            </div>
+
+            <div class="col-3 col-6 col-sm-3 order-2 order-sm-3">
+                <p class="mb-0 h4 numbers-font">Order Total: ${{ order.grand_total }}</p>
+                <p class="mb-0 h4 numbers-font">Delivery Cost: {{ order.delivery_cost }}</p>
+            </div>
+
+        </div>
+
     </div>
+
 
 </section>
 {% endblock %}

@@ -19,24 +19,20 @@
 <!-- Product Detail section-->
 <section class="page-section">
     {% for order in orders %}
-    {{ order }}
-    {{ order.date }}
-    {{ order.full_name }}
-    {{ order.order_total }}
-    {{ order.grand_total }}
-    <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
+    <p>{{ order.date }}</p>
+    <p>{{ order.grand_total }}</p>
+    <p><a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
         {{ order.order_number|truncatechars:6 }}
-    </a>
+    </a></p>
+    
     {% for item in order.lineitems.all %}
     
-       {{ item.item.name }}
-       {{ item.item.image }}
-       {{ item.item.price }}
-       {{ item.quantity }}
-       {{ order.grand_total }}
+    <p>{{ item.item.name }}</p>
+    <p>{{ item.quantity }}</p>
+    {% endfor %}
 
     {% endfor %}
-    {% endfor %}
+    <hr>
     <div class="mx-auto col-12 col-sm-8 col-lg-6 px-4">
         <h5 class="text-capitalize">{{ request.user}}</h5>
         <p class="text-muted text-italic">Update user Information</p>
