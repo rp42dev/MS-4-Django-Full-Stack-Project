@@ -12,7 +12,7 @@ from django.contrib import messages
 from .models import UserAddress
 from .forms import EditProfileForm
 from .forms import UserAddressForm
-
+from checkout.models import Order
 
 @login_required
 def customers(request):
@@ -32,10 +32,11 @@ def customers(request):
     else:
         address_form = UserAddressForm(instance=profile)
         user_form = EditProfileForm(instance=profile2)
-
+    orders = profile.orders.all()
     context = {
         'address_form': address_form,
         'user_form': user_form,
+        'orders': orders,
     }
     
     return render(request, 'profile/profile.html', context)

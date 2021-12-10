@@ -12,15 +12,21 @@ from shop.models import Product
 from customers.models import UserAddress
 
 
-ORDER_STATUS_CHOICES= (
-    ('Pending', 'Pending'),
-    ('Shipped', 'Shipped'),
-    ('Cancelled', 'Cancelled'),
-    ('Refunded', 'Refunded'),
-)
-
-
 class Order(models.Model):
+    PENDING_PAYMENT = 'PP'
+    PENDING_SHIPMENT = 'PSH'
+    SHIPPED = 'SH'
+    CANCELLED = 'CA'
+    COMPLETED = 'CO'
+
+    ORDER_STATUS = [
+        (PENDING_PAYMENT, 'Pending Payment'),
+        (PENDING_SHIPMENT , 'Pending Shipment'),
+        (SHIPPED, 'Shipped'),
+        (CANCELLED, 'Candelled'),
+        (COMPLETED, 'Completed'),
+    ]
+
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user = models.ForeignKey(UserAddress, on_delete=models.SET_NULL,
                                      null=True, blank=True, related_name='orders')
@@ -36,7 +42,8 @@ class Order(models.Model):
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
-    status = models.CharField(max_length=120, default='pending', choices= ORDER_STATUS_CHOICES)
+    status = models.CharField(max_length=100, default=PENDING_PAYMENT, choices=ORDER_STATUS)
+  
   
     def update_total(self):
         """

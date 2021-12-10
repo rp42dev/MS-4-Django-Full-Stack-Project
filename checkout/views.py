@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import render,\
+    redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 
@@ -42,6 +43,11 @@ def checkout(request):
                         quantity=quantity,
                     )
                     order_line.save()
+                    profile = UserAddress.objects.get(user=request.user)
+                    order.user = profile
+                    order.status = 'PSH'
+                    print(order.status)
+                    order.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "One of the products in your cart wasn't found in our database."))
@@ -76,7 +82,7 @@ def checkout(request):
         })
     else:  
         form = OrderForm()
-    
+   
     current_cart = cart_contents(request)
     total = current_cart['grand_total']
     context={
