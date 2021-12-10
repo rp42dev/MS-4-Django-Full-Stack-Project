@@ -24,9 +24,14 @@
     {{ order.full_name }}
     {{ order.order_total }}
     {{ order.grand_total }}
+    <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
+        {{ order.order_number|truncatechars:6 }}
+    </a>
     {% for item in order.lineitems.all %}
     
-       {{ item.product.name }} 
+       {{ item.item.name }}
+       {{ item.item.image }}
+       {{ item.item.price }}
        {{ item.quantity }}
        {{ order.grand_total }}
 

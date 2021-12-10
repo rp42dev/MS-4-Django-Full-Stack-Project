@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% load crispy_forms_tags %}
+{% block page_header %}
+<!-- Header-->
+<header class="bg-black py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center">
+
+            <h1 class="display-4 text-white fw-bolder">Checkout</h1>
+
+        </div>
+    </div>
+</header>
+{% endblock %}
+{% block content %}
+
+<!-- Product Detail section-->
+<section class="page-section">
+
+    <div class="container pb-5 px-4 px-lg-5">
+        <div class="item row gx-4 gx-lg-5 position-relative">
+            <h5 class="">Checkout</h5>
+            <p class="text-muted text-italic">Checkout now</p>
+            <p class="mb-0">Order #: {{ order.order_number }}</p>
+            <p class="mb-0">Date and Time: {{ order.date }}</p>
+
+            {% for item in order.lineitems.all %}
+
+            <p class="mb-0">{{ item.item.name }}</p>
+            <p class="mb-0">Quantity: {{ item.quantity }} </p>
+            <p class="mb-0">Ptrice: ${{ item.item.price }}</p>
+            <p class="mb-0">Ptrice on Sale: ${{ item.item.sale_price }}</p>
+
+            {% endfor %}
+            <p class="mb-0">Full Name {{ order.full_name }}</p>
+            <p class="mb-0">Order Total: ${{ order.order_total }}</p>
+            <p class="mb-0">Order Grand Total: ${{ order.grand_total }}</p>
+            <p class="mb-0">Delivery Cost: {{ order.delivery_cost }}</p>
+        
+
+        </div>
+    </div>
+
+</section>
+{% endblock %}
