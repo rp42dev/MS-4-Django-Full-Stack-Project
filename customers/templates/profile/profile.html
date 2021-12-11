@@ -19,11 +19,14 @@
 {% endblock %}
 {% block content %}
 
-<!-- Product Detail section-->
+<!--OrderDetail section-->
 <section class="page-section">
-    
+
     <div class="container">
-        <div class="col-12 text-left"><p class="col-12 text-end"><a class="btn btn-dark orrange" href="{% url 'user_details' %}">Change account Details</a></p></div>
+        <div class="col-12 text-left">
+            <p class="col-12 text-end"><a class="btn btn-dark orrange" href="{% url 'user_details' %}">Change account
+                    Details</a></p>
+        </div>
         <h5 class="text-capitalize">{{ request.user}}</h5>
         <p class="text-muted text-italic">Order summary</p>
         <div class="card mb-4">
@@ -36,7 +39,7 @@
                     {% for order in orders %}
                     <thead>
                         <tr>
-                            <th>Odrer Date: {{ order.date }}</th>
+                            <th class="text-muted text-italic">Odrer Date: {{ order.date }}</th>
 
                         </tr>
                     </thead>
@@ -47,19 +50,21 @@
                                     <thead>
                                         <tr>
                                             <th>Odrer</th>
-                                            <th>Order Status</th>
-                                            <th>Grand Total</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
+                                            <th>Review</th>
                                         </tr>
                                     </thead>
 
-                                    <tbody>
+                                    <tbody class="border-bottom">
                                         <tr class="table-light">
-                                            <td><a href="{% url 'order_history' order.order_number %}"
+                                            <td><a class="btn btn-dark" href="{% url 'order_history' order.order_number %}"
                                                     title="{{ order.order_number }}">
                                                     {{ order.order_number|truncatechars:6 }}
                                                 </a></td>
-                                            <td>{{ order.status }}</td>
                                             <td>${{ order.grand_total }}</td>
+                                            <td>{{ order.status }}</td>
+                                            <td>None</td>
 
                                         </tr>
                                     </tbody>

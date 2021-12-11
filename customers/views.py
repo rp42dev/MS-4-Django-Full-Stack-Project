@@ -4,7 +4,7 @@ Customers app views
 
 """
 from django.db import models
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -69,3 +69,19 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def user_delete(request):
+    """A view to delete user profile 
+    """
+    profile = get_object_or_404(UserAddress, user=request.user)
+    profile2 = request.user
+
+    if request.method == 'POST':   
+        profile.delete()
+        profile2.delete()
+        messages.success(request, 'Your account was deleted successfuly')
+        return redirect(reverse('account_login'))
+    
+    return redirect(reverse('account_login'))
