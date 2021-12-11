@@ -2,6 +2,9 @@
 {% load static %}
 {% load thumbnail %}
 {% load crispy_forms_tags %}
+{% block extra_css %}
+
+{% endblock %}
 {% block page_header %}
 <!-- Header-->
 <header class="bg-black py-5">
@@ -18,20 +21,55 @@
 
 <!-- Product Detail section-->
 <section class="page-section">
-    {% for order in orders %}
-    <p>{{ order.date }}</p>
-    <p>{{ order.grand_total }}</p>
-    <p><a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
-        {{ order.order_number|truncatechars:6 }}
-    </a></p>
-    
-    {% for item in order.lineitems.all %}
-    
-    <p>{{ item.item.name }}</p>
-    <p>{{ item.quantity }}</p>
-    {% endfor %}
+    <div class="container"> 
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            My orders
+        </div>
+        <div class="card-body">
+            <table class="table table-borderless">
+                {% for order in orders %}
+                <thead>
+                    <tr>
+                        
+                        <th>Odrer Date: {{ order.date }}</th>
 
-    {% endfor %}
+                    </tr>
+                </thead>
+                <tbody  class="border-bottom">
+                    <tr class="">
+                        <td>
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th>Odrer</th>
+                                        <th>Order Status</th>
+                                        <th>Grand Total</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr class="">
+                                        <td><a href="{% url 'order_history' order.order_number %}"
+                                                title="{{ order.order_number }}">
+                                                {{ order.order_number|truncatechars:10 }}
+                                            </a></td>
+                                        <td>{{ order.status }}</td>
+                                        <td>${{ order.grand_total }}</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+
+        </div>
+    </div>
+
     <hr>
     <div class="mx-auto col-12 col-sm-8 col-lg-6 px-4">
         <h5 class="text-capitalize">{{ request.user}}</h5>
@@ -45,7 +83,7 @@
             <button class="btn btn-xl btn-dark text-uppercase float-right">Update</button>
         </form>
     </div>
-
+</div> 
 </section>
 
 {% endblock %}

@@ -20,40 +20,35 @@
 <section class="page-section">
 
     <div class="container bg-white p-4 px-lg-5">
-        <!-- Project One -->
+        <!-- Project One --> <div class="col-12 text-uppercase text-center h2 text-warning">Thank You</div> 
         <div class="row m-0 p-0">
             <p class="fw-bolder">ORDER: {{ order.order_number }}</p>
             <hr class="p-1">
+
             <div class="col-md-6">
-
-                <div class="item row gx-4 gx-lg-5 position-relative">
-                    <p class="text-italic fw-bolder">Shipping Address:</p>
-                    <p class="mb-0">{{ order.full_name }}</p>
-                    <p class="mb-0">{{ order.address_line_1 }}</p>
-                    <p class="mb-0">{{ order.address_line_2 }}</p>
-                    <p class="mb-0">{{ order.town }}</p>
-                    <p class="mb-0">{{ order.county }}</p>
-                    <p class="mb-0">{{ order.country }}</p>
-
-                </div>
+                <p class="text-italic fw-bolder">Shipping Address:</p>
+                <p class="mb-0">{{ order.full_name }}</p>
+                <p class="mb-0">{{ order.address_line_1 }}</p>
+                <p class="mb-0">{{ order.address_line_2 }}</p>
+                <p class="mb-0">{{ order.town }}</p>
+                <p class="mb-0">{{ order.county }}</p>
+                <p class="mb-0">{{ order.country }}</p>
             </div>
-           
+            <hr class="p-1 d-md-none dblock">
             <div class="col-md-6">
                 <p class="text-italic fw-bolder">Order Summary:</p>
                 <p class="mb-0">Full Name: {{ order.full_name }}</p>
                 <p class="mb-0">Email Address: {{ order.email}}</p>
                 <p class="mb-0">Date and Time: {{ order.date }}</p>
-
                 <p class="mb-0">Order Total: ${{ order.order_total }}</p>
                 <p class="mb-0">Order Grand Total: ${{ order.grand_total }}</p>
                 <p class="mb-0">Delivery Cost: {{ order.delivery_cost }}</p>
-
             </div>
-         
+
         </div>
-    <hr class="p-1">
-    
-    <p class="text-italic fw-bolder">Order Details:</p>
+        <hr class="p-1">
+
+        <p class="text-italic fw-bolder">Order Details:</p>
         {% for item in order.lineitems.all %}
         <div class="cart-conteiner border mx-0 px-0 bg-white row align-items-center mt-2 mt-sm-4">
 
@@ -81,7 +76,7 @@
             <div class="col-3 col-6 col-sm-3 order-2 order-sm-3">
                 <div>
                     {% if item.item.sale %}
-                   
+
                     <span class="text-decoration-line-through text-danger">${{ item.item.price }}</span>
                     <span class="text-danger">${{ item.item.sale_price }} </span>
                     {% else %}
@@ -97,20 +92,18 @@
         <hr class="p-1">
         <div class="cart-conteiner bg-white row align-items-center mt-2 mt-sm-4">
 
-            <div class="col-6 col-sm-3 order-1 position-relative">
+            <div class="col-6 col-md-9">
                 <div>
-                    <p class="mb-0 fw-bolder">Order Status: {{ order.status }}</p>
+                    <p class="mb-0 text-danger text-italic fw-bolder">Order Status: {{ order.status }}</p>
                     {% if from_profile %}
-                    
+
                     <button class="btn btn-dark">Confirm reception</button>
                     {% endif %}
                 </div>
             </div>
 
-            <div class="col-12 col-sm-6 order-3 order-sm-2">
-            </div>
 
-            <div class="col-3 col-6 col-sm-3 order-2 order-sm-3">
+            <div class="col-6 col-md-3">
                 <p class="mb-0 h4">Total: ${{ order.grand_total }}</p>
                 <p class="mb-0 h4">Delivery: {{ order.delivery_cost }}</p>
             </div>
