@@ -18,6 +18,21 @@ from checkout.models import Order
 def customers(request):
     """A view to return the user profile page"""
     profile = get_object_or_404(UserAddress, user=request.user)
+    orders = profile.orders.all()
+    context = {
+
+        'orders': orders,
+    }
+    
+    return render(request, 'profile/profile.html', context)
+
+
+@login_required
+def user_details(request):
+    """A view to return the user profile details
+        Update user Address and Profile details
+    """
+    profile = get_object_or_404(UserAddress, user=request.user)
     profile2 = request.user
 
     if request.method == 'POST':
@@ -32,14 +47,12 @@ def customers(request):
     else:
         address_form = UserAddressForm(instance=profile)
         user_form = EditProfileForm(instance=profile2)
-    orders = profile.orders.all()
     context = {
         'address_form': address_form,
         'user_form': user_form,
-        'orders': orders,
     }
     
-    return render(request, 'profile/profile.html', context)
+    return render(request, 'profile/user_details.html', context)
 
 
 def order_history(request, order_number):
