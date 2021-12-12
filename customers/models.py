@@ -12,11 +12,17 @@ from django_countries.fields import CountryField
 
 
 class UserAddress(models.Model):
-
-    """User Address for shipping and billing"""
+    # User
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    address_line_1 = models.CharField(max_length=100, null=True, blank=True)
-    address_line_2 = models.CharField(max_length=100, null=True, blank=True)
+
+    # User Details
+    email = models.EmailField(max_length=100, null=True, blank=True)
+    phone = models.CharField(max_length=50, null=True, blank=True)
+
+    # Shipping Address
+    full_name = models.CharField(max_length=50, null=True, blank=True)
+    address_1 = models.CharField(max_length=100, null=True, blank=True)
+    address_2 = models.CharField(max_length=100, null=True, blank=True)
     town = models.CharField(max_length=60, null=True, blank=True)
     county = models.CharField(max_length=60, null=True, blank=True)
     postcode = models.CharField(max_length=30, null=True, blank=True)
@@ -39,3 +45,4 @@ def update_user_address(sender, instance, created, **kwargs):
             instance.useraddress.save()
         except ObjectDoesNotExist:
             UserAddress.objects.create(user=instance)
+

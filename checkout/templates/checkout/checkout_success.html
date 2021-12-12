@@ -22,27 +22,25 @@
     <div class="container bg-white p-4 px-lg-5">
         <!-- Project One --> <div class="col-12 text-uppercase text-center h2 text-warning">Thank You</div> 
         <div class="row m-0 p-0">
-            <p class="fw-bolder">ORDER: {{ order.order_number }}</p>
+            <p class="fw-bolder">ORDER: {{ order }}</p>
             <hr class="p-1">
 
             <div class="col-md-6">
                 <p class="text-italic fw-bolder">Shipping Address:</p>
-                <p class="mb-0">{{ order.full_name }}</p>
-                <p class="mb-0">{{ order.address_line_1 }}</p>
-                <p class="mb-0">{{ order.address_line_2 }}</p>
+<!-- 
                 <p class="mb-0">{{ order.town }}</p>
                 <p class="mb-0">{{ order.county }}</p>
-                <p class="mb-0">{{ order.country }}</p>
+                <p class="mb-0">{{ order.country }}</p> -->
             </div>
             <hr class="p-1 d-md-none dblock">
             <div class="col-md-6">
                 <p class="text-italic fw-bolder">Order Summary:</p>
-                <p class="mb-0">Full Name: {{ order.full_name }}</p>
-                <p class="mb-0">Email Address: {{ order.email}}</p>
+                <p class="mb-0">Full Name: {{ order.name }}</p>
+                <p class="mb-0">Email Address: {{ order.email }}</p>
                 <p class="mb-0">Date and Time: {{ order.date }}</p>
-                <p class="mb-0">Order Total: ${{ order.order_total }}</p>
-                <p class="mb-0">Order Grand Total: ${{ order.grand_total }}</p>
-                <p class="mb-0">Delivery Cost: {{ order.delivery_cost }}</p>
+                <p class="mb-0">Order Total: ${{ order.order }}</p>
+
+                <p class="mb-0">Delivery Cost: {{ order.delivery }}</p>
             </div>
 
         </div>
@@ -53,37 +51,37 @@
         <div class="cart-conteiner border mx-0 px-0 bg-white row align-items-center mt-2 mt-sm-4">
 
             <div class="col-6 col-sm-3 order-2 order-sm-1 position-relative">
-                {% thumbnail item.item.image "100" as im %}
-                <a class="" href="{% url 'shop_item' item.item.id %}">
+                {% thumbnail item.product.image "100" as im %}
+                <a class="" href="{% url 'shop_item' item.product.id %}">
                     <div class="h-100 d-flex align-items-center ">
-                        <img class="card-img-top" src="{{ im.url }}" alt="{{ item.item.name }}" />
+                        <img class="card-img-top" src="{{ im.url }}" alt="{{ item.product.name }}" />
                     </div>
                 </a>
 
-                {% if item.item.sale %}
+                {% if item.product.sale %}
                 <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                    {% widthratio item.item.sale_price item.item.price 100 %}%
+                    {% widthratio item.product.sale_price item.product.price 100 %}%
                 </div>
                 {% endif %}
                 {% endthumbnail %}
             </div>
 
-            <div class="col-12 col-sm-6 order-1 order-sm-2">
-                <p class="text-capitalize mb-0 fw-bolder">{{ item.item.name }}</p>
-                <p class="text-capitalize mb-0 ">SKU: {{ item.item.sku }}</p>
+            <div class="col-12 col-sm-6 order-1 order-smproduct">
+                <p class="text-capitalize mb-0 fw-bolder">{{ item.product.name }}</p>
+                <p class="text-capitalize mb-0 ">SKU: {{ item.product.sku }}</p>
             </div>
 
             <div class="col-3 col-6 col-sm-3 order-2 order-sm-3">
                 <div>
-                    {% if item.item.sale %}
+                    {% if item.product.sale %}
 
-                    <span class="text-decoration-line-through text-danger">${{ item.item.price }}</span>
-                    <span class="text-danger">${{ item.item.sale_price }} </span>
+                    <span class="text-decoration-line-through text-danger">${{ item.product.price|floatformat:2 }}</span>
+                    <span class="text-danger">${{ item.product.sale_price|floatformat:2 }} </span>
                     {% else %}
-                    <span class="">${{ item.item.price }}</span>
+                    <span class="">${{ item.product.price }}</span>
                     {% endif %}
                     <p class="mb-0">Quantity: {{ item.quantity }}</p>
-                    <p class="mb-0">Sub total ${{ item.item_total }} </p>
+                    <p class="mb-0">Sub total ${{ item.total|floatformat:2 }} </p>
                 </div>
             </div>
 
@@ -104,8 +102,8 @@
 
 
             <div class="col-6 col-md-3">
-                <p class="mb-0 h4">Total: ${{ order.grand_total }}</p>
-                <p class="mb-0 h4">Delivery: {{ order.delivery_cost }}</p>
+                <p class="mb-0 h4">Total: ${{ order.total|floatformat:2 }}</p>
+                <p class="mb-0 h4">Delivery: {{ order.delivery }}</p>
             </div>
 
         </div>

@@ -14,16 +14,20 @@ from .forms import EditProfileForm
 from .forms import UserAddressForm
 from checkout.models import Order
 
+
 @login_required
 def customers(request):
     """A view to return the user profile page"""
     profile = get_object_or_404(UserAddress, user=request.user)
+  
     orders = profile.orders.all()
+    for i in orders:
+        print(i.status)
     context = {
 
-        'orders': orders,
-    }
-    
+            'orders': orders,
+        }
+    print(orders)
     return render(request, 'profile/profile.html', context)
 
 
@@ -36,6 +40,7 @@ def user_details(request):
     profile2 = request.user
 
     if request.method == 'POST':
+
         address_form = UserAddressForm(request.POST, instance=profile)
         user_form = EditProfileForm(request.POST, instance=profile2)
         if address_form.is_valid():
