@@ -99,13 +99,19 @@ def shop_item(request, item_id):
     """
     A view to return the shop item detailed page
     Return related products by style to the template
-    """
-
+    """    
+    cart = request.session.get('cart', {})
     item = get_object_or_404(Product, pk=item_id)
+    availability = item.item_count
+
+    if item_id in list(cart.keys()):
+        availability = item.item_count - cart[item_id]
+    
     related = Product.objects.filter(style=item.style).order_by('-id')
     context = {
         'item': item,
         'related': related,
+        'availability': availability,
     }
     return render(request, 'shop/shop_item.html', context)
 

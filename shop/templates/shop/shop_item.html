@@ -43,17 +43,15 @@
                 </div>
 
                 <p class="lead">{{ item.description }}</p>
-                {% if item.item_count == 0 %}
-                <p class="text-danger">{{ item.item_count }} Out of stock</p>
-                {% elif item.item_count < 5  %}
+                {% if availability == 0 %}
+                <p class="text-danger">{{ availability }} Out of stock</p>
+                {% elif availability < 5  %}
                 <p class="text-danger">
-                    Only {{ item.item_count }} left in stock.
-
+                    Only {{ availability }} left in stock.
                 </p>
                 {% else %}
-                <p>{{ item.item_count }} items in stock</p>
+                <p>{{ availability }} items in stock</p>
                 {% endif %}
-
                 <!-- Product add to cart POST form -->
                 <div class="d-flex">
                     <form id="ad-to-cart" class="form" action="{% url 'add_to_cart' item.id %}" method="POST"
@@ -63,13 +61,13 @@
                         <input type="hidden" name="item_id" value="{{ item.id }}">
                         <!-- Phone number input-->
                         <input id="click-this" class="quantity text-center me-3" name="quantity" id="inputQuantity"
-                            type="number" min="1" max="{{ item.item_count }}" value="1" style="max-width: 3rem" />
-
+                            type="number"  value="1" style="max-width: 3rem" />
+<!-- min="1" max="{{ availability }}"  {% if availability == 0 %}disabled{% endif %}-->
                         <button class="btn btn-dark btn-xl text-uppercase flex-shrink-0" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Add to cart
                         </button>
-
+                        <div class="invalid-feedback">{{ availability }} items available</div>
                         {% if request.user.is_superuser  %}
                        
                             <div class="col mt-4">
@@ -81,7 +79,7 @@
 
                         {% endif %}
 
-                        <div class="invalid-feedback">Maximum {{ item.item_count }} items available</div>
+              
 
                     </form>
                 </div>

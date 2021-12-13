@@ -7,6 +7,7 @@ def cart_contents(request):
     total = 0
     before = 0
     item_count = 0
+    availability = 0
     cart = request.session.get('cart', {})
 
     for item_id, quantity in cart.items():
@@ -24,11 +25,13 @@ def cart_contents(request):
                 total += quantity * product.price
                 subtotal = quantity * product.price
             item_count += quantity
+            availability = product.item_count - quantity
             cart_items.append({
                 'item_id': item_id,
                 'quantity': quantity,
                 'product': product,
                 'subtotal': subtotal,
+                'availability': availability
             })
 
     if total < 50:

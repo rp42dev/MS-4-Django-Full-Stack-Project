@@ -9,15 +9,14 @@ from django.shortcuts import render, redirect,\
 from django.http import HttpResponseRedirect
 from django.views.decorators.http import require_POST
 from django.contrib import messages
-
 from shop.models import Product, Category
 
 
 def cart(request):
     """A view to return the cart page"""
     cart = request.session.get('cart', {})
-    print(cart)
     url_back = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
     if not cart:
         messages.error(
                     request, 'Sorry, the there is nothing in your cart.')
@@ -30,15 +29,21 @@ def cart(request):
         product.item_count = 0
         product.save()
 
-        print(cart)
+        # Check if items are available in stock
+        # before returning cart page view
         for key in cart.copy():
             pr = get_object_or_404(Product, pk=key)
-            if pr.item_count <= 0:
-                cart.pop(key)
-                request.session.modified = True
-                messages.warning(request, f'Item availability has changed for item: {pr.name}')
-            elif pr.item_count < cart[key]:
-                cart[key] = pr.item_count
+            if pr.item_count < cart[key]:
+                if pr.item_count <= 0:
+                    cart.pop(key)
+                    request.session.modified = True
+                    messages.warning(request, f'The product {pr.name}\
+                         has been removed from cart because it is out of stock')
+                else:
+                    cart[key] = pr.item_count
+                    request.session.modified = True
+                    messages.warning(request, f'The product {pr.name}\
+                         availability has changed to {pr.item_count} in stock:')
 
         return render(request, 'cart/cart.html')
 
@@ -46,25 +51,28 @@ def cart(request):
 @require_POST
 def add_to_cart(request, item_id):
     """ Add items to the shopping cart """
+    cart = request.session.get('cart', {})
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    cart = request.session.get('cart', {})
-    update = product.item_count - quantity
-
-    if update < 0:
-        messages.error(
-            request, f'Sorry, only {product.item_count} \
-                {product.name} available')
-        return redirect(redirect_url)
-    else:
-        product.item_count = update
-        product.save()
+    stock = product.item_count - quantity 
 
     if item_id in list(cart.keys()):
-        cart[item_id] += quantity
+        stock_cart = stock - cart[item_id]
+        if stock_cart < 0:
+            messages.warning(
+                    request, f'Sorry, only {product.item_count} {product.name} currently in stock here')
+            return redirect(redirect_url)
+        else:
+            cart[item_id] += quantity
     else:
-        cart[item_id] = quantity
+        if stock < 0:
+            messages.warning(
+                request, f'Sorry, only {product.item_count} {product.name} currently in stock')
+            return redirect(redirect_url)
+
+        else:
+            cart[item_id] = quantity
 
     request.session['cart'] = cart
     messages.success(
@@ -80,13 +88,14 @@ def update_cart(request, item_id):
 
     product = get_object_or_404(Product, pk=item_id)
     cart = request.session.get('cart', {})
-
+    
     if request.POST and cart:
         action = request.POST.get('action')
 
         if action == 'minus':
             if cart[item_id] == 1:
                 cart.pop(item_id)
+                request.session.modified = True
                 # product.item_count += 1
                 # product.save()
                 messages.success(
@@ -102,7 +111,7 @@ def update_cart(request, item_id):
         elif action == 'add':
             if product.item_count - cart[item_id] <= 0:
                 cart[item_id] = product.item_count
-                messages.error(
+                messages.warning(
                     request, f'Sorry, only {product.item_count} {product.name} currently in stock')
             else:
                 cart[item_id] += 1
