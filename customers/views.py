@@ -21,8 +21,7 @@ def customers(request):
     profile = get_object_or_404(UserAddress, user=request.user)
   
     orders = profile.orders.all()
-    for i in orders:
-        print(i.status)
+    
     context = {
 
             'orders': orders,

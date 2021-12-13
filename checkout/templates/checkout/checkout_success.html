@@ -22,32 +22,37 @@
     <div class="container bg-white p-4 px-lg-5">
         <!-- Project One --> <div class="col-12 text-uppercase text-center h2 text-warning">Thank You</div> 
         <div class="row m-0 p-0">
-            <p class="fw-bolder">ORDER: {{ order }}</p>
+            <h5 class="fw-bolder text-uppercase">Order Number: #{{ order }}</h5>
             <hr class="p-1">
 
             <div class="col-md-6">
                 <p class="text-italic fw-bolder">Shipping Address:</p>
-<!-- 
-                <p class="mb-0">{{ order.town }}</p>
-                <p class="mb-0">{{ order.county }}</p>
-                <p class="mb-0">{{ order.country }}</p> -->
+                <p class="mb-0">Full Name: {{ order.shipping_name }}</p>
+                <p class="mb-0">Address 1: {{ order.shipping_address_1 }}</p>
+                <p class="mb-0">Address 2: {{ order.shipping_address_2 }}</p>
+                <p class="mb-0">Town: {{ order.shipping_town }}</p>
+
+                <p class="mb-0">County: {{ order.shipping_county }}</p>
+                <p class="mb-0">Postcode: {{ order.shipping_postcode }}</p>
+                <p class="mb-0">Country: {{ order.shipping_country }}</p>
             </div>
             <hr class="p-1 d-md-none dblock">
             <div class="col-md-6">
                 <p class="text-italic fw-bolder">Order Summary:</p>
-                <p class="mb-0">Full Name: {{ order.name }}</p>
+                <p class="mb-0">Full Name: {{ order.shipping_name }}</p>
                 <p class="mb-0">Email Address: {{ order.email }}</p>
-                <p class="mb-0">Date and Time: {{ order.date }}</p>
-                <p class="mb-0">Order Total: ${{ order.order }}</p>
-
+                <p class="mb-0">Phone Number: {{ order.phone }}</p>
+                <p class="mb-0">Order Date: {{ order.date }}</p>
+                <p class="mb-0">Order Total: ${{ order.total }}</p>
                 <p class="mb-0">Delivery Cost: {{ order.delivery }}</p>
             </div>
 
         </div>
         <hr class="p-1">
 
-        <p class="text-italic fw-bolder">Order Details:</p>
+        
         {% for item in order.lineitems.all %}
+        <p class="text-italic fw-bolder">{{ item }}</p>
         <div class="cart-conteiner border mx-0 px-0 bg-white row align-items-center mt-2 mt-sm-4">
 
             <div class="col-6 col-sm-3 order-2 order-sm-1 position-relative">
@@ -75,13 +80,15 @@
                 <div>
                     {% if item.product.sale %}
 
-                    <span class="text-decoration-line-through text-danger">${{ item.product.price|floatformat:2 }}</span>
-                    <span class="text-danger">${{ item.product.sale_price|floatformat:2 }} </span>
+                    <span class="text-decoration-line-through text-danger">${{ item.product.price }}</span>
+                    <span class="text-danger">${{ item.product.sale_price }} </span>
                     {% else %}
                     <span class="">${{ item.product.price }}</span>
                     {% endif %}
+
                     <p class="mb-0">Quantity: {{ item.quantity }}</p>
-                    <p class="mb-0">Sub total ${{ item.total|floatformat:2 }} </p>
+                    <p class="mb-0">Sub total ${{ item.product_total }} </p>
+                   
                 </div>
             </div>
 
@@ -92,7 +99,7 @@
 
             <div class="col-6 col-md-9">
                 <div>
-                    <p class="mb-0 text-danger text-italic fw-bolder">Order Status: {{ order.status }}</p>
+                    <p class="text-italic fw-bolder">Order Status: <span class="">{{ order.status }}</span></p>
                     {% if from_profile %}
 
                     <button class="btn btn-dark">Confirm reception</button>
@@ -100,10 +107,9 @@
                 </div>
             </div>
 
-
             <div class="col-6 col-md-3">
-                <p class="mb-0 h4">Total: ${{ order.total|floatformat:2 }}</p>
-                <p class="mb-0 h4">Delivery: {{ order.delivery }}</p>
+                <p class="mb-0 h4">Total: ${{ order.total }}</p>
+                <p class="mb-0 h4">Delivery: ${{ order.delivery }}</p>
             </div>
 
         </div>

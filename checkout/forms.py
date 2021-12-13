@@ -3,6 +3,7 @@ from .models import Order
 
 
 class ShippingForm(forms.ModelForm):
+    prefix = 'shipping'
     class Meta:
         model = Order
         fields = ('shipping_name', 'shipping_address_1',
@@ -28,6 +29,7 @@ class ShippingForm(forms.ModelForm):
 
 
 class BillingForm(forms.ModelForm):
+    prefix = 'billing'
     class Meta:
         model = Order
         fields = ('billing_name', 'billing_address_1',

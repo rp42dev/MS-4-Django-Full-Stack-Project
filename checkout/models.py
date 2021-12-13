@@ -12,15 +12,15 @@ import decimal
 
 
 class Order(models.Model):
-    SUBMITTED = 'Order Submittet'
-    PROCESSED = 'Order Proccessed'
+    SUBMITTED = 'Submitted'
+    PROCESSED = 'Proccessed'
     SHIPPED = 'Shipped'
     CANCELLED = 'Cancelled'
     COMPLETED = 'Completed'
 
     ORDER_STATUS = [
-        (SUBMITTED, 'Order Submittet'),
-        (PROCESSED, 'Order Proccessed'),
+        (SUBMITTED, 'Submittet'),
+        (PROCESSED, 'Proccessed'),
         (SHIPPED, 'Shipped'),
         (CANCELLED, 'Cancelled'),
         (COMPLETED, 'Completed'),
@@ -29,15 +29,16 @@ class Order(models.Model):
     # Order Info
     date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=50, default=SUBMITTED, choices=ORDER_STATUS)
-    order_number = models.CharField(max_length=32, null=False, editable=False, default=0)
+    order_number = models.CharField(max_length=32, null=False, editable=False)
     total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    delivery = models.DecimalField(max_digits=6, decimal_places=2, default=0)
 
     # User
     user_profile = models.ForeignKey(UserAddress, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
     
     # User contact info
-    email = models.EmailField(max_length=100, null=False, blank=False)
-    phone = models.CharField(max_length=50)
+    email = models.EmailField(max_length=100, null=True, blank=True)
+    phone = models.CharField(max_length=50, null=True, blank=True)
 
     # Shipping Address
     shipping_name = models.CharField(max_length=50)
@@ -62,16 +63,17 @@ class Order(models.Model):
         Update total each time a line item is added,
         accounting for delivery costs.
         """
-        self.order_number = 'Order #: ' + str(self.id)
+        self.order_number = str(self.id)
         self.count_total = self.lineitems.aggregate(Sum('product_total'))['product_total__sum'] or 0
-        
-        if self.count_total < 50:
-            delivery = self.count_total * 10 / 100
-            self.total = self.count_total + delivery
-        else:
-            delivery = 0
-            self.total = self.count_total + delivery
 
+        if self.count_total < 50:
+            self.delivery = self.count_total * 10 / 100
+            self.total = self.count_total + self.delivery
+        else:
+            self.delivery = 0
+            self.total = self.count_total + self.delivery
+        self.delivery = round(self.delivery, 2)
+        self.total = round(self.total, 2)
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -92,6 +94,7 @@ class OrderLine(models.Model):
             self.product_total = self.product.sale_price * self.quantity
         else:
             self.product_total = self.product.price * self.quantity
+        self.product_total = round(self.product_total, 2)
         super().save(*args, **kwargs)
 
     def __str__(self):

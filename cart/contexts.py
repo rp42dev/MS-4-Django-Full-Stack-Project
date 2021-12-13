@@ -38,7 +38,9 @@ def cart_contents(request):
         delivery = 0
         free_deivery = 0
 
+    delivery = round(delivery, 2)
     grand_total = delivery + total
+    grand_total = round(grand_total, 2)
 
     context = {
         'cart_items': cart_items,

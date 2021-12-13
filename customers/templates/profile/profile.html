@@ -34,12 +34,11 @@
                 <i class="fas fa-table me-1"></i>
                 My orders
             </div>
-            {{ orders }}
             <div class="card-body">
                 <table class="table table-borderless">
                 
                     {% for order in orders %}
-                   
+
                     <thead>
                         <tr>
                             <th class="text-muted text-italic">Odrer Date: {{ order.date }}</th>
@@ -61,11 +60,11 @@
 
                                     <tbody class="border-bottom">
                                         <tr class="table-light">
-                                            <td><a class="btn btn-dark" href="{% url 'order_history' order.order_number %}"
+                                            <td><a class="btn btn-dark" href="{% url 'order_history' order.id %}"
                                                     title="{{ order.order_number }}">
                                                     {{ order.order_number}}
                                                 </a></td>
-                                            <td>${{ order.grand_total }}</td>
+                                            <td>${{ order.total }}</td>
                                             <td>{{ order.status }}</td>
                                             <td>None</td>
 
