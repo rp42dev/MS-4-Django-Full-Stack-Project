@@ -16,6 +16,7 @@ from shop.models import Product, Category
 def cart(request):
     """A view to return the cart page"""
     cart = request.session.get('cart', {})
+    print(cart)
     url_back = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     if not cart:
         messages.error(
@@ -25,6 +26,20 @@ def cart(request):
         else:
             return redirect(reverse('shop'))
     else:
+        product = get_object_or_404(Product, pk=4)
+        product.item_count = 0
+        product.save()
+
+        print(cart)
+        for key in cart.copy():
+            pr = get_object_or_404(Product, pk=key)
+            if pr.item_count <= 0:
+                cart.pop(key)
+                request.session.modified = True
+                messages.warning(request, f'Item availability has changed for item: {pr.name}')
+            elif pr.item_count < cart[key]:
+                cart[key] = pr.item_count
+
         return render(request, 'cart/cart.html')
 
 
