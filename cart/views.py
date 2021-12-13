@@ -72,30 +72,31 @@ def update_cart(request, item_id):
         if action == 'minus':
             if cart[item_id] == 1:
                 cart.pop(item_id)
-                product.item_count += 1
-                product.save()
+                # product.item_count += 1
+                # product.save()
                 messages.success(
                     request, f'Removed {product.name}\
                         from your bag')
             else:
                 cart[item_id] -= 1
-                product.item_count += 1
-                product.save()
+                # product.item_count += 1
+                # product.save()
                 messages.success(
                     request, f'The hat {product.name}\
                             quantity was updated to {cart[item_id]}')
         elif action == 'add':
-            if product.item_count != 0:
+            if product.item_count - cart[item_id] <= 0:
+                cart[item_id] = product.item_count
+                messages.error(
+                    request, f'Sorry, only {product.item_count} {product.name} currently in stock')
+            else:
                 cart[item_id] += 1
-                product.item_count -= 1
-                product.save()
+                # product.item_count -= 1
+                # product.save()
                 messages.success(
                     request, f'The hat {product.name}\
                             quantity was updated to {cart[item_id]}')
-            else:
-                messages.error(
-                    request, f'Sorry, the {product.name}\
-                        hat is currently out of stock')
+
 
     request.session['cart'] = cart
     if cart:
