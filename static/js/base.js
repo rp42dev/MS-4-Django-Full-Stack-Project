@@ -1,6 +1,17 @@
 
 window.addEventListener('DOMContentLoaded', event => {
 
+    // Show / autohide bootstarp toasts
+    var toasts = function () {
+        var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+        var toastList = toastElList.map(function (toastEl) {
+            return new bootstrap.Toast(toastEl)
+        })
+        toastList.forEach(toast => toast.show());
+    }
+
+    toasts();
+
     // Navbar shrink function
     var navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');

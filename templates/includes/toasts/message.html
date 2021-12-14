@@ -36,7 +36,7 @@
         </div>
 
         {% elif level == 25 %}
-        <div class="toast show align-items-center rounded-3 text-white shadow-sm border-0" role="alert" aria-live="assertive"
+        <div class="toast align-items-center rounded-3 text-white shadow-sm border-0" role="alert" aria-live="assertive"
             aria-atomic="true">
 
             <div class="toast-header rounded-3">        
@@ -47,7 +47,6 @@
             <div class="toast-body rounded-3">
                 <h5 class="text-success">{{ message }}</h5> 
             </div>
-           
         </div>
 
         {% else %}
@@ -62,10 +61,11 @@
             <div class="toast-body rounded-3">
                 <h5 class="text-info mt-3">{{ message }}</h5>
             </div>
-            
+         
         </div>
         {% endif %}
         {% endwith %}
         {% endfor %}
+
     </div>
 </div>

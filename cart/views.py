@@ -29,8 +29,8 @@ def cart_view(request):
     url_back = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
     if not cart:
-        messages.error(
-                    request, 'Sorry, the there is nothing in your cart.')
+        messages.warning(
+                    request, 'Your cart is empty.')
         if url_back != None:
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         else:
@@ -148,7 +148,7 @@ def update_cart(request, item_id):
     if cart:
         return redirect(reverse('cart'))
     else:
-        messages.error(
+        messages.warning(
                     request, 'Your cart is empty.')
         return redirect(reverse('shop'))
 
@@ -172,3 +172,5 @@ def remove_cart_item(request, item_id):
         return redirect(reverse('cart'))
     else:
         return redirect(reverse('shop'))
+        messages.info(
+                    request, 'Your cart is empty.')

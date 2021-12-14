@@ -28,25 +28,33 @@ class Order(models.Model):
 
     # Order Info
     date = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=50, default=SUBMITTED, choices=ORDER_STATUS)
-    order_number = models.CharField(max_length=32, null=False, editable=False)
-    total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    delivery = models.DecimalField(max_digits=6, decimal_places=2, default=0)
-    items = models.TextField(null=False, blank=False, default='')
-    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
+    status = models.CharField(
+        max_length=50, default=SUBMITTED, choices=ORDER_STATUS)
+    order_number = models.CharField(
+        max_length=32, null=False, editable=False)
+    total = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0)
+    delivery = models.DecimalField(
+        max_digits=6, decimal_places=2, default=0)
+    items = models.TextField(
+        null=False, blank=False, default='')
+    stripe_pid = models.CharField(
+        max_length=254, null=False, blank=False, default='')
 
     # User
-    user_profile = models.ForeignKey(UserAddress, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
+    user_profile = models.ForeignKey(
+        UserAddress, on_delete=models.SET_NULL,
+        null=True, blank=True, related_name='orders')
     
     # User contact info
-    email = models.EmailField(max_length=100, null=True, blank=True)
+    email = models.EmailField(max_length=100, blank=True)
     # Shipping Address
     shipping_name = models.CharField(max_length=50)
     shipping_address_1 = models.CharField(max_length=100)
-    shipping_address_2 = models.CharField(max_length=100, null=True, blank=True)
+    shipping_address_2 = models.CharField(max_length=100, blank=True)
     shipping_town = models.CharField(max_length=60)
-    shipping_county = models.CharField(max_length=60, null=True, blank=True)
-    shipping_postcode = models.CharField(max_length=30, null=True, blank=True)
+    shipping_county = models.CharField(max_length=60, blank=True)
+    shipping_postcode = models.CharField(max_length=30, blank=True)
     shipping_country = CountryField(blank_label='Country')
 
     def save(self, *args, **kwargs):
@@ -57,7 +65,8 @@ class Order(models.Model):
         
         self.order_number = str(self.id)
 
-        count_total = self.lineitems.aggregate(Sum('product_total'))['product_total__sum'] or 0
+        count_total = self.lineitems.aggregate(
+            Sum('product_total'))['product_total__sum'] or 0
 
         if count_total < 50:
             self.delivery = count_total * 10 / 100
@@ -78,8 +87,8 @@ class OrderLine(models.Model):
     quantity = models.IntegerField(default=1)
     order = models.ForeignKey(Order, on_delete=models.CASCADE,
                               related_name='lineitems')
-    product_total = models.DecimalField(max_digits=6, decimal_places=2,
-                                        editable=False, default=0)
+    product_total = models.DecimalField(
+        max_digits=6, decimal_places=2, editable=False, default=0)
 
     def save(self, *args, **kwargs):
         """

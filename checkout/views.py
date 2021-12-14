@@ -3,11 +3,11 @@ from django.shortcuts import render,\
 from django.contrib.auth.models import User
 from django.contrib import messages
 
+from cart.contexts import cart_contents
 from shop.models import Product
 from customers.models import UserAddress
 from . models import Order, OrderLine
 from . forms import ShippingForm
-from cart.contexts import cart_contents
 
 
 def checkout(request):
@@ -91,8 +91,7 @@ def checkout_success(request, order_number):
             order.user_profile = profile
             order.save()
     # friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
- 
-        
+
     if 'cart' in request.session:
         del request.session['cart']
     messages.success(request, f'Order successfully processed! \

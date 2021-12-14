@@ -55,7 +55,7 @@ def shop(request):
             products = products.filter(queries)
             if not products:
                 messages.error(
-                    request, f'Sorry did not find {query}\
+                    request, f'Did not find {query}\
                         in the store. Try somthing else')
                 return redirect(reverse('shop'))
 

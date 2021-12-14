@@ -92,10 +92,10 @@
             </div>
 
         </div>
-    {% block extr_nav_lg %}
-    {% endblock %}
-    </nav>        
-   
+        {% block extr_nav_lg %}
+        {% endblock %}
+    </nav>
+
     <!-- Message Container -->
     {% if messages %}
     {% include 'includes/toasts/message.html' %}
@@ -180,6 +180,7 @@
 
     <!-- Custom Form Control -->
     <script src="{% static 'js/forms.js' %}"></script>
+
 
     {% block postloadjs %}
 

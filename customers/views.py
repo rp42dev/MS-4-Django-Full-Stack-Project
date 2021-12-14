@@ -62,13 +62,16 @@ def user_details(request):
     return render(request, 'profile/user_details.html', context)
 
 
+@login_required
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.info(request, (
         f'This is a past confirmation for order number {order_number}.'
     ))
-
+    if request.POST:
+        order.status = Order.COMPLETED
+        order.save()
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
@@ -85,10 +88,10 @@ def user_delete(request):
     profile = get_object_or_404(UserAddress, user=request.user)
     profile2 = request.user
 
-    if request.method == 'POST':   
+    if request.method == 'POST':
         profile.delete()
         profile2.delete()
         messages.success(request, 'Your account was deleted successfuly')
         return redirect(reverse('account_login'))
-    
+
     return redirect(reverse('account_login'))
