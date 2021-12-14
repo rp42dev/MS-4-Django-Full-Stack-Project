@@ -32,14 +32,14 @@ class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
     total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     delivery = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    items = models.TextField(null=False, blank=False, default='')
+    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
 
     # User
     user_profile = models.ForeignKey(UserAddress, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
     
     # User contact info
     email = models.EmailField(max_length=100, null=True, blank=True)
-    phone = models.CharField(max_length=50, null=True, blank=True)
-
     # Shipping Address
     shipping_name = models.CharField(max_length=50)
     shipping_address_1 = models.CharField(max_length=100)
@@ -49,29 +49,22 @@ class Order(models.Model):
     shipping_postcode = models.CharField(max_length=30, null=True, blank=True)
     shipping_country = CountryField(blank_label='Country')
 
-    # Shipping Address
-    billing_name = models.CharField(max_length=50)
-    billing_address_1 = models.CharField(max_length=100)
-    billing_address_2 = models.CharField(max_length=100, null=True, blank=True)
-    billing_town = models.CharField(max_length=60)
-    billing_county = models.CharField(max_length=60, null=True, blank=True)
-    billing_postcode = models.CharField(max_length=30, null=True, blank=True)
-    billing_country = CountryField(blank_label='Country')
-
     def save(self, *args, **kwargs):
         """
         Update total each time a line item is added,
         accounting for delivery costs.
         """
+        
         self.order_number = str(self.id)
-        self.count_total = self.lineitems.aggregate(Sum('product_total'))['product_total__sum'] or 0
 
-        if self.count_total < 50:
-            self.delivery = self.count_total * 10 / 100
-            self.total = self.count_total + self.delivery
+        count_total = self.lineitems.aggregate(Sum('product_total'))['product_total__sum'] or 0
+
+        if count_total < 50:
+            self.delivery = count_total * 10 / 100
+            self.total = count_total + self.delivery
         else:
             self.delivery = 0
-            self.total = self.count_total + self.delivery
+            self.total = count_total + self.delivery
         self.delivery = round(self.delivery, 2)
         self.total = round(self.total, 2)
         super().save(*args, **kwargs)
@@ -83,8 +76,10 @@ class Order(models.Model):
 class OrderLine(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='lineitems')
-    product_total = models.DecimalField(max_digits=6, decimal_places=2, editable=False, default=0)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE,
+                              related_name='lineitems')
+    product_total = models.DecimalField(max_digits=6, decimal_places=2,
+                                        editable=False, default=0)
 
     def save(self, *args, **kwargs):
         """

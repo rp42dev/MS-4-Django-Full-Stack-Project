@@ -41,21 +41,26 @@ def shop(request):
     style = 'all'
     query = 'None'
     shop = True
+
     if request.GET:
         if 'search' in request.GET:
+            # Search by keyword in titles and description
             query = request.GET['search']
             if not query:
                 messages.error(
                     request, "You didn't enter any search criteria!")
                 return redirect(reverse('shop'))
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query)\
+                | Q(description__icontains=query)
             products = products.filter(queries)
             if not products:
                 messages.error(
                     request, f'Sorry did not find {query}\
                         in the store. Try somthing else')
                 return redirect(reverse('shop'))
+
         if 'category' in request.GET:
+            # Sort by category
             category = request.GET['category']
             if category == 'sale':
                 products = products.filter(sale=True)
@@ -63,11 +68,15 @@ def shop(request):
                 products = products.all()
             else:
                 products = products.filter(category__name=category)
+
         if 'style' in request.GET:
+            # Sort by style
             style = request.GET['style']
             if style != 'all':
                 products = products.filter(style=style)
+
         if 'sort' in request.GET:
+            # Srot by name, price ASC and DESC
             sortkey = request.GET['sort']
             if sortkey == 'name_asc':
                 sort_name = 'Name (A-Z)'
@@ -99,7 +108,7 @@ def shop_item(request, item_id):
     """
     A view to return the shop item detailed page
     Return related products by style to the template
-    """    
+    """
     cart = request.session.get('cart', {})
     item = get_object_or_404(Product, pk=item_id)
     availability = item.item_count
@@ -136,7 +145,8 @@ def add_item(request):
             messages.success(request, 'Successfuly added new Item!')
             return redirect(reverse('shop_item', args=[item.id]))
         else:
-            messages.error(request, 'Failed so add Item. Please ensure the form is valid.')
+            messages.error(request, 'Failed so add Item.\
+                Please ensure the form is valid.')
     else:
         form = ItemForm()
 
@@ -149,7 +159,7 @@ def add_item(request):
 
 @login_required
 def edit_item(request, item_id):
-    """ 
+    """
     Edit items from the store requeres 
     login and superuser privileges
     Get for field date to template
@@ -167,7 +177,8 @@ def edit_item(request, item_id):
             messages.success(request, 'Successfully updated item!')
             return redirect(reverse('shop_item', args=[item.id]))
         else:
-            messages.error(request, 'Failed to update item. Please ensure the form is valid.')
+            messages.error(request, 'Failed to update item.\
+                Please ensure the form is valid.')
     else:
         form = ItemForm(instance=item)
         messages.info(request, f'You are editing {item.name}')
@@ -182,8 +193,8 @@ def edit_item(request, item_id):
 
 @login_required
 def delete_item(request, item_id):
-    """ 
-    Delete an item from the store 
+    """
+    Delete an item from the store
     requeres login and superuser privileges
     Submit POST to trigger delete_item function
     Delete permanently item from Product models

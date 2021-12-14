@@ -17,8 +17,6 @@ class UserAddress(models.Model):
 
     # User Details
     email = models.EmailField(max_length=100, null=True, blank=True)
-    phone = models.CharField(max_length=50, null=True, blank=True)
-
     # Shipping Address
     full_name = models.CharField(max_length=50, null=True, blank=True)
     address_1 = models.CharField(max_length=100, null=True, blank=True)

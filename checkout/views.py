@@ -6,7 +6,7 @@ from django.contrib import messages
 from shop.models import Product
 from customers.models import UserAddress
 from . models import Order, OrderLine
-from . forms import BillingForm, ShippingForm
+from . forms import ShippingForm
 from cart.contexts import cart_contents
 
 
@@ -19,9 +19,7 @@ def checkout(request):
         cart = request.session.get('cart', {})
         shipping_form = ShippingForm(request.POST, prefix="shipping")
 
-        billing_form = BillingForm(request.POST, prefix="billing")
-
-        if shipping_form.is_valid() and billing_form.is_valid():
+        if shipping_form.is_valid():
             # order = billing_form.save(commit=False)
 
             order = shipping_form.save(commit=False)
@@ -43,8 +41,7 @@ def checkout(request):
                              wasn't found in our database."))
                     order.delete()
                     return redirect(reverse('cart'))
-            print(order)
-            request.session['save_info'] = 'save-info' in request.POST
+
             return redirect(reverse('checkout_success', args=[order.id]))
         else:
             messages.error(request, 'There was an error with your form.\
@@ -60,7 +57,7 @@ def checkout(request):
         address = UserAddress.objects.get(user=request.user)
 
         form1 = ShippingForm(initial={
-            'shipping_name': f'{request.user.first_name} {request.user.last_name}',
+            'shipping_name': address.full_name,
             'shipping_address_1': address.address_1,
             'shipping_address_2': address.address_2,
             'shipping_town': address.town,
@@ -69,26 +66,15 @@ def checkout(request):
             'shipping_country': address.country,
         })
 
-        form2 = BillingForm(initial={
-            'billing_name': f'{request.user.first_name} {request.user.last_name}',
-            'billing_address_1': address.address_1,
-            'billing_address_2': address.address_2,
-            'billing_town': address.town,
-            'billing_county': address.county,
-            'billing_postcode': address.postcode,
-            'billing_country': address.country,
-        })
-
     else:
         form1 = ShippingForm()
-        form2 = BillingForm()
+
 
     current_cart = cart_contents(request)
     total = current_cart['grand_total']
 
     context = {
         'form1': form1,
-        'form2': form2,
     }
 
     return render(request, 'checkout/checkout.html', context)
@@ -98,16 +84,17 @@ def checkout_success(request, order_number):
     """
     Handle successful checkouts
     """
-    save_info = request.session.get('save_info')
     order = get_object_or_404(Order, id=order_number)
 
     if request.user.is_authenticated:
-        
+
         profile = UserAddress.objects.get(user=request.user)
         if not order.user_profile == profile:
-            order.user_profile = profile  
+            order.user_profile = profile
             order.save()
-
+    # friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
+ 
+        
     if 'cart' in request.session:
         del request.session['cart']
     messages.success(request, f'Order successfully processed! \

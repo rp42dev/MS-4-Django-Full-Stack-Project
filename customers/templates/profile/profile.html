@@ -36,7 +36,7 @@
             </div>
             <div class="card-body">
                 <table class="table table-borderless">
-                
+                {% if orders %}
                     {% for order in orders %}
 
                     <thead>
@@ -75,7 +75,7 @@
                         </tr>
                     </tbody>
                     {% endfor %}
-                    
+                    {% endif %}
                 </table>
 
             </div>
