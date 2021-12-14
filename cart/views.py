@@ -5,6 +5,7 @@ Add to cart
     1. Add items to the shopping cart
      Check if items are available in stock
     3. Update Cart quantity of the product
+    4. delete item specified from the cart
 """
 from django.shortcuts import render, redirect,\
     reverse, HttpResponse, get_object_or_404
@@ -154,6 +155,12 @@ def update_cart(request, item_id):
 
 @require_POST
 def remove_cart_item(request, item_id):
+    """
+    delete item specified from cart
+    chect if there is items in the cart
+    and return cart views if there is items
+    left in the cart, othervise return to shop
+    """
     product = get_object_or_404(Product, pk=item_id)
     cart = request.session.get('cart', {})
     cart.pop(item_id)
@@ -165,5 +172,3 @@ def remove_cart_item(request, item_id):
         return redirect(reverse('cart'))
     else:
         return redirect(reverse('shop'))
-
-
