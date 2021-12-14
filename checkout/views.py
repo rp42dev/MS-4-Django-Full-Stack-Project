@@ -56,7 +56,7 @@ def checkout(request):
     if not request.user.is_anonymous:
         address = UserAddress.objects.get(user=request.user)
 
-        form1 = ShippingForm(initial={
+        form = ShippingForm(initial={
             'shipping_name': address.full_name,
             'shipping_address_1': address.address_1,
             'shipping_address_2': address.address_2,
@@ -65,16 +65,14 @@ def checkout(request):
             'shipping_postcode': address.postcode,
             'shipping_country': address.country,
         })
-
     else:
-        form1 = ShippingForm()
-
+        form = ShippingForm()
 
     current_cart = cart_contents(request)
     total = current_cart['grand_total']
 
     context = {
-        'form1': form1,
+        'form': form,
     }
 
     return render(request, 'checkout/checkout.html', context)

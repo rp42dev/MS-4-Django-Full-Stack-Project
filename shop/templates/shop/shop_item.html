@@ -25,14 +25,15 @@
             </div>
             {% endif %}
             {% thumbnail item.image "500" as im %}
-            <div class="col-md-6 mb-4 mb-md-0"><img class="card-img-top mb-md-0" src="{{ im.url }}" alt="{{ item.name }}" />
+            <div class="col-md-6 mb-4 mb-md-0"><img class="card-img-top mb-md-0" src="{{ im.url }}"
+                    alt="{{ item.name }}" />
             </div>
             {% endthumbnail %}
 
             <div class="col-md-6">
                 <div class="small mb-1">SKU: {{ item.sku }}</div>
                 <h1 class="display-5 fw-bolder text-capitalize">{{ item.name }}</h1>
-                
+
                 <div class="fs-5 mb-3">
                     {% if item.sale %}
                     <span class="text-decoration-line-through h3 text-danger numbers-font">${{ item.price }}</span>
@@ -61,25 +62,27 @@
                         <input type="hidden" name="item_id" value="{{ item.id }}">
                         <!-- Phone number input-->
                         <input id="click-this" class="quantity text-center me-3" name="quantity" id="inputQuantity"
-                            type="number"  value="1" style="max-width: 3rem" />
-<!-- min="1" max="{{ availability }}"  {% if availability == 0 %}disabled{% endif %}-->
-                        <button class="btn btn-dark btn-xl text-uppercase flex-shrink-0" type="submit">
+                            type="number" min="1" max="{{ availability }}" value="1" style="max-width: 3rem" />
+
+                        <button
+                            class="btn btn-dark btn-xl text-uppercase flex-shrink-0 {% if availability == 0 %}disabled{% endif %}"
+                            type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Add to cart
                         </button>
                         <div class="invalid-feedback">{{ availability }} items available</div>
                         {% if request.user.is_superuser  %}
-                       
-                            <div class="col mt-4">
-                                <a class="btn btn-success btn-sm flex-shrink-0" href="{% url 'edit_item' item.id %}">
-                                    <i class="bi-cart-fill me-1"></i>
-                                    Edit Item
-                                </a>
-                            </div>
+
+                        <div class="col mt-4">
+                            <a class="btn btn-success btn-sm flex-shrink-0" href="{% url 'edit_item' item.id %}">
+                                <i class="bi-cart-fill me-1"></i>
+                                Edit Item
+                            </a>
+                        </div>
 
                         {% endif %}
 
-              
+
 
                     </form>
                 </div>

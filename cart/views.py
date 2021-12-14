@@ -133,7 +133,7 @@ def update_cart(request, item_id):
                 cart[item_id] = product.item_count
                 messages.warning(
                     request, f'Only {product.item_count}\
-                         {product.name} was in stock items.')
+                         {product.name} available.')
             else:
                 cart[item_id] += 1
                 # product.item_count -= 1
@@ -150,3 +150,20 @@ def update_cart(request, item_id):
         messages.error(
                     request, 'Your cart is empty.')
         return redirect(reverse('shop'))
+
+
+@require_POST
+def remove_cart_item(request, item_id):
+    product = get_object_or_404(Product, pk=item_id)
+    cart = request.session.get('cart', {})
+    cart.pop(item_id)
+    request.session.modified = True
+    messages.success(
+                    request, f'The hat {product.name}\
+                            was removed from cart')
+    if cart:
+        return redirect(reverse('cart'))
+    else:
+        return redirect(reverse('shop'))
+
+

@@ -19,17 +19,17 @@ from checkout.models import Order
 def customers(request):
     """A view to return the user profile page"""
     profile = get_object_or_404(UserAddress, user=request.user)
-    
+
     if profile.orders:
         orders = profile.orders.all()
     else:
         orders = False
-    
+
     context = {
 
             'orders': orders,
         }
- 
+
     return render(request, 'profile/profile.html', context)
 
 
