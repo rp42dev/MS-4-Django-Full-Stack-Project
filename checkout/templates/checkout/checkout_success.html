@@ -23,7 +23,7 @@
         <!-- Project One -->
         <div class="col-12 text-uppercase text-center h4 text-warning">Thank You</div>
         <div class="row m-0 p-0">
-            <p class="px-0 fw-bolder text-uppercase">{{ order.order_number }}</p>
+            <p class="px-0 fw-bolder text-uppercase">Order #: {{ order.order_number }}</p>
             <hr class="p-1">
 
             <div class="col-md-6">
@@ -98,9 +98,7 @@
             <div class="col-6 col-md-9">
                 <div>
 
-
                     {% if admin %}
-
                     <form class="form" method="POST" action="{% url 'order_details' order %}">
                         {% csrf_token %}
                         <div class="form-group m-0">
@@ -109,23 +107,22 @@
                                     <div class="text-italic fw-bolder"><p>Order Status: {{ form }}</p></div>
                                 </div>
                                 
-
                                 <div>
                                     <button type='submit w-auto' class='btn btn-dark'>
                                         Update
                                     </button>
                                 </div>
 
-
                             </div>
                         </div>
                     </form>
                     {% endif %}
+
                     {% if from_profile %}
                     <p class="text-italic fw-bolder">Order Status: {{ order.status }}</p>
                     {% endif %}
+
                     {% if order.status != "Completed" and from_profile and order.status == "Shipped" %}
-                    
                     <form class="form" method="POST" action="{% url 'order_history' order %}">
                         {% csrf_token %}
                         <div class="form-group m-0">
@@ -139,7 +136,6 @@
                             </div>
                         </div>
                     </form>
-
                     {% endif %}
                 </div>
             </div>

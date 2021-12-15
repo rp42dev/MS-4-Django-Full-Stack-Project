@@ -10,6 +10,7 @@ from shop.models import Product
 
 import uuid
 
+
 class Order(models.Model):
     SUBMITTED = 'Submitted'
     PROCESSED = 'Proccessed'
@@ -75,8 +76,9 @@ class Order(models.Model):
         self.save()
 
     def save(self, *args, **kwargs):
+        last_id = Order.objects.last()
         if not self.order_number:
-            self.order_number = uuid.uuid4().hex.upper()
+            self.order_number = last_id.id + 1
         super().save(*args, **kwargs)
 
     def __str__(self):

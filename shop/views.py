@@ -214,18 +214,22 @@ def delete_item(request, item_id):
 
 
 @login_required
-def orders_view(request):
+def admin_view(request):
 
-    if request.user.is_superuser:
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry only store owners can do that')
+        return redirect(reverse('home'))
+    else:
+        low_stock = Product.objects.filter(item_count__lte=5).exclude(item_count=0)
+        out_of_stock = Product.objects.filter(item_count=0)
         orders = Order.objects.all()
 
         context = {
+            'out_of_stock': out_of_stock,
+            'low_stock': low_stock,
             'orders': orders
         }
-        return render(request, 'admin/orders.html', context)
-    else:
-        return redirect(reverse('shop'))
-
+        return render(request, 'admin/admin.html', context)
 
 @login_required
 def order_details(request, order_number):

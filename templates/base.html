@@ -72,12 +72,10 @@
 
                     {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
+
                     <li class="nav-item"><a
-                            class="nav-link {% if request.get_full_path == '/shop/add/' %}disabled{% endif %}"
-                            href="{% url 'add_item' %}">Add Items</a></li>
-                    <li class="nav-item"><a
-                        class="nav-link {% if request.get_full_path == '/shop/add/' %}disabled{% endif %}"
-                        href="{% url 'orders_view' %}">Orders</a></li>
+                        class="nav-link {% if request.get_full_path == '/shop/admin/' %}disabled{% endif %}"
+                        href="{% url 'admin_view' %}">Admin</a></li>
                     {% endif %}
                     <li class="nav-item"><a
                             class="nav-link {% if request.get_full_path == '/user/' %}disabled{% endif %}"
