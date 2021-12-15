@@ -222,12 +222,14 @@ def admin_view(request):
     else:
         low_stock = Product.objects.filter(item_count__lte=5).exclude(item_count=0)
         out_of_stock = Product.objects.filter(item_count=0)
+        sale = Product.objects.filter(sale=True)
         orders = Order.objects.all()
 
         context = {
             'out_of_stock': out_of_stock,
             'low_stock': low_stock,
-            'orders': orders
+            'orders': orders,
+            'sale': sale,
         }
         return render(request, 'admin/admin.html', context)
 

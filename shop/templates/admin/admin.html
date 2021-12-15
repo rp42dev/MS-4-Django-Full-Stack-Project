@@ -19,46 +19,64 @@
 <!-- Product Detail section-->
 <section class="page-section">
 
-  
+
   <div class="container px-0 px-sm-2">
     <div class="nav-item text-end">
-      <a class="w-auto btn btn-dark ms-auto"
-        href="{% url 'add_item' %}">Add New Product </a>
+      <a class="w-auto btn btn-dark ms-auto" href="{% url 'add_item' %}">Add New Product </a>
     </div>
-    <div class="accordion mt-5" id="accordionExample">
+
+    <!-- Manage orders -->
+    <div class="accordion mt-5" id="accordion2"></div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2"
+          aria-expanded="false" aria-controls="collapse2">
+          Manage Orders
+        </button>
+      </h2>
+      <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordion2">
+        <div class="accordion-body">
+          {% include 'includes/shop/orders.html' %}
+        </div>
+      </div>
+    </div>
+    <!-- Manage Stoct -->
+    <div class="accordion mt-5" id="accordion3">
       <div class="accordion-item mb-4">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-            aria-expanded="true" aria-controls="collapseOne">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3"
+            aria-expanded="true" aria-controls="collapse3">
             Low Stock
           </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-          data-bs-parent="#accordionExample">
+        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordion3">
           <div class="accordion-body">
             {% include 'includes/shop/low_stock.html' %}
           </div>
         </div>
       </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            Manage Orders
-          </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-          data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            {% include 'includes/shop/orders.html' %}
+      <!-- manage product sale -->
+      <div class="accordion mt-5" id="accordion1">
+        <div class="accordion-item mb-4">
+          <h2 class="accordion-header">
+            <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Product Sale
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordion1">
+            <div class="accordion-body">
+              {% include 'includes/shop/sale.html' %}
+            </div>
           </div>
         </div>
+
       </div>
+
+
+
     </div>
-
-
-
-  </div>
 </section>
 
 {% endblock %}
