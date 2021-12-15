@@ -1,4 +1,8 @@
 from django.db import models
+from django.db.models import Avg
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 class Category(models.Model):
     name = models.CharField(max_length=60)
@@ -6,7 +10,7 @@ class Category(models.Model):
         max_length=60, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
     def get_friendly_name(self):
         return self.friendly_name
@@ -30,6 +34,14 @@ class Product(models.Model):
         null=True, blank=True)
     item_count = models.IntegerField(
         blank=False, null=False, default=0)
+    rating = models.DecimalField(
+        max_digits=6, decimal_places=2,
+        null=True, blank=True)
+
+    def update_rating(self):
+        print('here')
+        self.rating = self.product_review.aggregate(Avg('rating'))['rating__avg'] or 0
+        self.save()
 
     def __str__(self):
-        return self.name
+        return str(self.name)

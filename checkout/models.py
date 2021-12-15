@@ -78,7 +78,10 @@ class Order(models.Model):
     def save(self, *args, **kwargs):
         last_id = Order.objects.last()
         if not self.order_number:
-            self.order_number = last_id.id + 1
+            if not last_id:
+                self.order_number = 1
+            else:
+                self.order_number = last_id.id + 1
         super().save(*args, **kwargs)
 
     def __str__(self):

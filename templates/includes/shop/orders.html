@@ -10,7 +10,7 @@
     <div class="card-body p-0">
         <table class="table table-borderless">
             {% if orders %}
-            {% for order in orders reversed %}
+            {% for order in orders %}
             {% if order.status != 'Completed' %}
             <thead>
                 <tr>

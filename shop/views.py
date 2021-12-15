@@ -161,7 +161,7 @@ def add_item(request):
 @login_required
 def edit_item(request, item_id):
     """
-    Edit items from the store requeres 
+    Edit items from the store requeres
     login and superuser privileges
     Get for field date to template
     POST the form field data and save
@@ -215,12 +215,18 @@ def delete_item(request, item_id):
 
 @login_required
 def admin_view(request):
+    """
+    Administrator management view. Requeres login and
+    superuser privileges. Returns low stock products,
+    Order status items and product discount items
+    """
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry only store owners can do that')
         return redirect(reverse('home'))
     else:
-        low_stock = Product.objects.filter(item_count__lte=5).exclude(item_count=0)
+        low_stock = Product.objects.filter(
+            item_count__lte=5).exclude(item_count=0)
         out_of_stock = Product.objects.filter(item_count=0)
         sale = Product.objects.filter(sale=True)
         orders = Order.objects.all()
@@ -232,6 +238,7 @@ def admin_view(request):
             'sale': sale,
         }
         return render(request, 'admin/admin.html', context)
+
 
 @login_required
 def order_details(request, order_number):
@@ -249,13 +256,13 @@ def order_details(request, order_number):
             if form.is_valid():
                 form.save()
             messages.success(request, 'Successfully updated order Status!')
-      
+
         template = 'checkout/checkout_success.html'
         context = {
             'order': order,
             'admin': True,
             'form': form,
         }
-        
+
         return render(request, template, context)
 
