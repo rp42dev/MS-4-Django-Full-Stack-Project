@@ -23,7 +23,8 @@ from django.contrib import messages
 from django.db.models import Q
 
 from .models import Product, Category
-from .forms import ItemForm
+from .forms import ItemForm, OrderStatusForm
+from checkout.models import Order
 
 
 def shop(request):
@@ -210,3 +211,45 @@ def delete_item(request, item_id):
     messages.success(request, f'Successfully Deleted the {item.name}!')
 
     return redirect(reverse('shop'))
+
+
+@login_required
+def orders_view(request):
+
+    if request.user.is_superuser:
+        orders = Order.objects.all()
+
+        context = {
+            'orders': orders
+        }
+        return render(request, 'admin/orders.html', context)
+    else:
+        return redirect(reverse('shop'))
+
+
+@login_required
+def order_details(request, order_number):
+    """
+    A view to order detailed view history
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry only store owners can do that')
+        return redirect(reverse('home'))
+    else:
+        order = get_object_or_404(Order, order_number=order_number)
+        form = OrderStatusForm(instance=order)
+        if request.POST:
+            form = OrderStatusForm(request.POST, instance=order)
+            if form.is_valid():
+                form.save()
+            messages.success(request, 'Successfully updated order Status!')
+      
+        template = 'checkout/checkout_success.html'
+        context = {
+            'order': order,
+            'admin': True,
+            'form': form,
+        }
+        
+        return render(request, template, context)
+

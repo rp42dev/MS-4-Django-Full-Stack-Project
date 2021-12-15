@@ -1,5 +1,6 @@
 from django import forms
 from .models import Product, Category
+from checkout.models import Order
 
 
 class ItemForm(forms.ModelForm):
@@ -32,3 +33,15 @@ class ItemForm(forms.ModelForm):
                 field.label
             if field_name == 'image':
                 field.widget.attrs['class'] = 'form-control'
+
+
+class OrderStatusForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = {
+            'status'
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['status'].label = False

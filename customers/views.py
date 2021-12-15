@@ -1,7 +1,9 @@
 """
 Customers app views
-    1. A view to the user profile page
-
+    1. A view to the user profile
+    2. A view to the user details profile
+    3. A view to the order history
+    4. A view to the delete user
 """
 from django.db import models
 from django.shortcuts import render, reverse, redirect, get_object_or_404
@@ -48,9 +50,11 @@ def user_details(request):
         if address_form.is_valid():
             address_form.save()
             user_form.save()
-            messages.success(request, 'Profile data updated successfully')
+            messages.success(
+                request, 'Profile data updated successfully')
         else:
-            messages.error(request, 'Update failed. Please ensure form is valid.')
+            messages.error(
+                request, 'Update failed. Please ensure form is valid.')
     else:
         address_form = UserAddressForm(instance=profile)
         user_form = EditProfileForm(instance=profile2)
@@ -64,14 +68,23 @@ def user_details(request):
 
 @login_required
 def order_history(request, order_number):
+    """
+    A view to order history
+    """
     order = get_object_or_404(Order, order_number=order_number)
 
-    messages.info(request, (
-        f'This is a past confirmation for order number {order_number}.'
-    ))
+    profile = UserAddress.objects.get(user=request.user)
+    if not order.user_profile == profile:
+        messages.error(request,  'Only order owner can view this page')
+        return redirect(reverse('home'))
+
     if request.POST:
         order.status = Order.COMPLETED
         order.save()
+        messages.success(
+            request,  f'Thanks for confirming\
+            the receipt of the order #: {order_number}.')
+
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
@@ -83,7 +96,7 @@ def order_history(request, order_number):
 
 @login_required
 def user_delete(request):
-    """A view to delete user profile 
+    """A view to delete user profile
     """
     profile = get_object_or_404(UserAddress, user=request.user)
     profile2 = request.user

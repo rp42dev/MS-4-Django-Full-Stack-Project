@@ -8,8 +8,7 @@ from django.contrib.auth.models import User
 from customers.models import UserAddress
 from shop.models import Product
 
-import decimal
-
+import uuid
 
 class Order(models.Model):
     SUBMITTED = 'Submitted'
@@ -57,14 +56,11 @@ class Order(models.Model):
     shipping_postcode = models.CharField(max_length=30, blank=True)
     shipping_country = CountryField(blank_label='Country')
 
-    def save(self, *args, **kwargs):
+    def update_total(self):
         """
         Update total each time a line item is added,
         accounting for delivery costs.
         """
-        
-        self.order_number = str(self.id)
-
         count_total = self.lineitems.aggregate(
             Sum('product_total'))['product_total__sum'] or 0
 
@@ -76,6 +72,11 @@ class Order(models.Model):
             self.total = count_total + self.delivery
         self.delivery = round(self.delivery, 2)
         self.total = round(self.total, 2)
+        self.save()
+
+    def save(self, *args, **kwargs):
+        if not self.order_number:
+            self.order_number = uuid.uuid4().hex.upper()
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -92,6 +93,7 @@ class OrderLine(models.Model):
 
     def save(self, *args, **kwargs):
         """
+        Calculate product times quantity
         and update the Product total.
         """
         if self.product.sale:
@@ -102,4 +104,4 @@ class OrderLine(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'SKU {self.product.sku} on order {self.order.order_number}'
+        return f'SKU {self.product.sku}'

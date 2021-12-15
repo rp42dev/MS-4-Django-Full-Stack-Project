@@ -2,16 +2,13 @@
 {% load static %}
 {% load thumbnail %}
 {% load crispy_forms_tags %}
-{% block extra_css %}
-
-{% endblock %}
 {% block page_header %}
 <!-- Header-->
 <header class="bg-black py-5">
-    <div class="container px-4 px-lg-5 mt-5">
+    <div class="container px-4 px-lg-5 my-5">
         <div class="text-center">
 
-            <h1 class="display-4 text-white fw-bolder">Profile</h1>
+            <h1 class="display-4 text-white fw-bolder">Orders</h1>
 
         </div>
     </div>
@@ -19,24 +16,19 @@
 {% endblock %}
 {% block content %}
 
-<!--OrderDetail section-->
+<!-- Product Detail section-->
 <section class="page-section">
 
     <div class="container px-0 px-sm-2">
-        <div class="col-12 text-left">
-            <p class="col-12 text-end"><a class="btn btn-dark orrange" href="{% url 'user_details' %}">Change account
-                    Details</a></p>
-        </div>
-
         <div class="px-2">
-            <h5 class="text-capitalize">{{ request.user }}</h5>
-            <p class="text-muted text-italic">Order summary</p>
+            <h5 class="text-capitalize">Orders</h5>
+            <p class="text-muted text-italic">Manage order status and shipping</p>
         </div>
-
+       
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                My orders
+                All orders
             </div>
             <div class="card-body p-0">
                 <table class="table table-borderless">
@@ -64,7 +56,7 @@
 
                                     <tbody class="border-bottom">
                                         <tr class="table-light">
-                                            <td><a class="btn btn-dark" href="{% url 'order_history' order.order_number %}"
+                                            <td><a class="btn btn-dark" href="{% url 'order_details' order.order_number %}"
                                                     title="{{ order.order_number }}">
                                                     ID: {{ order.id}}
                                                 </a></td>
@@ -84,6 +76,7 @@
 
             </div>
         </div>
+
     </div>
 </section>
 

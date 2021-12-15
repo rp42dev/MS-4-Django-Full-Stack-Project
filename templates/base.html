@@ -75,6 +75,9 @@
                     <li class="nav-item"><a
                             class="nav-link {% if request.get_full_path == '/shop/add/' %}disabled{% endif %}"
                             href="{% url 'add_item' %}">Add Items</a></li>
+                    <li class="nav-item"><a
+                        class="nav-link {% if request.get_full_path == '/shop/add/' %}disabled{% endif %}"
+                        href="{% url 'orders_view' %}">Orders</a></li>
                     {% endif %}
                     <li class="nav-item"><a
                             class="nav-link {% if request.get_full_path == '/user/' %}disabled{% endif %}"

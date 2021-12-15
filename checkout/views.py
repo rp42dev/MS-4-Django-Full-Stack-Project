@@ -9,6 +9,8 @@ from customers.models import UserAddress
 from . models import Order, OrderLine
 from . forms import ShippingForm
 
+import json
+
 
 def checkout(request):
     """
@@ -23,6 +25,7 @@ def checkout(request):
             # order = billing_form.save(commit=False)
 
             order = shipping_form.save(commit=False)
+            order.items = json.dumps(cart)
             order.save()
 
             for item_id, quantity in cart.items():
@@ -42,9 +45,10 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('cart'))
 
-            return redirect(reverse('checkout_success', args=[order.id]))
+            return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
-            messages.error(request, 'There was an error with your form.\
+            messages.error(
+                request, 'There was an error with your form.\
                 Please double check your information.')
     else:
         cart = request.session.get('cart', {})
@@ -53,18 +57,20 @@ def checkout(request):
                  in your cart at the moment")
             return redirect(reverse('shop'))
 
-    if not request.user.is_anonymous:
-        address = UserAddress.objects.get(user=request.user)
-
-        form = ShippingForm(initial={
-            'shipping_name': address.full_name,
-            'shipping_address_1': address.address_1,
-            'shipping_address_2': address.address_2,
-            'shipping_town': address.town,
-            'shipping_county': address.county,
-            'shipping_postcode': address.postcode,
-            'shipping_country': address.country,
-        })
+    if request.user.is_authenticated:
+        try:
+            address = UserAddress.objects.get(user=request.user)
+            form = ShippingForm(initial={
+                'shipping_name': address.full_name,
+                'shipping_address_1': address.address_1,
+                'shipping_address_2': address.address_2,
+                'shipping_town': address.town,
+                'shipping_county': address.county,
+                'shipping_postcode': address.postcode,
+                'shipping_country': address.country,
+            })
+        except UserAddress.DoesNotExist:
+            form = ShippingForm()
     else:
         form = ShippingForm()
 
@@ -82,21 +88,23 @@ def checkout_success(request, order_number):
     """
     Handle successful checkouts
     """
-    order = get_object_or_404(Order, id=order_number)
-
+    order = get_object_or_404(Order, order_number=order_number)
+    print(order.total)
     if request.user.is_authenticated:
 
         profile = UserAddress.objects.get(user=request.user)
         if not order.user_profile == profile:
             order.user_profile = profile
             order.save()
+        
     # friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
 
     if 'cart' in request.session:
         del request.session['cart']
-    messages.success(request, f'Order successfully processed! \
+    messages.success(
+        request, f'Order successfully processed! \
         Your order number is {order}.')
-
+    print(request.user)
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,

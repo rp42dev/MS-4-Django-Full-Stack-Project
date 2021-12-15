@@ -2,6 +2,7 @@ from django import forms
 from .models import UserAddress
 from django.contrib.auth.models import User
 
+
 class EditProfileForm(forms.ModelForm):
     class Meta:
         model = User
@@ -42,3 +43,4 @@ class UserAddressForm(forms.ModelForm):
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'form-control'
             self.fields[field].label = False
+
