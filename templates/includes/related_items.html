@@ -30,11 +30,9 @@
                     <h5 class="fw-bolder text-capitalize">{{ relate.name }}</h5>
 
                     <div class="d-flex justify-content-center small text-warning mb-2">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
+                         <!-- incluse stars rating -->
+                         {% include 'includes/stars.html' %}
+                         
                     </div>
                     <!-- Product price-->
                     {% if relate.sale %}

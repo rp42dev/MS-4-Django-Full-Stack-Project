@@ -52,8 +52,7 @@
         <hr class="p-1"> 
         {% for item in order.lineitems.all %}
         <div class="cart-conteiner border mx-0 px-0 bg-white row align-items-center mt-2 mt-sm-4">
-            {{ item.product.id }}
-            <a href="{% url 'review_view' item.product.id %}">review</a>
+            
             <div class="col-6 col-sm-3 order-2 order-sm-1 position-relative">
                 {% thumbnail item.product.image "100" as im %}
                 <a class="" href="{% url 'shop_item' item.product.id %}">
@@ -73,6 +72,24 @@
             <div class="col-12 col-sm-6 order-1 order-smproduct">
                 <p class="text-capitalize mb-0 fw-bolder">{{ item.product.name }}</p>
                 <p class="text-capitalize mb-0 ">SKU: {{ item.product.sku }}</p>
+                 <!-- incluse stars rating -->
+                 
+                 <div>
+                    {% if item.product.rating %}
+                    <div class="stars h4 text-warning"
+                        style="background-image: linear-gradient(to right, orange, orange {% widthratio item.product.rating 5 100 %}%, gray {% widthratio item.product.rating 5 100 %}%, gray 100%)">
+                        ★★★★★
+                    </div>
+                    {% else %}
+                    No reviews yet
+                    <div class="stars h4 text-warning" style="background-image: linear-gradient(to right, gray, gray)">
+                        ★★★★★
+                    </div>
+                
+                    {% endif %}
+                </div>
+                <p><a href="{% url 'review_view' item.product.id %}">Write a review</a></p>
+                                     
             </div>
 
             <div class="col-3 col-6 col-sm-3 order-2 order-sm-3">

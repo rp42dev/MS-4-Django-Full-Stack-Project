@@ -12,6 +12,7 @@ def review_view(request, item_id):
     """
     A view to return the shop item detailed page
     """
+    
     item = get_object_or_404(Product, pk=item_id)
     if request.POST:
         form = ReviewForm(request.POST)

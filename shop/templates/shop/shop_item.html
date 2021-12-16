@@ -29,7 +29,7 @@
                     alt="{{ item.name }}" />
             </div>
             {% endthumbnail %}
-            {{item.rating}}
+
             <div class="col-md-6">
                 <div class="small mb-1">SKU: {{ item.sku }}</div>
                 <h1 class="display-5 fw-bolder text-capitalize">{{ item.name }}</h1>
@@ -42,6 +42,16 @@
                     <span class="numbers-font h3">${{ item.price }} </span>
                     {% endif %}
                 </div>
+                {% for i in review_items %}
+                {% if item.pk == i.product.pk %}
+
+                {{ item_context.quantity }}
+                {% endif %}
+
+                {% endfor %}
+                
+                <!-- incluse stars rating -->
+                {% include 'includes/stars.html' %}
 
                 <p class="lead">{{ item.description }}</p>
                 {% if availability == 0 %}
@@ -76,7 +86,7 @@
                         <div class="col mt-4">
                             <a class="btn btn-success btn-sm flex-shrink-0" href="{% url 'edit_item' item.id %}">
                                 <i class="bi-cart-fill me-1"></i>
-                                Update Product
+                                Edit Item
                             </a>
                         </div>
 

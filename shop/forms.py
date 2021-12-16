@@ -7,6 +7,7 @@ class ItemForm(forms.ModelForm):
 
     class Meta:
         model = Product
+        exclude = ('rating',)
         fields = '__all__'
 
     image = forms.ImageField(label='image')

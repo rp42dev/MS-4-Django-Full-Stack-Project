@@ -8,16 +8,16 @@
 <ul class="d-block d-md-none navbar-nav border-bottom border-top border-warning py-3 mb-3">
     <li>
         <form class="form" method="GET" action="{% url 'shop' %}">
-                <div class="input-group input-group-sm mb-3">
-                    <input type="text" class="search py-0" name="search" placeholder="Searh" aria-label="Search store">
-                    <div class="input-group-append">
-                        <button class="btn search-btn py-0" type="submit"><i class="fas fa-search"></i></button>
-                    </div>
+            <div class="input-group input-group-sm mb-3">
+                <input type="text" class="search py-0" name="search" placeholder="Searh" aria-label="Search store">
+                <div class="input-group-append">
+                    <button class="btn search-btn py-0" type="submit"><i class="fas fa-search"></i></button>
                 </div>
-            </form>
-        </li>
+            </div>
+        </form>
+    </li>
     {% include 'includes/shop_nav.html' %}
-    
+
 </ul>
 
 {% endblock %}
@@ -25,10 +25,10 @@
 <!-- Shop categories styles and query large navigation -->
 {% block extr_nav_lg %}
 
-    <div class="container mt-3">
-     <div class="col-12 d-none d-md-flex justify-content-between">   
-    <div>
-        <form class="form" method="GET" action="{% url 'shop' %}">
+<div class="container mt-3">
+    <div class="col-12 d-none d-md-flex justify-content-between">
+        <div>
+            <form class="form" method="GET" action="{% url 'shop' %}">
                 <div class="input-group input-group-sm mb-3">
                     <input type="text" class="search py-0" name="search" placeholder="Searh" aria-label="Search store">
                     <div class="input-group-append">
@@ -37,84 +37,83 @@
                 </div>
             </form>
         </div>
-        
-    <div>
-        {% include 'includes/shop_nav.html' %}
-    </div>
-  
-</div>
-{% endblock %}
 
-{% block page_header %}
-<!-- Header-->
-<header class="bg-black py-5">
-    <div class="container px-4 px-lg-5 pt-5 my-5">
-        <div class="text-center">
-
-            <h1 class="display-4 text-white fw-bolder">Shop in style</h1>
-
-            <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+        <div>
+            {% include 'includes/shop_nav.html' %}
         </div>
+
     </div>
-</header>
-{% endblock %}
+    {% endblock %}
 
-{% block content %}
+    {% block page_header %}
+    <!-- Header-->
+    <header class="bg-black py-5">
+        <div class="container px-4 px-lg-5 pt-5 my-5">
+            <div class="text-center">
 
-<!-- Section-->
-<section class="page-section">
-    <div class="container mt-2 mt-sm-4 px-2 px-sm-4 px-lg-5">
-        <div class="row gx-2 gx-sm-4 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            {% for item in products %}
-            {% if item.item_count != 0 or request.user.is_superuser %}
-            <div class="col mb-2 mb-sm-4">
-                <div class="card shadow-sm rounded-3 pt-2 justify-content-end h-100">
-                    <!-- Sale badge-->
-                    {% if item.sale %}
-                    <div class="badge bg-danger text-white position-absolute numbers-font" style="top: 0.5rem; right: 0.5rem">
-                        {% widthratio item.sale_price item.price 100 %}%
-                    </div>
-                    {% endif %}
-                    <!-- Product image-->
-                    
+                <h1 class="display-4 text-white fw-bolder">Shop in style</h1>
+
+                <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+            </div>
+        </div>
+    </header>
+    {% endblock %}
+
+    {% block content %}
+
+    <!-- Section-->
+    <section class="page-section">
+        <div class="container mt-2 mt-sm-4 px-2 px-sm-4 px-lg-5">
+            <div class="row gx-2 gx-sm-4 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {% for item in products %}
+                {% if item.item_count != 0 or request.user.is_superuser %}
+                <div class="col mb-2 mb-sm-4">
+                    <div class="card shadow-sm rounded-3 pt-2 justify-content-end h-100">
+                        <!-- Sale badge-->
+                        {% if item.sale %}
+                        <div class="badge bg-danger text-white position-absolute numbers-font"
+                            style="top: 0.5rem; right: 0.5rem">
+                            {% widthratio item.sale_price item.price 100 %}%
+                        </div>
+                        {% endif %}
+                        <!-- Product image-->
+
                         <div class="h-100 d-flex align-items-center">
                             {% thumbnail item.image "250" as im %}
                             <img class="card-img-top" src="{{ im.url }}" alt="..." />
                             {% endthumbnail %}
                         </div>
-                    <a class="card-img-overlay" href="{% url 'shop_item' item.id %}">
-                    </a>
-                    <!-- Product details-->
-                    <div class="card-body p-2">
-                        <div class="text-center align-items-end">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder text-capitalize">{{ item.name }}</h5>
-                            <a class="h-100 my-auto" href="{% url 'shop_item' item.id %}">
-                            <div class="d-flex justify-content-center small text-warning mb-2">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
+                        <a class="card-img-overlay" href="{% url 'shop_item' item.id %}">
                         </a>
-                            <!-- Product price-->
-                            {% if item.sale %}
-                            <span class="text-decoration-line-through text-danger numbers-font">${{ item.price }}</span>
-                            <span class="text-danger numbers-font">${{ item.sale_price }} </span>
-                            {% else %}
-                            <span class="numbers-font">${{ item.price }} </span>
-                            {% endif %}
+                        <!-- Product details-->
+                        <div class="card-body p-2">
+                            <div class="text-center align-items-end">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder text-capitalize">{{ item.name }}</h5>
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        
+                                         <!-- incluse stars rating -->
+                                     {% include 'includes/stars.html' %}
+                                                      
+                                    </div>   
+                                <!-- Product price-->
+                                {% if item.sale %}
+                                <span
+                                    class="text-decoration-line-through text-danger numbers-font">${{ item.price }}</span>
+                                <span class="text-danger numbers-font">${{ item.sale_price }} </span>
+                                {% else %}
+                                <span class="numbers-font">${{ item.price }} </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer pt-0 border-top-0 bg-transparent justify-self-end">
                         </div>
                     </div>
-                    <!-- Product actions-->
-                    <div class="card-footer pt-0 border-top-0 bg-transparent justify-self-end"> 
-                    </div>
                 </div>
+                {% endif %}
+                {% endfor %}
             </div>
-            {% endif %}
-            {% endfor %}
         </div>
-    </div>
-</section>
-{% endblock %}
+    </section>
+    {% endblock %}

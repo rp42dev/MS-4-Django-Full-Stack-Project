@@ -36,9 +36,6 @@ def cart_view(request):
         else:
             return redirect(reverse('shop'))
     else:
-        product = get_object_or_404(Product, pk=4)
-        product.item_count = 0
-        product.save()
 
         for key in cart.copy():
             pr = get_object_or_404(Product, pk=key)
@@ -174,3 +171,4 @@ def remove_cart_item(request, item_id):
         return redirect(reverse('shop'))
         messages.info(
                     request, 'Your cart is empty.')
+

@@ -550,3 +550,11 @@ section#promise .section-heading {
   outline: 0;
   box-shadow: 0 0 0 .25rem rgba(252, 162, 17, 0.363);
 }
+
+.stars {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  width: fit-content;
+}
