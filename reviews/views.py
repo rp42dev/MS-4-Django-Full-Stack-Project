@@ -13,6 +13,10 @@ def review_view(request, item_id):
     A view to return the shop item detailed page
     """
     item = get_object_or_404(Product, pk=item_id)
+    feedback_left = False
+    rating = 0
+    review = ''
+    date = ''
     if 'order_id' in request.GET:
 
         order_id = int(request.GET['order_id'])
@@ -21,9 +25,10 @@ def review_view(request, item_id):
         # Prevent user leave multiple reviews in same shipping
         for i in order:
             if i.order_id and i.product.id:
-                messages.warning(request, f'You already have left\
-                    a review for { i.product.name } in order #: {order_id}')
-                return redirect(reverse('order_history', args=[order_id]))
+                feedback_left = True
+                rating = i.rating
+                review = i.review
+                date = i.date
 
         if request.POST:
             form = ReviewForm(request.POST)
@@ -36,7 +41,7 @@ def review_view(request, item_id):
                     rating=rating,
                     review=review,
                     user_profile=request.user,
-                    order_id=order_id
+                    order_id=int(request.POST['order_id'])
                 )
                 rating_post.save()
 
@@ -52,5 +57,9 @@ def review_view(request, item_id):
         'form': form,
         'item': item,
         'order_id': order_id,
+        'feedback_left': feedback_left,
+        'rating': rating,
+        'review': review,
+        'date': date,
     }
     return render(request, 'review/review.html', context)

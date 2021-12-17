@@ -586,3 +586,9 @@ section#promise .section-heading {
   text-shadow: 0px 2px 3px #fca311;
   color: rgba(252, 162, 17, 0.5);
 }
+
+/* reviews */
+
+.text {
+  border-radius: 0 12px 12px 12px;
+}
