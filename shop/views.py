@@ -21,6 +21,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models import F
 
 from .models import Product, Category
 from .forms import ItemForm, OrderStatusForm
@@ -112,6 +113,7 @@ def shop_item(request, item_id):
     """
     cart = request.session.get('cart', {})
     item = get_object_or_404(Product, pk=item_id)
+
     availability = item.item_count
 
     if item_id in list(cart.keys()):
@@ -122,6 +124,7 @@ def shop_item(request, item_id):
         'item': item,
         'related': related,
         'availability': availability,
+
     }
     return render(request, 'shop/shop_item.html', context)
 

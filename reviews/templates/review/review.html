@@ -59,22 +59,35 @@
                 <p>{{ item.item_count }} items in stock</p>
                 {% endif %}
                 <!-- Product add to cart POST form -->
-
             </div>
-
-
             <div class="col-md-6">
-
+                <!-- Reviews form-->
+                <h5 class="">Review</h5>
+                <p class="text-muted text-italic">{{ item.name }}</p>
                 <div class="d-flex">
-                    <form id="ad-to-cart" class="form" action="{% url 'review_view' item.id %}" method="POST"
+                   
+                    <form id="ad-to-cart" class="form" action="{% url 'review_view' item.id %}?order_id={{ order_id }}" method="POST"
                         novalidate>
                         {% csrf_token %}
-                        <!-- <input type="hidden" name="redirect_url" value="{{ request.get_full_path }}"> -->
-                        <input type="number" name="raiting" value="4">
-                        <!-- Phone number input-->
+
+                        <div class="mx-auto h1 col-8 position-relative">
+                            <div class="position-absolute hover w-100 d-flex justify-content-between z-minus">
+                                <span class="starz">★</span>
+                                <span class="starz">★</span>
+                                <span class="starz">★</span>
+                                <span class="starz">★</span>
+                                <span class="starz">★</span>
+                            </div>
+                            <input type="range" class="form-range hidden form-fontrol" name="raiting" min="1" value="0"
+                                max="5" step="1" id="star" onclick="Stars(this.value)" required>
+                                <div class="invalid-feedback">Rating is required</div>
+                                <input type="hidden" value="order_id" name="order_id">
+                        </div>
+
                         {{ form|crispy }}
 
-                        <button
+
+                        <button id="review-submit"
                             class="btn btn-dark btn-xl text-uppercase flex-shrink-0 {% if availability == 0 %}disabled{% endif %}"
                             type="submit">
                             <i class="bi-cart-fill me-1"></i>
@@ -83,10 +96,34 @@
 
                     </form>
                 </div>
+
+
             </div>
         </div>
     </div>
 
 </section>
 
+{% endblock %}
+
+{% block postloadjs %}
+<script>
+    var form = document.querySelector('#review-submit')
+        var star = document.querySelector('#star')
+        console.log(star.value)
+        form.addEventListener('submit', function (event) {
+            input.classList.remove('is-invalid')
+            input.classList.remove('is-valid')
+            if (star.value <= 0) {
+                print(star.value)
+                event.preventDefault()
+                event.stopPropagation()
+                star.nextSibling.classList.add('is-invalid')
+            }
+
+            form.classList.add('was-validated')
+        }, false)
+
+</script>
+<script src="{% static 'js/review.js' %}"></script>
 {% endblock %}

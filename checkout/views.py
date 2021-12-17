@@ -89,7 +89,7 @@ def checkout_success(request, order_number):
     Handle successful checkouts
     """
     order = get_object_or_404(Order, order_number=order_number)
-    print(order.total)
+ 
     if request.user.is_authenticated:
 
         profile = UserAddress.objects.get(user=request.user)

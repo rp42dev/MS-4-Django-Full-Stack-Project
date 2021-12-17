@@ -15,6 +15,7 @@ from .models import UserAddress
 from .forms import EditProfileForm
 from .forms import UserAddressForm
 from checkout.models import Order
+from reviews.models import ProductReview
 
 
 @login_required
@@ -70,9 +71,15 @@ def user_details(request):
 def order_history(request, order_number):
     """
     A view to order history
-    """
-    order = get_object_or_404(Order, order_number=order_number)
+    """        
+    order = ProductReview.objects.filter(order_id=order_number)
+    disabled = False
+    # disable reviews button if already reviewed in same shipping
+    for i in order:
+        if i.order_id and i.product.id:
+            disabled = True
 
+    order = get_object_or_404(Order, order_number=order_number)
     profile = UserAddress.objects.get(user=request.user)
     if not order.user_profile == profile:
         messages.error(request,  'Only order owner can view this page')
@@ -89,6 +96,7 @@ def order_history(request, order_number):
     context = {
         'order': order,
         'from_profile': True,
+        'disabled': disabled,
     }
 
     return render(request, template, context)

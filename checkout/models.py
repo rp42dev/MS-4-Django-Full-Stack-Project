@@ -84,8 +84,8 @@ class Order(models.Model):
                 self.order_number = last_id.id + 1
         super().save(*args, **kwargs)
 
-    def __str__(self):
-        return self.order_number
+    def __int__(self):
+        return int(self.order_number)
 
 
 class OrderLine(models.Model):

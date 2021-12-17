@@ -30,9 +30,25 @@
                     <h5 class="fw-bolder text-capitalize">{{ relate.name }}</h5>
 
                     <div class="d-flex justify-content-center small text-warning mb-2">
-                         <!-- incluse stars rating -->
-                         {% include 'includes/stars.html' %}
-                         
+                        <!-- incluse stars rating -->
+
+                        <div>
+                            {% if item.product.rating %}
+                            <div class="stars h4 text-warning"
+                                style="background-image: linear-gradient(to right, orange, orange 
+                                    {% widthratio relate.product.rating 5 100 %}%,
+                                    gray {% widthratio relate.product.rating 5 100 %}%, gray 100%)">
+                                ★★★★★
+                            </div>
+                            {% else %}
+                            <div class="stars h4 text-warning"
+                                style="background-image: linear-gradient(to right, gray, gray)">
+                                ★★★★★
+                            </div>
+
+                            {% endif %}
+                        </div>
+
                     </div>
                     <!-- Product price-->
                     {% if relate.sale %}

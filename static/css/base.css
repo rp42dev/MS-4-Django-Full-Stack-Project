@@ -551,10 +551,38 @@ section#promise .section-heading {
   box-shadow: 0 0 0 .25rem rgba(252, 162, 17, 0.363);
 }
 
+
+/* review stars */
 .stars {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
   width: fit-content;
+}
+
+.starz {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.hover:hover  {
+  background-color:red;
+  transform: scale(1.1);
+}
+
+.z-minus {
+  z-index: -1;
+}
+
+.active {
+  color: #fca311;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.star_hover {
+  text-shadow: 0px 2px 3px #fca311;
+  color: rgba(252, 162, 17, 0.5);
 }

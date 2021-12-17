@@ -54,7 +54,7 @@
         <div class="cart-conteiner border mx-0 px-0 bg-white row align-items-center mt-2 mt-sm-4">
             
             <div class="col-6 col-sm-3 order-2 order-sm-1 position-relative">
-                {% thumbnail item.product.image "100" as im %}
+                {% thumbnail item.product.image "150" as im %}
                 <a class="" href="{% url 'shop_item' item.product.id %}">
                     <div class="h-100 d-flex align-items-center ">
                         <img class="card-img-top" src="{{ im.url }}" alt="{{ item.product.name }}" />
@@ -88,7 +88,10 @@
                 
                     {% endif %}
                 </div>
-                <p><a href="{% url 'review_view' item.product.id %}">Write a review</a></p>
+                
+                {% if not disabled %}
+                <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.id }}">Write a review</a></p>
+                {% endif %}
                                      
             </div>
 
