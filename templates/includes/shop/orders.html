@@ -14,7 +14,7 @@
             {% if order.status != 'Completed' %}
             <thead>
                 <tr>
-                    <th class="text-muted text-italic">Odrer Date: {{ order.date }}</th>
+                    <th class="text-muted font-monospace text-italic">Odrer Date: {{ order.date }}</th>
 
                 </tr>
             </thead>
@@ -31,7 +31,7 @@
                             </thead>
 
                             <tbody class="border-bottom">
-                                <tr class="table-light">
+                                <tr class="table-light font-monospace">
                                     <td><a class="btn btn-dark" href="{% url 'order_details' order.order_number %}"
                                             title="{{ order.order_number }}">
                                             ID: {{ order.id}}

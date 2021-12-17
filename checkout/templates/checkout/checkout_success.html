@@ -23,29 +23,28 @@
         <!-- Project One -->
         <div class="col-12 text-uppercase text-center h4 text-warning">Thank You</div>
         <div class="row m-0 p-0">
-            <p class="px-0 fw-bolder text-uppercase">Order #: {{ order.order_number }}</p>
+            <p class="px-0 fw-bolder text-uppercase font-monospace">Order #: {{ order.order_number }}</p>
             <hr class="p-1">
 
             <div class="col-md-6">
                 <p class="text-italic fw-bolder">Shipping Address:</p>
-                <p class="mb-0">Name: {{ order.shipping_name }}</p>
-                <p class="mb-0">Address 1: {{ order.shipping_address_1 }}</p>
-                <p class="mb-0">Address 2: {{ order.shipping_address_2 }}</p>
-                <p class="mb-0">Town: {{ order.shipping_town }}</p>
-
-                <p class="mb-0">County: {{ order.shipping_county }}</p>
-                <p class="mb-0">Postcode: {{ order.shipping_postcode }}</p>
-                <p class="mb-0">Country: {{ order.shipping_country }}</p>
+                <p class="mb-0 font-monospace">Name: {{ order.shipping_name }}</p>
+                <p class="mb-0 font-monospace">Address 1: {{ order.shipping_address_1 }}</p>
+                <p class="mb-0 font-monospace">Address 2: {{ order.shipping_address_2 }}</p>
+                <p class="mb-0 font-monospace">Town: {{ order.shipping_town }}</p>
+                <p class="mb-0 font-monospace">County: {{ order.shipping_county }}</p>
+                <p class="mb-0 font-monospace">Postcode: {{ order.shipping_postcode }}</p>
+                <p class="mb-0 font-monospace">Country: {{ order.shipping_country }}</p>
             </div>
             <hr class="p-1 d-md-none dblock">
             <div class="col-md-6">
                 <p class="text-italic fw-bolder">Order Summary:</p>
-                <p class="mb-0">User: {{ order.user_profile }}</p>
-                <p class="mb-0">Name: {{ order.shipping_name }}</p>
-                <p class="mb-0">Email: {{ order.email }}</p>
-                <p class="mb-0">Date: {{ order.date }}</p>
-                <p class="mb-0">Total: ${{ order.total }}</p>
-                <p class="mb-0">Delivery: {{ order.delivery }}</p>
+                <p class="mb-0 font-monospace">User: {{ order.user_profile }}</p>
+                <p class="mb-0 font-monospace">Name: {{ order.shipping_name }}</p>
+                <p class="mb-0 font-monospace">Email: {{ order.email }}</p>
+                <p class="mb-0 font-monospace">Date: {{ order.date }}</p>
+                <p class="mb-0 font-monospace">Total: ${{ order.total }}</p>
+                <p class="mb-0 font-monospace">Delivery: {{ order.delivery }}</p>
             </div>
 
         </div>
@@ -62,8 +61,8 @@
                 </a>
 
                 {% if item.product.sale %}
-                <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                    {% widthratio item.product.sale_price item.product.price 100 %}%
+                <div class="badge bg-danger text-white position-absolute font-monospace" style="top: 0.5rem; right: 0.5rem">
+                    Sale
                 </div>
                 {% endif %}
                 {% endthumbnail %}
@@ -71,10 +70,10 @@
 
             <div class="col-12 col-sm-6 order-1 order-smproduct">
                 <p class="text-capitalize mb-0 fw-bolder">{{ item.product.name }}</p>
-                <p class="text-capitalize mb-0 ">SKU: {{ item.product.sku }}</p>
+                <p class="text-capitalize mb-0 font-monospace">SKU: {{ item.product.sku }}</p>
                 <!-- incluse stars rating -->
 
-                <div>
+                <div class="star_container">
 
 
 
@@ -94,27 +93,28 @@
                     {% endif %}
 
                 </div>
-
-                {% if not disabled and not admin %}
+                
+                {% if not item.product.id in order_list and not admin %}
                 <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.id }}">Write a review</a></p>
+               
                 {% else %}
                 <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.id }}">Wiew the review</a></p>
-                {% endif %}
-
+                 {% endif %}
+           
             </div>
 
             <div class="col-3 col-6 col-sm-3 order-2 order-sm-3">
                 <div>
                     {% if item.product.sale %}
 
-                    <span class="text-decoration-line-through text-danger">${{ item.product.price }}</span>
-                    <span class="text-danger">${{ item.product.sale_price }} </span>
+                    <span class="text-decoration-line-through text-danger  font-monospace">${{ item.product.price }}</span>
+                    <span class="text-danger  font-monospace">${{ item.product.sale_price }} </span>
                     {% else %}
-                    <span class="">${{ item.product.price }}</span>
+                    <span class="font-monospace">${{ item.product.price }}</span>
                     {% endif %}
 
-                    <p class="mb-0">Quantity: {{ item.quantity }}</p>
-                    <p class="mb-0">Sub total ${{ item.product_total }} </p>
+                    <p class="mb-0 font-monospace">Quantity: {{ item.quantity }}</p>
+                    <p class="mb-0 font-monospace">Sub total ${{ item.product_total }} </p>
 
                 </div>
             </div>
@@ -128,7 +128,7 @@
                 <div>
 
                     {% if admin %}
-                    <form class="form" method="POST" action="{% url 'order_details' order %}">
+                    <form class="form" method="POST" action="{% url 'order_details' order.id %}">
                         {% csrf_token %}
                         <div class="form-group m-0">
                             <div class="input-group d-flex flex-column">
@@ -154,7 +154,7 @@
                     {% endif %}
 
                     {% if order.status != "Completed" and from_profile and order.status == "Shipped" %}
-                    <form class="form" method="POST" action="{% url 'order_history' order %}">
+                    <form class="form" method="POST" action="{% url 'order_history' order.id %}">
                         {% csrf_token %}
                         <div class="form-group m-0">
                             <div class="input-group ">
@@ -172,9 +172,9 @@
                 </div>
             </div>
 
-            <div class="col-6 col-md-3">
-                <p class="mb-0 h4">Total: ${{ order.total }}</p>
-                <p class="mb-0 h4">Delivery: ${{ order.delivery }}</p>
+            <div class="col-6 h4  fw-bolder font-monospace col-md-3">
+                <p class="mb-0">Total: ${{ order.total }}</p>
+                <p class="mb-0">Delivery: ${{ order.delivery }}</p>
             </div>
 
         </div>

@@ -37,9 +37,10 @@ class Product(models.Model):
     rating = models.DecimalField(
         max_digits=6, decimal_places=2,
         null=True, blank=True)
+    rating_counter = models.PositiveSmallIntegerField(default=0)
 
     def update_rating(self):
-        print('here')
+        self.rating_counter = self.rating_counter + 1
         self.rating = self.product_review.aggregate(Avg('rating'))['rating__avg'] or 0
         self.save()
 

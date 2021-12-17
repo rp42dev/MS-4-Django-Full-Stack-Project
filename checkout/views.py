@@ -89,14 +89,14 @@ def checkout_success(request, order_number):
     Handle successful checkouts
     """
     order = get_object_or_404(Order, order_number=order_number)
- 
+
     if request.user.is_authenticated:
 
         profile = UserAddress.objects.get(user=request.user)
         if not order.user_profile == profile:
             order.user_profile = profile
             order.save()
-        
+
     # friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
 
     if 'cart' in request.session:

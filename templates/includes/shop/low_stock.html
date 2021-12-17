@@ -15,7 +15,7 @@
             {% for item in out_of_stock %}
             <thead>
                 <tr>
-                    <th class="text-muted text-italic">Odrer Date: {{ item.name }}</th>
+                    <th class="text-muted font-monospace text-italic">Odrer Date: {{ item.name }}</th>
 
                 </tr>
             </thead>
@@ -43,8 +43,8 @@
                                             </a>
                                             {% endthumbnail %}
                                         </a></td>
-                                    <td>{{ item.sku}}</td>
-                                    <td>{{ item.item_count }}</td>
+                                    <td class="font-monospace">{{ item.sku}}</td>
+                                    <td class="font-monospace">{{ item.item_count }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -69,7 +69,7 @@
             {% for item in low_stock %}
             <thead>
                 <tr>
-                    <th class="text-muted text-italic">{{ item.name }}</th>
+                    <th class="text-muted font-monospace text-italic">{{ item.name }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -84,7 +84,7 @@
                                 </tr>
                             </thead>
                             <tbody class="border-bottom">
-                                <tr class="table-light">
+                                <tr class="table-light font-monospace">
                                     <td><a  href="{% url 'shop_item' item.id %}"
                                             title="{{ order.name }}">
                                             {% thumbnail item.image "80" as im %}

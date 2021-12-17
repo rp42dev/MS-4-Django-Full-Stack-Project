@@ -29,7 +29,7 @@
                     {% if item.sale %}
 
                     <div class="badge bg-danger text-white position-absolute w-auto" style="top: 0.5rem; right: 0.5rem">
-                        <h3 class="m-0 numbers-font">{% widthratio item.sale_price item.price 100 %}%</h3>
+                        <h3 class="m-0 numbers-font">Sale</h3>
                     </div>
                     {% endif %}
                 </div>
@@ -41,22 +41,22 @@
                 <div class="fs-5 mb-3">
                     {% if item.sale %}
                     <span class="text-decoration-line-through h3 text-danger numbers-font">${{ item.price }}</span>
-                    <span class="text-danger h3 numbers-font">${{ item.sale_price }} </span>
+                    <span class="text-danger h3 numbers-font fw-bolder">${{ item.sale_price }} </span>
                     {% else %}
-                    <span class="numbers-font h3">${{ item.price }} </span>
+                    <span class="numbers-font h3 fw-bolder">${{ item.price }} </span>
                     {% endif %}
                 </div>
                 <p>{{ item.raiting }}</p>
                 <p class="lead">{{ item.description }}</p>
 
                 {% if item.item_count == 0 %}
-                <p class="text-danger">{{ item.item_count }} Out of stock</p>
+                <p class="text-danger font-monospace">{{ item.item_count }} Out of stock</p>
                 {% elif item.item_count < 5  %}
-                <p class="text-danger">
+                <p class="text-danger font-monospace">
                     Only {{ item.item_count }} left in stock.
                 </p>
                 {% else %}
-                <p>{{ item.item_count }} items in stock</p>
+                <p class="font-monospace">{{ item.item_count }} items in stock</p>
                 {% endif %}
             </div>
 

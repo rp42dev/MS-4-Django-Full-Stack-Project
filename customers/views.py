@@ -71,14 +71,12 @@ def user_details(request):
 def order_history(request, order_number):
     """
     A view to order history
-    """        
-    order = ProductReview.objects.filter(order_id=order_number)
-    disabled = False
-    # disable reviews button if already reviewed in same shipping
-    for i in order:
-        if i.order_id and i.product.id:
-            disabled = True
-
+    """
+    order_reviews = ProductReview.objects.filter(order_id=order_number)
+    order_list = list()
+    for i in order_reviews:
+        order_list.append(i.product.id)
+        print(order_list)
     order = get_object_or_404(Order, order_number=order_number)
     profile = UserAddress.objects.get(user=request.user)
     if not order.user_profile == profile:
@@ -94,11 +92,11 @@ def order_history(request, order_number):
 
     template = 'checkout/checkout_success.html'
     context = {
+        'order_list': order_list,
         'order': order,
         'from_profile': True,
-        'disabled': disabled,
     }
-
+    
     return render(request, template, context)
 
 

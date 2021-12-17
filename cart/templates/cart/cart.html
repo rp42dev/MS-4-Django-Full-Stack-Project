@@ -33,8 +33,8 @@
                     </a>
 
                     {% if item.product.sale %}
-                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                        {% widthratio item.product.sale_price item.product.price 100 %}%
+                    <div class="badge bg-danger text-white font-monospace position-absolute" style="top: 0.5rem; right: 0.5rem">
+                        Sale
                     </div>
                     {% endif %}
                     {% endthumbnail %}
@@ -51,9 +51,9 @@
                         <!-- Sale badge-->
 
                         {% if item.product.sale %}
-                        <h1 class="text-danger numbers-font fw-bolder">${{ item.subtotal }} </h1>
+                        <h1 class="text-danger font-monospace fw-bolder">${{ item.subtotal }} </h1>
                         {% else %}
-                        <h1 class="numbers-font fw-bolder">${{ item.subtotal }}</h1>
+                        <h1 class="font-monospace fw-bolder">${{ item.subtotal }}</h1>
                         {% endif %}
 
                     </div>
@@ -91,7 +91,7 @@
 
     <div class="row">
         <div class="col-12 mt-5 text-center">
-            <h1 class="numbers-font fw-bold total"> ${{ grand_total|floatformat:2 }}</h1>
+            <h1 class="font-monospace fw-bold total"> ${{ grand_total|floatformat:2 }}</h1>
             <input type="hidden" name="grand_total">
             <a class="mt-4 btn btn-dark btn-xl text-uppercase flex-shrink-0" href="{% url 'checkout' %}">
                 Checkout Now

@@ -15,7 +15,7 @@
 
             <thead>
                 <tr>
-                    <th class="text-muted text-italic">{{ item.name }}</th>
+                    <th class="text-muted font-monospace text-italic">{{ item.name }}</th>
 
                 </tr>
             </thead>
@@ -33,7 +33,7 @@
                             </thead>
 
                             <tbody class="border-bottom">
-                                <tr class="table-light">
+                                <tr class="table-light font-monospace">
                                     <td><a  href="{% url 'shop_item' item.id %}"
                                             title="{{ order.name }}">
                                             {% thumbnail item.image "80" as im %}

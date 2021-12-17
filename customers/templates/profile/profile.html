@@ -45,7 +45,7 @@
 
                     <thead>
                         <tr>
-                            <th class="text-muted text-italic">Odrer Date: {{ order.date }}</th>
+                            <th class="font-monospace text-muted text-italic">Odrer Date: {{ order.date }}</th>
 
                         </tr>
                     </thead>
@@ -58,7 +58,6 @@
                                             <th>Odrer</th>
                                             <th>Total</th>
                                             <th>Status</th>
-                                            <th>Review</th>
                                         </tr>
                                     </thead>
 
@@ -68,10 +67,8 @@
                                                     title="{{ order.order_number }}">
                                                     ID: {{ order.id}}
                                                 </a></td>
-                                            <td>${{ order.total }}</td>
-                                            <td>{{ order.status }}</td>
-                                            <td>None</td>
-
+                                            <td class="font-monospace">${{ order.total }}</td>
+                                            <td class="font-monospace">{{ order.status }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

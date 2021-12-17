@@ -24,7 +24,7 @@ def review_view(request, item_id):
 
         # Prevent user leave multiple reviews in same shipping
         for i in order:
-            if i.order_id and i.product.id:
+            if i.order_id and i.product.id == item_id:
                 feedback_left = True
                 rating = i.rating
                 review = i.review
