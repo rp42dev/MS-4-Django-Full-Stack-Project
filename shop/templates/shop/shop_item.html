@@ -51,8 +51,9 @@
                 {% endfor %}
                 
                 <!-- incluse stars rating -->
+            
                 {% include 'includes/stars.html' %}
-
+               
                 <p class="lead">{{ item.description }}</p>
                 {% if availability == 0 %}
                 <p class="text-danger">{{ availability }} Out of stock</p>

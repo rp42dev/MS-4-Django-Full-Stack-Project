@@ -62,4 +62,20 @@ def review_view(request, item_id):
         'review': review,
         'date': date,
     }
-    return render(request, 'review/review.html', context)
+    return render(request, 'review/leave-review.html', context)
+
+
+def all_reviews(request, item_id):
+    """
+    A view to return the shop item detailed page
+    """
+    item = get_object_or_404(Product, pk=item_id)
+
+    reviews = ProductReview.objects.filter(product=item)
+
+    context = {
+        'item': item,
+        'reviews': reviews,
+    }
+    return render(request, 'review/reviews.html', context)
+

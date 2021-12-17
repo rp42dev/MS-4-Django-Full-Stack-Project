@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block page_header %}
+<!-- Header-->
+<header class="bg-black py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center">
+
+            <h1 class="display-4 text-white fw-bolder">Review</h1>
+
+        </div>
+    </div>
+</header>
+{% endblock %}
+{% block content %}
+
+<!-- Product Detail section-->
+<section class="page-section">
+    <div class="container pb-5 px-4 px-lg-5">
+        <div class="item row gx-4 gx-lg-5 align-items-center">
+
+            <div class="col-md-6 mb-4 mb-md-0">
+                <div class="position-relative">
+                    {% thumbnail item.image "500" as im %}
+                    <img class="card-img-top mb-md-0" src="{{ im.url }}" alt="{{ item.name }}" />
+                    {% endthumbnail %}
+                    {% if item.sale %}
+
+                    <div class="badge bg-danger text-white position-absolute w-auto" style="top: 0.5rem; right: 0.5rem">
+                        <h3 class="m-0 numbers-font">{% widthratio item.sale_price item.price 100 %}%</h3>
+                    </div>
+                    {% endif %}
+                </div>
+                <h3 class="fw-bolder text-capitalize">{{ item.name }}</h3>
+                <div class="small mb-1">SKU: {{ item.sku }}</div>
+                
+                {% include 'includes/stars.html' %}
+              
+                <div class="fs-5 mb-3">
+                    {% if item.sale %}
+                    <span class="text-decoration-line-through h3 text-danger numbers-font">${{ item.price }}</span>
+                    <span class="text-danger h3 numbers-font">${{ item.sale_price }} </span>
+                    {% else %}
+                    <span class="numbers-font h3">${{ item.price }} </span>
+                    {% endif %}
+                </div>
+                <p>{{ item.raiting }}</p>
+                <p class="lead">{{ item.description }}</p>
+
+                {% if item.item_count == 0 %}
+                <p class="text-danger">{{ item.item_count }} Out of stock</p>
+                {% elif item.item_count < 5  %}
+                <p class="text-danger">
+                    Only {{ item.item_count }} left in stock.
+                </p>
+                {% else %}
+                <p>{{ item.item_count }} items in stock</p>
+                {% endif %}
+            </div>
+
+            <hr class="d-md-none d-block">
+
+            <!-- If feedback was left return feedback instead -->
+            <div class="col-md-6 mt-5">
+
+                {% if feedback_left %}
+                <h5 class="">Your Review for</h5>
+                <p class="text-muted text-italic">{{ item.name }}</p>
+
+                <div class="">
+                    <p class="m-0">Review Date: {{ date }}</p>
+                    <p class="m-0">Order Number: {{ order_id }}</p>
+                    <div class="stars h1"
+                        style="background-image: linear-gradient(to right, orange, orange {% widthratio rating 5 100 %}%, gray {% widthratio rating 5 100 %}%, gray 100%)">
+                        ★★★★★
+                    </div>
+
+                    <div class="text bg-white p-2 shadow-sm">
+                        <p>{{ review }}</p>
+                    </div>
+                </div>
+
+                {% else %}
+                <!-- Product add to cart POST form -->
+                <h5 class="">Review</h5>
+                <p class="text-muted text-italic">{{ item.name }}</p>
+                <div class="d-flex">
+                    <!-- Reviews form-->
+                    {% include 'includes/forms/review-form.html' %}
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block postloadjs %}
+<script>
+    var form = document.querySelector('#review-submit')
+    var star = document.querySelector('#star')
+    console.log(star.value)
+    form.addEventListener('submit', function (event) {
+        input.classList.remove('is-invalid')
+        input.classList.remove('is-valid')
+        if (star.value <= 0) {
+            print(star.value)
+            event.preventDefault()
+            event.stopPropagation()
+            star.nextSibling.classList.add('is-invalid')
+        }
+
+        form.classList.add('was-validated')
+    }, false)
+</script>
+<script src="{% static 'js/review.js' %}"></script>
+{% endblock %}

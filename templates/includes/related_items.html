@@ -3,10 +3,10 @@
 
 <!-- Related products -->
 
-<div class="row  gx-2 gx-sm-4 scroll-wrapper flex-nowrap ">
+<div class="row mb-0 gx-2 gx-sm-4 shadow-sm scroll-wrapper flex-nowrap ">
     {% for relate in related %}
     {% if relate.id != item.id and relate.item_count != 0 %}
-    <div class="col-6 col-sm-4 col-lg-3 mb-2 mb-sm-4">
+    <div class="col-6 col-sm-4 col-lg-3 mb-2">
         <div class="card shadow-sm rounded-3 pt-2 justify-content-end h-100">
             <!-- Sale badge-->
             {% if relate.sale %}
@@ -32,21 +32,22 @@
                     <div class="d-flex justify-content-center small text-warning mb-2">
                         <!-- incluse stars rating -->
 
-                        <div>
-                            {% if item.product.rating %}
-                            <div class="stars h4 text-warning"
-                                style="background-image: linear-gradient(to right, orange, orange 
-                                    {% widthratio relate.product.rating 5 100 %}%,
-                                    gray {% widthratio relate.product.rating 5 100 %}%, gray 100%)">
-                                ★★★★★
-                            </div>
-                            {% else %}
-                            <div class="stars h4 text-warning"
-                                style="background-image: linear-gradient(to right, gray, gray)">
-                                ★★★★★
-                            </div>
+                        <div>  
+                         
+                            {% if relate.rating %}
 
+                                <div class="stars h4" style="background-image: linear-gradient(to right, orange, orange 
+                                    {% widthratio relate.rating 5 100 %}%,
+                                    gray {% widthratio relate.rating 5 100 %}%, gray 100%)">
+                                    ★★★★★
+                                </div>
+                                {% else %}
+                                <div class="stars h4" style="background-image: linear-gradient(to right, gray, gray)">
+                                    ★★★★★
+                                </div>
+                           
                             {% endif %}
+                           
                         </div>
 
                     </div>

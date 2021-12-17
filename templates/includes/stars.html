@@ -1,9 +1,11 @@
 <div>
     {% if item.rating %}
+    <a href="{% url 'all_reviews' item.id %}">
     <div class="stars h4 text-warning"
         style="background-image: linear-gradient(to right, orange, orange {% widthratio item.rating 5 100 %}%, gray {% widthratio item.rating 5 100 %}%, gray 100%)">
         ★★★★★
     </div>
+    </a>
     {% else %}
     <div class="stars h4 text-warning" style="background-image: linear-gradient(to right, gray, gray)">
         ★★★★★
