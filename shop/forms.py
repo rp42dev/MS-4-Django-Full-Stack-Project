@@ -7,7 +7,7 @@ class ItemForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        # exclude = ('rating', 'rating_counter',)
+        exclude = ('rating', 'rating_counter',)
         fields = '__all__'
 
     image = forms.ImageField(label='image')

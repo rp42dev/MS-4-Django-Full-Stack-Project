@@ -1,5 +1,13 @@
 <div class="star_container">
-    {% if item.rating %}
+    {% if product.rating %}
+    <div class="my-auto text-primary font-monospace p-0 me-2">{{ product.rating_counter }} Reviews</div>   
+    <a href="{% url 'all_reviews' product.id %}">
+    <div class="stars h4"
+        style="background-image: linear-gradient(to right, orange, orange {% widthratio product.rating 5 100 %}%, gray {% widthratio product.rating 5 100 %}%, gray 100%)">
+        ★★★★★
+    </div>
+    </a>
+    {% elif item.rating %}
     <div class="my-auto text-primary font-monospace p-0 me-2">{{ item.rating_counter }} Reviews</div>   
     <a href="{% url 'all_reviews' item.id %}">
     <div class="stars h4"
@@ -8,10 +16,9 @@
     </div>
     </a>
     {% else %}
-    <div class="my-auto font-monospace p-0 me-2">No Reviews yet</div>   
+    <div class="my-auto font-monospace text-primary p-0 me-2">No Reviews yet</div>   
     <div class="stars h4" style="background-image: linear-gradient(to right, gray, gray)">
         ★★★★★
     </div>
-
     {% endif %}
 </div>

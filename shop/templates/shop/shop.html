@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load thumbnail %}
 
 <!-- Shop search and general navigation -->
 {% block extr_nav %}
@@ -16,7 +15,7 @@
             </div>
         </form>
     </li>
-    {% include 'includes/shop_nav.html' %}
+    {% include 'includes/shop/shop-nav.html' %}
 
 </ul>
 
@@ -39,7 +38,8 @@
         </div>
 
         <div>
-            {% include 'includes/shop_nav.html' %}
+            <!-- Include Shop Navigation -->
+            {% include 'includes/shop/shop-nav.html' %}
         </div>
 
     </div>
@@ -65,55 +65,13 @@
     <section class="page-section">
         <div class="container mt-2 mt-sm-4 px-2 px-sm-4 px-lg-5">
             <div class="row gx-2 gx-sm-4 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                {% for item in products %}
-                {% if item.item_count != 0 or request.user.is_superuser %}
-                <div class="col mb-2 mb-sm-4">
-                    <div class="card shadow-sm rounded-3 pt-2 justify-content-end h-100">
-                        <!-- Sale badge-->
-                        {% if item.sale %}
-                        <div class="badge bg-danger p-2 text-white position-absolute p-2 font-monospace"
-                            style="top: 0.5rem; right: 0.5rem">
-                            Sale
-                        </div>
-                        {% endif %}
-                        <!-- Product image-->
-
-                        <div class="h-100 d-flex align-items-center">
-                            {% thumbnail item.image "250" as im %}
-                            <img class="card-img-top" src="{{ im.url }}" alt="..." />
-                            {% endthumbnail %}
-                        </div>
-                        <a class="card-img-overlay" href="{% url 'shop_item' item.id %}">
-                        </a>
-                        <!-- Product details-->
-                        <div class="card-body p-2">
-                            <div class="text-center align-items-end">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder text-capitalize">{{ item.name }}</h5>
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        
-                                         <!-- incluse stars rating -->
-                                     {% include 'includes/stars.html' %}
-                                                      
-                                    </div>   
-                                <!-- Product price-->
-                                {% if item.sale %}
-                                <span
-                                    class="text-decoration-line-through text-danger font-monospace">${{ item.price }}</span>
-                                <span class="text-danger font-monospace fw-bolder">${{ item.sale_price }} </span>
-                                {% else %}
-                                <span class="font-monospace fw-bolder">${{ item.price }} </span>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer pt-0 border-top-0 bg-transparent justify-self-end">
-                        </div>
-                    </div>
-                </div>
+                {% for product in products %}
+                {% if product.item_count != 0 or request.user.is_superuser %}
+                {% include 'includes/shop/item-card.html' %}
                 {% endif %}
                 {% endfor %}
-            </div>
+            </div>  
         </div>
     </section>
     {% endblock %}
+

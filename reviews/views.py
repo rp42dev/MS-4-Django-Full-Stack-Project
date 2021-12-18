@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.contrib import messages
-from shop.models import Product
 from .models import ProductReview
+from shop.models import Product
 from .forms import ReviewForm
 
 

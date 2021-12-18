@@ -36,30 +36,26 @@
 
                 <div class="fs-5 mb-3">
                     {% if item.sale %}
-                    <span class="text-decoration-line-through h3 text-danger font-monospace">${{ item.price }}</span>
+                    <span class="text-decoration-line-through h3 font-monospace">${{ item.price }}</span>
                     <span class="text-danger h3 font-monospace">${{ item.sale_price }} </span>
                     {% else %}
                     <span class="font-monospace h3">${{ item.price }} </span>
                     {% endif %}
                 </div>
+
+                <!-- Product reviews count-->
                 {% for i in review_items %}
                 {% if item.pk == i.product.pk %}
                 <span class="font-monospace"> {{ item_context.quantity }}</span>
-               
                 {% endif %}
-
                 {% endfor %}
 
-                <!-- incluse stars rating -->
-                
-                 
+                <!-- include stars rating -->
                 <div>{% include 'includes/stars.html' %}</div>
-                
-                
-               
+
                 <p class="lead">{{ item.description }}</p>
                 {% if availability == 0 %}
-                <p class="text-danger">{{ availability }} Out of stock</p>
+                <p class="text-danger font-monospace">{{ availability }} Out of stock</p>
                 {% elif availability < 5  %}
                 <p class="text-danger font-monospace">
                     Only {{ availability }} left in stock.
@@ -67,77 +63,32 @@
                 {% else %}
                 <p class="font-monospace">{{ availability }} items in stock</p>
                 {% endif %}
+
                 <!-- Product add to cart POST form -->
-                <div class="d-flex">
-
-                    <form id="ad-to-cart" class="form" action="{% url 'add_to_cart' item.id %}" method="POST"
-                        novalidate>
-                        {% csrf_token %}
-
-                        <input type="hidden" name="redirect_url" value="{{ request.get_full_path }}">
-                        <input type="hidden" name="item_id" value="{{ item.id }}">
-                        <!-- Phone number input-->
-                        <input id="click-this" class="quantity text-center me-3 font-monospace" name="quantity" id="inputQuantity"
-                            type="number" min="1" max="{{ availability }}" value="1" style="max-width: 3rem" />
-
-                        <button
-                            class="btn btn-dark btn-xl text-uppercase flex-shrink-0 {% if availability == 0 %}disabled{% endif %}"
-                            type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Add to cart
-                        </button>
-
-                        <div class="invalid-feedback">{{ availability }} items available</div>
-                        {% if request.user.is_superuser  %}
-                        <hr class="mt-5">
-                        <p class="text-muted text-italic">Update product quantity/details/discounts/etc...</p>
-
-                        <div class="col mt-4">
-                            <a class="btn btn-dark btn-sm flex-shrink-0" href="{% url 'edit_item' item.id %}">
-                                <i class="bi-cart-fill me-1"></i>
-                                Update Product
-                            </a>
-                        </div>
-
-                        {% endif %}
-                    </form>
-                </div>
+                {% include 'includes/forms/add-to-cart-form.html' %}
             </div>
         </div>
     </div>
 
-    <!-- Related products -->
+    <!-- Include Related products -->
     <div class="container pt-5 px-2 px-sm-4 px-lg-5">
-
         <h2 class="fw-bolder mb-4 text-capitalize">More {{ item.style }} hats</h2>
+        <div class="row gx-2 gx-sm-4 h-25 shadow-sm scroll-wrapper flex-nowrap ">
+            {% for product in related %}
+            {% include 'includes/shop/item-card.html' %}
+            {% endfor %}
+            <script>
+                const scrolling = document.querySelector(".scroll-wrapper");
+                scrolling.scrollLeft = 130
+                scrolling.addEventListener("wheel", (evt) => {
+                    evt.preventDefault();
+                    scrolling.scrollLeft += evt.deltaY;
+                });
+            </script>
+        </div>
 
-        {% include 'includes/related_items.html' %}
     </div>
+
 </section>
 
-<!-- From bootstrap.com -->
-<script>
-    (function () {
-        'use strict'
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var formToValidate = document.getElementById('ad-to-cart')
-        var num = document.getElementById('click-this')
-
-        num.addEventListener('click', function () {
-            formToValidate.classList.add('was-validated');
-            var forms = document.querySelectorAll('.was-validated')
-            // Loop over them and prevent submission
-            Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
-                        form.classList.add('was-validated')
-                    }, false)
-                })
-        })
-    })()
-</script>
 {% endblock %}
