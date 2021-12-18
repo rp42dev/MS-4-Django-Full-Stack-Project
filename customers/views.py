@@ -21,15 +21,21 @@ from reviews.models import ProductReview
 @login_required
 def customers(request):
     """A view to return the user profile page"""
+
+    all_orders = False
     profile = get_object_or_404(UserAddress, user=request.user)
 
     if profile.orders:
-        orders = profile.orders.all()
+        if 'all' in request.GET:
+            orders = profile.orders.all()
+            all_orders = True
+        else:
+            orders = profile.orders.all()[:10]
     else:
         orders = False
 
     context = {
-
+            'all': all_orders,
             'orders': orders,
         }
 
@@ -74,16 +80,19 @@ def order_history(request, order_number):
     """
     order_reviews = ProductReview.objects.filter(order_id=order_number)
     order_list = list()
+
     for i in order_reviews:
         order_list.append(i.product.id)
+
     order = get_object_or_404(Order, order_number=order_number)
     profile = UserAddress.objects.get(user=request.user)
+
     if not order.user_profile == profile:
         messages.error(request,  'Only order owner can view this page')
         return redirect(reverse('home'))
 
-    if request.POST:
-        order.status = Order.COMPLETED
+    if 'completed' in request.POST:
+        order.status = request.POST['completed']
         order.save()
         messages.success(
             request,  f'Thanks for confirming\

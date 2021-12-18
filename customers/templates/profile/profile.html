@@ -78,9 +78,14 @@
                     {% endfor %}
                     {% endif %}
                 </table>
-
+            
             </div>
+
         </div>
+            {% if not all %}
+            <p class="text-muted text-italic">Latest 10 orders are shown</p>
+            <a href="{% url 'user' %}?all=True">See all my order history</a>
+            {% endif %}
     </div>
 </section>
 
