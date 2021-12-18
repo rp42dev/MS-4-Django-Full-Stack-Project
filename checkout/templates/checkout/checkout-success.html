@@ -61,7 +61,8 @@
                 </a>
 
                 {% if item.product.sale %}
-                <div class="badge bg-danger text-white position-absolute font-monospace" style="top: 0.5rem; right: 0.5rem">
+                <div class="badge bg-danger text-white position-absolute font-monospace"
+                    style="top: 0.5rem; right: 0.5rem">
                     Sale
                 </div>
                 {% endif %}
@@ -93,21 +94,25 @@
                     {% endif %}
 
                 </div>
-                
+
+                {% if order.user_profile and not admin %}
                 {% if not item.product.id in order_list and not admin %}
                 <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.id }}">Write a review</a></p>
-               
                 {% else %}
                 <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.id }}">Wiew the review</a></p>
-                 {% endif %}
-           
+                {% endif %}
+                {% endif %}
+                {% if admin and item.product.id in order_list %}
+                <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.id }}">Wiew the review</a></p>
+                {% endif %}
             </div>
 
             <div class="col-3 col-6 col-sm-3 order-2 order-sm-3">
                 <div>
                     {% if item.product.sale %}
 
-                    <span class="text-decoration-line-through text-danger  font-monospace">${{ item.product.price }}</span>
+                    <span
+                        class="text-decoration-line-through text-danger  font-monospace">${{ item.product.price }}</span>
                     <span class="text-danger  font-monospace">${{ item.product.sale_price }} </span>
                     {% else %}
                     <span class="font-monospace">${{ item.product.price }}</span>

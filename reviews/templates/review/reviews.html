@@ -60,6 +60,8 @@
                 {% else %}
                 <p class="font-monospace">{{ item.item_count }} items in stock</p>
                 {% endif %}
+                  <!-- Product add to cart POST form -->
+                {% include 'includes/forms/add-to-cart-form.html' %}
             </div>
 
             <hr class="d-md-none d-block">

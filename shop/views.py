@@ -25,6 +25,7 @@ from django.db.models import F
 
 from .models import Product, Category
 from .forms import ItemForm, OrderStatusForm
+from reviews.models import ProductReview
 from checkout.models import Order
 
 
@@ -228,14 +229,27 @@ def admin_view(request):
         messages.error(request, 'Sorry only store owners can do that')
         return redirect(reverse('home'))
     else:
-        low_stock = Product.objects.filter(
+        products = Product.objects.all()
+        low_stock = products.filter(
             item_count__lte=5).exclude(item_count=0)
-        out_of_stock = Product.objects.filter(item_count=0)
-        sale = Product.objects.filter(sale=True)
-        orders = Order.objects.all()
+        out_of_stock = products.filter(item_count=0)
+        sale = products.filter(sale=True)
+
+        orders = Order.objects.all().exclude(status='Completed')
+
+        out_of_stock_count = out_of_stock.count()
+        low_stock_count = low_stock.count()
+        sale_count = sale.count()
+        orders_count = orders.count()
+        total_low_stock = out_of_stock_count + low_stock_count
 
         context = {
+            'out_of_stock_count': out_of_stock_count,
+            'low_stock_count': low_stock_count,
+            'total_low_stock': total_low_stock,
             'out_of_stock': out_of_stock,
+            'orders_count': orders_count,
+            'sale_count': sale_count,
             'low_stock': low_stock,
             'orders': orders,
             'sale': sale,
@@ -253,6 +267,11 @@ def order_details(request, order_number):
         return redirect(reverse('home'))
     else:
         order = get_object_or_404(Order, order_number=order_number)
+        order_reviews = ProductReview.objects.filter(order_id=order_number)
+        order_list = list()
+        for i in order_reviews:
+            order_list.append(i.product.id)
+            print(order_list)
         form = OrderStatusForm(instance=order)
         if request.POST:
             form = OrderStatusForm(request.POST, instance=order)
@@ -260,8 +279,9 @@ def order_details(request, order_number):
                 form.save()
             messages.success(request, 'Successfully updated order Status!')
 
-        template = 'checkout/checkout_success.html'
+        template = 'checkout/checkout-success.html'
         context = {
+            'order_list': order_list,
             'order': order,
             'admin': True,
             'form': form,

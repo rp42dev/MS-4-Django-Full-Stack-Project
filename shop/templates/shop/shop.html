@@ -63,8 +63,8 @@
 
     <!-- Section-->
     <section class="page-section">
-        <div class="container mt-2 mt-sm-4 px-2 px-sm-4 px-lg-5">
-            <div class="row gx-2 gx-sm-4 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div class="container mt-2 mt-sm-4 px-md-2">
+            <div class="row gx-2 gx-sm-3 gx-md-4 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 {% for product in products %}
                 {% if product.item_count != 0 or request.user.is_superuser %}
                 {% include 'includes/shop/item-card.html' %}

@@ -8,7 +8,7 @@
   <div class="container px-4 px-lg-5 my-5">
     <div class="text-center">
 
-      <h1 class="display-4 text-white fw-bolder">Orders</h1>
+      <h1 class="display-4 text-white fw-bolder">Administration</h1>
 
     </div>
   </div>
@@ -25,13 +25,22 @@
       <a class="w-auto btn btn-dark ms-auto" href="{% url 'add_item' %}">Add New Product </a>
     </div>
 
+    <div class="px-2">
+      <h5 class="text-capitalize">Manage</h5>
+      <p class="text-muted text-italic">Recent order status - Shipping | Low stock Items | Store product discounts</p>
+    </div>
     <!-- Manage orders -->
     <div class="accordion mt-5 d-grid gap-3" id="accordionOne">
       <div class="accordion-item">
         <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          <button class="accordion-button positin-relative collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
             Orders
+            <span
+              class="cart-pill text-white position-absolute top-0 start-0 translate-middle font-monospace bg-success {% if low_stock_count != 0 %}bg-danger{% endif %} rounded-circle">
+              {{ orders_count }}
+              <span class="visually-hidden">Order items</span>
+            </span>
           </button>
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
@@ -45,9 +54,19 @@
 
       <div class="accordion-item">
         <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          <button class="accordion-button position-relative collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
             Stock
+            <span
+              class="cart-pill text-white position-absolute top-0 start-0 translate-middle font-monospace bg-success {% if out_of_stock_count != 0 %}bg-danger{% endif %} rounded-circle">
+              {{ out_of_stock_count }}
+              <span class="visually-hidden">Stock low items</span>
+            </span>
+            <span
+            class="cart-pill text-white position-absolute top-0 start-10  ms-1 translate-middle font-monospace bg-success {% if low_stock_count != 0 %}bg-warning{% endif %} rounded-circle">
+            {{ low_stock_count }}
+            <span class="visually-hidden">Stock low items</span>
+          </span>
           </button>
         </h2>
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
@@ -61,10 +80,18 @@
 
       <div class="accordion-item">
         <h2 class="accordion-header">
-          <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse"
+
+          <button class="accordion-button position-relative collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
             Discounts
+            <span
+              class="cart-pill text-white position-absolute top-0 start-0 translate-middle font-monospace bg-success {% if sale_coun != 0 %}bg-warning{% endif %} rounded-circle">
+              {{ sale_count }}
+              <span class="visually-hidden">Discounts items</span>
+            </span>
           </button>
+
+          </span>
         </h2>
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
           data-bs-parent="#accordionThree">

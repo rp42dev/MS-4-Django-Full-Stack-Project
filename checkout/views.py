@@ -97,15 +97,13 @@ def checkout_success(request, order_number):
             order.user_profile = profile
             order.save()
 
-    # friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
-
     if 'cart' in request.session:
         del request.session['cart']
     messages.success(
         request, f'Order successfully processed! \
         Your order number is {order}.')
     print(request.user)
-    template = 'checkout/checkout_success.html'
+    template = 'checkout/checkout-success.html'
     context = {
         'order': order,
     }

@@ -76,7 +76,6 @@ def order_history(request, order_number):
     order_list = list()
     for i in order_reviews:
         order_list.append(i.product.id)
-        print(order_list)
     order = get_object_or_404(Order, order_number=order_number)
     profile = UserAddress.objects.get(user=request.user)
     if not order.user_profile == profile:
@@ -90,7 +89,7 @@ def order_history(request, order_number):
             request,  f'Thanks for confirming\
             the receipt of the order #: {order_number}.')
 
-    template = 'checkout/checkout_success.html'
+    template = 'checkout/checkout-success.html'
     context = {
         'order_list': order_list,
         'order': order,

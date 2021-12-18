@@ -22,7 +22,7 @@
         <div class="item row gx-4 gx-lg-5 align-items-center">
 
             <div class="col-md-6 mb-4 mb-md-0">
-                <div class="position-relative">
+                <div class="position-relative mb-3">
                     {% thumbnail item.image "500" as im %}
                     <img class="card-img-top mb-md-0" src="{{ im.url }}" alt="{{ item.name }}" />
                     {% endthumbnail %}
@@ -58,6 +58,9 @@
                 {% else %}
                 <p class="font-monospace">{{ item.item_count }} items in stock</p>
                 {% endif %}
+
+                 <!-- Product add to cart POST form -->
+                 {% include 'includes/forms/add-to-cart-form.html' %}
             </div>
 
             <hr class="d-md-none d-block">

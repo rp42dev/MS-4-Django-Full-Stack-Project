@@ -54,12 +54,12 @@ def review_view(request, item_id):
 
     form = ReviewForm()
     context = {
-        'form': form,
-        'item': item,
-        'order_id': order_id,
         'feedback_left': feedback_left,
+        'order_id': order_id,
         'rating': rating,
         'review': review,
+        'form': form,
+        'item': item,
         'date': date,
     }
     return render(request, 'review/leave-review.html', context)
@@ -70,7 +70,6 @@ def all_reviews(request, item_id):
     A view to return the shop item detailed page
     """
     item = get_object_or_404(Product, pk=item_id)
-
     reviews = ProductReview.objects.filter(product=item)
 
     context = {
