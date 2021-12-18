@@ -2,28 +2,24 @@ from django.contrib import admin
 from .models import Order, OrderLine
 
 
-# class OrderLineAdminInline(admin.TabularInline):
-#     model = OrderLine
-#     readonly_fields = ('item_total',)
+class OrderLineAdminInline(admin.TabularInline):
+    model = OrderLine
 
 
-# class OrderAdmin(admin.ModelAdmin):
-#     inlines = (OrderLineAdminInline,)
+class OrderAdmin(admin.ModelAdmin):
+    inlines = (OrderLineAdminInline,)
 
-#     readonly_fields = ('user', 'order_number', 'date',
-#                        'delivery_cost', 'order_total',
-#                        'grand_total')
+    readonly_fields = ('user_profile', 'order_number', 'date', 'items')
 
-#     fields = ('order_number', 'user', 'full_name', 'email',
-#               'address_line_1', 'address_line_2', 
-#               'town','postcode', 'county', 'country', 'date',
-#               'delivery_cost','order_total', 'grand_total', 
-#               'status')
+    fields = ('order_number', 'user_profile', 'email', 'shipping_name',
+              'shipping_address_1', 'shipping_address_2', 
+              'shipping_town', 'shipping_county', 'shipping_postcode', 
+              'shipping_country', 'date', 'items', 'delivery',
+              'total', 'status')
 
-#     list_display = ('order_number', 'date', 'full_name',
-#                     'order_total', 'delivery_cost',
-#                     'grand_total', 'status')
+    list_display = ('order_number', 'date', 'shipping_name',
+                    'total', 'delivery', 'status')
 
-#     ordering = ('-date',)
+    ordering = ('-date',)
 
-# admin.site.register(Order, OrderAdmin)
+admin.site.register(Order, OrderAdmin)
