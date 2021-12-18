@@ -76,11 +76,13 @@
                                         Price (high to low)
                                 </a>
                         </li>
-                        <li><a class="dropdown-item {% if sortkey == 'rating_asc' %}orange{% endif %}" href="#">
-                                        Rating (low to high){{ sort }}
+                        <li><a class="dropdown-item {% if sortkey == 'rating_asc' %}orange{% endif %}" 
+                                href="{% url 'shop' %}?category={{ cat }}&style={{ style }}&sort=rating_asc">
+                                        Rating (low to high)
                                 </a>
                         </li>
-                        <li><a class="dropdown-item {% if sortkey == 'rating_desc' %}orange{% endif %}" href="#">
+                        <li><a class="dropdown-item {% if sortkey == 'rating_desc' %}orange{% endif %}" 
+                                href="{% url 'shop' %}?category={{ cat }}&style={{ style }}&sort=rating_desc">
                                         Rating (high to low)
                                 </a>
                         </li>

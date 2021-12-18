@@ -93,6 +93,13 @@ def shop(request):
             elif sortkey == 'price_desc':
                 sort_name = 'Price (H-L)'
                 products = products.order_by('-price')
+            elif sortkey == 'rating_asc':
+                sort_name = 'rating (L-H)'
+                products = products.order_by('rating')
+            elif sortkey == 'rating_desc':
+                sort_name = 'rating (H-L)'
+                products = products.order_by('-rating')
+
 
     context = {
         'style_list': style_list,
