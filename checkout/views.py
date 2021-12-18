@@ -61,7 +61,7 @@ def checkout(request):
         try:
             address = UserAddress.objects.get(user=request.user)
             form = ShippingForm(initial={
-                'shipping_name': address.full_name,
+                'shipping_name': f'{address.user.first_name} {address.user.last_name}',
                 'shipping_address_1': address.address_1,
                 'shipping_address_2': address.address_2,
                 'shipping_town': address.town,
