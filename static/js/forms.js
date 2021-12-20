@@ -1,6 +1,12 @@
 let FileInputs = document.querySelectorAll('input[type=file]')
+let SellectInputs = document.querySelectorAll('select')
+
 Array.prototype.filter.call(FileInputs, function (input) {
     input.classList.add('text-gray')
+}, false);
+
+Array.prototype.filter.call(SellectInputs, function (input) {
+    input.classList.add('form-select')
 }, false);
 
 
@@ -8,14 +14,11 @@ Array.prototype.filter.call(FileInputs, function (input) {
     'use strict'
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     let forms = document.querySelectorAll('form')
-    
-
     // Loop over them and prevent submission
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity()) {
-                    
                     event.preventDefault()
                     event.stopPropagation()
                     FormTriggerOnSubmit()
@@ -31,7 +34,8 @@ function FormTrigger() {
     let inputs = document.querySelectorAll('.form-control')
     // Loop over each input and watch blue event
     let validation = Array.prototype.filter.call(inputs, function (input) {
-        // Image input gray placeholder 
+        // Image input gray placeholder
+        if (input)
         input.addEventListener('blur', function (event) {
             // reset
             input.classList.remove('is-invalid')

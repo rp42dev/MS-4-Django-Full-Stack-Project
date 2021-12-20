@@ -56,32 +56,32 @@
                                 class="fas fa-sort-down"></i>
                 </div>
                 <ul class="dropdown-menu" aria-labelledby="sort">
-                        <li><a class="dropdown-item {% if sortkey == 'name_asc' %}orange{% endif %}"
+                        <li><a class="dropdown-item fw-bolder {% if sortkey == 'name_asc' %}orange{% endif %}"
                                         href="{% url 'shop' %}?category={{ cat }}&style={{ style }}&sort=name_asc">
                                         Name (A-Z)
                                 </a>
                         </li>
-                        <li><a class="dropdown-item {% if sortkey == 'name_desc' %}orange{% endif %}"
+                        <li><a class="dropdown-item fw-bolder {% if sortkey == 'name_desc' %}orange{% endif %}"
                                         href="{% url 'shop' %}?category={{ cat }}&style={{ style }}&sort=name_desc">
                                         Name (Z-A)
                                 </a>
                         </li>
-                        <li><a class="dropdown-item {% if sortkey == 'price_asc'  %}orange{% endif %}"
+                        <li><a class="dropdown-item fw-bolder {% if sortkey == 'price_asc'  %}orange{% endif %}"
                                         href="{% url 'shop' %}?category={{ cat }}&style={{ style }}&sort=price_asc">
                                         Price (low to high)
                                 </a>
                         </li>
-                        <li><a class="dropdown-item {% if sortkey == 'price_desc' %}orange{% endif %}"
+                        <li><a class="dropdown-item fw-bolder {% if sortkey == 'price_desc' %}orange{% endif %}"
                                         href="{% url 'shop' %}?category={{ cat }}&style={{ style }}&sort=price_desc">
                                         Price (high to low)
                                 </a>
                         </li>
-                        <li><a class="dropdown-item {% if sortkey == 'rating_asc' %}orange{% endif %}" 
+                        <li><a class="dropdown-item fw-bolder {% if sortkey == 'rating_asc' %}orange{% endif %}" 
                                 href="{% url 'shop' %}?category={{ cat }}&style={{ style }}&sort=rating_asc">
                                         Rating (low to high)
                                 </a>
                         </li>
-                        <li><a class="dropdown-item {% if sortkey == 'rating_desc' %}orange{% endif %}" 
+                        <li><a class="dropdown-item fw-bolder {% if sortkey == 'rating_desc' %}orange{% endif %}" 
                                 href="{% url 'shop' %}?category={{ cat }}&style={{ style }}&sort=rating_desc">
                                         Rating (high to low)
                                 </a>
