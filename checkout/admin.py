@@ -17,7 +17,7 @@ class OrderAdmin(admin.ModelAdmin):
               'shipping_country', 'date', 'items', 'delivery',
               'total', 'status')
 
-    list_display = ('order_number', 'date', 'shipping_name',
+    list_display = ('id', 'date', 'shipping_name',
                     'total', 'delivery', 'status')
 
     ordering = ('-date',)

@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from checkout.models import Product
+from checkout.models import Order
 
 
 class ProductReview(models.Model):
     CHOICES = [(i, i) for i in range(6)]
     user_profile = models.ForeignKey(
-        User, on_delete=models.DO_NOTHING,
+        User, on_delete=models.CASCADE,
         related_name='user_review')
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE,
@@ -14,6 +15,10 @@ class ProductReview(models.Model):
     rating = models.PositiveSmallIntegerField(
         default=5, choices=CHOICES)
     review = models.TextField(max_length=500)
-    order_id = models.PositiveSmallIntegerField(
-        editable=False, null=True)
+    order = models.ForeignKey(
+        Order, on_delete=models.CASCADE,
+        related_name='order_review', null=True)
     date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Review for product SKU {self.product.sku} order id {self.order.id}'

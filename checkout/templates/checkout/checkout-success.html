@@ -8,7 +8,7 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center">
 
-            <h1 class="display-4 text-white fw-bolder">Order Summary</h1>
+            <h1 class="display-4 fw-bolder">Order Summary</h1>
 
         </div>
     </div>
@@ -23,7 +23,7 @@
         <!-- Project One -->
         <div class="col-12 text-uppercase text-center h4 text-warning">Thank You</div>
         <div class="row m-0 p-0">
-            <p class="px-0 fw-bolder text-uppercase font-monospace">Order #: {{ order.order_number }}</p>
+            <p class="px-0 fw-bolder text-uppercase font-monospace">Order #: {{ order.id }}</p>
             <hr class="p-1">
 
             <div class="col-md-6">
@@ -97,13 +97,13 @@
 
                 {% if order.user_profile and not admin %}
                 {% if not item.product.id in order_list and not admin %}
-                <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.id }}">Write a review</a></p>
+                <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.order_number }}">Write a review</a></p>
                 {% else %}
-                <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.id }}">Wiew the review</a></p>
+                <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.order_number }}">Wiew the review</a></p>
                 {% endif %}
                 {% endif %}
                 {% if admin and item.product.id in order_list %}
-                <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.id }}">Wiew the review</a></p>
+                <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.order_number }}">Wiew the review</a></p>
                 {% endif %}
             </div>
 
@@ -133,7 +133,7 @@
                 <div>
 
                     {% if admin %}
-                    <form class="form" method="POST" action="{% url 'order_details' order.id %}">
+                    <form class="form" method="POST" action="{% url 'order_details' order.order_number %}">
                         {% csrf_token %}
                         <div class="form-group m-0">
                             <div class="input-group d-flex flex-column">
@@ -159,7 +159,7 @@
                     {% endif %}
 
                     {% if order.status != "Completed" and from_profile and order.status == "Shipped" %}
-                    <form class="form" method="POST" action="{% url 'order_history' order.id %}">
+                    <form class="form" method="POST" action="{% url 'order_history' order.order_number %}">
                         {% csrf_token %}
                         <div class="form-group m-0">
                             <div class="input-group ">
@@ -173,7 +173,7 @@
                         </div>
                     </form>
                     {% endif %}
-
+                    <a href="{% url 'support' order.order_number %}">Porblem ?</a>
                 </div>
             </div>
 

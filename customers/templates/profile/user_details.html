@@ -11,7 +11,7 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center">
 
-            <h1 class="display-4 text-white fw-bolder">Account Details</h1>
+            <h1 class="display-4 fw-bolder">Account Details</h1>
 
         </div>
     </div>
@@ -38,7 +38,7 @@
 
         <p class="text-danger mt-5 border-top border-danger text-italic">Permanently Delete Account</p>
 
-        <form class="form" action="{% url 'user_delete' %}" method="POST" novalidate>
+        <form class="form delete" action="{% url 'user_delete' %}" method="POST" novalidate>
             {% csrf_token %}
             <input id="myCheck" class="form-check-input" type="checkbox" name="checkbox" id="invalidCheck"
                 onchange="check(this)" required>

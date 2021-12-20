@@ -21,20 +21,24 @@ from reviews.models import ProductReview
 @login_required
 def customers(request):
     """A view to return the user profile page"""
-
+    order_count = None
     all_orders = False
-    profile = get_object_or_404(UserAddress, user=request.user)
-
+    
+    profile = request.user
+    reviews = request.user.user_review.all()
     if profile.orders:
         if 'all' in request.GET:
             orders = profile.orders.all()
             all_orders = True
         else:
             orders = profile.orders.all()[:10]
+            order_count = orders.count()
     else:
         orders = False
 
     context = {
+            'reviews': reviews,
+            'order_count': order_count,
             'all': all_orders,
             'orders': orders,
         }
@@ -47,12 +51,12 @@ def user_details(request):
     """A view to return the user profile details
         Update user Address and Profile details
     """
-    profile = get_object_or_404(UserAddress, user=request.user)
+    address = get_object_or_404(UserAddress, user=request.user)
     profile2 = request.user
 
     if request.method == 'POST':
 
-        address_form = UserAddressForm(request.POST, instance=profile)
+        address_form = UserAddressForm(request.POST, instance=address)
         user_form = EditProfileForm(request.POST, instance=profile2)
         if address_form.is_valid():
             address_form.save()
@@ -63,7 +67,7 @@ def user_details(request):
             messages.error(
                 request, 'Update failed. Please ensure form is valid.')
     else:
-        address_form = UserAddressForm(instance=profile)
+        address_form = UserAddressForm(instance=address)
         user_form = EditProfileForm(instance=profile2)
     context = {
         'address_form': address_form,
@@ -78,14 +82,14 @@ def order_history(request, order_number):
     """
     A view to order history
     """
-    order_reviews = ProductReview.objects.filter(order_id=order_number)
+    profile = request.user
+    order_reviews = profile.user_review.filter(order__order_number=order_number)
     order_list = list()
 
     for i in order_reviews:
         order_list.append(i.product.id)
 
     order = get_object_or_404(Order, order_number=order_number)
-    profile = UserAddress.objects.get(user=request.user)
 
     if not order.user_profile == profile:
         messages.error(request,  'Only order owner can view this page')
@@ -96,7 +100,7 @@ def order_history(request, order_number):
         order.save()
         messages.success(
             request,  f'Thanks for confirming\
-            the receipt of the order #: {order_number}.')
+            the receipt of the order #: {order.id}.')
 
     template = 'checkout/checkout-success.html'
     context = {
@@ -104,7 +108,7 @@ def order_history(request, order_number):
         'order': order,
         'from_profile': True,
     }
-    
+
     return render(request, template, context)
 
 

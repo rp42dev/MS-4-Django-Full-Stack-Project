@@ -1,6 +1,6 @@
 
 window.addEventListener('DOMContentLoaded', event => {
-
+    let FormToast = document.querySelector('#form-error')
     // Show / autohide bootstarp toasts
     var toasts = function () {
         var toastElList = [].slice.call(document.querySelectorAll('.toast'))
@@ -9,7 +9,6 @@ window.addEventListener('DOMContentLoaded', event => {
         })
         toastList.forEach(toast => toast.show());
     }
-
     toasts();
 
     // Navbar shrink function

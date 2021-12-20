@@ -8,7 +8,7 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center">
 
-            <h1 class="display-4 text-white fw-bolder">Review</h1>
+            <h1 class="display-4 fw-bolder">Reviews</h1>
 
         </div>
     </div>
@@ -18,9 +18,9 @@
 
 <!-- Product Detail section-->
 <section class="page-section">
-    <div class="container pb-5 px-4 px-lg-5">
-        <div class="item row gx-4 gx-lg-5 align-items-center">
-
+    <div class="container pb-5 px-4 px-lg-5"> 
+        <div class="item row gx-4 gx-lg-5">
+           
             <div class="col-md-6 mb-4 mb-md-0">
                 <div class="position-relative">
                     {% thumbnail item.image "500" as im %}
@@ -61,15 +61,16 @@
                 <p class="font-monospace">{{ item.item_count }} items in stock</p>
                 {% endif %}
                   <!-- Product add to cart POST form -->
-                {% include 'includes/forms/add-to-cart-form.html' %}
+                  <a href="{% url 'shop_item' item.id %}" class="btn btn-dark">Buy {{ item.name }}</a>
             </div>
 
             <hr class="d-md-none d-block">
 
             <!-- If feedback was left return feedback instead -->
+            
             <div class="col-md-6 border-start review-container shadow-sm">
-
-                {% for review in reviews %}
+                
+                {% for review in reviews reversed %}
                 <div class="mt-5">
                     <h5 class="">{{ review.user_profile }}</h5>
 

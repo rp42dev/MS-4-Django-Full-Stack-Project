@@ -43,7 +43,7 @@ class Order(models.Model):
 
     # User
     user_profile = models.ForeignKey(
-        UserAddress, on_delete=models.SET_NULL,
+        User, on_delete=models.SET_NULL,
         null=True, blank=True, related_name='orders')
     
     # User contact info
@@ -76,16 +76,12 @@ class Order(models.Model):
         self.save()
 
     def save(self, *args, **kwargs):
-        last_id = Order.objects.last()
-        if not self.order_number:
-            if not last_id:
-                self.order_number = 1
-            else:
-                self.order_number = last_id.id + 1
+        if not self.order_number: 
+            self.order_number = uuid.uuid4().hex.upper()
         super().save(*args, **kwargs)
 
-    def __int__(self):
-        return int(self.order_number)
+    def __str__(self):
+        return str(f'Order: {self.id}')
 
 
 class OrderLine(models.Model):
@@ -109,4 +105,4 @@ class OrderLine(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'SKU {self.product.sku}'
+        return f'SKU {self.product.sku} Product id {self.product.id}'

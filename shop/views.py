@@ -100,7 +100,6 @@ def shop(request):
                 sort_name = 'rating (H-L)'
                 products = products.order_by('-rating')
 
-
     context = {
         'style_list': style_list,
         'categories': categories,
@@ -126,7 +125,7 @@ def shop_item(request, item_id):
 
     if item_id in list(cart.keys()):
         availability = item.item_count - cart[item_id]
-    
+
     related = Product.objects.filter(style=item.style).order_by('-id')
     context = {
         'item': item,
@@ -140,7 +139,7 @@ def shop_item(request, item_id):
 @login_required
 def add_item(request):
     """
-    Add items to the store requeres 
+    Add items to the store requeres
     login and superuser privileges
     Get for field date to template
     POST the form field data and save
@@ -274,11 +273,11 @@ def order_details(request, order_number):
         return redirect(reverse('home'))
     else:
         order = get_object_or_404(Order, order_number=order_number)
-        order_reviews = ProductReview.objects.filter(order_id=order_number)
+        order_reviews = ProductReview.objects.filter(
+            order__order_number=order_number)
         order_list = list()
         for i in order_reviews:
             order_list.append(i.product.id)
-            print(order_list)
         form = OrderStatusForm(instance=order)
         if request.POST:
             form = OrderStatusForm(request.POST, instance=order)

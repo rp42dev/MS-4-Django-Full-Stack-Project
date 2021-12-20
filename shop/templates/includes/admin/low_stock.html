@@ -1,4 +1,3 @@
-
 {% load thumbnail %}
 <div class="px-2">
     <p class="text-muted text-italic">Manage Stock items</p>
@@ -26,25 +25,23 @@
                             <thead>
                                 <tr>
                                     <th>Item</th>
-                                    <th>Item SKU</th>
-                                    <th>Item Stock</th>
+                                    <th class="text-center">Item SKU</th>
+                                    <th class="text-end">Item Stock</th>
                                 </tr>
                             </thead>
                             <tbody class="border-bottom">
                                 <tr class="table-light">
-                                    <td><a  href="{% url 'shop_item' item.id %}"
-                                            title="{{ order.name }}">
+                                    <td><a href="{% url 'shop_item' item.id %}" title="{{ order.name }}">
                                             {% thumbnail item.image "80" as im %}
                                             <a class="" href="{% url 'shop_item' item.id %}">
                                                 <div class="d-flex align-items-center ">
-                                                    <img class="" src="{{ im.url }}"
-                                                        alt="{{ item.product.name }}" />
+                                                    <img class="" src="{{ im.url }}" alt="{{ item.product.name }}" />
                                                 </div>
                                             </a>
                                             {% endthumbnail %}
                                         </a></td>
-                                    <td class="font-monospace">{{ item.sku}}</td>
-                                    <td class="font-monospace">{{ item.item_count }}</td>
+                                    <td class="font-monospace text-center">{{ item.sku}}</td>
+                                    <td class="font-monospace text-end">{{ item.item_count }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -79,25 +76,23 @@
                             <thead>
                                 <tr>
                                     <th>Item</th>
-                                    <th>Item SKU</th>
-                                    <th>Item Stock</th>
+                                    <th class="text-center">Item SKU</th>
+                                    <th class="text-end">Item Stock</th>
                                 </tr>
                             </thead>
                             <tbody class="border-bottom">
                                 <tr class="table-light font-monospace">
-                                    <td><a  href="{% url 'shop_item' item.id %}"
-                                            title="{{ order.name }}">
+                                    <td><a href="{% url 'shop_item' item.id %}" title="{{ order.name }}">
                                             {% thumbnail item.image "80" as im %}
                                             <a class="" href="{% url 'shop_item' item.id %}">
                                                 <div class="d-flex align-items-center ">
-                                                    <img class="" src="{{ im.url }}"
-                                                        alt="{{ item.product.name }}" />
+                                                    <img class="" src="{{ im.url }}" alt="{{ item.product.name }}" />
                                                 </div>
                                             </a>
                                             {% endthumbnail %}
                                         </a></td>
-                                    <td>{{ item.sku}}</td>
-                                    <td>{{ item.item_count }}</td>
+                                    <td class="font-monospace text-center">{{ item.sku}}</td>
+                                    <td class="font-monospace text-end">{{ item.item_count }}</td>
                                 </tr>
                             </tbody>
                         </table>

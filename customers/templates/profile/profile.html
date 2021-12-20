@@ -8,14 +8,14 @@
 {% block page_header %}
 <!-- Header-->
 <header class="bg-black py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="text-center">
-
-            <h1 class="display-4 text-white fw-bolder">Profile</h1>
-
-        </div>
+    <div class="container px-4 px-lg-5 my-5">
+      <div class="text-center">
+  
+        <h1 class="display-4 fw-bolder">Profile</h1>
+  
+      </div>
     </div>
-</header>
+  </header>
 {% endblock %}
 {% block content %}
 
@@ -41,7 +41,7 @@
             <div class="card-body p-0">
                 <table class="table table-borderless">
                     {% if orders %}
-                    {% for order in orders %}
+                    {% for order in orders reversed %}
 
                     <thead>
                         <tr>
@@ -56,8 +56,8 @@
                                     <thead>
                                         <tr>
                                             <th>Odrer</th>
-                                            <th>Total</th>
-                                            <th>Status</th>
+                                            <th class="text-center">Total</th>
+                                            <th class="text-end">Status</th>
                                         </tr>
                                     </thead>
 
@@ -65,10 +65,11 @@
                                         <tr class="table-light">
                                             <td><a class="btn btn-dark" href="{% url 'order_history' order.order_number %}"
                                                     title="{{ order.order_number }}">
-                                                    ID: {{ order.id}}
+                                                    Order #: {{ order.id}}
                                                 </a></td>
-                                            <td class="font-monospace">${{ order.total }}</td>
-                                            <td class="font-monospace">{{ order.status }}</td>
+                                            <td class="font-monospace text-center">${{ order.total }}</td>
+                                            <td class="font-monospace text-end">{{ order.status }}</td>
+
                                         </tr>
                                     </tbody>
                                 </table>
@@ -82,7 +83,7 @@
             </div>
 
         </div>
-            {% if not all %}
+            {% if not all and not order_count <= 10 %}
             <p class="text-muted text-italic">Latest 10 orders are shown</p>
             <a href="{% url 'user' %}?all=True">See all my order history</a>
             {% endif %}

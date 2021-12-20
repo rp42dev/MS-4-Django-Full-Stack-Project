@@ -92,7 +92,7 @@ def checkout_success(request, order_number):
 
     if request.user.is_authenticated:
 
-        profile = UserAddress.objects.get(user=request.user)
+        profile = request.user
         if not order.user_profile == profile:
             order.user_profile = profile
             order.save()

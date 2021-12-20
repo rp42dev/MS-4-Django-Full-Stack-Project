@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% load crispy_forms_tags %}
+
+{% block page_header %}
+<!-- Header-->
+<header class="bg-black py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center">
+
+            <h1 class="display-4 fw-bolder">Review</h1>
+
+        </div>
+    </div>
+</header>
+{% endblock %}
+{% block content %}
+
+<!-- Product Detail section-->
+<section class="page-section">
+    <div class="container">
+        <div class="mx-auto col-12 col-sm-8 col-lg-6 px-4">
+            <h5 class="text-capitalize">Order # {{ order.order.id }}</h5>
+            <p class="text-muted text-italic">Submit if any issues with Account | Order | Product</p>
+            <form action="{% url 'support' order.order_number %}" class="form" method="POST" novalidate>
+                {% csrf_token %}
+                {{ form.issue | as_crispy_field }} 
+                <div>
+                <label for="sellect-product">Sellect:</label>
+                <select id="sellect-product" name="product" class="select form-control mb-4" aria-label=".form-select-lg example">
+                   
+                    <option selected>Sellect Product</option>
+                    {% for item in order_line %}
+                    <option  value="{{ item.product.id }}">{{ item }}</option>
+
+                    {{ item }}
+                    {% endfor %}
+                </select>
+                </div>
+
+                {{ form.message | as_crispy_field }}
+                <button id="review-submit" class="btn btn-dark btn-xl text-uppercase flex-shrink-0" type="submit">
+                    Submit For Review
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

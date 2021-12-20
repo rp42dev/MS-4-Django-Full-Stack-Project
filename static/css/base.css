@@ -168,9 +168,7 @@ p {
   color: #fca311 !important;
 }
 
-.accordion-button,
-.btn:hover,
-.btm-active {
+.accordion-button{
   color: #fca311;
 }
 
@@ -314,6 +312,23 @@ header.masthead .masthead-heading {
   }
 }
 
+.form-check-input {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+#myCheck:checked[type=checkbox] {
+  background-color: #d2042d;
+  border-color: #d2042d;
+  box-shadow: 0px 0px 4px #d2042d;
+}
+
+#myCheck:focus[type=checkbox] {
+  background-color: #d2042d;
+  border-color: #d2042d;
+  box-shadow: 0px 0px 4px #d2042d;
+}
+
 .img-brand {
   height: 2.75rem;
 }
@@ -326,10 +341,6 @@ form .form-group {
 .form-control {
   padding: .6rem;
   font-weight: 700;
-}
-
-.checkboxinput {
-  padding: 1rem;
 }
 
 label {
@@ -380,9 +391,9 @@ form#contactForm p.help-block {
 form .form-control:focus,
 form .form-control:active {
   box-shadow: none;
-  outline-color: #fca311;
-  border-color: #fca311;
-  box-shadow: 0px 0px 6px #fca311;
+  outline-color: #999;
+  border-color: #999;
+  box-shadow: 0px 0px 6px #999;
 }
 
 form ::-webkit-input-placeholder{
@@ -429,7 +440,18 @@ form :-ms-input-placeholder {
   box-shadow: 0px 0px 4px green;
 }
 
+.form-control.is-valid, .was-validated .form-control:valid {
+  border-color: #198754;
+  box-shadow: 0px 0px 3px #198754;
+  padding-right: calc(1.5em + .75rem);
+  background-image: none;
+}
 
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  transition:  background-color 5000s ease-in-out 0s;
+}
 
 /* SHOP */
 .card-body {
@@ -547,7 +569,8 @@ form :-ms-input-placeholder {
 }
 
 a {
-  color: #d2042d;
+  color: blue;
+
 }
 
 a:hover {
@@ -568,14 +591,17 @@ a:hover .stars{
 /* reviews */
 
 .review-container {
-  height: 85vh;
+  height: 100vh;
   overflow: auto;
   
 }
 
 .text {
-  
   border-radius: 0 12px 12px 12px;
+}
+
+header h1 {
+  color: #e5e5e5;
 }
 
 

@@ -1,53 +1,56 @@
+let FileInputs = document.querySelectorAll('input[type=file]')
+Array.prototype.filter.call(FileInputs, function (input) {
+    input.classList.add('text-gray')
+}, false);
+
+
 (function () {
     'use strict'
-
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('form')
+    let forms = document.querySelectorAll('form')
+    
 
     // Loop over them and prevent submission
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity()) {
-                    FormTrigger()
+                    
                     event.preventDefault()
                     event.stopPropagation()
-                    let star = document.querySelector('#star')
+                    FormTriggerOnSubmit()
+                    FormTrigger()
                 }
-
                 form.classList.add('was-validated')
+                
             }, false)
         })
 })()
 
 function FormTrigger() {
-    // Fetch all the forms we want to apply custom validation styles
-    var inputs = document.querySelectorAll('.form-control')
-    let file = document.querySelectorAll('.form-control-file')
-    
+    let inputs = document.querySelectorAll('.form-control')
     // Loop over each input and watch blue event
-    var validation = Array.prototype.filter.call(inputs, function (input) {
-        // Image input gray placeholder
-        if (input.name === 'image') {
-            file = input
-            file.classList.add('text-gray')
-        }
+    let validation = Array.prototype.filter.call(inputs, function (input) {
+        // Image input gray placeholder 
         input.addEventListener('blur', function (event) {
             // reset
             input.classList.remove('is-invalid')
             input.classList.remove('is-valid')
+            input.classList.remove('text-gray')
             //Display required message if not valid
             if (input.checkValidity() === false) {
                 input.classList.add('is-invalid')
+                input.classList.add('text-gray')
                 let parent = this.parentElement;
                 let elem = parent.getElementsByTagName('p')
 
                 if (elem[0]) {
 
+                    // error message for required fields add praceholder
                 } else {
-                    var para = document.createElement("P");
+                    let para = document.createElement("P");
                     para.classList.add('text-danger');
-                    let str = `${input.placeholder} Field is Required.`
+                    let str = `${input.placeholder} field is Required.`
                     para.innerHTML = str;
                     parent.append(para);
                 }
@@ -56,11 +59,41 @@ function FormTrigger() {
                 input.classList.add('is-valid')
                 let parent = this.parentElement;
                 let elem = parent.getElementsByTagName('p')
-                file.classList.remove('text-gray')
+                input.classList.remove('text-gray')
                 if (elem[0]) {
                     elem[0].remove()
                 }
             }
         }, false);
     });
+}
+
+
+function FormTriggerOnSubmit() {
+let inputs = document.querySelectorAll('.form-control')
+    // Loop over each input and watch blue event
+    let validation = Array.prototype.filter.call(inputs, function (input) {
+            input.classList.remove('is-invalid')
+            input.classList.remove('is-valid')
+            input.classList.remove('text-gray')
+            //Display required message if not valid
+            if (input.checkValidity() === false) {
+                input.classList.add('is-invalid')
+                input.classList.add('text-gray')
+                let parent = input.parentElement;
+                let elem = parent.getElementsByTagName('p')
+
+                if (elem[0]) {
+
+                    // error message for required fields add praceholder
+                } else {
+                    let para = document.createElement("P");
+                    para.classList.add('text-danger');
+                    let str = `${input.placeholder} field is Required.`
+                    para.innerHTML = str;
+                    parent.append(para);
+                }
+
+            }
+    }, false);
 }

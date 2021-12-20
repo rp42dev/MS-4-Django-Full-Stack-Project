@@ -25,8 +25,8 @@
                             <thead>
                                 <tr>
                                     <th>Odrer</th>
-                                    <th>Total</th>
-                                    <th>Status</th>
+                                    <th class="text-center">Total</th>
+                                    <th class="text-end">Status</th>
                                 </tr>
                             </thead>
 
@@ -36,8 +36,8 @@
                                             title="{{ order.order_number }}">
                                             ID: {{ order.id}}
                                         </a></td>
-                                    <td>${{ order.total }}</td>
-                                    <td>{{ order.status }}</td>
+                                    <td class="font-monospace text-center">${{ order.total }}</td>
+                                    <td class="font-monospace text-end">{{ order.status }}</td>
 
                                 </tr>
                             </tbody>
