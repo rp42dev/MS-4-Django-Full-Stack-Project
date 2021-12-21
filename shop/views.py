@@ -25,8 +25,6 @@ from django.db.models import F
 
 from .models import Product, Category
 from .forms import ItemForm, OrderStatusForm
-from reviews.models import ProductReview
-from checkout.models import Order
 
 
 def shop(request):
@@ -111,6 +109,11 @@ def shop(request):
         'shop': shop,
     }
     return render(request, 'shop/shop.html', context)
+
+
+shop
+
+
 
 
 def shop_item(request, item_id):
@@ -221,43 +224,3 @@ def delete_item(request, item_id):
     messages.success(request, f'Successfully Deleted the {item.name}!')
 
     return redirect(reverse('shop'))
-
-
-@login_required
-def admin_view(request):
-    """
-    Administrator management view. Requeres login and
-    superuser privileges. Returns low stock products,
-    Order status items and product discount items
-    """
-
-    if not request.user.is_superuser:
-        messages.error(request, 'Sorry only store owners can do that')
-        return redirect(reverse('home'))
-    else:
-        products = Product.objects.all()
-        low_stock = products.filter(
-            item_count__lte=5).exclude(item_count=0)
-        out_of_stock = products.filter(item_count=0)
-        sale = products.filter(sale=True)
-
-        orders = Order.objects.all().exclude(status='Completed')
-
-        out_of_stock_count = out_of_stock.count()
-        low_stock_count = low_stock.count()
-        sale_count = sale.count()
-        orders_count = orders.count()
-        total_low_stock = out_of_stock_count + low_stock_count
-
-        context = {
-            'out_of_stock_count': out_of_stock_count,
-            'low_stock_count': low_stock_count,
-            'total_low_stock': total_low_stock,
-            'out_of_stock': out_of_stock,
-            'orders_count': orders_count,
-            'sale_count': sale_count,
-            'low_stock': low_stock,
-            'orders': orders,
-            'sale': sale,
-        }
-        return render(request, 'admin/admin.html', context)

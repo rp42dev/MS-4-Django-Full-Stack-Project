@@ -112,7 +112,7 @@ def order_history(request, order_number):
         order.save()
         messages.success(
             request,  f'Thanks for confirming\
-            the receipt of the order #: {order.id}.')           
+            the receipt of the order #: {order.id}.')
         return redirect(reverse('order_history', args=[order_number]))
 
     issues = CustomerSuport.objects.all()

@@ -8,7 +8,7 @@
   <div class="container px-4 px-lg-5 my-5">
     <div class="text-center">
 
-      <h1 class="display-4 fw-bolder">Administration</h1>
+      <h1 class="display-4 fw-bolder">Manage</h1>
 
     </div>
   </div>
@@ -97,6 +97,30 @@
           data-bs-parent="#accordionThree">
           <div class="accordion-body">
             {% include 'includes/admin/sale.html' %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Support items -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+
+          <button class="accordion-button position-relative collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+            Customer support
+            <span
+              class="cart-pill text-white position-absolute top-0 start-0 translate-middle font-monospace bg-success {% if sale_coun != 0 %}bg-danger{% endif %} rounded-circle">
+              {{ issues_count }}
+              <span class="visually-hidden">Customer support</span>
+            </span>
+          </button>
+
+          </span>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+          data-bs-parent="#accordionFour">
+          <div class="accordion-body">
+            {% include 'includes/admin/issues.html' %}
           </div>
         </div>
       </div>
