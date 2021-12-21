@@ -14,7 +14,9 @@ from django.contrib import messages
 from .models import UserAddress
 from .forms import EditProfileForm
 from .forms import UserAddressForm
+from shop.forms import OrderStatusForm
 from checkout.models import Order
+from support.models import CustomerSuport
 from reviews.models import ProductReview
 
 
@@ -82,31 +84,57 @@ def order_history(request, order_number):
     """
     A view to order history
     """
+    order = get_object_or_404(Order, order_number=order_number)
     profile = request.user
+
+    if not profile.is_superuser:
+        admin = False
+        status_form = None
+        if not order.user_profile == profile:
+            messages.error(request,  'Only order owner can view this page')
+            return redirect(reverse('home'))
+    else:
+        admin = True
+        status_form = OrderStatusForm(instance=order)
+        if 'status' in request.POST:
+            if status_form.is_valid:
+                order.status = request.POST['status']
+                order.save()
+                messages.success(request, f'Order #{order.id} satus updated to {order.status}')
+                return redirect(reverse('order_history', args=[order_number]))
+            else: 
+                messages.error(request, f'Error validating form please ensure form if valid')
+                return redirect(reverse('order_history', args=[order_number]))
+
+    if 'completed' in request.POST:
+        order.status = request.POST['completed']
+        print(order.status, request.POST['completed'])
+        order.save()
+        messages.success(
+            request,  f'Thanks for confirming\
+            the receipt of the order #: {order.id}.')           
+        return redirect(reverse('order_history', args=[order_number]))
+
+    issues = CustomerSuport.objects.all()
+    try:
+        issue = issues.get(order=order)
+    except CustomerSuport.DoesNotExist:
+        issue = None
+
     order_reviews = profile.user_review.filter(order__order_number=order_number)
     order_list = list()
 
     for i in order_reviews:
         order_list.append(i.product.id)
 
-    order = get_object_or_404(Order, order_number=order_number)
-
-    if not order.user_profile == profile:
-        messages.error(request,  'Only order owner can view this page')
-        return redirect(reverse('home'))
-
-    if 'completed' in request.POST:
-        order.status = request.POST['completed']
-        order.save()
-        messages.success(
-            request,  f'Thanks for confirming\
-            the receipt of the order #: {order.id}.')
-
     template = 'checkout/checkout-success.html'
     context = {
+        'status_form': status_form,
+        'issue': issue,
         'order_list': order_list,
         'order': order,
         'from_profile': True,
+        'admin': admin,
     }
 
     return render(request, template, context)

@@ -19,8 +19,11 @@
 <!-- item Detail section-->
 <section class="page-section">
 
+
+
     <div class="container bg-white p-4 px-lg-5">
         <!-- Project One -->
+
         <div class="col-12 text-uppercase text-center h4 text-warning">Thank You</div>
         <div class="row m-0 p-0">
             <p class="px-0 fw-bolder text-uppercase font-monospace">Order #: {{ order.id }}</p>
@@ -86,7 +89,7 @@
                         </div>
                     </a>
                     {% else %}
-                    No reviews yet
+                    <span class="time font-monospace">No reviews yet</span>
                     <div class="stars h4 text-warning" style="background-image: linear-gradient(to right, gray, gray)">
                         ★★★★★
                     </div>
@@ -97,20 +100,22 @@
 
                 {% if order.user_profile and not admin %}
                 {% if not item.product.id in order_list and not admin %}
-                <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.order_number }}">Write a review</a></p>
+                <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.order_number }}">Write a
+                        review</a></p>
                 {% else %}
-                <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.order_number }}">Wiew the review</a></p>
+                <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.order_number }}">Wiew the
+                        review</a></p>
                 {% endif %}
                 {% endif %}
                 {% if admin and item.product.id in order_list %}
-                <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.order_number }}">Wiew the review</a></p>
+                <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.order_number }}">Wiew the
+                        review</a></p>
                 {% endif %}
             </div>
 
             <div class="col-3 col-6 col-sm-3 order-2 order-sm-3">
                 <div>
                     {% if item.product.sale %}
-
                     <span
                         class="text-decoration-line-through text-danger  font-monospace">${{ item.product.price }}</span>
                     <span class="text-danger  font-monospace">${{ item.product.sale_price }} </span>
@@ -132,27 +137,6 @@
             <div class="col-6 col-md-9">
                 <div>
 
-                    {% if admin %}
-                    <form class="form" method="POST" action="{% url 'order_details' order.order_number %}">
-                        {% csrf_token %}
-                        <div class="form-group m-0">
-                            <div class="input-group d-flex flex-column">
-                                <div>
-                                    <div class="text-italic fw-bolder">
-                                        <p>Order Status: {{ form }}</p>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <button type='submit w-auto' class='btn btn-dark'>
-                                        Update
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </form>
-                    {% endif %}
 
                     {% if from_profile %}
                     <p class="text-italic fw-bolder">Order Status: {{ order.status }}</p>
@@ -165,7 +149,7 @@
                             <div class="input-group ">
 
                                 <input type="hidden" name="completed" value="Completed">
-                                <button type='submit' class='btn btn-dark'>
+                                <button type='submit' class='btn btn-warning'>
                                     Confirm reception
                                 </button>
 
@@ -173,7 +157,13 @@
                         </div>
                     </form>
                     {% endif %}
-                    <a href="{% url 'support' order.order_number %}">Porblem ?</a>
+                    <div class="mt-3">
+                        {% if issue %}
+                        <a href="{% url 'messages_view' issue.id %}">Messages</a>
+                        {% else %}
+                        <a href="{% url 'submit' order.order_number %}">Report an issue</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
 
@@ -183,6 +173,33 @@
             </div>
 
         </div>
+
+    </div>
+    <div class="container p-4 px-lg-5">
+        {% if admin %}
+
+
+        <form class="form" method="POST" action="{% url 'order_history' order.order_number %}">
+            {% csrf_token %}
+            <div class="form-group m-0">
+                <p class="text-muted text-italic">Change current order status</p>
+                <div class="input-group d-flex">
+
+                    <div class="col-6 col-md-3">
+
+                        <div class="text-italic fw-bolder">
+                            {{ status_form|crispy }}
+                        </div>
+
+                        <button type='submit' class='btn btn-dark w-100'>
+                            Update
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+        {% endif %}
     </div>
 </section>
 {% endblock %}

@@ -7,7 +7,7 @@ class ItemForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        exclude = ('rating', 'rating_counter',)
+        # exclude = ('rating', 'rating_counter',)
         fields = '__all__'
 
     image = forms.ImageField(label='image')
@@ -45,4 +45,6 @@ class OrderStatusForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'py-2'
         self.fields['status'].label = False

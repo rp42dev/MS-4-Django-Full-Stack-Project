@@ -660,3 +660,10 @@ section#promise .section-heading {
   font-weight: 700;
   color: #999;
 }
+
+.time {
+  font-size: .6rem;
+}
+.message {
+  font-size: .9rem;
+}

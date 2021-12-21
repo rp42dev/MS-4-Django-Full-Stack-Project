@@ -1,20 +1,27 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from checkout.models import Order, OrderLine
-from .models import CustomerSuport
-from .forms import SupportForm
 from django.contrib import messages
 
+from checkout.models import Order, OrderLine
+from .models import CustomerSuport, Message
+from .forms import SupportForm, MessageForm
 
 
 @login_required
-def support(request, order_number):
+def support(request):
     """
     A view to return the shop suport page
     """
+    return render(request, 'support/support.html')
+
+
+@login_required
+def submit(request, order_number):
+
     order = get_object_or_404(Order, order_number=order_number)
     order_line = OrderLine.objects.filter(order__order_number=order_number)
+    issues = CustomerSuport.objects.all()
     profile = request.user
 
     if not order.user_profile == profile:
@@ -25,8 +32,11 @@ def support(request, order_number):
         form = SupportForm(request.POST)
         if form.is_valid():
             product = request.POST['product']
-            print(product)
-            order_line_item = order_line.get(product_id=product)
+            if not product:
+                order_line_item = None
+            else:
+                order_line_item = order_line.get(product_id=product)
+
             support_post = CustomerSuport(
                 status='Submitted',
                 user_profile=profile,
@@ -36,8 +46,18 @@ def support(request, order_number):
                 order_line=order_line_item,
             )
             support_post.save()
+            issue = issues.get(order__order_number=order_number)
+            issue_id = issue.id 
+
+            inital_message = Message(
+                thread=issue,
+                user=profile,
+                message=issue.message,
+            )
+            inital_message.save()
+
             messages.success(request, 'Successfuly added rieview')
-            return redirect(reverse('order_history', args=[order_number]))
+            return redirect(reverse('messages_view', args=[issue_id]))
 
         else:
             messages.error(request, 'Error with form')
@@ -52,3 +72,34 @@ def support(request, order_number):
     }
 
     return render(request, 'support/support.html', context)
+
+
+@login_required
+def messages_view(request, issue_id):
+    issue = get_object_or_404(CustomerSuport, pk=issue_id)
+    profile = request.user
+    if not profile.is_superuser:
+        if not issue.user_profile == profile:
+            messages.error(request, 'Error loading support ticket')
+            return redirect(reverse('home'))
+    all_messages = Message.objects.all()
+    thread_messages = all_messages.filter(thread=issue)
+    if request.POST:
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            message = Message(
+                thread=issue,
+                user=profile,
+                message=request.POST['mesage-message'],
+            )
+        message.save()
+        messages.success(request, 'Your message was sent successfuly')
+        return redirect(reverse('messages_view', args=[issue_id]))
+    
+    form = MessageForm()
+    context = {
+        'form': form,
+        'issue': issue,
+        'thread_messages': thread_messages,
+    }
+    return render(request, 'messages/messages.html', context)

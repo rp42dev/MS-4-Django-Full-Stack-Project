@@ -45,7 +45,7 @@
 
                     <thead>
                         <tr>
-                            <th class="font-monospace text-muted text-italic">Odrer Date: {{ order.date }}</th>
+                            <th class="time font-monospace">Odrer Date: {{ order.date }}</th>
 
                         </tr>
                     </thead>
@@ -63,7 +63,7 @@
 
                                     <tbody class="border-bottom">
                                         <tr class="table-light">
-                                            <td><a class="btn btn-dark" href="{% url 'order_history' order.order_number %}"
+                                            <td><a class="btn btn-warning" href="{% url 'order_history' order.order_number %}"
                                                     title="{{ order.order_number }}">
                                                     Order #: {{ order.id}}
                                                 </a></td>

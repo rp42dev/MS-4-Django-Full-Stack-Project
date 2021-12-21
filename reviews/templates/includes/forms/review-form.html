@@ -16,9 +16,9 @@
         <div class="invalid-feedback">Rating is required</div>
         <input type="hidden" value="{{ order_id }}" name="order_id">
     </div>
-
-    {{ form|crispy }}
-
+    <div class="fw-bolder font-monospace">
+        {{ form|crispy }}
+    </div>
 
     <button id="review-submit"
         class="btn btn-dark btn-xl text-uppercase flex-shrink-0 {% if availability == 0 %}disabled{% endif %}"

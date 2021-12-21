@@ -261,37 +261,3 @@ def admin_view(request):
             'sale': sale,
         }
         return render(request, 'admin/admin.html', context)
-
-
-@login_required
-def order_details(request, order_number):
-    """
-    A view to order detailed view history
-    """
-    if not request.user.is_superuser:
-        messages.error(request, 'Sorry only store owners can do that')
-        return redirect(reverse('home'))
-    else:
-        order = get_object_or_404(Order, order_number=order_number)
-        order_reviews = ProductReview.objects.filter(
-            order__order_number=order_number)
-        order_list = list()
-        for i in order_reviews:
-            order_list.append(i.product.id)
-        form = OrderStatusForm(instance=order)
-        if request.POST:
-            form = OrderStatusForm(request.POST, instance=order)
-            if form.is_valid():
-                form.save()
-            messages.success(request, 'Successfully updated order Status!')
-
-        template = 'checkout/checkout-success.html'
-        context = {
-            'order_list': order_list,
-            'order': order,
-            'admin': True,
-            'form': form,
-        }
-
-        return render(request, template, context)
-

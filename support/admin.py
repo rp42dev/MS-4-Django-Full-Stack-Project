@@ -1,16 +1,24 @@
 from django.contrib import admin
-from .models import CustomerSuport
+from .models import CustomerSuport, Message
+
+
+class MesageSuportAdmin(admin.TabularInline):
+    model =  Message
+
+    fields = ('user', 'thread', 'message')
 
 
 class CustomerSuportAdmin(admin.ModelAdmin):
+    inlines = (MesageSuportAdmin,)
+
     readonly_fields = ('user_profile', 'issue', 'message',
                        'order_line', 'order', 'date')
 
     fields = ('status', 'user_profile',  'order',
               'order_line',  'issue', 'message', 'date')
 
-    list_display = ('issue', 'user_profile', 'order', 'order_line',
-                     'date', 'status')
+    list_display = ('issue', 'user_profile', 'order',
+                    'order_line', 'date', 'status')
 
     ordering = ('-date',)
 
