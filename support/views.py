@@ -96,6 +96,7 @@ def messages_view(request, issue_id):
 
     all_messages = Message.objects.all()
     thread_messages = all_messages.filter(thread=issue)
+
     if 'mesage-message' in request.POST:
         form = MessageForm(request.POST)
         if form.is_valid():
@@ -107,7 +108,10 @@ def messages_view(request, issue_id):
         message.save()
         messages.success(request, 'Your message was sent successfuly')
         return redirect(reverse('messages_view', args=[issue_id]))
-
+    if 'unread' in request.GET:
+        for m in thread_messages:
+            m.unread = request.GET['unread']
+            m.save()
     form = MessageForm()
     context = {
         'thread_messages': thread_messages,

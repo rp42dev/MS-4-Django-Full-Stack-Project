@@ -16,19 +16,19 @@ def message_context(request):
         else:
             issues = CustomerSuport.objects.all()
 
-        filtered_mesages = all_messages.exclude(user=profile)
+        filtered_mesages = all_messages.exclude(user=profile).exclude(unread=False)
+
         for i in filtered_mesages:
         
             if i.thread in issues:
                 unread_messages_count += 1
                 user_messages.append({
                     'user': i.user.username,
-                    'thread': i.thread.id,
+                    'thread': i.thread,
                     'message': i.message,
                     'timestamp': i.timestamp,
                 })
 
-    print(user_messages)
     context = {
         'unread_messages_count': unread_messages_count,
         'user_messages': user_messages,

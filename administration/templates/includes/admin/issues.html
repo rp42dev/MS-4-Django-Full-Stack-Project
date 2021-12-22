@@ -33,7 +33,7 @@
                             <tbody class="border-bottom">
                                 <tr class="table-light">
                                     <td class="col-4 font-monospace"><a class="btn btn-warning"
-                                            href="{% url 'messages_view' issue.id %}" title="{{ issue }}">
+                                            href="{% url 'messages_view' issue.id %}?unread=False" title="{{ issue }}">
                                             #{{ issue.id}}
                                         </a></td>
 

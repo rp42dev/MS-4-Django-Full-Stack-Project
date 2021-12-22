@@ -27,9 +27,10 @@
             <p class="col-12 text-end"><a class="btn btn-dark orrange" href="{% url 'user_details' %}">Change account
                     Details</a></p>
         </div>
-
+        <h5 class="text-capitalize">{{ request.user }}</h5>
+        {% if issues %}
         <div class="px-2">
-            <h5 class="text-capitalize">{{ request.user }}</h5>
+
             <p class="text-muted text-italic">Your Unresolved support Tickets
         </div>
 
@@ -59,6 +60,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
         <p class="text-muted text-italic">Your order history | Track order status | Submit your reviews</p>
         <div class="card mb-4">
             <div class="card-header">
@@ -70,7 +72,7 @@
                     {% if orders %}
                     {% for order in orders reversed %}
 
-  
+
                     <thead>
                         <tr>
                             <th class="time font-monospace">Odrer Date: {{ order.date }}</th>
