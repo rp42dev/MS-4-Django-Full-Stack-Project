@@ -69,17 +69,17 @@
 
                 {% if feedback_left %}
                 <h5 class="">Your Review for</h5>
-                <p class="text-muted text-italic">{{ item.name }}</p>
+                <p class="m-0 fw-bolder  text-muted text-italic text-capitalize">{{ item.name }}</p>
 
                 <div class="">
-                    <p class="m-0">Review Date: {{ date }}</p>
+                    <p class="m-0 time font-monospace">Review Date: {{ date }}</p>
                     <div class="stars h1"
                         style="background-image: linear-gradient(to right, orange, orange {% widthratio rating 5 100 %}%, gray {% widthratio rating 5 100 %}%, gray 100%)">
                         ★★★★★
                     </div>
 
                     <div class="text bg-white p-2 shadow-sm">
-                        <p class="fw-bolder font-monospace">{{ review }}</p>
+                        <p class="message fw-bolder font-monospace">{{ review }}</p>
                     </div>
                 </div>
 

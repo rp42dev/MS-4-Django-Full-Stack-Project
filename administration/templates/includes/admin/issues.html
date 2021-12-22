@@ -11,12 +11,11 @@
         <table class="table table-borderless">
             {% if issues %}
             {% for issue in issues %}
+           
             <thead>
                 <tr>
                     <th class="font-monospace">{{ issue }} <br> <span class="time">Submitted: {{ issue.date }}</span>
                     </th>
-
-
                 </tr>
             </thead>
             <tbody>
@@ -47,6 +46,7 @@
                 </tr>
             </tbody>
 
+            
             {% endfor %}
             {% endif %}
 

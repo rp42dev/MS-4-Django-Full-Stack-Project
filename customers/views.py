@@ -16,7 +16,7 @@ from .forms import EditProfileForm
 from .forms import UserAddressForm
 from shop.forms import OrderStatusForm
 from checkout.models import Order
-from support.models import CustomerSuport
+from support.models import CustomerSuport, Message
 from reviews.models import ProductReview
 
 
@@ -25,9 +25,13 @@ def customers(request):
     """A view to return the user profile page"""
     order_count = None
     all_orders = False
-    
+
     profile = request.user
+    issues = profile.user_support.all().exclude(status='Resolved')
+    issues_count = issues.count()
+
     reviews = request.user.user_review.all()
+
     if profile.orders:
         if 'all' in request.GET:
             orders = profile.orders.all()
@@ -39,9 +43,11 @@ def customers(request):
         orders = False
 
     context = {
-            'reviews': reviews,
+            'issues_count': issues_count,
             'order_count': order_count,
+            'reviews': reviews,
             'all': all_orders,
+            'issues': issues,
             'orders': orders,
         }
 
@@ -88,27 +94,14 @@ def order_history(request, order_number):
     profile = request.user
 
     if not profile.is_superuser:
-        admin = False
-        status_form = None
         if not order.user_profile == profile:
             messages.error(request,  'Only order owner can view this page')
             return redirect(reverse('home'))
-    else:
-        admin = True
-        status_form = OrderStatusForm(instance=order)
-        if 'status' in request.POST:
-            if status_form.is_valid:
-                order.status = request.POST['status']
-                order.save()
-                messages.success(request, f'Order #{order.id} satus updated to {order.status}')
-                return redirect(reverse('order_history', args=[order_number]))
-            else: 
-                messages.error(request, f'Error validating form please ensure form if valid')
-                return redirect(reverse('order_history', args=[order_number]))
+    admin = False
+    status_form = None
 
     if 'completed' in request.POST:
         order.status = request.POST['completed']
-        print(order.status, request.POST['completed'])
         order.save()
         messages.success(
             request,  f'Thanks for confirming\
@@ -116,6 +109,7 @@ def order_history(request, order_number):
         return redirect(reverse('order_history', args=[order_number]))
 
     issues = CustomerSuport.objects.all()
+
     try:
         issue = issues.get(order=order)
     except CustomerSuport.DoesNotExist:
@@ -126,7 +120,7 @@ def order_history(request, order_number):
 
     for i in order_reviews:
         order_list.append(i.product.id)
-
+ 
     template = 'checkout/checkout-success.html'
     context = {
         'status_form': status_form,

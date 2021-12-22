@@ -43,7 +43,7 @@ class CustomerSuport(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Issue with {self.issue} in {self.order}'
+        return f'Ticket #{self.id}. {self.issue} Issue. In {self.order}'
 
 
 class Message(models.Model):
@@ -58,4 +58,4 @@ class Message(models.Model):
     unread = models.BooleanField(default=True)
 
     def __str__(self):
-        return f'From {self.user} issue {self.thread}'
+        return f'From {self.user} issue: {self.thread}'

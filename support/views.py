@@ -5,7 +5,8 @@ from django.contrib import messages
 
 from checkout.models import Order, OrderLine
 from .models import CustomerSuport, Message
-from .forms import SupportForm, MessageForm
+from .forms import SupportForm, MessageForm, IssueStatusForm
+
 
 
 @login_required
@@ -79,12 +80,23 @@ def messages_view(request, issue_id):
     issue = get_object_or_404(CustomerSuport, pk=issue_id)
     profile = request.user
     if not profile.is_superuser:
+        status_form = None
         if not issue.user_profile == profile:
             messages.error(request, 'Error loading support ticket')
             return redirect(reverse('home'))
+    else:
+        status_form = IssueStatusForm(instance=issue)
+        if 'issue_status-status' in request.POST:
+            if status_form.is_valid:
+                status = request.POST['issue_status-status']
+                issue.status = status
+                issue.save()
+                messages.success(request, f'Issue status was changed to {status}')
+                return redirect(reverse('messages_view', args=[issue_id]))
+
     all_messages = Message.objects.all()
     thread_messages = all_messages.filter(thread=issue)
-    if request.POST:
+    if 'mesage-message' in request.POST:
         form = MessageForm(request.POST)
         if form.is_valid():
             message = Message(
@@ -95,11 +107,12 @@ def messages_view(request, issue_id):
         message.save()
         messages.success(request, 'Your message was sent successfuly')
         return redirect(reverse('messages_view', args=[issue_id]))
-    
+
     form = MessageForm()
     context = {
-        'form': form,
-        'issue': issue,
         'thread_messages': thread_messages,
+        'status_form': status_form,
+        'issue': issue,
+        'form': form,
     }
     return render(request, 'messages/messages.html', context)

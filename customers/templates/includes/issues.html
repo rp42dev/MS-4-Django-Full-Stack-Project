@@ -1,21 +1,21 @@
 <div class="px-2">
-    <p class="text-muted text-italic">Manage orders</p>
+    <p class="text-muted text-italic">Customer support</p>
 </div>
 
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        Orders
+        Submitted user Issues
     </div>
     <div class="card-body p-0">
         <table class="table table-borderless">
-            {% if orders %}
-            {% for order in orders %}
-            {% if order.status != 'Completed' %}
+            {% if issues %}
+            {% for issue in issues %}
+           
             <thead>
                 <tr>
-                    <th class="time font-monospace">Odrer Date: {{ order.date }}</th>
-
+                    <th class="font-monospace">{{ issue }} <br> <span class="time">Submitted: {{ issue.date }}</span>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -24,31 +24,32 @@
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th>Odrer</th>
-                                    <th class="text-center">Total</th>
+                                    <th>Ticket</th>
+                                    <th class=" text-center">Issue</th>
                                     <th class="text-end">Status</th>
                                 </tr>
                             </thead>
 
                             <tbody class="border-bottom">
-                                <tr class="table-light font-monospace">
-                                    <td><a class="btn btn-warning" href="{% url 'order' order.order_number %}"
-                                            title="{{ order.order_number }}">
-                                            #{{ order.id}}
+                                <tr class="table-light">
+                                    <td class="col-4 font-monospace"><a class="btn btn-warning"
+                                            href="{% url 'messages_view' issue.id %}" title="{{ issue }}">
+                                            #{{ issue.id}}
                                         </a></td>
-                                    <td class="font-monospace text-center">${{ order.total }}</td>
-                                    <td class="font-monospace text-end">{{ order.status }}</td>
 
+                                    <td class="col-4 font-monospace text-center">{{ issue.message }}</td>
+                                    <td class="col-4 colfont-monospace text-end">{{ issue.status }}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </td>
                 </tr>
             </tbody>
-            {% endif %}
+
+            
             {% endfor %}
             {% endif %}
-            
+
         </table>
 
     </div>

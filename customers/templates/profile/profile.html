@@ -9,13 +9,13 @@
 <!-- Header-->
 <header class="bg-black py-5">
     <div class="container px-4 px-lg-5 my-5">
-      <div class="text-center">
-  
-        <h1 class="display-4 fw-bolder">Profile</h1>
-  
-      </div>
+        <div class="text-center">
+
+            <h1 class="display-4 fw-bolder">Profile</h1>
+
+        </div>
     </div>
-  </header>
+</header>
 {% endblock %}
 {% block content %}
 
@@ -30,9 +30,36 @@
 
         <div class="px-2">
             <h5 class="text-capitalize">{{ request.user }}</h5>
-            <p class="text-muted text-italic">Your order history | Track order status | Submit your reviews</p>
+            <p class="text-muted text-italic">Your Unresolved support Tickets
         </div>
 
+
+        <div class="accordion mb-5 d-grid gap-3" id="accordionOne">
+            <!-- Support items -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button position-relative collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                        Support Tickets
+                        <span
+                            class="cart-pill text-white position-absolute top-0 start-0 translate-middle font-monospace bg-success {% if sale_coun != 0 %}bg-danger{% endif %} rounded-circle">
+                            {{ issues_count }}
+                            <span class="visually-hidden">Customer support</span>
+                        </span>
+                    </button>
+
+                    </span>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                    data-bs-parent="#accordionFour">
+                    <div class="accordion-body">
+                        {% include 'includes/issues.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="text-muted text-italic">Your order history | Track order status | Submit your reviews</p>
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
@@ -43,6 +70,7 @@
                     {% if orders %}
                     {% for order in orders reversed %}
 
+  
                     <thead>
                         <tr>
                             <th class="time font-monospace">Odrer Date: {{ order.date }}</th>
@@ -63,12 +91,13 @@
 
                                     <tbody class="border-bottom">
                                         <tr class="table-light">
-                                            <td><a class="btn btn-warning" href="{% url 'order_history' order.order_number %}"
+                                            <td class="col-4"><a class="btn btn-warning"
+                                                    href="{% url 'order_history' order.order_number %}"
                                                     title="{{ order.order_number }}">
-                                                    Order #: {{ order.id}}
+                                                    #{{ order.id}}
                                                 </a></td>
-                                            <td class="font-monospace text-center">${{ order.total }}</td>
-                                            <td class="font-monospace text-end">{{ order.status }}</td>
+                                            <td class="font-monospace col-4 text-center">${{ order.total }}</td>
+                                            <td class="font-monospace col-4 text-end">{{ order.status }}</td>
 
                                         </tr>
                                     </tbody>
@@ -79,14 +108,14 @@
                     {% endfor %}
                     {% endif %}
                 </table>
-            
+
             </div>
 
         </div>
-            {% if not all and not order_count <= 10 %}
-            <p class="text-muted text-italic">Latest 10 orders are shown</p>
-            <a href="{% url 'user' %}?all=True">See all my order history</a>
-            {% endif %}
+        {% if not all and not order_count <= 10 %}
+        <p class="text-muted text-italic">Latest 10 orders are shown</p>
+        <a href="{% url 'user' %}?all=True">See all my order history</a>
+        {% endif %}
     </div>
 </section>
 

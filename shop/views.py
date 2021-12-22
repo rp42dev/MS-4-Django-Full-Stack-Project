@@ -111,11 +111,6 @@ def shop(request):
     return render(request, 'shop/shop.html', context)
 
 
-shop
-
-
-
-
 def shop_item(request, item_id):
     """
     A view to return the shop item detailed page

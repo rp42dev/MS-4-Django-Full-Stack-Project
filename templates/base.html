@@ -71,14 +71,12 @@
                             href="{% url 'shop' %}">shop</a></li>
 
                     {% if request.user.is_authenticated %}
+
                     {% if request.user.is_superuser %}
 
-                    <li class="nav-item"><a
-                            class="nav-link {% if manage %}disabled{% endif %}"
+                    <li class="nav-item"><a class="nav-link {% if manage %}disabled{% endif %}"
                             href="{% url 'admin_view' %}">Manage</a></li>
-                    <li class="nav-item"><a
-                        class="nav-link"
-                        href="{% url 'admin:index' %}">Admin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
                     {% endif %}
                     <li class="nav-item"><a
                             class="nav-link {% if request.get_full_path == '/user/' %}disabled{% endif %}"
@@ -86,6 +84,22 @@
                     <li class="nav-item"><a
                             class="nav-link {% if request.get_full_path == '/accounts/logout/' %}disabled{% endif %}"
                             href="{% url 'account_logout' %}">Logout</a></li>
+                    <!-- Button trigger modal -->
+                    {% if user_messages %}
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#Messages"
+                            title="{{ unread_messages_count }} New Messages">
+                            <i class="fas h3 fa-comment"></i>
+                            <span
+                                class="cart-pill text-white position-absolute top-5 start-98 translate-middle font-monospace bg-danger rounded-circle">
+                                {{ unread_messages_count }}
+                                <span class="visually-hidden">{{ unread_messages_count }} Mew Messages</span>
+                            </span>
+
+                        </a>
+                    </li>
+                    {% endif %}
+
                     {% else %}
                     <li class="nav-item"><a
                             class="nav-link {% if request.get_full_path == '/accounts/login/' %}disabled{% endif %}"
@@ -177,6 +191,7 @@
     </footer>
 
     {% include 'includes/contact.html' %}
+    {% include 'includes/messages.html' %}
 
 
     <!-- Bootstrap core JS-->

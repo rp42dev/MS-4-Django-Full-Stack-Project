@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+from shop.forms import OrderStatusForm
 from reviews.models import ProductReview
 from shop.models import Product, Category
 from support.models import CustomerSuport, Message
@@ -36,7 +37,6 @@ def admin_view(request):
 
     issues = CustomerSuport.objects.all().exclude(status='Resolved')
     issues_count = issues.count()
-    print(issues)
     context = {
         'out_of_stock_count': out_of_stock_count,
         'low_stock_count': low_stock_count,
@@ -51,3 +51,54 @@ def admin_view(request):
         'sale': sale,
     }
     return render(request, 'admin/admin.html', context)
+
+
+@login_required
+def order(request, order_number):
+    """
+    A view to order history
+    """
+    order = get_object_or_404(Order, order_number=order_number)
+    user = request.user
+
+    if not user.is_superuser:
+        messages.error(request,  'Only administartor can view this page')
+        return redirect(reverse('home'))
+   
+    profile = order.user_profile
+    admin = True
+    status_form = OrderStatusForm(instance=order)
+
+    if 'status' in request.POST:
+        if status_form.is_valid:
+            order.status = request.POST['status']
+            order.save()
+            messages.success(request, f'Order #{order.id} satus updated to {order.status}')
+            return redirect(reverse('order', args=[order_number]))
+        else: 
+            messages.error(request, f'Error validating form please ensure form if valid')
+            return redirect(reverse('order', args=[order_number]))
+
+    issues = CustomerSuport.objects.all()
+    try:
+        issue = issues.get(order=order)
+    except CustomerSuport.DoesNotExist:
+        issue = None
+
+    order_reviews = profile.user_review.filter(order__order_number=order_number)
+    order_list = list()
+    
+    for i in order_reviews:
+        order_list.append(i.product.id)
+
+    template = 'checkout/checkout-success.html'
+    context = {
+        'status_form': status_form,
+        'order_list': order_list,
+        'from_profile': False,
+        'issue': issue,
+        'order': order,
+        'admin': admin,
+    }
+
+    return render(request, template, context)

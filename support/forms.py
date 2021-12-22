@@ -4,6 +4,7 @@ from .models import CustomerSuport, Message
 
 class SupportForm(forms.ModelForm):
     prefix = 'support'
+
     class Meta:
         model = CustomerSuport
         fields = ('issue', 'message', )
@@ -14,6 +15,26 @@ class SupportForm(forms.ModelForm):
         labels st to be placeholders
         """
         super().__init__(*args, **kwargs)
+
+
+class IssueStatusForm(forms.ModelForm):
+    prefix = 'issue_status'
+
+    class Meta:
+        model = CustomerSuport
+        fields = ('status',)
+
+    def __init__(self, *args, **kwargs):
+        """
+        Support form
+        labels st to be placeholders
+        """
+        super().__init__(*args, **kwargs)
+         
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'py-1'
+
+
 
 
 class MessageForm(forms.ModelForm):

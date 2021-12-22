@@ -72,17 +72,17 @@
                 
                 {% for review in reviews reversed %}
                 <div class="mt-5">
-                    <h5 class="">{{ review.user_profile }}</h5>
+                    <h5 class="m-0 fw-bolder  text-muted text-italic text-capitalize">{{ review.user_profile }}</h5>
 
                     <div class="">
-                        <p class="m-0 text-muted text-italic">{{ review.date }}</p>
+                        <p class="m-0 time font-monospace">{{ review.date }}</p>
                         <div class="stars h1"
                             style="background-image: linear-gradient(to right, orange, orange {% widthratio review.rating 5 100 %}%, gray {% widthratio review.rating 5 100 %}%, gray 100%)">
                             ★★★★★
                         </div>
 
                         <div class="text bg-white p-2 shadow-sm">
-                            <p>{{ review.review }}</p>
+                            <p class="message fw-bolder font-monospace">{{ review.review }}</p>
                         </div>
                     </div>
                 </div>

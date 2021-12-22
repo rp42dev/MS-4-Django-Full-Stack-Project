@@ -81,7 +81,7 @@ class Order(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return str(f'Order: {self.id}')
+        return str(f'Order #{self.id}')
 
 
 class OrderLine(models.Model):

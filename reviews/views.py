@@ -13,21 +13,22 @@ def review_view(request, item_id):
     """
     A view to return the shop item detailed page
     """
+    item = get_object_or_404(Product, pk=item_id)
     profile = request.user
 
-    if not 'order_id' in request.GET:
-        return redirect(reverse('home'))
-    else:
-        try:
-            order_id = request.GET['order_id']
-            order = profile.orders.get(order_number=order_id)
-            item = get_object_or_404(Product, pk=item_id)
-        except Order.DoesNotExist:
-            return redirect(reverse('order_history', args=[order_id]))
+    try:
+        order_id = request.GET['order_id']
+        order = profile.orders.get(order_number=order_id)
+        
+    except Order.DoesNotExist:
+        return redirect(reverse('order_history', args=[order_id]))
+
     if not str(item.id) in order.items:
         messages.error(request, 'Wrong order number')   
         return redirect(reverse('order_history', args=[order_id]))
+
     if not order.user_profile == profile:
+        messages.error(request, 'Order number did not match')
         return redirect(reverse('home'))
 
     order_reviews = profile.user_review.filter(order__order_number=order_id)
@@ -43,7 +44,7 @@ def review_view(request, item_id):
             review = i.review
             date = i.date
             feedback_left = True
-    
+
     if request.POST:
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -77,6 +78,7 @@ def review_view(request, item_id):
         'date': date,
     }
     return render(request, 'review/leave-review.html', context)
+
 
 
 def all_reviews(request, item_id):
