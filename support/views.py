@@ -42,7 +42,7 @@ def support(request):
             )
             inital_message.save()
 
-            messages.success(request, 'Successfuly added rieview')
+            messages.success(request, f'Your support ticket #{issue_id} wil get back to you asap')
             return redirect(reverse('messages_view', args=[issue_id]))
 
         else:

@@ -32,12 +32,12 @@
 
                             <tbody class="border-bottom">
                                 <tr class="table-light font-monospace">
-                                    <td><a class="btn btn-warning" href="{% url 'order' order.order_number %}"
+                                    <td class="col-4"><a class="btn btn-warning" href="{% url 'order' order.order_number %}"
                                             title="{{ order.order_number }}">
                                             #{{ order.id}}
                                         </a></td>
-                                    <td class="font-monospace text-center">${{ order.total }}</td>
-                                    <td class="font-monospace text-end">{{ order.status }}</td>
+                                    <td class="font-monospace col-4 text-center">${{ order.total }}</td>
+                                    <td class="font-monospace col-4 text-end">{{ order.status }}</td>
 
                                 </tr>
                             </tbody>

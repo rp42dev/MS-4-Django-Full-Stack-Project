@@ -35,9 +35,9 @@
                 </div>
                 <h3 class="fw-bolder text-capitalize">{{ item.name }}</h3>
                 <div class="small mb-1">SKU: {{ item.sku }}</div>
-                
+
                 {% include 'includes/stars.html' %}
-              
+
                 <div class="fs-5 mb-3">
                     {% if item.sale %}
                     <span class="text-decoration-line-through h3 text-danger numbers-font">${{ item.price }}</span>
@@ -68,21 +68,22 @@
             <div class="col-md-6 mt-5">
 
                 {% if feedback_left %}
-                <h5 class="">Your Review for</h5>
-                <p class="m-0 fw-bolder  text-muted text-italic text-capitalize">{{ item.name }}</p>
+                <div class=" shadow-sm border rounded p-3">
+                    <h5 class="">Your Review for</h5>
+                    <p class="m-0 fw-bolder  text-muted text-italic text-capitalize">{{ item.name }}</p>
 
-                <div class="">
-                    <p class="m-0 time font-monospace">Review Date: {{ date }}</p>
-                    <div class="stars h1"
-                        style="background-image: linear-gradient(to right, orange, orange {% widthratio rating 5 100 %}%, gray {% widthratio rating 5 100 %}%, gray 100%)">
-                        ★★★★★
-                    </div>
+                    <div class="">
+                        <p class="m-0 time font-monospace">Review Date: {{ date }}</p>
+                        <div class="stars h1"
+                            style="background-image: linear-gradient(to right, orange, orange {% widthratio rating 5 100 %}%, gray {% widthratio rating 5 100 %}%, gray 100%)">
+                            ★★★★★
+                        </div>
 
-                    <div class="text bg-white p-2 shadow-sm">
-                        <p class="message fw-bolder font-monospace">{{ review }}</p>
+                        <div class="text bg-white p-2 shadow-sm">
+                            <p class="message fw-bolder font-monospace">{{ review }}</p>
+                        </div>
                     </div>
                 </div>
-
                 {% else %}
                 <!-- Product add to cart POST form -->
                 <h5 class="">Review</h5>

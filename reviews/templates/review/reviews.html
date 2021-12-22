@@ -68,11 +68,11 @@
 
             <!-- If feedback was left return feedback instead -->
             
-            <div class="col-md-6 border-start review-container shadow-sm">
+            <div class="col-md-6 border-start review-container">
                 
                 {% for review in reviews reversed %}
-                <div class="mt-5">
-                    <h5 class="m-0 fw-bolder  text-muted text-italic text-capitalize">{{ review.user_profile }}</h5>
+                <div class="mt-5 shadow-sm border rounded p-3 ">
+                    <h5 class="m-0 fw-bolder text-muted text-italic text-capitalize">{{ review.user_profile }}</h5>
 
                     <div class="">
                         <p class="m-0 time font-monospace">{{ review.date }}</p>
@@ -86,7 +86,6 @@
                         </div>
                     </div>
                 </div>
-                <hr>
                 {% endfor %}
             </div>
         </div>
