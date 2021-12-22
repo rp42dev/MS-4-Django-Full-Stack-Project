@@ -182,7 +182,9 @@
                     <a class="btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <div class="col-lg-4 text-lg-end">
-
+                    {% if request.user.is_authenticated %}
+                    <a  class="link-warning me-2 text-decoration-none"  href="{% url 'support' %}">Report an issue</a>
+                    {% endif %}
                     <a class="link-warning text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal"
                         href="">Contact Us</a>
                 </div>

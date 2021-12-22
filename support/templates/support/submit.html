@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% load crispy_forms_tags %}
+
+{% block page_header %}
+<!-- Header-->
+<header class="bg-black py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center">
+
+            <h1 class="display-4 fw-bolder">Support</h1>
+
+        </div>
+    </div>
+</header>
+{% endblock %}
+{% block content %}
+
+<!-- Product Detail section-->
+<section class="page-section">
+
+    <div class="mx-auto col-12 col-sm-8 col-lg-6 px-4">
+        <h5 class="text-capitalize">Order # {{ order.id }}</h5>
+        <p class="text-muted text-italic">Submit if any issues with Account | Order | Product</p>
+        <form id="support-form" action="{% url 'submit' order.order_number %}" class="form" method="POST" novalidate>
+            {% csrf_token %}
+           
+                {{ form.issue | as_crispy_field }}
+            
+            <div id="sellect-product-group" id class="d-none">
+                <label for="sellect-product">Select Product</label>
+
+                <select id="sellect-product" name="product" class="select form-control mb-4  fw-bolder">
+
+                    <option selected value="">Select Product</option>
+                    {% for item in order_line %}
+                    <option value="{{ item.product.id }}">{{ item }}</option>
+
+                    {{ item }}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="fw-bolder font-monospace">
+                {{ form.message | as_crispy_field }}
+            </div>
+            <button id="review-submit" class="btn btn-dark btn-xl text-uppercase flex-shrink-0" type="submit">
+                Submit
+            </button>
+        </form>
+
+    </div>
+</section>
+
+<!-- onchange="myFunc(this.value)" -->
+<script>
+    let issue = document.querySelector('#id_support-issue')
+    let item = document.querySelector('#sellect-product')
+    let itemGroup = document.querySelector('#sellect-product-group')
+    // issue.classList.add('form-select')
+    issue.addEventListener("change", myFuncIssue);
+    item.addEventListener("change", myFuncItem);
+    item.classList.add('text-gray')
+    issue.classList.add('text-gray')
+
+    checkSelected()
+
+    function myFuncItem() {
+        if (item.value == '') {
+            item.classList.add('text-gray')
+        } else {
+            item.classList.remove('text-gray')
+        }
+    }
+
+    function myFuncIssue() {
+        if (issue.value == 'Product') {
+            itemGroup.classList.remove('d-none')
+            itemGroup.classList.add('d-block')
+        } else {
+            itemGroup.classList.add('d-none')
+            itemGroup.classList.remove('d-block')
+        }
+        if (issue.value == 'Select') {
+            issue.classList.add('text-gray')
+        } else {
+            issue.classList.remove('text-gray')
+        }
+    }
+</script>
+
+{% endblock %}

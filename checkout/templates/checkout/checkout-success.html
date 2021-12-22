@@ -154,7 +154,13 @@
                     {% if from_profile %}
                     <div class="mt-3">
                         {% if issue %}
-                        <a href="{% url 'messages_view' issue.id %}">Messages</a>
+
+                        {% if issue.status == 'Resolved' %}
+                        <a href="{% url 'messages_view' issue.id %}" class="m-0 link-success fw-bolder font-monospace"> Ticket #{{ issue.id }} Status: {{ issue.status }}</a>
+                        {% else %}
+                        <a href="{% url 'messages_view' issue.id %}" class="m-0 link-danger fw-bolder font-monospace"> Ticket #{{ issue.id }} Status: {{ issue.status }}</a>
+                        {% endif %}
+                        
                         {% else %}
                         <a href="{% url 'submit' order.order_number %}">Report an issue</a>
                         {% endif %}

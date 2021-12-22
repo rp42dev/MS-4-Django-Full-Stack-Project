@@ -14,16 +14,57 @@ def support(request):
     """
     A view to return the shop suport page
     """
-    return render(request, 'support/support.html')
+    profile = request.user
+    
+    if request.POST:
+        form = SupportForm(request.POST)
+        if form.is_valid():
+
+            support_post = CustomerSuport(
+                status='Submitted',
+                user_profile=profile,
+                issue=request.POST['support-issue'],
+                message=request.POST['support-message'],
+                order=None,
+                order_line=None,
+            )
+
+            support_post.save()
+
+            issues = CustomerSuport.objects.filter(user_profile=profile)
+            issue = issues.last()
+            issue_id = issue.id 
+
+            inital_message = Message(
+                thread=issue,
+                user=profile,
+                message=issue.message,
+            )
+            inital_message.save()
+
+            messages.success(request, 'Successfuly added rieview')
+            return redirect(reverse('messages_view', args=[issue_id]))
+
+        else:
+            messages.error(request, 'Error with form')
+            return redirect(reverse('home'))
+
+    form = SupportForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'support/support.html', context)
 
 
 @login_required
 def submit(request, order_number):
 
+    profile = request.user
     order = get_object_or_404(Order, order_number=order_number)
     order_line = OrderLine.objects.filter(order__order_number=order_number)
-    issues = CustomerSuport.objects.all()
-    profile = request.user
+    issues = CustomerSuport.objects.all().filter(user_profile=profile)
 
     if not order.user_profile == profile:
         messages.error(request, 'Sorry no order could be found')
@@ -72,7 +113,7 @@ def submit(request, order_number):
         'order_line': order_line,
     }
 
-    return render(request, 'support/support.html', context)
+    return render(request, 'support/submit.html', context)
 
 
 @login_required
