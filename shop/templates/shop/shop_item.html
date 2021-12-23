@@ -75,7 +75,9 @@
         <h2 class="fw-bolder mb-4 text-capitalize">More {{ item.style }} hats</h2>
         <div class="row gx-2 gx-sm-4 h-25 shadow-sm scroll-wrapper flex-nowrap ">
             {% for product in related %}
+            {% if product.id != item.id %}
             {% include 'includes/shop/item-card.html' %}
+            {% endif %}
             {% endfor %}
             <script>
                 const scrolling = document.querySelector(".scroll-wrapper");

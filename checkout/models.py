@@ -47,7 +47,8 @@ class Order(models.Model):
         null=True, blank=True, related_name='orders')
     
     # User contact info
-    email = models.EmailField(max_length=100, blank=True)
+    full_name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
     # Shipping Address
     shipping_name = models.CharField(max_length=50)
     shipping_address_1 = models.CharField(max_length=100)

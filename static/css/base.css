@@ -668,3 +668,8 @@ section#promise .section-heading {
 .message {
   font-size: .9rem;
 }
+
+
+.modal-body {
+  background-color: rgba(229, 229, 229, 0.9);
+}

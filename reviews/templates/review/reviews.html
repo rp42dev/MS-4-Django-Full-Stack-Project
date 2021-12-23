@@ -71,7 +71,7 @@
             <div class="col-md-6 border-start review-container">
                 
                 {% for review in reviews reversed %}
-                <div class="mt-5 shadow-sm border rounded p-3 ">
+                <div class="mt-5 shadow-sm border rounded p-3 bg-white">
                     <h5 class="m-0 fw-bolder text-muted text-italic text-capitalize">{{ review.user_profile }}</h5>
 
                     <div class="">
@@ -81,7 +81,7 @@
                             ★★★★★
                         </div>
 
-                        <div class="text bg-white p-2 shadow-sm">
+                        <div class="text bg-light p-2 shadow-sm">
                             <p class="message fw-bolder font-monospace">{{ review.review }}</p>
                         </div>
                     </div>

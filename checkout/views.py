@@ -7,7 +7,7 @@ from cart.contexts import cart_contents
 from shop.models import Product
 from customers.models import UserAddress
 from . models import Order, OrderLine
-from . forms import ShippingForm
+from . forms import ShippingForm, ContactForm
 
 import json
 
@@ -20,14 +20,16 @@ def checkout(request):
     if request.POST:
         cart = request.session.get('cart', {})
         shipping_form = ShippingForm(request.POST, prefix="shipping")
+        contact_form = ContactForm(request.POST, prefix="contact")
 
-        if shipping_form.is_valid():
-            # order = billing_form.save(commit=False)
-
-            order = shipping_form.save(commit=False)
+        if shipping_form.is_valid() and contact_form.is_valid():
+           
+            order = shipping_form.save(commit=False)   
             order.items = json.dumps(cart)
+            order.full_name = request.POST.get('contact-full_name')
+            order.email = request.POST.get('contact-email')
             order.save()
-
+            
             for item_id, quantity in cart.items():
                 try:
                     product = Product.objects.get(id=item_id)
@@ -58,10 +60,18 @@ def checkout(request):
             return redirect(reverse('shop'))
 
     if request.user.is_authenticated:
+        form2 = ContactForm()
+
+        profile = request.user
+        form2 = ContactForm(initial={
+            'full_name': f'{profile.first_name} {profile.last_name}',
+            'email': profile.email,
+        })
+        
         try:
-            address = UserAddress.objects.get(user=request.user)
+            address = UserAddress.objects.get(user=profile)
             form = ShippingForm(initial={
-                'shipping_name': f'{address.user.first_name} {address.user.last_name}',
+                'shipping_name': f'{profile.first_name} {profile.last_name}',
                 'shipping_address_1': address.address_1,
                 'shipping_address_2': address.address_2,
                 'shipping_town': address.town,
@@ -71,13 +81,16 @@ def checkout(request):
             })
         except UserAddress.DoesNotExist:
             form = ShippingForm()
+            form2 = ContactForm()
     else:
         form = ShippingForm()
+        form2 = ContactForm()
 
     current_cart = cart_contents(request)
     total = current_cart['grand_total']
 
     context = {
+        'form2': form2,
         'form': form,
     }
 

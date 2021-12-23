@@ -1,31 +1,32 @@
 <!-- Modal -->
 <div class="modal fade " id="Messages" tabindex="-1" aria-labelledby="MessagesLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content bg-light">
-            <div class="modal-header">
+        <div class="modal-content bg-transparent">
+            <div class="modal-header bg-light">
                 <h5 class="modal-title" id="MessagesLabel">New Messages received</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body border rounded-bottom ">
 
                 {% for message in user_messages %}
-                <div class=" shadow-sm border rounded p-3">
-                <div class="mt-3">
-                    <div class="">
+                <div class=" shadow-sm rounded bg-white p-3">
+                    <div class="mt-3">
+                        <div class="">
 
-                        <p class="m-0 h5">{{ message.thread }}</p>
-                        <p class="m-0 fw-bolder text-muted text-italic text-capitalize">{{ message.user }}</p>
-                        <p class="m-0 time font-monospace">{{ message.timestamp }}</p>
+                            <p class="m-0 h5">{{ message.thread }}</p>
+                            <p class="m-0 fw-bolder text-muted text-italic text-capitalize">{{ message.user }}</p>
+                            <p class="m-0 time font-monospace">{{ message.timestamp }}</p>
 
-                        <div class="text bg-white p-2 shadow-sm">
-                            <p class="message fw-bolder font-monospace">{{ message.message }}</p>
+                            <div class="text bg-light p-2 shadow-sm">
+                                <p class="message fw-bolder font-monospace">{{ message.message }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="modal-footer">
-                    <a class="btn btn-warning" href="{% url 'messages_view' message.thread.id %}?unread=False">Go to Messages</a>
-                </div>
+                    <div class="modal-footer border-rounded pb-0">
+                        <a class="btn btn-warning" href="{% url 'messages_view' message.thread.id %}?unread=False">Go to
+                            Messages</a>
+                    </div>
                 </div>
 
                 {% endfor %}
