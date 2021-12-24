@@ -2,6 +2,7 @@ from django.shortcuts import render,\
     redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.conf import settings
 
 from cart.contexts import cart_contents
 from shop.models import Product
@@ -9,6 +10,7 @@ from customers.models import UserAddress
 from . models import Order, OrderLine
 from . forms import ShippingForm, ContactForm
 
+import stripe
 import json
 
 
@@ -16,20 +18,22 @@ def checkout(request):
     """
     A view to return the checkout page
     """
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
 
+    print(stripe_public_key)
     if request.POST:
         cart = request.session.get('cart', {})
         shipping_form = ShippingForm(request.POST, prefix="shipping")
         contact_form = ContactForm(request.POST, prefix="contact")
 
         if shipping_form.is_valid() and contact_form.is_valid():
-           
             order = shipping_form.save(commit=False)   
             order.items = json.dumps(cart)
             order.full_name = request.POST.get('contact-full_name')
             order.email = request.POST.get('contact-email')
             order.save()
-            
+
             for item_id, quantity in cart.items():
                 try:
                     product = Product.objects.get(id=item_id)
@@ -92,6 +96,8 @@ def checkout(request):
     context = {
         'form2': form2,
         'form': form,
+        'stripe_public_key': stripe_public_key,
+        'client_secret': 'test client secret',
     }
 
     return render(request, 'checkout/checkout.html', context)
@@ -120,7 +126,7 @@ def checkout_success(request, order_number):
     template = 'checkout/checkout-success.html'
 
     context = {
-        'order': order,
+        'order': order,  
     }
 
     return render(request, template, context)

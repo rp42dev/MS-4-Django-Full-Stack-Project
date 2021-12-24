@@ -14,9 +14,15 @@
     </div>
 </header>
 {% endblock %}
+
+
+{% block extra_css %}
+<link href="{% static 'css/checkout.css' %}" rel="stylesheet" />
+{% endblock %}
+
 {% block content %}
 
-                <!-- <input type="range" class="form-range hidden" name="raiting" min="1" max="5" step="1"
+<!-- <input type="range" class="form-range hidden" name="raiting" min="1" max="5" step="1"
                                 id="star" onclick="Stars(this.value)"> -->
 
 <!-- Product Detail section-->
@@ -25,7 +31,7 @@
     <div class="container pb-5 px-4 px-lg-5">
         <div class="item row gx-4 gx-lg-5 position-relative">
             <h5 class="">Checkout Now</h5>
-            
+
             <!-- Order Summary -->
             <div class="col-md-6">
                 <p class="text-muted text-italic">Order Summary</p>
@@ -43,7 +49,8 @@
                         </a>
 
                         {% if item.product.sale %}
-                        <div class="badge bg-danger text-white font-monospace position-absolute" style="top: -.5rem; right: 0.5rem">
+                        <div class="badge bg-danger text-white font-monospace position-absolute"
+                            style="top: -.5rem; right: 0.5rem">
                             Sale
                         </div>
                         {% endif %}
@@ -73,32 +80,44 @@
 
                 <div class="d-none d-md-block pt-3">
                     <div>
-                                               
+
                         {% if delivery != 0 %}
                         <p class="font-monospace">Delivery: {{ delivery }}</p>
-                       {% else %}
-                       <p class="text-danger m-0 font-monospace">Free delivery over $50</p>
-                       {% endif %}
+                        {% else %}
+                        <p class="text-danger m-0 font-monospace">Free delivery over $50</p>
+                        {% endif %}
                         <p class="text-muted m-0 text-italic fw-bold">Total amount:</p>
-    
+
                         {% if before %}
 
-                        
+
                         <p>
-                        <span class="text-decoration-line-through h3 font-monospace">${{ before }}</span>
-                        <span class="text-danger h3 font-monospace fw-bold">${{ grand_total }} </span>
+                            <span class="text-decoration-line-through h3 font-monospace">${{ before }}</span>
+                            <span class="text-danger h3 font-monospace fw-bold">${{ grand_total }} </span>
                         </p>
                         {% else %}
-    
+
                         <p>
-                        <span class="font-monospace h3">${{ grand_total }} </span>
+                            <span class="font-monospace h3">${{ grand_total }} </span>
                         </p>
-            
+
                         {% endif %}
-                        
+
                     </div>
 
-                    <button class="btn btn-xl btn-dark text-uppercase float-right" form="pay-form">Pay now</button>
+
+                    <form id="payment-form">
+                        <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+                        <button id="submit" class="mt-2 btn-dark" form="pay-form">
+                          <div class="spinner hidden" id="spinner"></div>
+                          <span id="button-text">Pay now</span>
+                        </button>
+                        <p class="text-danger" id="card-error" role="alert"></p>
+                        <p class="result-message hidden">
+                          Payment succeeded, see the result in your
+                          <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+                        </p>
+                      </form>
                 </div>
             </div>
 
@@ -115,35 +134,40 @@
             </div>
 
             <div class="d-block d-md-none">
-                <div>                          
+                <div>
                     {% if delivery != 0 %}
                     <p class="font-monospace ">Delivery: {{ delivery }}</p>
-                   {% else %}
-                   <p class="text-danger m-0 font-monospace">Free delivery over $50</p>
-                   {% endif %}
+                    {% else %}
+                    <p class="text-danger m-0 font-monospace">Free delivery over $50</p>
+                    {% endif %}
                     <p class="text-muted m-0 text-italic fw-bold">Total amount:</p>
 
                     {% if before %}
-
-                    
                     <p>
-                    <span class="text-decoration-line-through h3 font-monospace">${{ before }}</span>
-                    <span class="text-danger h3 font-monospace fw-bold">${{ grand_total }} </span>
+                        <span class="text-decoration-line-through h3 font-monospace">${{ before }}</span>
+                        <span class="text-danger h3 font-monospace fw-bold">${{ grand_total }} </span>
                     </p>
                     {% else %}
-
                     <p>
-                    <span class="font-monospace h3">${{ grand_total }} </span>
+                        <span class="font-monospace h3">${{ grand_total }} </span>
                     </p>
-        
-                    {% endif %}
-                    
-                </div>
 
-                <button class="btn btn-xl btn-dark text-uppercase float-right" form="pay-form">Pay now</button>
+                    {% endif %}
+                    <h1>test text here</h1>
+                </div>
+                text
+
             </div>
 
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+
 {% endblock %}

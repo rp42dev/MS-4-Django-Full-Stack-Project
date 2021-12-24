@@ -84,7 +84,7 @@ def order(request, order_number):
         issue = issues.get(order=order)
     except CustomerSuport.DoesNotExist:
         issue = None
-
+    
     order_reviews = profile.user_review.filter(order__order_number=order_number)
     order_list = list()
     

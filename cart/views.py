@@ -171,4 +171,3 @@ def remove_cart_item(request, item_id):
         return redirect(reverse('shop'))
         messages.info(
                     request, 'Your cart is empty.')
-

@@ -68,12 +68,12 @@
                         <form class="form" method="POST" action="{% url 'remove_cart_item' item.item_id %}">
                             {% csrf_token %}
                             <div class="form-group m-0">
-                                <div class="input-group ">
+                                <div class="input-group">
 
                                     <input type="hidden" name="action" value="add">
 
-                                    <button type='submit' class='btn my-auto count-btn'>
-                                        <i class="fas fa-trash-alt my-auto h3"></i>
+                                    <button type='submit' class='btn p-0 mt-2 my-auto count-btn'>
+                                        <i class="fas fa-trash-alt my-auto h4"></i>
                                     </button>
 
                                 </div>
