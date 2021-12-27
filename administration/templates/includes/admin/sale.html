@@ -15,8 +15,7 @@
 
             <thead>
                 <tr>
-                    <th class="text-muted font-monospace text-italic">{{ item.name }}</th>
-
+                    <th class="text-muted font-monospace text-italic">{{ item }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,7 +25,6 @@
                             <thead>
                                 <tr>
                                     <th>Item</th>
-                                    <th class="font-monospace text-center">Item SKU</th>
                                     <th class="font-monospace text-center">Original Price</th>
                                     <th class="font-monospace text-end">Sale Price</th>
                                 </tr>
@@ -45,7 +43,6 @@
                                             </a>
                                             {% endthumbnail %}
                                         </a></td>
-                                    <td class="font-monospace text-center">{{ item.sku}}</td>
                                     <td class="font-monospace text-center">{{ item.price }}</td>
                                     <td class="font-monospace text-end">{{ item.sale_price }}</td>
 

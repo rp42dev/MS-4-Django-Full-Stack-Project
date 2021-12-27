@@ -12,18 +12,20 @@ document.querySelector("button").disabled = true;
 var elements = stripe.elements();
 var style = {
     base: {
-        color: "#32325d",
-        fontFamily: 'Arial, sans-serif',
+        color: "#000",
+        fontFamily: 'Montserrat, sans-serif',
+        fontWeight: '600',
         fontSmoothing: "antialiased",
-        fontSize: "16px",
+        fontSize: "1rem",
         "::placeholder": {
-            color: "#32325d"
-        }
+            color: "#c5c5c5"
+        },
     },
+
     invalid: {
-        fontFamily: 'Arial, sans-serif',
-        color: "#fa755a",
-        iconColor: "#fa755a"
+        fontFamily: 'Montserrat, sans-serif',
+        color: "#d2042d",
+        iconColor: "#d2042d"
     }
 };
 

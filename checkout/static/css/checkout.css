@@ -1,16 +1,4 @@
 
-
-  
-  input {
-    border-radius: 6px;
-    margin-bottom: 6px;
-    padding: 12px;
-    border: 1px solid rgba(50, 50, 93, 0.1);
-    height: 44px;
-    font-size: 16px;
-    width: 100%;
-    background: white;
-  }
   
   .result-message {
     line-height: 22px;
@@ -38,12 +26,12 @@
   #card-element {
     border-radius: 4px 4px 0 0 ;
     padding: 12px;
-    border: 1px solid rgba(50, 50, 93, 0.1);
+    border: 1px solid #c5c5c5;
     height: 44px;
     width: 100%;
     background: white;
   }
-  
+
   #payment-request-button {
     margin-bottom: 32px;
   }
