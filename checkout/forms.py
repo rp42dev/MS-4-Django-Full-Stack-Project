@@ -6,10 +6,10 @@ class ShippingForm(forms.ModelForm):
     prefix = 'shipping'
     class Meta:
         model = Order
-        fields = ('shipping_name', 'shipping_address_1',
-                  'shipping_address_2', 'shipping_town', 
-                  'shipping_county', 'shipping_postcode',
-                  'shipping_country',)
+        fields = ('shipping_name', 'address_line_1',
+                  'address_line_2', 'city', 
+                  'county', 'postcode',
+                  'country',)
 
     def __init__(self, *args, **kwargs):
         """

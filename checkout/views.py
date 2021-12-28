@@ -21,7 +21,6 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    print(stripe_public_key)
     if request.POST:
         cart = request.session.get('cart', {})
         shipping_form = ShippingForm(request.POST, prefix="shipping")
@@ -76,12 +75,12 @@ def checkout(request):
             address = UserAddress.objects.get(user=profile)
             form = ShippingForm(initial={
                 'shipping_name': f'{profile.first_name} {profile.last_name}',
-                'shipping_address_1': address.address_1,
-                'shipping_address_2': address.address_2,
-                'shipping_town': address.town,
-                'shipping_county': address.county,
-                'shipping_postcode': address.postcode,
-                'shipping_country': address.country,
+                'address_line_1': address.address_line_1,
+                'address_line_2': address.address_line_2,
+                'city': address.city,
+                'county': address.county,
+                'postcode': address.postcode,
+                'country': address.country,
             })
         except UserAddress.DoesNotExist:
             form = ShippingForm()
@@ -92,6 +91,7 @@ def checkout(request):
 
     current_cart = cart_contents(request)
     total = current_cart['grand_total']
+    stripe_total = round(total * 100)
 
     context = {
         'form2': form2,

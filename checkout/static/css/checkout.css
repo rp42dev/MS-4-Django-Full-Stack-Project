@@ -133,11 +133,3 @@ outline-color: rgba(240, 86, 86, 0.250);
     transform: rotate(360deg);
   }
 }
-
-@media only screen and (max-width: 600px) {
-  form {
-    width: 80vw;
-  }
-}
-
-``

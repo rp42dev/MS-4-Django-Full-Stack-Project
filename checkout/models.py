@@ -51,12 +51,12 @@ class Order(models.Model):
     email = models.EmailField(max_length=50)
     # Shipping Address
     shipping_name = models.CharField(max_length=50)
-    shipping_address_1 = models.CharField(max_length=100)
-    shipping_address_2 = models.CharField(max_length=100, blank=True)
-    shipping_town = models.CharField(max_length=60)
-    shipping_county = models.CharField(max_length=60, blank=True)
-    shipping_postcode = models.CharField(max_length=30, blank=True)
-    shipping_country = CountryField(blank_label='Country')
+    address_line_1 = models.CharField(max_length=100)
+    address_line_2 = models.CharField(max_length=100, blank=True)
+    city = models.CharField(max_length=60)
+    county = models.CharField(max_length=60, blank=True)
+    postcode = models.CharField(max_length=30, blank=True)
+    country = CountryField(blank_label='Country')
 
     def update_total(self):
         """

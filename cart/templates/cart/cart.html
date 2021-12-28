@@ -17,12 +17,13 @@
 <!-- Product section-->
 <section class="page-section">
 
-    <div class="w-auto px-4">
+    <div class="w-auto px-2">
         <div class="col-12 mx-auto col-lg-8 col-md-10">
             {% if cart_items %}
             {% for item in cart_items %}
 
-            <div class="cart-conteiner shadow-sm py-4 rounded-3 bg-white row align-items-center mt-2 mt-sm-4 position-relative">
+            <div
+                class="cart-conteiner mx-1 shadow-sm py-4 rounded-3 bg-white row align-items-center mt-2 mt-sm-4 position-relative">
 
                 <div class="col-6 col-sm-3 order-1 position-relative">
                     {% thumbnail item.product.image "150" as im %}
@@ -33,7 +34,8 @@
                     </a>
 
                     {% if item.product.sale %}
-                    <div class="badge bg-danger text-white font-monospace position-absolute" style="top: 0.5rem; right: 0.5rem">
+                    <div class="badge bg-danger text-white font-monospace position-absolute"
+                        style="top: 0.5rem; right: 0.5rem">
                         Sale
                     </div>
                     {% endif %}
@@ -46,7 +48,7 @@
                 </div>
 
                 <div class="col-3 text-center col-6 col-sm-3 order-2 order-sm-3">
-      
+
                     <div>
                         <!-- Sale badge-->
 
@@ -88,17 +90,15 @@
 
             {% endif %}
         </div>
-    </div>
 
-    <div class="row">
         <div class="col-12 mt-5 text-center">
-            <h1 class="font-monospace fw-bold total"> ${{ grand_total|floatformat:2 }}</h1>
+            <h1 class="font-monospace fw-bold total"> ${{ total|floatformat:2 }}</h1>
             <input type="hidden" name="grand_total">
             <a class="mt-4 btn btn-dark btn-xl text-uppercase flex-shrink-0" href="{% url 'checkout' %}">
                 Checkout Now
             </a>
         </div>
-    </div>
 
+    </div>
 </section>
 {% endblock %}

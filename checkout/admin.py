@@ -12,9 +12,9 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ('user_profile', 'order_number', 'date', 'items')
 
     fields = ('order_number', 'user_profile', 'email', 'shipping_name',
-              'shipping_address_1', 'shipping_address_2', 
-              'shipping_town', 'shipping_county', 'shipping_postcode', 
-              'shipping_country', 'date', 'items', 'delivery',
+              'address_line_1', 'address_line_2', 
+              'town', 'county', 'postcode', 
+              'country', 'date', 'items', 'delivery',
               'total', 'status')
 
     list_display = ('id', 'date', 'shipping_name',

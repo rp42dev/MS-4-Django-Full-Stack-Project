@@ -15,9 +15,9 @@ class UserAddress(models.Model):
     # User
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    address_1 = models.CharField(max_length=100, null=True, blank=True)
-    address_2 = models.CharField(max_length=100, null=True, blank=True)
-    town = models.CharField(max_length=60, null=True, blank=True)
+    address_line_1 = models.CharField(max_length=100, null=True, blank=True)
+    address_line_2 = models.CharField(max_length=100, null=True, blank=True)
+    city = models.CharField(max_length=60, null=True, blank=True)
     county = models.CharField(max_length=60, null=True, blank=True)
     postcode = models.CharField(max_length=30, null=True, blank=True)
     country = CountryField(blank_label='Country', null=True, blank=True)
