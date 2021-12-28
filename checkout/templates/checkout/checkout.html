@@ -72,14 +72,14 @@
         {% endif %}
 
 
-        <div class="mt-3">
+        <div class="mt-4">
 
             <p>
-                <span class="h4 font-monospace">Subtotal ${{ total }} </span> <br>
+                <span class="h6 font-monospace">Subtotal ${{ total }} </span> <br>
                 {% if delivery != 0 %}
-                <span class="font-monospace h4">Delivery: {{ delivery }}</span> <br>
+                <span class="font-monospace h6">Delivery: {{ delivery }}</span> <br>
                 {% else %}
-                <span class="text-danger m-0 h4 font-monospace">Free delivery over $50</span> <br>
+                <span class="text-danger m-0 h6 font-monospace">Free delivery over $50</span> <br>
                 {% endif %}
                 <span class="h3 fw-bold font-monospace">Grand total ${{ grand_total }} </span>
             </p>         
@@ -107,7 +107,7 @@
                     </div>
 
                     <p id="card-error" role="alert"></p>
-                    <button id="submit" class="btn btn-dark btn-xl w-100 text-uppercase">
+                    <button id="btn-submit" class="btn btn-dark btn-xl w-100 text-uppercase">
                         <div class="spinner hidden" id="spinner"></div>
                         <span id="button-text">Pay ${{ grand_total }}</span>
                     </button>
