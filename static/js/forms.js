@@ -53,7 +53,7 @@ function FormTrigger() {
                     // error message for required fields add praceholder
                 } else {
                     let para = document.createElement("P");
-                    para.classList.add('text-danger');
+                    para.classList.add('text-danger', 'invalid-p');
                     let str = `${input.placeholder} field is Required.`
                     para.innerHTML = str;
                     parent.append(para);
@@ -92,7 +92,7 @@ let inputs = document.querySelectorAll('.form-control')
                     // error message for required fields add praceholder
                 } else {
                     let para = document.createElement("P");
-                    para.classList.add('text-danger');
+                    para.classList.add('invalid-p');
                     let str = `${input.placeholder} field is Required.`
                     para.innerHTML = str;
                     parent.append(para);

@@ -15,16 +15,11 @@
 </header>
 {% endblock %}
 
-
 {% block extra_css %}
 <link href="{% static 'css/checkout.css' %}" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
-
-<!-- <input type="range" class="form-range hidden" name="raiting" min="1" max="5" step="1"
-                                id="star" onclick="Stars(this.value)"> -->
-
 <!-- Product Detail section-->
 <section class="page-section">
 
@@ -77,7 +72,7 @@
         {% endif %}
 
 
-        <div class="ms-auto">
+        <div>
 
             {% if delivery != 0 %}
             <p class="font-monospace">Delivery: {{ delivery }}</p>
@@ -122,11 +117,13 @@
                     <div id="card-element">
                         <!--Stripe.js injects the Card Element-->
                     </div>
-                    <button id="submit" class="mt-2 btn-dark" form="pay-form">
+
+                    <p id="card-error" role="alert"></p>
+                    <button id="submit" class="mt-2 btn btn-dark btn-xl w-100 text-uppercase">
                         <div class="spinner hidden" id="spinner"></div>
                         <span id="button-text">Pay ${{ grand_total }}</span>
                     </button>
-                    <p class="text-danger" id="card-error" role="alert"></p>
+                    
                     <p class="result-message hidden">
                         Payment succeeded, see the result in your
                         <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.

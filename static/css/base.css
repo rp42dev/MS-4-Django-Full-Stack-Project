@@ -80,8 +80,11 @@ p {
 }
 
 .btn-xl {
-  padding: 1.25rem 2.5rem;
+  padding: .6rem;
+  font-weight: 700;
   font-size: 1.125rem;
+  max-width: 570px;
+  width: 100%;
 }
 
 .btn {
@@ -386,7 +389,7 @@ form .form-control:active {
   box-shadow: none;
   outline-color: #999;
   border-color: #999;
-  box-shadow: 0px 0px 6px #999;
+  border: 1px solid #999 !important;
 }
 
 form ::-webkit-input-placeholder{
@@ -430,15 +433,19 @@ form :-ms-input-placeholder {
 .form-check-input:checked {
   background-color: green;
   border-color: green;
-  box-shadow: 0px 0px 4px green;
 }
 
 .InputElement.is-valid, 
 .form-control.is-valid, .was-validated .form-control:valid {
   border-color: #198754;
-  box-shadow: 0px 0px 3px #198754;
   padding-right: calc(1.5em + .75rem);
   background-image: none;
+}
+
+.invalid-p {
+  color: #d2042d;
+  font-size: 13px;
+  line-height: 17px;
 }
 
 input:-webkit-autofill,

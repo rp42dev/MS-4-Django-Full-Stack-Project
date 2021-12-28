@@ -16,7 +16,7 @@ var style = {
         fontFamily: 'Montserrat, sans-serif',
         fontWeight: '600',
         fontSmoothing: "antialiased",
-        fontSize: "1rem",
+        fontSize: "14px",
         "::placeholder": {
             color: "#c5c5c5"
         },
@@ -25,7 +25,8 @@ var style = {
     invalid: {
         fontFamily: 'Montserrat, sans-serif',
         color: "#d2042d",
-        iconColor: "#d2042d"
+        iconColor: "#d2042d",
+        border: '1px solid #d2042d',
     }
 };
 
@@ -34,7 +35,6 @@ var card = elements.create("card", {
 });
 // Stripe injects an iframe into the DOM
 card.mount("#card-element");
-
 
 card.on("change", function (event) {
     // Disable the Pay button if there are no card details in the Element
@@ -48,4 +48,3 @@ form.addEventListener("submit", function (event) {
     // Complete payment when the submit button is clicked
     payWithCard(stripe, card, data.clientSecret);
 });
-
