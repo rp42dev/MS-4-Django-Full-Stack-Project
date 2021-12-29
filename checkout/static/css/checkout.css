@@ -55,24 +55,27 @@
   border-color: green !important;
   outline-color: rgba(25, 135, 84, 0.250);
 }
+
 #btn-submit {
   position: relative;
   min-height: 50px
 }
+
 button:disabled {
   opacity: 0.5;
   cursor: default;
 }
 
 /* spinner/processing state, errors */
-
 .spinner {
+  position: absolute;
   color: #fca311;
   font-size: 1.5rem;
-  text-indent: -99999px;
   margin: auto;
-  top: 6px;
-  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   width: 2.2rem;
   height: 2.2rem;
 }

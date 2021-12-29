@@ -20,6 +20,7 @@ def checkout(request):
     """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
+    wh_secret = settings.STRIPE_WH_SECRET
 
     if request.POST:
         cart = request.session.get('cart', {})
