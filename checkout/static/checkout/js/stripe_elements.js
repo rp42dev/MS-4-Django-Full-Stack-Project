@@ -47,23 +47,52 @@ form.addEventListener('submit', function (ev) {
     setLoading(true);
     // If the client secret was rendered server-side as a data-secret attribute
     // on the <form> element, you can retrieve it here by calling `form.dataset.secret`
-    stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-            card: card,
-        }
-    }).then(function (result) {
-        if (result.error) {
-            // Show error to your customer (for example, insufficient funds)
-            document.querySelector("#card-error").textContent = result.error ? result.error.message : "";
-        } else {
-            // The payment has been processed!
-            if (result.paymentIntent.status === 'succeeded') {
-                form.submit();
-            }
-        }
-        setLoading(false);
-    });
+    let saveInfo = Boolean($('#id-save-info').attr('checked'));
+    // From using {% csrf_token %} in the form
 
+    let csrfToken = form.elements['csrfmiddlewaretoken'].value
+    let postData = {
+        'csrfmiddlewaretoken': csrfToken,
+        'client_secret': clientSecret,
+        'save_info': saveInfo,
+    };
+
+    let url = '/checkout/cache_checkout_data/';
+
+    $.post(url, postData).done(function () {
+
+        stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: card,
+                billing_details: {
+                    name: form.elements['contact-full_name'].value,
+                    email: form.elements['contact-email'].value,
+                }
+            },
+            shipping: {
+                name: form.elements['shipping-shipping_name'].value,
+                address: {
+                    line1: form.elements['shipping-address_line_1'].value,
+                    line2: form.elements['shipping-address_line_2'].value,
+                    city: form.elements['shipping-city'].value,
+                    state: form.elements['shipping-county'].value,
+                    postal_code: form.elements['shipping-postcode'].value,
+                    country: form.elements['shipping-country'].value,
+                }
+            },
+        }).then(function (result) {
+            if (result.error) {
+                // Show error to your customer (for example, insufficient funds)
+                document.querySelector("#card-error").textContent = result.error ? result.error.message : "";
+            } else {
+                // The payment has been processed!
+                if (result.paymentIntent.status === 'succeeded') {
+                    form.submit();
+                }
+            }
+            setLoading(false);
+        });
+    })
 });
 
 // Show a spinner on payment submission
