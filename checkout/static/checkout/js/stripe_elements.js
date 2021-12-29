@@ -21,7 +21,6 @@ var style = {
             color: "#c5c5c5"
         },
     },
-
     invalid: {
         fontFamily: 'Montserrat, sans-serif',
         color: "#d2042d",
@@ -45,32 +44,38 @@ var form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function (ev) {
     ev.preventDefault();
-    card.update({
-        'disabled': true
-    });
-    document.querySelector('#btn-submit').disabled = true;
+    setLoading(true);
     // If the client secret was rendered server-side as a data-secret attribute
     // on the <form> element, you can retrieve it here by calling `form.dataset.secret`
     stripe.confirmCardPayment(clientSecret, {
         payment_method: {
             card: card,
-            billing_details: {
-                name: 'Jenny Rosen'
-            }
         }
     }).then(function (result) {
         if (result.error) {
             // Show error to your customer (for example, insufficient funds)
             document.querySelector("#card-error").textContent = result.error ? result.error.message : "";
-            card.update({
-                'disabled': false
-            });
-            document.querySelector('#submit').disabled = false;
         } else {
             // The payment has been processed!
             if (result.paymentIntent.status === 'succeeded') {
                 form.submit();
             }
         }
+        setLoading(false);
     });
+
 });
+
+// Show a spinner on payment submission
+function setLoading(isLoading) {
+    if (isLoading) {
+        // Disable the button and show a spinner
+        document.querySelector("#btn-submit").disabled = true;
+        document.querySelector("#spinner").classList.remove("hidden");
+        document.querySelector("#button-text").classList.add("hidden");
+    } else {
+        document.querySelector("#btn-submit").disabled = false;
+        document.querySelector("#spinner").classList.add("hidden");
+        document.querySelector("#button-text").classList.remove("hidden");
+    }
+}

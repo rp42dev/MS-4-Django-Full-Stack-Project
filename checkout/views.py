@@ -50,6 +50,7 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('cart'))
 
+            request.session['save-info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(
@@ -62,6 +63,15 @@ def checkout(request):
                  in your cart at the moment")
             return redirect(reverse('shop'))
 
+    current_cart = cart_contents(request)
+    total = current_cart['grand_total']
+    stripe_total = round(total * 100)
+    stripe.api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.create(
+        amount=stripe_total,
+        currency=settings.STRIPE_CURRENCY,
+    )
+
     if request.user.is_authenticated:
         form2 = ContactForm()
 
@@ -70,7 +80,7 @@ def checkout(request):
             'full_name': f'{profile.first_name} {profile.last_name}',
             'email': profile.email,
         })
-        
+
         try:
             address = UserAddress.objects.get(user=profile)
             form = ShippingForm(initial={
@@ -88,15 +98,6 @@ def checkout(request):
     else:
         form = ShippingForm()
         form2 = ContactForm()
-
-    current_cart = cart_contents(request)
-    total = current_cart['grand_total']
-    stripe_total = round(total * 100)
-    stripe.api_key = stripe_secret_key
-    intent = stripe.PaymentIntent.create(
-        amount=stripe_total,
-        currency=settings.STRIPE_CURRENCY,
-    )
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
@@ -116,7 +117,9 @@ def checkout_success(request, order_number):
     """
     Handle successful checkouts
     """
+
     order = get_object_or_404(Order, order_number=order_number)
+    save_info = request.session.get('save_info')
 
     if request.user.is_authenticated:
 
@@ -135,7 +138,7 @@ def checkout_success(request, order_number):
     template = 'checkout/checkout-success.html'
 
     context = {
-        'order': order,  
+        'order': order,
     }
 
     return render(request, template, context)

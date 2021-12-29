@@ -12,8 +12,8 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ('user_profile', 'order_number', 'date', 'items')
 
     fields = ('order_number', 'user_profile', 'email', 'shipping_name',
-              'address_line_1', 'address_line_2', 
-              'town', 'county', 'postcode', 
+              'address_line_1', 'address_line_2',
+              'city', 'county', 'postcode',
               'country', 'date', 'items', 'delivery',
               'total', 'status')
 
@@ -23,3 +23,4 @@ class OrderAdmin(admin.ModelAdmin):
     ordering = ('-date',)
 
 admin.site.register(Order, OrderAdmin)
+

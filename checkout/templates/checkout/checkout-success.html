@@ -33,19 +33,25 @@
                 <p class="text-italic fw-bolder">Shipping Address:</p>
                 <p class="mb-0 font-monospace">Name: {{ order.shipping_name }}</p>
                 <p class="mb-0 font-monospace">Address 1: {{ order.address_line_1 }}</p>
+                {% if order.address_line_2 %}
                 <p class="mb-0 font-monospace">Address 2: {{ order.address_line_2 }}</p>
+                {% endif %}
                 <p class="mb-0 font-monospace">City: {{ order.city }}</p>
+                {% if order.county %}
                 <p class="mb-0 font-monospace">County: {{ order.county }}</p>
+                {% endif %}
+                {% if order.postcode %}
                 <p class="mb-0 font-monospace">Postcode: {{ order.postcode }}</p>
+                {% endif %}
                 <p class="mb-0 font-monospace">Country: {{ order.country }}</p>
             </div>
             <hr class="p-1 d-md-none dblock">
             <div class="col-md-6">
                 <p class="text-italic fw-bolder">Order Summary:</p>
+                <p class="mb-0 font-monospace">Date: {{ order.date }}</p>
                 <p class="mb-0 font-monospace">User: {{ order.user_profile }}</p>
                 <p class="mb-0 font-monospace">Name: {{ order.full_name }}</p>
                 <p class="mb-0 font-monospace">Email: {{ order.email }}</p>
-                <p class="mb-0 font-monospace">Date: {{ order.date }}</p>
                 <p class="mb-0 font-monospace">Total: ${{ order.total }}</p>
                 <p class="mb-0 font-monospace">Delivery: {{ order.delivery }}</p>
             </div>
@@ -78,8 +84,6 @@
                 <!-- incluse stars rating -->
 
                 <div class="star_container">
-
-
 
                     {% if item.product.rating %}
                     <a href="{% url 'all_reviews' item.product.id %}">
@@ -170,8 +174,14 @@
             </div>
 
             <div class="col-6 h4  fw-bolder font-monospace col-md-3">
-                <p class="mb-0">Total: ${{ order.total }}</p>
-                <p class="mb-0">Delivery: ${{ order.delivery }}</p>
+                <p>
+                    {% if delivery != 0 %}
+                    <span class="font-monospace h6">Delivery: {{ delivery }}</span> <br>
+                    {% else %}
+                    <span class="text-danger m-0 h6 font-monospace">Free delivery over $50</span> <br>
+                    {% endif %}
+                    <span class="h3 fw-bold font-monospace">Total ${{ order.total }} </span>
+                </p>   
             </div>
 
         </div>

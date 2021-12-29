@@ -71,9 +71,7 @@
         {% endfor %}
         {% endif %}
 
-
         <div class="mt-4">
-
             <p>
                 <span class="h6 font-monospace">Subtotal ${{ total }} </span> <br>
                 {% if delivery != 0 %}
@@ -83,12 +81,9 @@
                 {% endif %}
                 <span class="h3 fw-bold font-monospace">Grand total ${{ grand_total }} </span>
             </p>         
-
         </div>
 
-
         <!-- Shipping Form -->
-
 
         <form class="mt-3 mx-auto" action="{% url 'checkout' %}" method="POST" id="payment-form" novalidate>
             <div class="row">
@@ -108,7 +103,8 @@
 
                     <p id="card-error" role="alert"></p>
                     <button id="btn-submit" class="btn btn-dark btn-xl w-100 text-uppercase">
-                        <div class="spinner hidden" id="spinner"></div>
+                        <span class="spinner spinner-border hidden" role="status" id="spinner"></span>
+                        <span class="visually-hidden">Loading...</span>
                         <span id="button-text">Pay ${{ grand_total }}</span>
                     </button>
                     
