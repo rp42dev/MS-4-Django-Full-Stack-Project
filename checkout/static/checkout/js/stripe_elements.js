@@ -46,53 +46,62 @@ form.addEventListener('submit', function (ev) {
     ev.preventDefault();
     setLoading(true);
     // If the client secret was rendered server-side as a data-secret attribute
-    // on the <form> element, you can retrieve it here by calling `form.dataset.secret`
-    let saveInfo = Boolean($('#id-save-info').attr('checked'));
     // From using {% csrf_token %} in the form
-
-    let csrfToken = form.elements['csrfmiddlewaretoken'].value
-    let postData = {
-        'csrfmiddlewaretoken': csrfToken,
-        'client_secret': clientSecret,
-        'save_info': saveInfo,
-    };
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
     let url = '/checkout/cache_checkout_data/';
+    let data = new FormData();
 
-    $.post(url, postData).done(function () {
+    data.append('client_secret', clientSecret);;
+    data.append('csrfmiddlewaretoken', csrftoken);
 
-        stripe.confirmCardPayment(clientSecret, {
-            payment_method: {
-                card: card,
-                billing_details: {
-                    name: form.elements['contact-full_name'].value,
-                    email: form.elements['contact-email'].value,
-                }
-            },
-            shipping: {
-                name: form.elements['shipping-shipping_name'].value,
-                address: {
-                    line1: form.elements['shipping-address_line_1'].value,
-                    line2: form.elements['shipping-address_line_2'].value,
-                    city: form.elements['shipping-city'].value,
-                    state: form.elements['shipping-county'].value,
-                    postal_code: form.elements['shipping-postcode'].value,
-                    country: form.elements['shipping-country'].value,
-                }
-            },
-        }).then(function (result) {
-            if (result.error) {
-                // Show error to your customer (for example, insufficient funds)
-                document.querySelector("#card-error").textContent = result.error ? result.error.message : "";
+    fetch(url, {
+            method: 'POST',
+            body: data,
+            credentials: 'same-origin',
+        })
+        .then(function (response) {
+            if (response.status === 200) {
+                stripe.confirmCardPayment(clientSecret, {
+                    payment_method: {
+                        card: card,
+                        billing_details: {
+                            name: form.elements['contact-full_name'].value,
+                            email: form.elements['contact-email'].value,
+                        }
+                    },
+                    shipping: {
+                        name: form.elements['shipping-shipping_name'].value,
+                        address: {
+                            line1: form.elements['shipping-address_line_1'].value,
+                            line2: form.elements['shipping-address_line_2'].value,
+                            city: form.elements['shipping-city'].value,
+                            state: form.elements['shipping-county'].value,
+                            postal_code: form.elements['shipping-postcode'].value,
+                            country: form.elements['shipping-country'].value,
+                        }
+                    },
+                }).then(function (result) {
+                    if (result.error) {
+                        // Show error to your customer (for example, insufficient funds)
+                        document.querySelector("#card-error").textContent = result.error ? result.error.message : "";
+                    } else {
+                        // The payment has been processed!
+                        if (result.paymentIntent.status === 'succeeded') {
+                            form.submit();
+                        }
+                    }
+                    setLoading(false);
+                });
             } else {
-                // The payment has been processed!
-                if (result.paymentIntent.status === 'succeeded') {
-                    form.submit();
-                }
+                document.querySelector("#card-error").textContent = `There was a problem caching post data. Error ${response.content} Status ${response.status}`;
+                setLoading(false);
+                throw new Error("HTTP status " + response.status);
             }
-            setLoading(false);
+        })
+        .catch(function (error) {
+            console.error('Error:', error);
         });
-    })
 });
 
 // Show a spinner on payment submission
