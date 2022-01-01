@@ -26,8 +26,6 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Sorry, your payment cannot be \
-            processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
 
 
@@ -37,7 +35,6 @@ def checkout(request):
     """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-    wh_secret = settings.STRIPE_WH_SECRET
 
     if request.POST:
         cart = request.session.get('cart', {})
@@ -45,7 +42,9 @@ def checkout(request):
         contact_form = ContactForm(request.POST, prefix="contact")
 
         if shipping_form.is_valid() and contact_form.is_valid():
-            order = shipping_form.save(commit=False)   
+            order = shipping_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
             order.items = json.dumps(cart)
             order.full_name = request.POST.get('contact-full_name')
             order.email = request.POST.get('contact-email')
@@ -54,12 +53,29 @@ def checkout(request):
             for item_id, quantity in cart.items():
                 try:
                     product = Product.objects.get(id=item_id)
-                    order_line = OrderLine(
-                        order=order,
-                        product=product,
-                        quantity=quantity,
-                    )
-                    order_line.save()
+                    stock = product.item_count - quantity
+                    if product.item_count <= 0:
+                        messages.error(request, (
+                            f"The {product.name} in your cart\
+                                stock quantity changed. Curently out of stock"))
+                        order.delete()
+                        return redirect(reverse('cart'))           
+                    elif stock < 0:
+                        messages.error(request, (
+                            f"The {product.name} in your cart\
+                                stock quantity changed. Curently {product.item_count} available"))
+                        order.delete()
+                        return redirect(reverse('cart'))
+                    else:
+                        stock = product.item_count - quantity
+                        product.item_count = stock
+                        product.save()
+                        order_line = OrderLine(
+                            order=order,
+                            product=product,
+                            quantity=quantity,
+                        )
+                        order_line.save()
 
                 except Product.DoesNotExist:
                     messages.error(request, (
@@ -81,18 +97,17 @@ def checkout(request):
                  in your cart at the moment")
             return redirect(reverse('shop'))
 
-    current_cart = cart_contents(request)
-    total = current_cart['grand_total']
-    stripe_total = round(total * 100)
-    stripe.api_key = stripe_secret_key
-    intent = stripe.PaymentIntent.create(
-        amount=stripe_total,
-        currency=settings.STRIPE_CURRENCY,
-    )
+        current_cart = cart_contents(request)
+        total = current_cart['grand_total']
+        stripe_total = round(total * 100)
+        stripe.api_key = stripe_secret_key
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+        )
 
     if request.user.is_authenticated:
         form2 = ContactForm()
-
         profile = request.user
         form2 = ContactForm(initial={
             'full_name': f'{profile.first_name} {profile.last_name}',
@@ -110,6 +125,7 @@ def checkout(request):
                 'postcode': address.postcode,
                 'country': address.country,
             })
+
         except UserAddress.DoesNotExist:
             form = ShippingForm()
             form2 = ContactForm()
@@ -137,7 +153,6 @@ def checkout_success(request, order_number):
     """
 
     order = get_object_or_404(Order, order_number=order_number)
-    save_info = request.session.get('save_info')
 
     if request.user.is_authenticated:
 

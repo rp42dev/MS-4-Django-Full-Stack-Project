@@ -90,6 +90,8 @@
                     {{ form|crispy }}
                 </div>
 
+                <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                
                 <div class="col-12 col-md-6">
                     <p class="text-muted text-italic">Contact Details</p>
                     {{ form2|crispy }}

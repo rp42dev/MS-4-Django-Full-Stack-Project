@@ -114,15 +114,12 @@ def update_cart(request, item_id):
             if cart[item_id] == 1:
                 cart.pop(item_id)
                 request.session.modified = True
-                # product.item_count += 1
-                # product.save()
                 messages.success(
                     request, f'Removed {product.name}\
                         from your bag.')
             else:
                 cart[item_id] -= 1
-                # product.item_count += 1
-                # product.save()
+
                 messages.success(
                     request, f'The hat {product.name}\
                             quantity was updated to {cart[item_id]}.')
@@ -134,8 +131,6 @@ def update_cart(request, item_id):
                          {product.name} available.')
             else:
                 cart[item_id] += 1
-                # product.item_count -= 1
-                # product.save()
                 messages.success(
                     request, f'The hat {product.name}\
                             quantity was updated to {cart[item_id]}.')

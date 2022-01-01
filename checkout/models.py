@@ -40,6 +40,7 @@ class Order(models.Model):
         null=False, blank=False, default='')
     stripe_pid = models.CharField(
         max_length=254, null=False, blank=False, default='')
+    paid = models.BooleanField(default=False)
 
     # User
     user_profile = models.ForeignKey(

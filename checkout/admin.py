@@ -15,10 +15,10 @@ class OrderAdmin(admin.ModelAdmin):
               'address_line_1', 'address_line_2',
               'city', 'county', 'postcode',
               'country', 'date', 'items', 'delivery',
-              'total', 'status')
+              'total', 'status', 'paid')
 
     list_display = ('id', 'date', 'shipping_name',
-                    'total', 'delivery', 'status')
+                    'total', 'delivery', 'status', 'paid')
 
     ordering = ('-date',)
 
