@@ -28,8 +28,8 @@
         <!-- Order Summary -->
         <p class="text-muted text-italic">Order Summary</p>
         {% if cart_items %}
-        {% for item in cart_items %}
 
+        {% for item in cart_items %}
         <div class="cart-conteiner rounded bg-white p-2 row align-items-center my-2 mt-sm-4 mb-3 mb-md-0 mx-1">
             <div class="col-6 col-sm-3 order-2 order-sm-1 position-relative">
                 {% thumbnail item.product.image "100" as im %}

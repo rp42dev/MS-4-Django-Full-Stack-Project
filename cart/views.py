@@ -148,7 +148,7 @@ def update_cart(request, item_id):
 @require_POST
 def remove_cart_item(request, item_id):
     """
-    delete item specified from cart
+    delete item specified from the cart
     chect if there is items in the cart
     and return cart views if there is items
     left in the cart, othervise return to shop
@@ -163,6 +163,6 @@ def remove_cart_item(request, item_id):
     if cart:
         return redirect(reverse('cart'))
     else:
-        return redirect(reverse('shop'))
         messages.info(
                     request, 'Your cart is empty.')
+        return redirect(reverse('shop'))

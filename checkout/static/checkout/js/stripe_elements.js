@@ -44,7 +44,7 @@ card.on("change", function (event) {
 const form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function (ev) {
-        ev.preventDefault();
+        // ev.preventDefault();
         setLoading(true);
         // Add shippind and billing form delails
         stripe.confirmCardPayment(clientSecret, {

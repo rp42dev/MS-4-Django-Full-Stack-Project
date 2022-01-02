@@ -43,20 +43,6 @@ def checkout(request):
                 in your cart at the moment")
         return redirect(reverse('shop'))
 
-    current_cart = cart_contents(request)
-    total = current_cart['grand_total']
-    stripe_total = round(total * 100)
-    stripe.api_key = stripe_secret_key
-
-    intent = stripe.PaymentIntent.create(
-        amount=stripe_total,
-        currency=settings.STRIPE_CURRENCY,
-        metadata={
-            'cart': json.dumps(request.session.get('cart', {})),
-            'username': request.user,
-        }
-    )
-
     for item_id, quantity in cart.items():
         try:
             product = Product.objects.get(id=item_id)
@@ -81,6 +67,20 @@ def checkout(request):
                         wasn't found in our database."))
             order.delete()
             return redirect(reverse('cart'))
+
+    current_cart = cart_contents(request)
+    total = current_cart['grand_total']
+    stripe_total = round(total * 100)
+    stripe.api_key = stripe_secret_key
+
+    intent = stripe.PaymentIntent.create(
+        amount=stripe_total,
+        currency=settings.STRIPE_CURRENCY,
+        metadata={
+            'cart': json.dumps(request.session.get('cart', {})),
+            'username': request.user,
+        }
+    )
 
     if request.user.is_authenticated:
         form2 = ContactForm()
@@ -147,13 +147,13 @@ def checkout_post(request):
             try:
                 product = Product.objects.get(id=item_id)
                 stock = product.item_count - quantity
+
                 if product.item_count <= 0:
                     messages.error(request, (
                         f"The {product.name} in your cart\
                             stock quantity changed. Curently out of stock"))
                     order.delete()
                     return redirect(reverse('cart'))
-        
                 elif stock < 0:
                     messages.error(request, (
                         f"The {product.name} in your cart\
@@ -167,6 +167,7 @@ def checkout_post(request):
                         product=product,
                         quantity=quantity,
                     )
+
                     order_line.save()
                     stock = product.item_count - quantity
                     product.item_count = stock

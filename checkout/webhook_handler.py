@@ -25,15 +25,22 @@ class StripeWH_Handler:
     def __init__(self, request):
         self.request = request
 
-    def _send_confirmation_email(self, order):
+    def _send_confirmation_email(self, order, success):
         """Send the user a confirmation email"""
 
         customer_email = order.email
-        subject = f'A Hat Shop Confirmation for Order Number { order.order_number }'
+        if success:
+            subject = f'A Hat Shop Confirmation for Order Number { order.order_number }'
 
-        body = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_body.txt',
-            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+            body = render_to_string(
+                'checkout/confirmation_emails/confirmation_email_body.txt',
+                {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+        else:
+            subject = f'A Hat Shop Order payment failed for Order Number { order.order_number }'
+
+            body = render_to_string(
+                'checkout/confirmation_emails/failed_email_body .txt',
+                {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
 
         send_mail(
             subject,
@@ -76,14 +83,14 @@ class StripeWH_Handler:
         while attempt <= 5:
             try:
                 order = Order.objects.get(stripe_pid=pid)
-                order.status = 'Submited'
+                order.status = 'Submitted'
                 order_exists = True
                 break
             except Order.DoesNotExist:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
-            self._send_confirmation_email(order)
+            self._send_confirmation_email(order, True)
             order.paid = paid
             order.save()
             return HttpResponse(
@@ -133,7 +140,7 @@ class StripeWH_Handler:
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
 
-        self._send_confirmation_email(order)
+        self._send_confirmation_email(order, True)
         return HttpResponse(
             content=f'Webhook received: {event["type"]}\
                 | SUCCESS: Verified order already in database',
@@ -163,6 +170,7 @@ class StripeWH_Handler:
         if order_exists:
             order.status = 'Cancelled'
             order.save()
+            self._send_confirmation_email(order, False)
             for item_id, quantity in json.loads(cart).items():
                 try:
                     product = Product.objects.get(id=item_id)

@@ -30,7 +30,7 @@ class Order(models.Model):
     COMPLETED = 'Completed'
 
     ORDER_STATUS = [
-        (SUBMITTED, 'Submittet'),
+        (SUBMITTED, 'Submitted'),
         (PROCESSED, 'Proccessed'),
         (SHIPPED, 'Shipped'),
         (CANCELLED, 'Cancelled'),
