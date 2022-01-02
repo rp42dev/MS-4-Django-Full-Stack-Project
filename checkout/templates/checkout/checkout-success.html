@@ -2,6 +2,7 @@
 {% load static %}
 {% load thumbnail %}
 {% load crispy_forms_tags %}
+
 {% block page_header %}
 <!-- Header-->
 <header class="bg-black py-5">
@@ -14,13 +15,10 @@
     </div>
 </header>
 {% endblock %}
+
 {% block content %}
-
-<!-- item Detail section-->
+<!-- success page item Detail section-->
 <section class="page-section">
-
-
-
     <div class="container bg-white p-4 px-lg-5">
 
         <!-- Billing and shipping information -->
@@ -45,7 +43,7 @@
                 {% endif %}
                 <p class="mb-0 font-monospace">Country: {{ order.country }}</p>
             </div>
-            <hr class="p-1 d-md-none dblock">
+            <hr class="d-md-none dblock">
             <div class="col-md-6 text-md-end">
                 <p class="text-italic fw-bolder">Order Summary:</p>
                 <p class="mb-0 font-monospace">Date: {{ order.date }}</p>
@@ -59,7 +57,7 @@
 
         </div>
 
-        <!-- Line Items -->
+        <!-- Order Line Items -->
         {% for item in order.lineitems.all %}
         <div class="cart-conteiner border mx-0 px-0 bg-white row align-items-center mt-2 mt-sm-4">
 
@@ -71,7 +69,6 @@
                         <img class="card-img-top" src="{{ im.url }}" alt="{{ item.product.name }}" />
                     </div>
                 </a>
-
                 <!-- Discount badge -->
                 {% if item.product.sale %}
                 <div class="badge bg-danger text-white position-absolute font-monospace"
@@ -82,10 +79,10 @@
                 {% endthumbnail %}
             </div>
 
+            <!-- Product description -->
             <div class="col-12 col-sm-6 order-1 order-sm-2 product text-center">
                 <p class="text-capitalize mb-0 fw-bolder">{{ item.product.name }}</p>
                 <p class="text-capitalize mb-0 font-monospace">SKU: {{ item.product.sku }}</p>
-                
                 <!-- incluse stars rating  -->
                 <div class="star_container d-flex flex-column align-items-center">
                     {% if item.product.rating %}
@@ -104,8 +101,8 @@
                     {% endif %}
                 </div>
 
-                <!-- Product review available only if order was places -->
-                {% if order.user_profile and from_profile %}
+                <!-- Product review available only if order was places and not cancelled -->
+                {% if order.user_profile and from_profile and not order.status == 'Cancelled' %}
                 {% if not item.product.id in order_list %}
                 <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.order_number }}">Write a
                         review</a></p>
@@ -114,8 +111,8 @@
                         review</a></p>
                 {% endif %}
                 {% endif %}
-                
             </div>
+
             <!-- Product pricing and quantity -->
             <div class="col-3 col-6 col-sm-3 order-2 order-sm-3">
                 <div class="text-end">
@@ -129,7 +126,6 @@
 
                     <p class="mb-0 font-monospace">Quantity: {{ item.quantity }}</p>
                     <p class="mb-0 font-monospace">Sub total ${{ item.product_total }} </p>
-
                 </div>
             </div>
 
@@ -139,9 +135,8 @@
         <div class="cart-conteiner bg-white row align-items-center mt-2 mt-sm-4">
             <div class="col-6">
                 <div>
-                    <p class="text-italic fw-bolder">Order Status: {{ order.status }}</p>
-
                     <!-- Confirm Order reception if order status is shipped -->
+                    <p class="text-italic fw-bolder">Order Status: {{ order.status }}</p>
                     {% if order.status != "Completed" and from_profile and order.status == "Shipped" %}
                     <form class="form" method="POST" action="{% url 'order_history' order.order_number %}">
                         {% csrf_token %}
@@ -158,10 +153,10 @@
                     </form>
                     {% endif %}
 
+                    <!-- Report an issue with order. Available only if order was placed -->
                     {% if from_profile %}
                     <div class="mt-3">
                         {% if issue %}
-                        <!-- Report issue with order available only if order was placed -->
                         {% if issue.status == 'Resolved' %}
                         <a href="{% url 'messages_view' issue.id %}" class="m-0 link-success fw-bolder font-monospace"> Ticket #{{ issue.id }} Status: {{ issue.status }}</a>
                         {% else %}
@@ -205,7 +200,6 @@
                         <div class="text-italic fw-bolder">
                             {{ status_form|crispy }}
                         </div>
-
                         <button type='submit' class='btn btn-dark w-100'>
                             Update
                         </button>

@@ -3,10 +3,12 @@ from .models import Order, OrderLine
 
 
 class OrderLineAdminInline(admin.TabularInline):
+    """Admin Order Line items"""
     model = OrderLine
 
 
 class OrderAdmin(admin.ModelAdmin):
+    """Orders form fields and inlines"""
     inlines = (OrderLineAdminInline,)
 
     readonly_fields = ('user_profile', 'order_number', 'date', 'items')
@@ -22,5 +24,5 @@ class OrderAdmin(admin.ModelAdmin):
 
     ordering = ('-date',)
 
-admin.site.register(Order, OrderAdmin)
 
+admin.site.register(Order, OrderAdmin)

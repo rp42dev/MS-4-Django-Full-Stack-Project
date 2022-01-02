@@ -9,6 +9,7 @@ const stripe = Stripe(stripePublicKey);
 // Disable the button until we have Stripe set up on the page
 document.querySelector("button").disabled = true;
 
+// Stripe element styling
 var elements = stripe.elements();
 var style = {
     base: {
@@ -28,6 +29,7 @@ var style = {
     }
 };
 
+// create card element
 var card = elements.create("card", {
     style: style
 });
@@ -43,9 +45,11 @@ card.on("change", function (event) {
 
 const form = document.getElementById('payment-form');
 
+// event Listener for submit button
 form.addEventListener('submit', function (ev) {
-        // ev.preventDefault();
+        ev.preventDefault();
         setLoading(true);
+
         // Add shippind and billing form delails
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {

@@ -19,7 +19,7 @@ import json
 import time
 
 
-class StripeWH_Handler:
+class StripeWhHandler:
     """Handle Stripe webhooks"""
 
     def __init__(self, request):
@@ -30,13 +30,15 @@ class StripeWH_Handler:
 
         customer_email = order.email
         if success:
-            subject = f'A Hat Shop Confirmation for Order Number { order.order_number }'
+            subject = (f'A Hat Shop Confirmation or'
+                       f'Order Number { order.order_number }')
 
             body = render_to_string(
                 'checkout/confirmation_emails/confirmation_email_body.txt',
                 {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
         else:
-            subject = f'A Hat Shop Order payment failed for Order Number { order.order_number }'
+            subject = (f'A Hat Shop Order payment failed for'
+                       f'Order Number { order.order_number }')
 
             body = render_to_string(
                 'checkout/confirmation_emails/failed_email_body .txt',

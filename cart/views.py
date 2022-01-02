@@ -48,8 +48,9 @@ def cart_view(request):
                 else:
                     cart[key] = product.item_count
                     request.session.modified = True
-                    messages.warning(request, f'The product {product.name}\
-                        availability has changed to {product.item_count} in stock:')
+                    messages.warning(
+                        request, f'The product {product.name} availability\
+                            has changed to {product.item_count} in stock:')
 
         return render(request, 'cart/cart.html')
 

@@ -1,3 +1,4 @@
+/* Checkout page stylinng */
 .result-message {
   line-height: 22px;
   font-size: 16px;
@@ -19,6 +20,7 @@
   line-height: 17px;
 }
 
+/* Card element */
 #card-element {
   border-radius: 4px;
   padding: 12px;
@@ -32,6 +34,7 @@
   margin-bottom: 32px;
 }
 
+/* Stripe element */
 .StripeElement {
   outline-style: solid;
   outline-width: 0px;

@@ -5,6 +5,8 @@ Checkout
     3. Update Cart quantity of the product
     4. delete item specified from the cart
 """
+import stripe
+import json
 
 from django.shortcuts import render,\
     redirect, reverse, get_object_or_404, HttpResponse
@@ -13,14 +15,16 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.conf import settings
 
+
+
 from cart.contexts import cart_contents
 from shop.models import Product
 from customers.models import UserAddress
 from . models import Order, OrderLine
 from . forms import ShippingForm, ContactForm
 
-import stripe
-import json
+
+
 
 
 def checkout(request):

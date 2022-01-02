@@ -7,7 +7,7 @@ class ItemForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        # exclude = ('rating', 'rating_counter',)
+        exclude = ('rating', 'rating_counter',)
         fields = '__all__'
 
     image = forms.ImageField(label='image')
@@ -21,9 +21,12 @@ class ItemForm(forms.ModelForm):
         self.fields['category'].choices = friendly_names
         for field_name, field in self.fields.items():
             if field_name == 'sku':
-                placeholder = f'Latest { field_name} is "{last_sku.sku}"'
+                placeholder = f'Latest { field_name} is "{last_sku.sku}" *'
             else:
-                placeholder = field.label
+                if field.required:
+                    placeholder = f'{field.label} *'
+                else:
+                    placeholder = field.label
             field.widget.attrs['placeholder'] = placeholder
             if field_name != 'sale' and field_name != 'item_count':
                 field.label = False
