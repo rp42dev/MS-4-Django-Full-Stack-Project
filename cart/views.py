@@ -38,18 +38,18 @@ def cart_view(request):
     else:
 
         for key in cart.copy():
-            pr = get_object_or_404(Product, pk=key)
-            if pr.item_count < cart[key]:
-                if pr.item_count <= 0:
+            product = get_object_or_404(Product, pk=key)
+            if product.item_count < cart[key]:
+                if product.item_count <= 0:
                     cart.pop(key)
                     request.session.modified = True
-                    messages.warning(request, f'The product {pr.name}\
+                    messages.warning(request, f'The product {product.name}\
                         has been removed from cart because it is out of stock')
                 else:
                     cart[key] = pr.item_count
                     request.session.modified = True
-                    messages.warning(request, f'The product {pr.name}\
-                        availability has changed to {pr.item_count} in stock:')
+                    messages.warning(request, f'The product {product.name}\
+                        availability has changed to {product.item_count} in stock:')
 
         return render(request, 'cart/cart.html')
 

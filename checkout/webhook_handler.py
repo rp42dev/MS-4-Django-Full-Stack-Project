@@ -4,9 +4,11 @@ from django.contrib.auth.models import User
 from django.template.loader import render_to_string
 from django.conf import settings
 
+from shop.models import Product
 from .models import Order, OrderLine
 from customers.models import UserAddress
 
+import stripe
 import json
 import time
 
@@ -47,19 +49,7 @@ class StripeWH_Handler:
         attempt = 1
         while attempt <= 5:
             try:
-                order = Order.objects.get(
-                    full_name__iexact=shipping_details.name,
-                    email__iexact=billing_details.email,
-                    address_line_1__iexact=shipping_details.address.line1,
-                    address_line_2__iexact=shipping_details.address.line2,
-                    city__iexact=shipping_details.address.city,
-                    county__iexact=shipping_details.address.state,
-                    postcode__iexact=shipping_details.address.postal_code,
-                    country__iexact=shipping_details.address.country,
-                    total=total,
-                    items=cart,
-                    stripe_pid=pid,
-                )
+                order = Order.objects.get(stripe_pid=pid)
                 order_exists = True
                 break
             except Order.DoesNotExist:
@@ -92,16 +82,22 @@ class StripeWH_Handler:
                 )
 
                 for item_id, quantity in json.loads(cart).items():
-                    product = Product.objects.get(id=item_id)
-                    order_line = OrderLine(
-                        order=order,
-                        product=product,
-                        quantity=quantity,
-                    )
-                    order_line.save()
-                    stock = product.item_count - quantity
-                    product.item_count = stock
-                    product.save()
+                    try:
+                        product = Product.objects.get(id=item_id)
+                        order_line = OrderLine(
+                            order=order,
+                            product=product,
+                            quantity=quantity,
+                        )
+
+                        order_line.save()
+                        stock = product.item_count - quantity
+                        product.item_count = stock
+                        product.save()
+                    except Product.DoesNotExist:
+                        return HttpResponse(
+                            content=f'Webhook received: {event["type"]} | ERROR: creating order Product {product} does not exist',
+                            status=500)
 
             except Exception as e:
                 if order:
@@ -118,6 +114,31 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.payment_failed webhook from Stripe
         """
+
+        intent = event.data.object
+        pid = intent.id
+        intent = stripe.PaymentIntent.retrieve(pid)
+        cart = intent.metadata.cart
+        paid = intent.charges.data[0].paid
+        try:
+            order = Order.objects.get(stripe_pid=pid)
+            order.status = 'Cancelled'
+            order.paid = paid
+            order.save()
+        except Order.DoesNotExist:
+            return HttpResponse(
+                content=f'Webhook received: {event["type"]} | ERROR: Order does not exists',
+                status=500)
+        for item_id, quantity in json.loads(cart).items():
+            try:
+                product = Product.objects.get(id=item_id)
+                product.item_count += quantity
+                product.save()          
+            except Product.DoesNotExist:
+                return HttpResponse(
+                    content=f'Webhook received: {event["type"]} | ERROR: Product does not exists',
+                    status=500)
+
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)

@@ -15,20 +15,6 @@ import stripe
 import json
 
 
-@require_POST
-def cache_checkout_data(request):
-    try:
-        pid = request.POST.get('client_secret').split('_secret')[0]
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify(pid, metadata={
-            'cart': json.dumps(request.session.get('cart', {})),
-            'username': request.user,
-        })
-        return HttpResponse(status=200)
-    except Exception as e:
-        return HttpResponse(content=e, status=400)
-
-
 def checkout(request):
     """
     A view to return the checkout page
@@ -59,7 +45,8 @@ def checkout(request):
                             f"The {product.name} in your cart\
                                 stock quantity changed. Curently out of stock"))
                         order.delete()
-                        return redirect(reverse('cart'))           
+                        return redirect(reverse('cart'))
+         
                     elif stock < 0:
                         messages.error(request, (
                             f"The {product.name} in your cart\
@@ -67,15 +54,15 @@ def checkout(request):
                         order.delete()
                         return redirect(reverse('cart'))
                     else:
-                        stock = product.item_count - quantity
-                        product.item_count = stock
-                        product.save()
                         order_line = OrderLine(
                             order=order,
                             product=product,
                             quantity=quantity,
                         )
                         order_line.save()
+                        stock = product.item_count - quantity
+                        product.item_count = stock
+                        product.save()
 
                 except Product.DoesNotExist:
                     messages.error(request, (
@@ -104,7 +91,38 @@ def checkout(request):
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
+            metadata={
+                'cart': json.dumps(request.session.get('cart', {})),
+                'username': request.user,
+            }
         )
+
+        for item_id, quantity in cart.items():
+
+                try:
+                    product = Product.objects.get(id=item_id)
+                    stock = product.item_count - quantity
+                    if product.item_count <= 0:
+                        messages.error(request, (
+                            f"The {product.name} in your cart\
+                                stock quantity changed. Curently out of stock"))
+                        order.delete()
+                        return redirect(reverse('cart'))
+         
+                    elif stock < 0:
+                        messages.error(request, (
+                            f"The {product.name} in your cart\
+                                stock quantity changed. Curently {product.item_count} available"))
+                        order.delete()
+                        return redirect(reverse('cart'))
+
+                except Product.DoesNotExist:
+                    messages.error(request, (
+                        "One of the products in your cart\
+                             wasn't found in our database."))
+                    order.delete()
+                    return redirect(reverse('cart'))
+
 
     if request.user.is_authenticated:
         form2 = ContactForm()
@@ -151,7 +169,6 @@ def checkout_success(request, order_number):
     """
     Handle successful checkouts
     """
-
     order = get_object_or_404(Order, order_number=order_number)
 
     if request.user.is_authenticated:
