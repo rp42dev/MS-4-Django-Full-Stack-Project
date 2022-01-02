@@ -31,7 +31,7 @@ def cart_view(request):
     if not cart:
         messages.warning(
                     request, 'Your cart is empty.')
-        if url_back != None:
+        if url_back is not None:
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         else:
             return redirect(reverse('shop'))
@@ -46,7 +46,7 @@ def cart_view(request):
                     messages.warning(request, f'The product {product.name}\
                         has been removed from cart because it is out of stock')
                 else:
-                    cart[key] = pr.item_count
+                    cart[key] = product.item_count
                     request.session.modified = True
                     messages.warning(request, f'The product {product.name}\
                         availability has changed to {product.item_count} in stock:')

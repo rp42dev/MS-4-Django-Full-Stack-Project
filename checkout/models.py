@@ -1,4 +1,9 @@
-
+"""
+Order model:
+    1.  Order model User shipping and order details
+Line Item Model:
+    2. Order Line items Update product total
+"""
 from django.db import models
 from django.conf import settings
 from django.db.models import Sum
@@ -12,6 +17,12 @@ import uuid
 
 
 class Order(models.Model):
+    """
+    Order model order details order status
+    User shipping information and contact details
+    Update total each time a line item is added
+    accounting for delivery costs.
+    """
     SUBMITTED = 'Submitted'
     PROCESSED = 'Proccessed'
     SHIPPED = 'Shipped'
@@ -46,10 +57,11 @@ class Order(models.Model):
     user_profile = models.ForeignKey(
         User, on_delete=models.SET_NULL,
         null=True, blank=True, related_name='orders')
-    
+
     # User contact info
     full_name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
+
     # Shipping Address
     shipping_name = models.CharField(max_length=50)
     address_line_1 = models.CharField(max_length=100)
@@ -87,6 +99,10 @@ class Order(models.Model):
 
 
 class OrderLine(models.Model):
+    """
+    Order Line items Update product total
+    calculateproduct times quantity to product_total
+    """
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     order = models.ForeignKey(Order, on_delete=models.CASCADE,

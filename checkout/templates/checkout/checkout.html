@@ -81,7 +81,7 @@
         </div>
 
         <!-- Shipping Form -->
-        <form class="mt-3 mx-auto" action="{% url 'checkout' %}" method="POST" id="payment-form" novalidate>
+        <form class="mt-3 mx-auto" action="{% url 'checkout_post' %}" method="POST" id="payment-form" novalidate>
             <div class="row">
 
                 {% csrf_token %}

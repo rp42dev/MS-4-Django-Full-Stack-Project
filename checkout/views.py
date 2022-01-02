@@ -1,3 +1,13 @@
+"""
+Checkout
+    1. A view to return the checkout page
+Post Checkut
+    2. A view to return the checkout post functionality
+     Check if items are available in stock
+    3. Update Cart quantity of the product
+    4. delete item specified from the cart
+"""
+
 from django.shortcuts import render,\
     redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
@@ -18,111 +28,59 @@ import json
 def checkout(request):
     """
     A view to return the checkout page
+    Check item stock availability
+    Create Stripe Payment intent
+    Add checkout forms to the context
+    If user authentuicated prefill
+    forms with saved shipping form data
     """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
+    cart = request.session.get('cart', {})
 
-    if request.POST:
-        cart = request.session.get('cart', {})
-        shipping_form = ShippingForm(request.POST, prefix="shipping")
-        contact_form = ContactForm(request.POST, prefix="contact")
+    if not cart:
+        messages.error(request, "There's nothing\
+                in your cart at the moment")
+        return redirect(reverse('shop'))
 
-        if shipping_form.is_valid() and contact_form.is_valid():
-            order = shipping_form.save(commit=False)
-            pid = request.POST.get('client_secret').split('_secret')[0]
-            order.stripe_pid = pid
-            order.items = json.dumps(cart)
-            order.full_name = request.POST.get('contact-full_name')
-            order.email = request.POST.get('contact-email')
-            order.save()
+    current_cart = cart_contents(request)
+    total = current_cart['grand_total']
+    stripe_total = round(total * 100)
+    stripe.api_key = stripe_secret_key
 
-            for item_id, quantity in cart.items():
-                try:
-                    product = Product.objects.get(id=item_id)
-                    stock = product.item_count - quantity
-                    if product.item_count <= 0:
-                        messages.error(request, (
-                            f"The {product.name} in your cart\
-                                stock quantity changed. Curently out of stock"))
-                        order.delete()
-                        return redirect(reverse('cart'))
-         
-                    elif stock < 0:
-                        messages.error(request, (
-                            f"The {product.name} in your cart\
-                                stock quantity changed. Curently {product.item_count} available"))
-                        order.delete()
-                        return redirect(reverse('cart'))
-                    else:
-                        order_line = OrderLine(
-                            order=order,
-                            product=product,
-                            quantity=quantity,
-                        )
-                        order_line.save()
-                        stock = product.item_count - quantity
-                        product.item_count = stock
-                        product.save()
+    intent = stripe.PaymentIntent.create(
+        amount=stripe_total,
+        currency=settings.STRIPE_CURRENCY,
+        metadata={
+            'cart': json.dumps(request.session.get('cart', {})),
+            'username': request.user,
+        }
+    )
 
-                except Product.DoesNotExist:
-                    messages.error(request, (
-                        "One of the products in your cart\
-                             wasn't found in our database."))
-                    order.delete()
-                    return redirect(reverse('cart'))
+    for item_id, quantity in cart.items():
+        try:
+            product = Product.objects.get(id=item_id)
+            stock = product.item_count - quantity
+            if product.item_count <= 0:
+                messages.error(request, (
+                    f"The {product.name} in your cart\
+                        stock quantity changed. Curently out of stock"))
+                order.delete()
+                return redirect(reverse('cart'))
+            elif stock < 0:
+                messages.error(request, (
+                    f"The {product.name} in your cart\
+                        stock quantity changed. Curently\
+                        {product.item_count} available"))
+                order.delete()
+                return redirect(reverse('cart'))
 
-            request.session['save-info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
-        else:
-            messages.error(
-                request, 'There was an error with your form.\
-                Please double check your information.')
-    else:
-        cart = request.session.get('cart', {})
-        if not cart:
-            messages.error(request, "There's nothing\
-                 in your cart at the moment")
-            return redirect(reverse('shop'))
-
-        current_cart = cart_contents(request)
-        total = current_cart['grand_total']
-        stripe_total = round(total * 100)
-        stripe.api_key = stripe_secret_key
-        intent = stripe.PaymentIntent.create(
-            amount=stripe_total,
-            currency=settings.STRIPE_CURRENCY,
-            metadata={
-                'cart': json.dumps(request.session.get('cart', {})),
-                'username': request.user,
-            }
-        )
-
-        for item_id, quantity in cart.items():
-
-                try:
-                    product = Product.objects.get(id=item_id)
-                    stock = product.item_count - quantity
-                    if product.item_count <= 0:
-                        messages.error(request, (
-                            f"The {product.name} in your cart\
-                                stock quantity changed. Curently out of stock"))
-                        order.delete()
-                        return redirect(reverse('cart'))
-         
-                    elif stock < 0:
-                        messages.error(request, (
-                            f"The {product.name} in your cart\
-                                stock quantity changed. Curently {product.item_count} available"))
-                        order.delete()
-                        return redirect(reverse('cart'))
-
-                except Product.DoesNotExist:
-                    messages.error(request, (
-                        "One of the products in your cart\
-                             wasn't found in our database."))
-                    order.delete()
-                    return redirect(reverse('cart'))
-
+        except Product.DoesNotExist:
+            messages.error(request, (
+                "One of the products in your cart\
+                        wasn't found in our database."))
+            order.delete()
+            return redirect(reverse('cart'))
 
     if request.user.is_authenticated:
         form2 = ContactForm()
@@ -165,14 +123,78 @@ def checkout(request):
     return render(request, 'checkout/checkout.html', context)
 
 
+@require_POST
+def checkout_post(request):
+    """
+    A view to return the checkout post functionality
+    Chect stock availability and reduce stock on POST
+    Request form data and submit order to database
+    """
+    cart = request.session.get('cart', {})
+    shipping_form = ShippingForm(request.POST, prefix="shipping")
+    contact_form = ContactForm(request.POST, prefix="contact")
+
+    if shipping_form.is_valid() and contact_form.is_valid():
+        order = shipping_form.save(commit=False)
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        order.stripe_pid = pid
+        order.items = json.dumps(cart)
+        order.full_name = request.POST.get('contact-full_name')
+        order.email = request.POST.get('contact-email')
+        order.save()
+
+        for item_id, quantity in cart.items():
+            try:
+                product = Product.objects.get(id=item_id)
+                stock = product.item_count - quantity
+                if product.item_count <= 0:
+                    messages.error(request, (
+                        f"The {product.name} in your cart\
+                            stock quantity changed. Curently out of stock"))
+                    order.delete()
+                    return redirect(reverse('cart'))
+        
+                elif stock < 0:
+                    messages.error(request, (
+                        f"The {product.name} in your cart\
+                            stock quantity changed. Curently\
+                                {product.item_count} available"))
+                    order.delete()
+                    return redirect(reverse('cart'))
+                else:
+                    order_line = OrderLine(
+                        order=order,
+                        product=product,
+                        quantity=quantity,
+                    )
+                    order_line.save()
+                    stock = product.item_count - quantity
+                    product.item_count = stock
+                    product.save()
+
+            except Product.DoesNotExist:
+                messages.error(request, (
+                    "One of the products in your cart\
+                            wasn't found in our database."))
+                order.delete()
+                return redirect(reverse('cart'))
+
+        return redirect(reverse('checkout_success', args=[order.order_number]))
+    else:
+        messages.error(
+            request, 'There was an error with your form.\
+            Please double check your information.')
+        return redirect(reverse('cart'))
+
+
 def checkout_success(request, order_number):
     """
-    Handle successful checkouts
+    Handle successful checkouts Save user Profile
+    to the order and return success order page
     """
     order = get_object_or_404(Order, order_number=order_number)
 
     if request.user.is_authenticated:
-
         profile = request.user
         if not order.user_profile == profile:
             order.user_profile = profile

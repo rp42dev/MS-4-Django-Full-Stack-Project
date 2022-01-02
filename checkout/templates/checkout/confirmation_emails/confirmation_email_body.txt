@@ -1,0 +1,19 @@
+Hello {{ order.full_name }}!
+
+This is a confirmation of your order at A Hat Shop. Your order information is below:
+
+Order Number: {{ order.id }}
+Order Date: {{ order.date }}
+
+Delivery: ${{ order.delivery }}
+Grand Total: ${{ order.total }}
+
+Your order will be shipped to {{ order.address_line_1 }} in {{ order.city }}, {{ order.country }}.
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Thank you for your order!
+
+Sincerely,
+
+A Hat Shop

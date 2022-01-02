@@ -31,6 +31,7 @@ var style = {
 var card = elements.create("card", {
     style: style
 });
+
 // Stripe injects an iframe into the DOM
 card.mount("#card-element");
 
@@ -45,7 +46,7 @@ const form = document.getElementById('payment-form');
 form.addEventListener('submit', function (ev) {
         ev.preventDefault();
         setLoading(true);
-
+        // Add shippind and billing form delails
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
