@@ -1,9 +1,7 @@
 """
 Checkout
     1. A view to return the checkout page
-Post Checkut
     2. A view to return the checkout post functionality
-     Check if items are available in stock
     3. Update Cart quantity of the product
     4. delete item specified from the cart
 """

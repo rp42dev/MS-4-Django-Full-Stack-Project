@@ -1,3 +1,10 @@
+"""
+Admin Management views
+    1. Administrator management view. Requeres login
+Post Checkut
+    2. Oorder history view and updateorder status
+"""
+
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -7,7 +14,6 @@ from reviews.models import ProductReview
 from shop.models import Product, Category
 from support.models import CustomerSuport, Message
 from checkout.models import Order
-
 
 
 @login_required
@@ -56,13 +62,15 @@ def admin_view(request):
 @login_required
 def order(request, order_number):
     """
-    A view to order history
+    A view to order history view
+    Get order from database and
+    Update order status shipping etc..
     """
     order = get_object_or_404(Order, order_number=order_number)
     user = request.user
 
     if not user.is_superuser:
-        messages.error(request,  'Only administartor can view this page')
+        messages.error(request, 'Only administartor can view this page')
         return redirect(reverse('home'))
    
     profile = order.user_profile
@@ -73,10 +81,12 @@ def order(request, order_number):
         if status_form.is_valid:
             order.status = request.POST['status']
             order.save()
-            messages.success(request, f'Order #{order.id} satus updated to {order.status}')
+            messages.success(
+                request, f'Order #{order.id} satus updated to {order.status}')
             return redirect(reverse('order', args=[order_number]))
         else: 
-            messages.error(request, f'Error validating form please ensure form if valid')
+            messages.error(
+                request, f'Error validating form please ensure form if valid')
             return redirect(reverse('order', args=[order_number]))
 
     issues = CustomerSuport.objects.all()
@@ -85,7 +95,8 @@ def order(request, order_number):
     except CustomerSuport.DoesNotExist:
         issue = None
     
-    order_reviews = profile.user_review.filter(order__order_number=order_number)
+    order_reviews = profile.user_review.filter(
+                    order__order_number=order_number)
     order_list = list()
     
     for i in order_reviews:

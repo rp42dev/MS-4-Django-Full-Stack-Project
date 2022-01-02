@@ -10,11 +10,11 @@
     </div>
     <div class="card-body p-0">
         <table class="table table-borderless">
-            {% if low_stock %}
+            {% if out_of_stock %}
             {% for item in out_of_stock %}
             <thead>
                 <tr>
-                    <th class="text-muted font-monospace text-italic">Odrer Date: {{ item.name }}</th>
+                    <th class="text-muted font-monospace text-italic">{{ item.name }}</th>
 
                 </tr>
             </thead>

@@ -22,8 +22,8 @@
 
 
     <div class="container bg-white p-4 px-lg-5">
-        <!-- Project One -->
 
+        <!-- Billing and shipping information -->
         <div class="col-12 text-uppercase text-center h4 text-warning">Thank You</div>
         <div class="row m-0 p-0">
             <p class="px-0 fw-bolder text-uppercase font-monospace">Order #: {{ order.id }}</p>
@@ -46,7 +46,7 @@
                 <p class="mb-0 font-monospace">Country: {{ order.country }}</p>
             </div>
             <hr class="p-1 d-md-none dblock">
-            <div class="col-md-6">
+            <div class="col-md-6 text-md-end">
                 <p class="text-italic fw-bolder">Order Summary:</p>
                 <p class="mb-0 font-monospace">Date: {{ order.date }}</p>
                 <p class="mb-0 font-monospace">User: {{ order.user_profile }}</p>
@@ -54,13 +54,16 @@
                 <p class="mb-0 font-monospace">Email: {{ order.email }}</p>
                 <p class="mb-0 font-monospace">Total: ${{ order.total }}</p>
                 <p class="mb-0 font-monospace">Delivery: {{ order.delivery }}</p>
+                <p class="mb-0 font-monospace">Paid: {{ order.paid }}</p>
             </div>
 
         </div>
-        <hr class="p-1">
+
+        <!-- Line Items -->
         {% for item in order.lineitems.all %}
         <div class="cart-conteiner border mx-0 px-0 bg-white row align-items-center mt-2 mt-sm-4">
 
+            <!-- Product image -->
             <div class="col-6 col-sm-3 order-2 order-sm-1 position-relative">
                 {% thumbnail item.product.image "150" as im %}
                 <a class="" href="{% url 'shop_item' item.product.id %}">
@@ -69,6 +72,7 @@
                     </div>
                 </a>
 
+                <!-- Discount badge -->
                 {% if item.product.sale %}
                 <div class="badge bg-danger text-white position-absolute font-monospace"
                     style="top: 0.5rem; right: 0.5rem">
@@ -78,13 +82,12 @@
                 {% endthumbnail %}
             </div>
 
-            <div class="col-12 col-sm-6 order-1 order-smproduct">
+            <div class="col-12 col-sm-6 order-1 order-sm-2 product text-center">
                 <p class="text-capitalize mb-0 fw-bolder">{{ item.product.name }}</p>
                 <p class="text-capitalize mb-0 font-monospace">SKU: {{ item.product.sku }}</p>
-                <!-- incluse stars rating -->
-
-                <div class="star_container">
-
+                
+                <!-- incluse stars rating  -->
+                <div class="star_container d-flex flex-column align-items-center">
                     {% if item.product.rating %}
                     <a href="{% url 'all_reviews' item.product.id %}">
                         <div class="stars h4 text-warning"
@@ -99,9 +102,9 @@
                     </div>
 
                     {% endif %}
-
                 </div>
-                
+
+                <!-- Product review available only if order was places -->
                 {% if order.user_profile and from_profile %}
                 {% if not item.product.id in order_list %}
                 <p><a href="{% url 'review_view' item.product.id  %}?order_id={{ order.order_number }}">Write a
@@ -113,9 +116,9 @@
                 {% endif %}
                 
             </div>
-
+            <!-- Product pricing and quantity -->
             <div class="col-3 col-6 col-sm-3 order-2 order-sm-3">
-                <div>
+                <div class="text-end">
                     {% if item.product.sale %}
                     <span
                         class="text-decoration-line-through text-danger  font-monospace">${{ item.product.price }}</span>
@@ -132,14 +135,13 @@
 
         </div>
         {% endfor %}
-        <hr class="p-1">
+ 
         <div class="cart-conteiner bg-white row align-items-center mt-2 mt-sm-4">
-
-            <div class="col-6 col-md-9">
+            <div class="col-6">
                 <div>
-
                     <p class="text-italic fw-bolder">Order Status: {{ order.status }}</p>
 
+                    <!-- Confirm Order reception if order status is shipped -->
                     {% if order.status != "Completed" and from_profile and order.status == "Shipped" %}
                     <form class="form" method="POST" action="{% url 'order_history' order.order_number %}">
                         {% csrf_token %}
@@ -155,10 +157,11 @@
                         </div>
                     </form>
                     {% endif %}
+
                     {% if from_profile %}
                     <div class="mt-3">
                         {% if issue %}
-
+                        <!-- Report issue with order available only if order was placed -->
                         {% if issue.status == 'Resolved' %}
                         <a href="{% url 'messages_view' issue.id %}" class="m-0 link-success fw-bolder font-monospace"> Ticket #{{ issue.id }} Status: {{ issue.status }}</a>
                         {% else %}
@@ -173,7 +176,8 @@
                 </div>
             </div>
 
-            <div class="col-6 h4  fw-bolder font-monospace col-md-3">
+            <!-- Delivery costs -->
+            <div class="col-6 h4 fw-bolder font-monospace text-end">
                 <p>
                     {% if delivery != 0 %}
                     <span class="font-monospace h6">Delivery: {{ delivery }}</span> <br>
@@ -185,11 +189,11 @@
             </div>
 
         </div>
-
     </div>
+
+    <!-- If from admin page display order status form -->
     <div class="container p-4 px-lg-5">
         {% if admin %}
-
         <form class="form" method="POST" action="{% url 'order' order.order_number %}">
             {% csrf_token %}
             <div class="form-group m-0">
