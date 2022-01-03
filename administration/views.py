@@ -95,12 +95,17 @@ def order_view(request, order_number):
     except CustomerSuport.DoesNotExist:
         issue = None
 
-    order_reviews = profile.user_review.filter(
-                    order__order_number=order_number)
-    order_list = list()
+    if profile:
+        order_reviews = profile.user_review.filter(
+                        order__order_number=order_number)
 
-    for i in order_reviews:
-        order_list.append(i.product.id)
+        order_list = list()
+
+        for i in order_reviews:
+            order_list.append(i.product.id)
+    else:
+        order_list = None
+    
 
     template = 'checkout/checkout-success.html'
     context = {

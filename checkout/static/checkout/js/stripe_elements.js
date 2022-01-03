@@ -49,8 +49,9 @@ const form = document.getElementById('payment-form');
 form.addEventListener('submit', function (ev) {
         ev.preventDefault();
         setLoading(true);
-
+        
         // Add shippind and billing form delails
+        if (form.checkValidity()) {
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
@@ -70,6 +71,7 @@ form.addEventListener('submit', function (ev) {
                     country: form.elements['shipping-country'].value,
                 }
             },
+        
         }).then(function (result) {
             if (result.error) {
                 // Show error to your customer (for example, insufficient funds)
@@ -82,6 +84,9 @@ form.addEventListener('submit', function (ev) {
             }
             setLoading(false);
         });
+    } else {
+        setLoading(false);
+    }
     })
 
 // Show a spinner on payment submission
