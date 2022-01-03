@@ -1,0 +1,10 @@
+/* Cart */
+.count-btn {
+    color: #000000;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .count-btn:hover {
+    background-color: #fff;
+    color: #fca311;
+  }

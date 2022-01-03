@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load thumbnail %}
+
+{% block extra_css %}
+<link href="{% static 'css/shop.css' %}" rel="stylesheet" />
+{% endblock %}
+
 {% block page_header %}
 <!-- Header-->
 <header class="bg-black py-5">

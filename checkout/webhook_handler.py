@@ -4,19 +4,17 @@ Handle Stripe webhookse
     2. Handle the payment_intent.succeeded webhook from Stripe
     3. Handle the payment_intent.payment_failed webhook
 """
+import json
+import time
+import stripe
+
 from django.http import HttpResponse
 from django.core.mail import send_mail
-from django.contrib.auth.models import User
 from django.template.loader import render_to_string
 from django.conf import settings
 
 from shop.models import Product
 from .models import Order, OrderLine
-from customers.models import UserAddress
-
-import stripe
-import json
-import time
 
 
 class StripeWhHandler:
@@ -78,7 +76,6 @@ class StripeWhHandler:
                 shipping_details.address[field] = None
 
         profile = None
-        username = intent.metadata.username
         order_exists = False
         attempt = 1
 
@@ -131,22 +128,21 @@ class StripeWhHandler:
                         product.save()
                     except Product.DoesNotExist:
                         return HttpResponse(
-                            content=f'Webhook received: {event["type"]}\
-                                | ERROR: creating order Product\
-                                        {product} does not exist', status=500)
+                            content=(f'Webhook received: {event["type"]}'
+                                     f' | ERROR: creating order Product'
+                                     f' {product} does not exist'), status=500)
 
-            except Exception as e:
+            except Exception as error:
                 if order:
                     order.delete()
                 return HttpResponse(
-                    content=f'Webhook received: {event["type"]} | ERROR: {e}',
-                    status=500)
+                    content=(f'Webhook received: {event["type"]}'
+                             f' | ERROR: {error}'), status=500)
 
         self._send_confirmation_email(order, True)
         return HttpResponse(
-            content=f'Webhook received: {event["type"]}\
-                | SUCCESS: Verified order already in database',
-                    status=200)
+            content=f'Webhook received: {event["type"]} | SUCCESS:'
+                    f' Verified order already in database', status=200)
 
     def handle_payment_intent_payment_failed(self, event):
         """

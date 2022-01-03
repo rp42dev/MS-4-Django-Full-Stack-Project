@@ -1,0 +1,137 @@
+.form-check-input {
+    width: 1.2em;
+    height: 1.2em;
+}
+
+#myCheck:checked[type=checkbox] {
+    background-color: #d2042d;
+    border-color: #d2042d;
+    box-shadow: 0px 0px 4px #d2042d;
+}
+
+#myCheck:focus[type=checkbox] {
+    background-color: #d2042d;
+    border-color: #d2042d;
+    box-shadow: 0px 0px 4px #d2042d;
+}
+
+.img-brand {
+    height: 2.75rem;
+}
+
+/* Forms */
+form .form-group {
+    margin-bottom: .5rem;
+}
+
+.form-control {
+    padding: .6rem;
+    font-weight: 700;
+}
+
+label {
+    font-size: .8rem;
+    color: #999;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.text-gray {
+    color: #c5c5c5;
+}
+
+form p {
+    text-transform: capitalize;
+}
+
+.form-group textarea {
+    height: 100%;
+    min-height: 3rem;
+}
+
+form#contactForm p.help-block {
+    margin: 0;
+}
+
+.quantity {
+    border-radius: 2px;
+    border: 1px solid black;
+}
+
+@media (min-width: 768px) {
+    .form-group textarea {
+        height: 100%;
+        min-height: 3rem;
+    }
+}
+
+.quantity:focus,
+.quantity:active,
+form .form-control:focus,
+form .form-control:active {
+    box-shadow: none;
+    outline-color: #999;
+    border-color: #999;
+    border: 1px solid #999 !important;
+}
+
+form ::-webkit-input-placeholder {
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 700;
+    color: #c5c5c5 !important;
+}
+
+form :-moz-placeholder {
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 700;
+    color: #c5c5c5;
+}
+
+form ::-moz-placeholder {
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 700;
+    color: #c5c5c5;
+}
+
+form :-ms-input-placeholder {
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 700;
+    color: #c5c5c5;
+}
+
+.btn-submit {
+    background-color: #fca311;
+    color: #e5e5e5;
+}
+
+.btn-submit:active,
+.btn-submit:hover {
+    background-color: #e5e5e5;
+    color: #000000;
+}
+
+.form-check-input:focus,
+.form-check-input:checked {
+    background-color: green;
+    border-color: green;
+}
+
+.InputElement.is-valid,
+.form-control.is-valid,
+.was-validated .form-control:valid {
+    border-color: #198754;
+    padding-right: calc(1.5em + .75rem);
+    background-image: none;
+}
+
+.invalid-p {
+    color: #d2042d;
+    font-size: 13px;
+    line-height: 17px;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    transition: background-color 5000s ease-in-out 0s;
+}

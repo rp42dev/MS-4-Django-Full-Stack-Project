@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block page_header %}
+{% block extra_css %}
+<link href="{% static 'css/home.css' %}" rel="stylesheet" />
 
+<link href="{% static 'css/shop.css' %}" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}

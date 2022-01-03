@@ -1,9 +1,17 @@
+"""
+    1. Cart Context
+"""
 from decimal import Decimal
 from django.shortcuts import get_object_or_404
 from shop.models import Product
 
 
 def cart_contents(request):
+    """
+    Cart Context to calculate item total
+    Calculate delivery costs
+    Check item stock avilability
+    """
     cart_items = []
     total = 0
     before = 0
@@ -12,10 +20,10 @@ def cart_contents(request):
     cart = request.session.get('cart', {})
 
     for item_id, quantity in cart.items():
-        
+
         if isinstance(quantity, int):
             product = get_object_or_404(Product, pk=item_id)
-            
+
             if product.sale:
                 subtotal = 0
                 total += quantity * product.sale_price

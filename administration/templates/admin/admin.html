@@ -2,6 +2,11 @@
 {% load static %}
 {% load thumbnail %}
 {% load crispy_forms_tags %}
+
+{% block extra_css %}
+<link href="{% static 'css/customers.css' %}" rel="stylesheet" />
+{% endblock %}
+
 {% block page_header %}
 <!-- Header-->
 <header class="bg-black py-5">

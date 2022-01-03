@@ -1,14 +1,14 @@
 """
     1. Listen for webhooks from Stripe
 """
+import stripe
+
 from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 
 from checkout.webhook_handler import StripeWhHandler
-
-import stripe
 
 
 @require_POST
@@ -30,20 +30,22 @@ def webhook(request):
 
     try:
         event = stripe.Webhook.construct_event(
-        payload, sig_header, wh_secret
+            payload, sig_header, wh_secret
         )
-    except ValueError as e:
-        return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError as e:
-        return HttpResponse(status=400)
-    except Exception as e:
-        return HttpResponse(content=e, status=400)
+    except ValueError as error:
+        return HttpResponse(content=error, status=400)
+    except stripe.error.SignatureVerificationError as error:
+        return HttpResponse(content=error, status=400)
+    except Exception as error:
+        return HttpResponse(content=error, status=400)
 
     handler = StripeWhHandler(request)
 
     event_map = {
-        'payment_intent.succeeded': handler.handle_payment_intent_succeeded,
-        'payment_intent.payment_failed': handler.handle_payment_intent_payment_failed,
+        'payment_intent.succeeded':
+        handler.handle_payment_intent_succeeded,
+        'payment_intent.payment_failed':
+        handler.handle_payment_intent_payment_failed,
     }
 
     event_type = event['type']

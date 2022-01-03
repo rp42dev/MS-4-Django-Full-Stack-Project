@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+<link href="{% static 'css/shop.css' %}" rel="stylesheet" />
+{% endblock %}
+
 <!-- Shop search and general navigation -->
 {% block extr_nav %}
 <!-- Shop categories styles and query mobile navigation -->

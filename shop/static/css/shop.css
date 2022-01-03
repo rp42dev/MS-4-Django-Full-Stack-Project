@@ -1,0 +1,46 @@
+/* Extra Navigation Shop */
+
+.drop-link {
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 0.95rem;
+    color: #e5e5e5;
+    font-weight: 600;
+    letter-spacing: 0.0625em;
+}
+
+.drop-link,
+.dropdown-item {
+    color: #e5e5e5;
+    transition: color 0.2s ease-in-out;
+}
+
+.drop-link:hover {
+    color: #fca311;
+}
+
+.dropdown-item,
+.dropdown-menu {
+    background-color: #292929;
+}
+
+.dropdown-item:hover {
+    background-color: #292929;
+    color: #fca311;
+}
+
+/* Card and badge */
+.card-body {
+    flex: 0 1 auto;
+    padding: 1rem 1rem;
+}
+
+.this-h {
+    padding-top: 60px;
+}
+
+.cart-conteiner .badge,
+.item .badge,
+.card .badge {
+    transform: rotate(25deg);
+    border-radius: 9px 3px;
+}

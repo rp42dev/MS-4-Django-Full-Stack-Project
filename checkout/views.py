@@ -5,26 +5,20 @@ Checkout
     3. Update Cart quantity of the product
     4. delete item specified from the cart
 """
-import stripe
 import json
+import stripe
 
 from django.shortcuts import render,\
-    redirect, reverse, get_object_or_404, HttpResponse
+    redirect, reverse, get_object_or_404
 from django.views.decorators.http import require_POST
-from django.contrib.auth.models import User
 from django.contrib import messages
 from django.conf import settings
-
-
 
 from cart.contexts import cart_contents
 from shop.models import Product
 from customers.models import UserAddress
 from . models import Order, OrderLine
 from . forms import ShippingForm, ContactForm
-
-
-
 
 
 def checkout(request):
@@ -53,21 +47,18 @@ def checkout(request):
                 messages.error(request, (
                     f"The {product.name} in your cart\
                         stock quantity changed. Curently out of stock"))
-                order.delete()
                 return redirect(reverse('cart'))
             elif stock < 0:
                 messages.error(request, (
                     f"The {product.name} in your cart\
                         stock quantity changed. Curently\
                         {product.item_count} available"))
-                order.delete()
                 return redirect(reverse('cart'))
 
         except Product.DoesNotExist:
             messages.error(request, (
                 "One of the products in your cart\
                         wasn't found in our database."))
-            order.delete()
             return redirect(reverse('cart'))
 
     current_cart = cart_contents(request)

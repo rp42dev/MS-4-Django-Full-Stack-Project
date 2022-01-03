@@ -10,9 +10,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from shop.forms import OrderStatusForm
-from reviews.models import ProductReview
-from shop.models import Product, Category
-from support.models import CustomerSuport, Message
+from shop.models import Product
+from support.models import CustomerSuport
 from checkout.models import Order
 
 
@@ -60,7 +59,7 @@ def admin_view(request):
 
 
 @login_required
-def order(request, order_number):
+def order_view(request, order_number):
     """
     A view to order history view
     Get order from database and
@@ -72,33 +71,33 @@ def order(request, order_number):
     if not user.is_superuser:
         messages.error(request, 'Only administartor can view this page')
         return redirect(reverse('home'))
-   
+
     profile = order.user_profile
     admin = True
     status_form = OrderStatusForm(instance=order)
 
     if 'status' in request.POST:
-        if status_form.is_valid:
+        if status_form.is_valid():
             order.status = request.POST['status']
             order.save()
             messages.success(
                 request, f'Order #{order.id} satus updated to {order.status}')
-            return redirect(reverse('order', args=[order_number]))
-        else: 
+            return redirect(reverse('order_view', args=[order_number]))
+        else:
             messages.error(
-                request, f'Error validating form please ensure form if valid')
-            return redirect(reverse('order', args=[order_number]))
+                request, 'Error validating form please ensure form if valid')
+            return redirect(reverse('order_view', args=[order_number]))
 
     issues = CustomerSuport.objects.all()
     try:
         issue = issues.get(order=order)
     except CustomerSuport.DoesNotExist:
         issue = None
-    
+
     order_reviews = profile.user_review.filter(
                     order__order_number=order_number)
     order_list = list()
-    
+
     for i in order_reviews:
         order_list.append(i.product.id)
 

@@ -10,7 +10,6 @@ const container = document.querySelector("#star");
 let rect = container.getBoundingClientRect();
 
 container.addEventListener("mousemove", (e) => {
-
     xp = parseInt(((e.clientX - rect.left) / (rect.right - rect.left)) * 100)
     starz = document.querySelectorAll('.starz');
     if (xp <= 20) {
@@ -28,7 +27,6 @@ container.addEventListener("mousemove", (e) => {
         starz[i].classList.remove('star_hover');
     for (let i = 0; i < value; i++)
         starz[i].classList.add('star_hover')
-
 });
 container.addEventListener("mouseout", (e) => {
     // Do math
@@ -36,5 +34,4 @@ container.addEventListener("mouseout", (e) => {
 
     for (let i = 0; i < 5; i++)
         starz[i].classList.remove('star_hover');
-
 });

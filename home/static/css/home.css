@@ -1,0 +1,70 @@
+/* Main Header Masthead */
+header.masthead {
+    position: relative;
+    min-height: 70vh;
+    text-align: center;
+    color: #c5c5c5;
+    overflow: hidden;
+}
+
+.bg {
+    position: absolute;
+    min-height: 70vh;
+    min-width: 100%;
+    width: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-3 {
+    position: absolute;
+    min-height: 70vh;
+    min-width: 100%;
+    width: auto;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+    opacity: .8;
+
+}
+
+header.masthead .masthead-subheading {
+    position: relative;
+    font-size: 1.5rem;
+    font-style: italic;
+    line-height: 1.5rem;
+    margin-bottom: 25px;
+    font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    z-index: 100;
+}
+
+header.masthead .masthead-heading {
+    position: relative;
+    font-size: 3.25rem;
+    font-weight: 700;
+    line-height: 3.25rem;
+    margin-bottom: 2rem;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    z-index: 100;
+}
+
+@media (min-width: 768px) {
+    header.masthead {
+        min-height: 70vh;
+    }
+
+    header.masthead .masthead-subheading {
+        font-size: 2.25rem;
+        font-style: italic;
+        line-height: 2.25rem;
+        margin-bottom: 2rem;
+    }
+
+    header.masthead .masthead-heading {
+        font-size: 4.5rem;
+        font-weight: 700;
+        line-height: 4.5rem;
+        margin-bottom: 4rem;
+    }
+}

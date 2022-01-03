@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load thumbnail %}
+
+{% block extra_css %}
+<link href="{% static 'css/cart.css' %}" rel="stylesheet" />
+{% endblock %}
+
 {% block page_header %}
+
 <!-- Header-->
 <header class="bg-black py-5">
     <div class="container px-4 px-lg-5 my-5">
@@ -24,15 +30,15 @@
 
             <div
                 class="cart-conteiner mx-1 shadow-sm py-4 rounded-3 bg-white row align-items-center mt-2 mt-sm-4 position-relative">
-
+                <!-- Product image -->
                 <div class="col-6 col-sm-3 order-1 position-relative">
                     {% thumbnail item.product.image "150" as im %}
-                    <a class="" href="{% url 'shop_item' item.product.id %}">
+                    <a href="{% url 'shop_item' item.product.id %}">
                         <div class="h-100 d-flex align-items-center ">
                             <img class="card-img-top" src="{{ im.url }}" alt="{{ item.product.name }}" />
                         </div>
                     </a>
-
+                    <!-- Sales Badge -->
                     {% if item.product.sale %}
                     <div class="badge bg-danger text-white font-monospace position-absolute"
                         style="top: 0.5rem; right: 0.5rem">
@@ -41,7 +47,7 @@
                     {% endif %}
                     {% endthumbnail %}
                 </div>
-
+                <!-- Product Description -->
                 <div class="col-12 col-sm-6 order-3 order-sm-2">
                     <h3 class="text-capitalize">{{ item.product.name }}</h3>
                     <p>{{ item.product.description }}</p>
@@ -51,7 +57,6 @@
 
                     <div>
                         <!-- Sale badge-->
-
                         {% if item.product.sale %}
                         <h1 class="text-danger font-monospace fw-bolder">${{ item.subtotal }} </h1>
                         {% else %}
@@ -61,10 +66,12 @@
                     </div>
 
                     <div>
+                        <!-- Add or remve item quantity include form -->
                         {% include 'includes/forms/add-remove.html' %}
                     </div>
 
                 </div>
+                <!-- Remove item from cart -->
                 <div class="position-absolute w-auto end-0 top-0">
                     <div class="btn-outline-light">
                         <form class="form" method="POST" action="{% url 'remove_cart_item' item.item_id %}">
@@ -85,12 +92,11 @@
                 </div>
 
             </div>
-
             {% endfor %}
-
             {% endif %}
         </div>
 
+        <!-- Button to checkout -->
         <div class="col-12 mt-5 text-center">
             <h1 class="font-monospace fw-bold total"> ${{ total|floatformat:2 }}</h1>
             <input type="hidden" name="grand_total">

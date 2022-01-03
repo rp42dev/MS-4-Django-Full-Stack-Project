@@ -8,11 +8,11 @@ Add to cart
     4. delete item specified from the cart
 """
 from django.shortcuts import render, redirect,\
-    reverse, HttpResponse, get_object_or_404
+    reverse, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.views.decorators.http import require_POST
 from django.contrib import messages
-from shop.models import Product, Category
+from shop.models import Product
 
 
 def cart_view(request):
@@ -57,7 +57,7 @@ def cart_view(request):
 
 @require_POST
 def add_to_cart(request, item_id):
-    """ 
+    """
     Add items to the shopping cart
     calculate stock vs cart product
     availability and restrict sellecting
@@ -99,7 +99,7 @@ def add_to_cart(request, item_id):
 @require_POST
 def update_cart(request, item_id):
     """
-    update the quantity of the specified
+    Update the quantity of the specified
     product to the specified amount
     calculate stock vs cart product
     availability and restrict sellecting
