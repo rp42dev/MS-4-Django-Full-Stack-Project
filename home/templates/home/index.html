@@ -24,21 +24,12 @@
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Rently Added Hats</h2>
             <h3 class="section-subheading text-muted">Shop hats with confidence!</h3>
-            <div class="row gx-2 gx-sm-4 h-25 shadow-sm scroll-wrapper flex-nowrap ">
+            <div class="row gx-2 gx-sm-4 h-25 scroll-wrapper flex-nowrap ">
                 {% for product in related %}
                 {% include 'includes/shop/item-card.html' %}
                 {% endfor %}
 
             </div>
-            <!-- scrool sidewayss -->
-            <script>
-                const scrolling = document.querySelector(".scroll-wrapper");
-                scrolling.scrollLeft = 130
-                scrolling.addEventListener("wheel", (evt) => {
-                    evt.preventDefault();
-                    scrolling.scrollLeft += evt.deltaY;
-                });
-            </script>
         </div>
         <a class="mx-auto btn mt-4 btn-xl text-uppercase btn-dark" href="{% url 'shop' %}">More Hats</a>
     </div>
@@ -51,4 +42,5 @@
 {% block postloadjs %}
 <!-- Custom parallax effects -->
 <script src="{% static 'js/parallax.js' %}"></script>
+<script src="{% static 'js/scrool-x.js' %}"></script>
 {% endblock %}

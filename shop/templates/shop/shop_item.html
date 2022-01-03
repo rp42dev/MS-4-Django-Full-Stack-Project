@@ -78,24 +78,18 @@
     <!-- Include Related products -->
     <div class="container pt-5 px-2 px-sm-4 px-lg-5">
         <h2 class="fw-bolder mb-4 text-capitalize">More {{ item.style }} hats</h2>
-        <div class="row gx-2 gx-sm-4 h-25 shadow-sm scroll-wrapper flex-nowrap ">
+        <div class="row gx-2 gx-sm-4 h-25 scroll-wrapper flex-nowrap ">
             {% for product in related %}
             {% if product.id != item.id %}
             {% include 'includes/shop/item-card.html' %}
             {% endif %}
             {% endfor %}
-            <script>
-                const scrolling = document.querySelector(".scroll-wrapper");
-                scrolling.scrollLeft = 130
-                scrolling.addEventListener("wheel", (evt) => {
-                    evt.preventDefault();
-                    scrolling.scrollLeft += evt.deltaY;
-                });
-            </script>
         </div>
-
     </div>
-
 </section>
 
+{% endblock %}
+{% block postloadjs %}
+<!-- Custom scrooleffects -->
+<script src="{% static 'js/scrool-x.js' %}"></script>
 {% endblock %}

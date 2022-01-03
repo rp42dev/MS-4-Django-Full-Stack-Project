@@ -57,7 +57,18 @@
                 aria-label="Toggle navigation">
                 <i class="fas fa-bars h1 ms-1"></i>
             </div>
-
+            <!-- Cark display on smal to medium screen sizes -->
+            <div class="cart nav-item me-2 ms-3 d-block d-md-none">
+                <a class="position-relative cart" href="{% url 'cart' %}">
+                    <i class="fas h3 fa-shopping-cart">
+                    </i>
+                    <span
+                        class="cart-pill text-white position-absolute top-5 start-98 translate-middle font-monospace bg-danger rounded-circle">
+                        {{ item_count }}
+                        <span class="visually-hidden">Cart items</span>
+                    </span>
+                </a>
+            </div>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-1 py-lg-0">
                     {% block extr_nav %}
@@ -104,7 +115,8 @@
 
                 </ul>
             </div>
-            <div id="cart" class="nav-item me-2 ms-3">
+            <!-- Cark display on medium and up screen size -->
+            <div class="cart nav-item me-2 ms-3 d-none d-md-block">
                 <a class="position-relative cart" href="{% url 'cart' %}">
                     <i class="fas h3 fa-shopping-cart">
                     </i>
@@ -120,6 +132,7 @@
         {% endblock %}
     </nav>
 
+    {% if not request.get_full_path == '/cart/' and cart_items and not request.get_full_path == '/checkout/'%}
     <!-- Message toast -->
     <div aria-live="polite" aria-atomic="true">
         <div class="toast-container position-fixed end-0 p-3">
@@ -135,26 +148,11 @@
             </div>
         </div>
     </div>
-    <script>
-        cart = document.querySelector('#cart')
-        cart.addEventListener('mouseover', MyFunction)
+    {% endif %}
 
-        function MyFunction() {
-            cart.removeEventListener("mouseover", MyFunction);
-            toaster = document.querySelector('#cart_toast');
-            toaster.classList.remove('d-none');
-            NewToast = new bootstrap.Toast(toaster);
-            NewToast.show();
-
-            toaster.addEventListener("hidden.bs.toast", function () {
-                cart.addEventListener('mouseover', MyFunction)
-            });
-
-        }
-    </script>
     <!-- Message Container -->
     {% if messages %}
-    
+    {% include 'includes/toasts/message.html' %}
     {% endif %}
 
     <!-- Extra Header content -->
