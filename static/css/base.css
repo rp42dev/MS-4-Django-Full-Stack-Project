@@ -256,7 +256,13 @@ header h1 {
 /* toast container */
 .toast-container {
   z-index: 9999;
-  top: 99.99px
+  top: 99.99px;
+
+}
+
+.toast {
+  max-height: 80vh;
+  overflow: auto;
 }
 
 /* Footer section and Promise */

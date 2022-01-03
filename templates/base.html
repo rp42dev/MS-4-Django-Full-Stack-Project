@@ -29,11 +29,12 @@
     {% endblock %}
 
     {% block extra_css %}
-    
+
     {% endblock %}
 
     {% block corejs %}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
     <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
@@ -51,8 +52,9 @@
         <div class="container">
             <div><a class="navbar-brand" href="{% url 'home' %}">A hat Shop</a></div>
 
-            <div class="navbar-toggler p-0 ms-auto" role="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="navbar-toggler p-0 ms-auto" role="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <i class="fas fa-bars h1 ms-1"></i>
             </div>
 
@@ -102,7 +104,7 @@
 
                 </ul>
             </div>
-            <div class="nav-item me-2 ms-3">
+            <div id="cart" class="nav-item me-2 ms-3">
                 <a class="position-relative cart" href="{% url 'cart' %}">
                     <i class="fas h3 fa-shopping-cart">
                     </i>
@@ -118,9 +120,41 @@
         {% endblock %}
     </nav>
 
+    <!-- Message toast -->
+    <div aria-live="polite" aria-atomic="true">
+        <div class="toast-container position-fixed end-0 p-3">
+            <div id="cart_toast" class="toast d-none align-items-center rounded-3 shadow-sm border-0" role="alert"
+                aria-live="assertive" aria-atomic="true">
+            
+                <div class="toast-header mb-2 rounded-3">
+                    <span class="text-italic fw-bolder">Cart Items</span>
+                    <button type="button" class="btn-close btn-close-primary me-2 m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+                </div>
+                {% include 'includes/cart_items_toast.html' %}
+            </div>
+        </div>
+    </div>
+    <script>
+        cart = document.querySelector('#cart')
+        cart.addEventListener('mouseover', MyFunction)
+
+        function MyFunction() {
+            cart.removeEventListener("mouseover", MyFunction);
+            toaster = document.querySelector('#cart_toast');
+            toaster.classList.remove('d-none');
+            NewToast = new bootstrap.Toast(toaster);
+            NewToast.show();
+
+            toaster.addEventListener("hidden.bs.toast", function () {
+                cart.addEventListener('mouseover', MyFunction)
+            });
+
+        }
+    </script>
     <!-- Message Container -->
     {% if messages %}
-    {% include 'includes/toasts/message.html' %}
+    
     {% endif %}
 
     <!-- Extra Header content -->
@@ -186,7 +220,8 @@
                 </div>
                 <div class="col-lg-4 text-lg-end">
                     {% if request.user.is_authenticated %}
-                    <a  class="link-warning me-2 text-decoration-none"  href="{% url 'support' %}">Report an issue</a>
+                    <a class="link-warning me-2 text-decoration-none" href="{% url 'support' %}">Report
+                        an issue</a>
                     {% endif %}
                     <a class="link-warning text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal"
                         href="">Contact Us</a>

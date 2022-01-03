@@ -1,6 +1,22 @@
 
 window.addEventListener('DOMContentLoaded', event => {
     let FormToast = document.querySelector('#form-error')
+
+    // Display cart content on hover
+    cart = document.querySelector('#cart')
+    cart.addEventListener('mouseover', MyFunction)
+
+    function MyFunction() {
+        cart.removeEventListener("mouseover", MyFunction);
+        toaster = document.querySelector('#cart_toast');
+        toaster.classList.remove('d-none');
+        NewToast = new bootstrap.Toast(toaster);
+        NewToast.show();
+
+        toaster.addEventListener("hidden.bs.toast", function () {
+            cart.addEventListener('mouseover', MyFunction)
+        });
+    }
     // Show / autohide bootstarp toasts
     var toasts = function () {
         var toastElList = [].slice.call(document.querySelectorAll('.toast'))
