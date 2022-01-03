@@ -91,7 +91,7 @@ def add_to_cart(request, item_id):
     request.session['cart'] = cart
     messages.success(
             request, f'{quantity} \
-                {product.name} added to the cart!')
+                {product.name} added to the cart!', extra_tags='update')
 
     return redirect(redirect_url)
 
@@ -120,10 +120,9 @@ def update_cart(request, item_id):
                         from your bag.')
             else:
                 cart[item_id] -= 1
-
                 messages.success(
-                    request, f'The hat {product.name}\
-                            quantity was updated to {cart[item_id]}.')
+                    request, (f'The hat {product.name} quantity was updated'
+                              f' to {cart[item_id]}.'), extra_tags='update')
         elif action == 'add':
             if product.item_count - cart[item_id] <= 0:
                 cart[item_id] = product.item_count
@@ -133,8 +132,8 @@ def update_cart(request, item_id):
             else:
                 cart[item_id] += 1
                 messages.success(
-                    request, f'The hat {product.name}\
-                            quantity was updated to {cart[item_id]}.')
+                    request, (f'The hat {product.name} quantity was updated'
+                              f' to {cart[item_id]}.'), extra_tags='update')
 
     request.session['cart'] = cart
 

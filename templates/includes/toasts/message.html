@@ -4,10 +4,9 @@
         {% for message in messages %}
         {% with message.level as level %}
 
-
         {% if level == 40 %}
-        <div class="toast show align-items-center rounded-3 text-white shadow-sm border-0" role="alert" aria-live="assertive"
-            aria-atomic="true">
+        <div class="toast show align-items-center rounded-3 text-white shadow-sm border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
 
             <div class="toast-header rounded-3">
                 <strong class="me-auto text-danger h3"><i class="fas fa-times-circle"></i></strong>
@@ -16,13 +15,13 @@
             </div>
 
             <div class="toast-body rounded-3">
-                <h5 class="text-danger">{{ message }}</h5>
+                <p class="text-danger m-0 p-0">{{ message }}</p>
             </div>
         </div>
 
         {% elif level == 30 %}
-        <div class="toast show align-items-center rounded-3 text-white shadow-sm border-0" role="alert" aria-live="assertive"
-            aria-atomic="true">
+        <div class="toast show align-items-center rounded-3 text-white shadow-sm border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
 
             <div class="toast-header rounded-3">
                 <strong class="me-auto h3 text-warning"><i class="fas fa-exclamation-circle"></i></strong>
@@ -30,28 +29,33 @@
                     aria-label="Close"></button>
             </div>
             <div class="toast-body rounded-3">
-                <h5 class="text-warning">{{ message }}</h5>
+                <p class="text-warning m-0 p-0">{{ message }}</p>
             </div>
-            
         </div>
 
         {% elif level == 25 %}
-        <div class="toast show align-items-center rounded-3 text-white shadow-sm border-0" role="alert" aria-live="assertive"
-            aria-atomic="true">
+        <div class="toast show align-items-center rounded-3 shadow-sm border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
 
-            <div class="toast-header rounded-3">        
+            <div class="toast-header rounded-3">
                 <strong class="me-auto text-success h3"><i class="fas fa-check-circle"></i></strong>
                 <button type="button" class="btn-close btn-close-primary me-2 m-auto" data-bs-dismiss="toast"
                     aria-label="Close"></button>
             </div>
             <div class="toast-body rounded-3">
-                <h5 class="text-success">{{ message }}</h5> 
+                <p class="text-success m-0 p-0">{{ message }}</p>
             </div>
+
+            <!-- Include cart items -->
+            {% if 'update' in message.extra_tags %}
+                {% include 'includes/cart_items_toast.html' %}
+            {% endif %}
+
         </div>
 
         {% else %}
-        <div class="toast show align-items-center rounded-3 text-white shadow-sm border-0" role="alert" aria-live="assertive"
-            aria-atomic="true">
+        <div class="toast show align-items-center rounded-3 text-white shadow-sm border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
 
             <div class="toast-header rounded-3">
                 <strong class="me-auto text-info h3"><i class="fas fa-info-circle"></i></strong>
@@ -59,9 +63,9 @@
                     aria-label="Close"></button>
             </div>
             <div class="toast-body rounded-3">
-                <h5 class="text-info mt-3">{{ message }}</h5>
+                <p class="text-info mt-3 m-0 p-0">{{ message }}</p>
             </div>
-         
+
         </div>
         {% endif %}
         {% endwith %}
