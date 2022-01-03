@@ -1,4 +1,5 @@
-from django.urls import path, include
+"""Review app Url's"""
+from django.urls import path
 from . import views
 
 

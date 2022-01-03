@@ -45,6 +45,7 @@
 </head>
 
 <body>
+
     <!-- Navigation-->
     <nav class="navbar navbar-expand-md fixed-top flex-column align-items-stretch" id="mainNav">
         <div class="container">
@@ -76,7 +77,6 @@
                             href="{% url 'shop' %}">shop</a></li>
 
                     {% if request.user.is_authenticated %}
-
                     {% if request.user.is_superuser %}
 
                     <li class="nav-item"><a class="nav-link {% if manage %}disabled{% endif %}"
@@ -89,7 +89,7 @@
                     <li class="nav-item"><a
                             class="nav-link {% if request.get_full_path == '/accounts/logout/' %}disabled{% endif %}"
                             href="{% url 'account_logout' %}">Logout</a></li>
-                    <!-- Button trigger modal -->
+                    <!-- User messages -->
                     {% if user_messages %}
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="modal" data-bs-target="#Messages"
@@ -127,7 +127,6 @@
     <!-- Extra Header content -->
     {% block page_header %}
     {% endblock %}
-
 
     <!-- Main website page content -->
     {% block content %}

@@ -1,8 +1,12 @@
+"""
+    1. Admin review fields
+"""
 from django.contrib import admin
 from .models import ProductReview
 
 
 class ProductReviewAdmin(admin.ModelAdmin):
+    """Admin review fields"""
     readonly_fields = ('user_profile', 'product',
                        'rating', 'order', 'order_id', 'date')
 
@@ -13,5 +17,6 @@ class ProductReviewAdmin(admin.ModelAdmin):
                     'rating', 'order_id', 'date')
 
     ordering = ('-date',)
+
 
 admin.site.register(ProductReview, ProductReviewAdmin)

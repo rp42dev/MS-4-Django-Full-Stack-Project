@@ -1,10 +1,18 @@
+"""
+    1. review form
+"""
 from django import forms
 from .models import ProductReview
 
 
 class ReviewForm(forms.ModelForm):
+    """
+    Product review form
+    """
     prefix = 'review'
+
     class Meta:
+        """Meta class for Product review model"""
         model = ProductReview
         fields = ('review',)
 
@@ -14,4 +22,3 @@ class ReviewForm(forms.ModelForm):
         labels st to be placeholders
         """
         super().__init__(*args, **kwargs)
-

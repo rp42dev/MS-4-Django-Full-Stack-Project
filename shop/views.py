@@ -21,10 +21,9 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
-from django.db.models import F
 
 from .models import Product, Category
-from .forms import ItemForm, OrderStatusForm
+from .forms import ItemForm
 
 
 def shop(request):
@@ -41,7 +40,7 @@ def shop(request):
     sortkey = None
     style = 'all'
     query = 'None'
-    shop = True
+    is_shop = True
 
     if request.GET:
         if 'search' in request.GET:
@@ -106,7 +105,7 @@ def shop(request):
         'sortkey': sortkey,
         'cat': category,
         'style': style,
-        'shop': shop,
+        'shop': is_shop,
     }
     return render(request, 'shop/shop.html', context)
 

@@ -1,10 +1,12 @@
+"""Return reviews to context"""
 from .models import ProductReview
-from checkout.models import Product
 
 
 def review_context(request):
+    """Review context returns all the reviews"""
+
     review_items = ProductReview.objects.all()
-    
+
     context = {
         'review_items': review_items,
     }

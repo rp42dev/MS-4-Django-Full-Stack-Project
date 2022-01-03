@@ -1,3 +1,7 @@
+"""
+    1. Product categogy model
+    2. Product model to store products to database
+"""
 from django.db import models
 from django.db.models import Avg
 from django.db.models.signals import post_save
@@ -5,18 +9,22 @@ from django.dispatch import receiver
 
 
 class Category(models.Model):
+    """Product categogy model"""
     name = models.CharField(max_length=60)
     friendly_name = models.CharField(
-        max_length=60, null=True, blank=True)
+        max_length=60, blank=True)
 
     def __str__(self):
+        """return category  name"""
         return str(self.name)
 
     def get_friendly_name(self):
+        """return category friendly name"""
         return self.friendly_name
 
 
 class Product(models.Model):
+    """Product model to store products to database"""
     sku = models.CharField(max_length=60)
     category = models.ForeignKey(
         'Category', null=True, blank=True,
@@ -40,8 +48,10 @@ class Product(models.Model):
     rating_counter = models.PositiveSmallIntegerField(default=0)
 
     def update_rating(self):
+        """Agregate rating each time user rates the product"""
         self.rating_counter = self.rating_counter + 1
-        self.rating = self.product_review.aggregate(Avg('rating'))['rating__avg'] or 0
+        self.rating = self.product_review.aggregate(
+                       Avg('rating'))['rating__avg'] or 0
         self.save()
 
     def __str__(self):

@@ -90,7 +90,7 @@ class Order(models.Model):
         self.save()
 
     def save(self, *args, **kwargs):
-        if not self.order_number: 
+        if not self.order_number:
             self.order_number = uuid.uuid4().hex.upper()
         super().save(*args, **kwargs)
 

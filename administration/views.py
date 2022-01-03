@@ -77,6 +77,7 @@ def order_view(request, order_number):
     status_form = OrderStatusForm(instance=order)
 
     if 'status' in request.POST:
+        status_form = OrderStatusForm(request.POST)
         if status_form.is_valid():
             order.status = request.POST['status']
             order.save()

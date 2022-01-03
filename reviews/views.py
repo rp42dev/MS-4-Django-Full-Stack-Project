@@ -1,17 +1,27 @@
+"""
+    1. A view to page to post a new reviews
+    2. A view to return all the reviews page
+"""
+
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.contrib import messages
-from .models import ProductReview
-from checkout.models import Order
+
 from shop.models import Product
+from checkout.models import Order
+from .models import ProductReview
+
 from .forms import ReviewForm
 
 
 @login_required
 def review_view(request, item_id):
     """
-    A view to return the shop item detailed page
+    A view to page to post a new reviews
+    Get product from database by id
+    Check if order exists in thwe database
+    Check if order matches oser profile
+    Post a new reviews to the database
     """
     item = get_object_or_404(Product, pk=item_id)
     profile = request.user
@@ -19,12 +29,11 @@ def review_view(request, item_id):
     try:
         order_id = request.GET['order_id']
         order = profile.orders.get(order_number=order_id)
-        
     except Order.DoesNotExist:
         return redirect(reverse('order_history', args=[order_id]))
 
     if not str(item.id) in order.items:
-        messages.error(request, 'Wrong order number')   
+        messages.error(request, 'Wrong order number')
         return redirect(reverse('order_history', args=[order_id]))
 
     if not order.user_profile == profile:
@@ -80,10 +89,11 @@ def review_view(request, item_id):
     return render(request, 'review/leave-review.html', context)
 
 
-
 def all_reviews(request, item_id):
     """
-    A view to return the shop item detailed page
+    A view to return all the reviews page
+    Get product by id and return all te reviews#
+    related to the product to the all reviews page
     """
     item = get_object_or_404(Product, pk=item_id)
     reviews = item.product_review.all()

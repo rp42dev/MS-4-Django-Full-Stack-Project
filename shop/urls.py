@@ -1,4 +1,5 @@
-from django.urls import path, include
+"""Url's for Shop app"""
+from django.urls import path
 from . import views
 
 
