@@ -22,7 +22,8 @@
 
     <div class="mx-auto col-12 col-sm-8 col-lg-6 px-4">
         <h5 class="text-capitalize">Report an issue</h5>
-        <p class="text-muted text-italic">Submit if any issues with Account | Order | Product</p>
+        <p class="text-muted text-italic p-0 m-0">Submit if any issues with Account | Order | Product</p>
+        
         <form id="support-form" action="{% url 'support' %}" class="form" method="POST" novalidate>
             {% csrf_token %}
            
@@ -33,24 +34,13 @@
                 Submit
             </button>
         </form>
-
+        <p class="text-muted text-italic mt-2"><a href="{% url 'contact_view' %}">Contact us</a> for assistance</p>
     </div>
 </section>
 
-<!-- onchange="myFunc(this.value)" -->
-<script>
-    let issue = document.querySelector('#id_support-issue')
-    // issue.classList.add('form-select')
-    issue.addEventListener("change", myFuncIssue);
-    issue.classList.add('text-gray')
-
-    function myFuncIssue() {
-        if (issue.value == 'Select') {
-            issue.classList.add('text-gray')
-        } else {
-            issue.classList.remove('text-gray')
-        }
-    }
-</script>
+{% block postloadjs %}
+<!-- Custom js  -->
+<script src="{% static 'js/support.js' %}"></script>
+{% endblock %}
 
 {% endblock %}

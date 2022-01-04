@@ -22,7 +22,8 @@
 
     <div class="mx-auto col-12 col-sm-8 col-lg-6 px-4">
         <h5 class="text-capitalize">Order # {{ order.id }}</h5>
-        <p class="text-muted text-italic">Submit if any issues with Account | Order | Product</p>
+        <p class="text-muted text-italic ">Submit if any issues with Account | Order | Product</p>
+         
         <form id="support-form" action="{% url 'submit' order.order_number %}" class="form" method="POST" novalidate>
             {% csrf_token %}
            
@@ -49,45 +50,13 @@
                 Submit
             </button>
         </form>
+        <p class="text-muted text-italic mt-2"><a href="{% url 'contact_view' %}">Contact us</a> for assistance</p>       
 
     </div>
 </section>
+{% endblock %}
 
-<!-- onchange="myFunc(this.value)" -->
-<script>
-    let issue = document.querySelector('#id_support-issue')
-    let item = document.querySelector('#sellect-product')
-    let itemGroup = document.querySelector('#sellect-product-group')
-    // issue.classList.add('form-select')
-    issue.addEventListener("change", myFuncIssue);
-    item.addEventListener("change", myFuncItem);
-    item.classList.add('text-gray')
-    issue.classList.add('text-gray')
-
-    checkSelected()
-
-    function myFuncItem() {
-        if (item.value == '') {
-            item.classList.add('text-gray')
-        } else {
-            item.classList.remove('text-gray')
-        }
-    }
-
-    function myFuncIssue() {
-        if (issue.value == 'Product') {
-            itemGroup.classList.remove('d-none')
-            itemGroup.classList.add('d-block')
-        } else {
-            itemGroup.classList.add('d-none')
-            itemGroup.classList.remove('d-block')
-        }
-        if (issue.value == 'Select') {
-            issue.classList.add('text-gray')
-        } else {
-            issue.classList.remove('text-gray')
-        }
-    }
-</script>
-
+{% block postloadjs %}
+<!-- Custom js  -->
+<script src="{% static 'js/support.js' %}"></script>
 {% endblock %}

@@ -42,7 +42,7 @@
 
             <div class="form-group form-group-textarea">
                 <!-- Message input-->
-                <textarea class="form-control" id="message" placeholder="Your Message *" required></textarea>
+                <textarea class="textarea text-area form-control" id="message" placeholder="Your Message *" required></textarea>
 
             </div>
 
@@ -51,6 +51,14 @@
                     type="submit">Send
                     Message</button></div>
         </form>
+
+        {% if request.user.is_authenticated %}
+        <p class="text-muted text-italic mt-2">
+            <a class="mt-2" href="{% url 'support' %}">
+                Report
+            </a> an account | Order | Product issue 
+        </p> 
+        {% endif %}
 
 
     </div>
