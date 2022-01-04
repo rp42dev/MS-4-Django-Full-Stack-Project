@@ -82,7 +82,7 @@ class StripeWhHandler:
         while attempt <= 5:
             try:
                 order = Order.objects.get(stripe_pid=pid)
-                order.status = 'Submitted'
+               
                 order_exists = True
                 break
             except Order.DoesNotExist:
@@ -90,6 +90,8 @@ class StripeWhHandler:
                 time.sleep(1)
         if order_exists:
             self._send_confirmation_email(order, True)
+            if paid:
+                order.status = 'Payment received'
             order.paid = paid
             order.save()
             return HttpResponse(
@@ -114,6 +116,10 @@ class StripeWhHandler:
                     items=cart,
                     stripe_pid=pid,
                 )
+                if paid:
+                    order.status = 'Payment received'
+                    order.paid = paid
+                    order.save()
                 for item_id, quantity in json.loads(cart).items():
                     try:
                         product = Product.objects.get(id=item_id)

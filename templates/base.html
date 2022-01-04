@@ -263,8 +263,11 @@
     <!-- cart toast hower script -->
     <script src="{% static 'js/cart.js' %}"></script>
     {% endif %}
+
+    {% if user_messages %}
     <!-- Support Mesages toast script-->
     <script src="{% static '/js/messages.js' %}"></script>
+    {% endif %}
     {% block postloadjs %}
 
     {% endblock %}

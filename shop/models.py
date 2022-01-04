@@ -5,12 +5,11 @@
 from django.db import models
 from django.db.models import Avg
 
-
 class Category(models.Model):
     """Product categogy model"""
     name = models.CharField(max_length=60)
     friendly_name = models.CharField(
-        max_length=60, blank=True)
+        max_length=60, null=True, blank=True)
 
     def __str__(self):
         """return category  name"""

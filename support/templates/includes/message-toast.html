@@ -8,19 +8,16 @@
 
     {% for message in user_messages %}
     <div class="shadow-sm rounded bg-white p-2">
-       
-            <div class="">
 
-                <p class="m-0 text-italic text-bolder">{{ message.thread }}</p>
-                <p class="m-0 fw-bolder text-muted text-capitalize">{{ message.user }}</p>
-                <p class="m-0 time font-monospace">{{ message.timestamp }}</p>
+        <div>
+            <p class="m-0 text-italic text-bolder">{{ message.thread }}</p>
+            <p class="m-0 fw-bolder text-muted text-capitalize">{{ message.user }}</p>
+            <p class="m-0 time font-monospace">{{ message.timestamp }}</p>
 
-                <div class="text bg-light p-2 shadow-sm">
-                    <p class="message fw-bolder font-monospace">{{ message.message }}</p>
-                </div>
+            <div class="text bg-light p-2 shadow-sm">
+                <p class="message fw-bolder font-monospace">{{ message.message }}</p>
             </div>
-       
-
+        </div>
 
     </div>
     <div class="col-12 text-center">

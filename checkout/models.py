@@ -24,6 +24,7 @@ class Order(models.Model):
     accounting for delivery costs.
     """
     SUBMITTED = 'Submitted'
+    PAYMENT = 'Payment received'
     PROCESSED = 'Proccessed'
     SHIPPED = 'Shipped'
     CANCELLED = 'Cancelled'
@@ -31,6 +32,7 @@ class Order(models.Model):
 
     ORDER_STATUS = [
         (SUBMITTED, 'Submitted'),
+        (PAYMENT, 'Payment received'),
         (PROCESSED, 'Proccessed'),
         (SHIPPED, 'Shipped'),
         (CANCELLED, 'Cancelled'),
