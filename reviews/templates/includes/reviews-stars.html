@@ -1,0 +1,12 @@
+<!-- Include review stars -->
+<div>
+    <p class="m-0 time font-monospace">{{ review.date }}</p>
+    <div class="stars h1"
+        style="background-image: linear-gradient(to right, orange, orange {% widthratio review.rating 5 100 %}%, gray {% widthratio review.rating 5 100 %}%, gray 100%)">
+        ★★★★★
+    </div>
+
+    <div class="text bg-light p-2 shadow-sm">
+        <p class="message fw-bolder font-monospace">{{ review.review }}</p>
+    </div>
+</div>

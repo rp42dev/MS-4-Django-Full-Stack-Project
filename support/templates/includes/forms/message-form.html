@@ -1,0 +1,11 @@
+<!-- Message form -->
+{% load crispy_forms_tags %}
+<form id="support-form" action="" class="form" method="POST" novalidate>
+    {% csrf_token %}
+    <div class="font-monospace">
+        {{ form|crispy }}
+    </div>
+    <button id="review-submit" class="btn btn-dark btn-xl text-uppercase flex-shrink-0" type="submit">
+        Submit
+    </button>
+</form>

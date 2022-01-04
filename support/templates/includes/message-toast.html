@@ -1,0 +1,33 @@
+{% if user_messages %}
+<div class="cart-conteiner small-font mb-2 pb-2 shadow-sm rounded-3 bg-white align-items-center">
+
+    <!-- Product Description -->
+    <div class="col-12">
+        <p class="text-capitalize p-0 m-0 fw-bolder text-center">{{ item.product.name }}</p>
+    </div>
+
+    {% for message in user_messages %}
+    <div class="shadow-sm rounded bg-white p-2">
+       
+            <div class="">
+
+                <p class="m-0 text-italic text-bolder">{{ message.thread }}</p>
+                <p class="m-0 fw-bolder text-muted text-capitalize">{{ message.user }}</p>
+                <p class="m-0 time font-monospace">{{ message.timestamp }}</p>
+
+                <div class="text bg-light p-2 shadow-sm">
+                    <p class="message fw-bolder font-monospace">{{ message.message }}</p>
+                </div>
+            </div>
+       
+
+
+    </div>
+    <div class="col-12 text-center">
+        <a class="btn btn-warning" href="{% url 'messages_view' message.thread.id %}?unread=False">Go to
+            Messages</a>
+    </div>
+
+    {% endfor %}
+</div>
+{% endif %}

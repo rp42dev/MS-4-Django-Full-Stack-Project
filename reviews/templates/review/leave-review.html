@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load thumbnail %}
 
 {% block page_header %}
 <!-- Header-->
@@ -21,48 +20,8 @@
     <div class="container pb-5 px-4 px-lg-5">
         <div class="item row gx-4 gx-lg-5">
 
-            <div class="col-md-6 mb-4 mb-md-0">
-                <div class="position-relative mb-3">
-                    {% thumbnail item.image "500" as im %}
-                    <img class="card-img-top mb-md-0" src="{{ im.url }}" alt="{{ item.name }}" />
-                    {% endthumbnail %}
-                    {% if item.sale %}
-
-                    <div class="badge bg-danger text-white position-absolute w-auto" style="top: 0.5rem; right: 0.5rem">
-                        <h3 class="m-0 numbers-font">Sale</h3>
-                    </div>
-                    {% endif %}
-                </div>
-                <h3 class="fw-bolder text-capitalize">{{ item.name }}</h3>
-                <div class="small mb-1">SKU: {{ item.sku }}</div>
-
-                {% include 'includes/stars.html' %}
-
-                <div class="fs-5 mb-3">
-                    {% if item.sale %}
-                    <span class="text-decoration-line-through h3 text-danger numbers-font">${{ item.price }}</span>
-                    <span class="text-danger h3 numbers-font fw-bolder">${{ item.sale_price }} </span>
-                    {% else %}
-                    <span class="numbers-font h3 fw-bolder">${{ item.price }} </span>
-                    {% endif %}
-                </div>
-                <p>{{ item.raiting }}</p>
-                <p class="lead">{{ item.description }}</p>
-
-                {% if item.item_count == 0 %}
-                <p class="text-danger font-monospace">{{ item.item_count }} Out of stock</p>
-                {% elif item.item_count < 5  %}
-                <p class="text-danger font-monospace">
-                    Only {{ item.item_count }} left in stock.
-                </p>
-                {% else %}
-                <p class="font-monospace">{{ item.item_count }} items in stock</p>
-                {% endif %}
-
-                <a href="{% url 'shop_item' item.id %}" class="btn btn-dark">Buy {{ item.name }}</a>
-            </div>
-
-            <hr class="d-md-none d-block">
+            <!-- Include Review product -->
+            {% include 'includes/review-product.html' %}
 
             <!-- If feedback was left return feedback instead -->
             <div class="col-md-6 mt-5">
@@ -72,17 +31,9 @@
                     <h5 class="">Your Review for</h5>
                     <p class="m-0 fw-bolder  text-muted text-italic text-capitalize">{{ item.name }}</p>
 
-                    <div class="">
-                        <p class="m-0 time font-monospace">Review Date: {{ date }}</p>
-                        <div class="stars h1"
-                            style="background-image: linear-gradient(to right, orange, orange {% widthratio rating 5 100 %}%, gray {% widthratio rating 5 100 %}%, gray 100%)">
-                            ★★★★★
-                        </div>
-
-                        <div class="text bg-light p-2 shadow-sm">
-                            <p class="message fw-bolder font-monospace">{{ review }}</p>
-                        </div>
-                    </div>
+                    <!-- Include review stars -->
+                    {% include 'includes/reviews-stars.html' %}
+           
                 </div>
                 {% else %}
                 <!-- Product add to cart POST form -->
@@ -97,28 +48,12 @@
             </div>
         </div>
     </div>
-
 </section>
 
 {% endblock %}
 
 {% block postloadjs %}
-<script>
-    var form = document.querySelector('#review-submit')
-    var star = document.querySelector('#star')
-    console.log(star.value)
-    form.addEventListener('submit', function (event) {
-        input.classList.remove('is-invalid')
-        input.classList.remove('is-valid')
-        if (star.value <= 0) {
-            print(star.value)
-            event.preventDefault()
-            event.stopPropagation()
-            star.nextSibling.classList.add('is-invalid')
-        }
-
-        form.classList.add('was-validated')
-    }, false)
-</script>
+<!-- Review form scripts -->
 <script src="{% static 'js/review.js' %}"></script>
+<script src="{% static 'js/review-form.js' %}"></script>
 {% endblock %}

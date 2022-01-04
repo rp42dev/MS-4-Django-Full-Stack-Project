@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load thumbnail %}
 
 {% block extra_css %}
 <link href="{% static 'css/shop.css' %}" rel="stylesheet" />
@@ -23,56 +22,7 @@
 <!-- Product Detail section-->
 <section class="page-section">
     <div class="container pb-5 px-4 px-lg-5">
-        <div class="item row gx-4 gx-lg-5 align-items-center position-relative">
-            {% if item.sale %}
-            <div class="badge bg-danger text-white position-absolute w-auto" style="top: 0.5rem; right: 0.5rem">
-                <h3 class="m-0 font-monospace">Sale</h3>
-            </div>
-            {% endif %}
-            {% thumbnail item.image "500" as im %}
-            <div class="col-md-6 mb-4 mb-md-0"><img class="card-img-top mb-md-0" src="{{ im.url }}"
-                    alt="{{ item.name }}" />
-            </div>
-            {% endthumbnail %}
-
-            <div class="col-md-6">
-                <div class="small mb-1 font-monospace">SKU: {{ item.sku }}</div>
-                <h1 class="display-5 fw-bolder text-capitalize">{{ item.name }}</h1>
-
-                <div class="fs-5 mb-3">
-                    {% if item.sale %}
-                    <span class="text-decoration-line-through h3 font-monospace">${{ item.price }}</span>
-                    <span class="text-danger h3 font-monospace">${{ item.sale_price }} </span>
-                    {% else %}
-                    <span class="font-monospace h3">${{ item.price }} </span>
-                    {% endif %}
-                </div>
-
-                <!-- Product reviews count-->
-                {% for i in review_items %}
-                {% if item.pk == i.product.pk %}
-                <span class="font-monospace"> {{ item_context.quantity }}</span>
-                {% endif %}
-                {% endfor %}
-
-                <!-- include stars rating -->
-                <div>{% include 'includes/stars.html' %}</div>
-
-                <p class="lead">{{ item.description }}</p>
-                {% if availability == 0 %}
-                <p class="text-danger font-monospace">{{ availability }} Out of stock</p>
-                {% elif availability < 5  %}
-                <p class="text-danger font-monospace">
-                    Only {{ availability }} left in stock.
-                </p>
-                {% else %}
-                <p class="font-monospace">{{ availability }} items in stock</p>
-                {% endif %}
-
-                <!-- Product add to cart POST form -->
-                {% include 'includes/forms/add-to-cart-form.html' %}
-            </div>
-        </div>
+        {% include 'includes/shop/product.html' %}
     </div>
 
     <!-- Include Related products -->

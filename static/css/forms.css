@@ -24,8 +24,9 @@ form .form-group {
     margin-bottom: .5rem;
 }
 
+.element-width,
 form {
-    max-width: 550px;
+    max-width: 600px;
 }
 
 .checkout {

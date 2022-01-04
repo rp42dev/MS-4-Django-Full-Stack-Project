@@ -1,3 +1,4 @@
+// Review Stars
 function Stars(value) {
     starz = document.querySelectorAll('.starz');
     for (let i = 0; i < 5; i++)

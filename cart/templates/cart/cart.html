@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block page_header %}
-
 <!-- Header-->
 <header class="bg-black py-5">
     <div class="container px-4 px-lg-5 my-5">
@@ -19,6 +18,7 @@
     </div>
 </header>
 {% endblock %}
+
 {% block content %}
 <!-- Product section-->
 <section class="page-section">
@@ -72,25 +72,7 @@
 
                 </div>
                 <!-- Remove item from cart -->
-                <div class="position-absolute w-auto end-0 top-0">
-                    <div class="btn-outline-light">
-                        <form class="form" method="POST" action="{% url 'remove_cart_item' item.item_id %}">
-                            {% csrf_token %}
-                            <div class="form-group m-0">
-                                <div class="input-group">
-
-                                    <input type="hidden" name="action" value="add">
-
-                                    <button type='submit' class='btn p-0 mt-2 my-auto count-btn'>
-                                        <i class="fas fa-trash-alt my-auto h4"></i>
-                                    </button>
-
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
+                {% include 'includes/forms/remove-item-form.html' %}
             </div>
             {% endfor %}
             {% endif %}

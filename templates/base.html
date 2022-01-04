@@ -92,11 +92,11 @@
                     <li class="nav-item"><a
                             class="nav-link {% if request.get_full_path == '/accounts/logout/' %}disabled{% endif %}"
                             href="{% url 'account_logout' %}">Logout</a></li>
+
                     <!-- User messages -->
                     {% if user_messages %}
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#Messages"
-                            title="{{ unread_messages_count }} New Messages">
+                    <li id="message-icon" class="nav-item">
+                        <a class="nav-link" href="#" title="{{ unread_messages_count }} New Messages">
                             <i class="fas h3 fa-comment"></i>
                             <span
                                 class="cart-pill text-white position-absolute top-5 start-98 translate-middle font-monospace bg-danger rounded-circle">
@@ -106,6 +106,7 @@
 
                         </a>
                     </li>
+
                     {% endif %}
 
                     {% else %}
@@ -133,7 +134,7 @@
         {% endblock %}
     </nav>
 
-    {% if not request.get_full_path == '/cart/' and cart_items and not request.get_full_path == '/checkout/'%}
+    {% if not request.get_full_path == '/cart/' and cart_items and not request.get_full_path == '/checkout/' %}
     <!-- Message toast -->
     <div aria-live="polite" aria-atomic="true">
         <div class="toast-container position-fixed end-0 p-3">
@@ -145,13 +146,32 @@
                         aria-label="Close"></button>
                 </div>
                 <div class="toast-body p-2 rounded-3">
-                    {% include 'includes/cart_items_toast.html' %}
+                    {% include 'includes/cart-items-toast.html' %}
                 </div>
             </div>
         </div>
     </div>
-
     {% endif %}
+
+    {% if user_messages %}
+    <!-- Message toast -->
+    <div aria-live="polite" aria-atomic="true">
+        <div class="toast-container position-fixed end-0 p-3">
+            <div id="message-toast" class="toast d-none align-items-center rounded-3 shadow-sm border-0" role="alert"
+                aria-live="assertive" aria-atomic="true">
+                <div class="toast-header rounded-3">
+                    <span class="text-italic fw-bolder">Cart Items</span>
+                    <button type="button" class="btn-close btn-close-primary me-2 m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+                </div>
+                <div class="toast-body p-2 rounded-3">
+                    {% include 'includes/message-toast.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
     <!-- Message Container -->
     {% if messages %}
     {% include 'includes/toasts/message.html' %}
@@ -161,8 +181,8 @@
     {% endblock %}
     <!-- Main website page content -->
     {% block content %}
-    {% endblock %}
 
+    {% endblock %}
     <!-- promise -->
     <section class="page-section bg-black" id="promise">
         <div class="container">
@@ -224,16 +244,12 @@
                         an issue</a>
                     {% endif %}
                     <!-- Link to contact form -->
-                    <a class="link-warning text-decoration-none"
-                        href="{% url 'contact_view' %}">Contact Us</a>
+                    <a class="link-warning text-decoration-none" href="{% url 'contact_view' %}">Contact Us</a>
                 </div>
 
             </div>
         </div>
     </footer>
-
-    <!-- Includes -->
-    {% include 'includes/messages.html' %}
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -241,7 +257,14 @@
     <script src="{% static 'js/base.js' %}"></script>
     <!-- Custom Form Control -->
     <script src="{% static 'js/forms.js' %}"></script>
+    <!-- ustom Cart Toast control -->
 
+    {% if cart_items %}
+    <!-- cart toast hower script -->
+    <script src="{% static 'js/cart.js' %}"></script>
+    {% endif %}
+    <!-- Support Mesages toast script-->
+    <script src="{% static '/js/messages.js' %}"></script>
     {% block postloadjs %}
 
     {% endblock %}

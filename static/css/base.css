@@ -56,6 +56,10 @@ a:hover {
   border-radius: 0 12px 12px 12px;
 }
 
+.text-admin {
+  border-radius: 12px 0px 12px 12px;
+}
+
 header h1 {
   color: #e5e5e5;
 }
@@ -107,7 +111,7 @@ header h1 {
   padding: .6rem;
   font-weight: 700;
   font-size: 1.125rem;
-  max-width: 570px;
+  max-width: 600px;
   width: 100%;
 }
 

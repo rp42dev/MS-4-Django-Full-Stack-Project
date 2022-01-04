@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load thumbnail %}
-{% load crispy_forms_tags %}
+
 
 {% block page_header %}
 <!-- Header-->
@@ -40,8 +40,8 @@
                 <p class="m-0 fw-bolder text-muted text-italic text-capitalize">{{ message.user.username }}</p>
                 <p class="m-0 time font-monospace">{{ message.timestamp }}</p>
                 
-                <div class="text bg-light p-2 shadow-sm">
-                    <p class="message fw-bolder font-monospace">{{ message.message }}</p>
+                <div class="text-admin bg-light p-2 shadow-sm border border-warning">
+                    <p class="message fw-bolder font-monospace text-warning">{{ message.message }}</p>
                 </div>
             </div>
         </div>
@@ -53,8 +53,8 @@
                  <p class="m-0 fw-bolder text-muted text-italic text-capitalize">{{ message.user.username }}</p>
                 <p class="m-0 time font-monospace">{{ message.timestamp }}</p>
                
-                <div class="text bg-light p-2 shadow-sm">
-                    <p class="message fw-bolder font-monospace">{{ message.message }}</p>
+                <div class="text bg-light p-2 shadow-sm border border-info">
+                    <p class="message fw-bolder font-monospace text-info">{{ message.message }}</p>
                 </div>
             </div>
         </div>
@@ -62,40 +62,12 @@
         {% endif %}
         {% endfor %}
 
-        <form id="support-form" action="" class="form" method="POST" novalidate>
-            {% csrf_token %}
-            <div class="font-monospace">
-                {{ form|crispy }}
-            </div>
-            <button id="review-submit" class="btn btn-dark btn-xl text-uppercase flex-shrink-0" type="submit">
-                Submit
-            </button>
-        </form>
+        <!-- Messages form  -->
+       {% include 'includes/forms/message-form.html' %}
 
-       
-        {% if request.user.is_superuser %}
-        <hr>
-        <form class="form form-status" method="POST" action="{% url 'messages_view' issue.id %}">
-            {% csrf_token %}
-            <div class="form-group m-0">
-                <p class="text-muted text-italic">Change current issue status</p>
-                <div class="input-group d-flex">
-
-                    <div class="col-6 col-md-3">
-
-                        <div class="text-italic fw-bolder">
-                            {{ status_form|crispy }}
-                        </div>
-
-                        <button type='submit' class='btn btn-dark w-100'>
-                            Update
-                        </button>
-                    </div>
-
-                </div>
-            </div>
-        </form>
-        {% endif %}
+        <!-- Admin Change current issue status form  -->
+       {% include 'includes/forms/status-form.html' %}
+        
     </div>
     </div>
 </section>

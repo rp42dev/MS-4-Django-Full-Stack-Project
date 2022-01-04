@@ -1,0 +1,18 @@
+ <!-- Change order status form -->
+ {% load crispy_forms_tags %}
+
+<!-- Confirm Order reception if order status is shipped -->
+
+<form class="form" method="POST" action="{% url 'order_history' order.order_number %}">
+    {% csrf_token %}
+    <div class="form-group m-0">
+        <div class="input-group ">
+
+            <input type="hidden" name="completed" value="Completed">
+            <button type='submit' class='btn btn-warning'>
+                Confirm reception
+            </button>
+
+        </div>
+    </div>
+</form>
