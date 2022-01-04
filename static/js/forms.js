@@ -25,7 +25,7 @@ Array.prototype.filter.call(SellectInputs, function (input) {
                     FormTrigger()
                 }
                 form.classList.add('was-validated')
-                
+
             }, false)
         })
 })()
@@ -36,68 +36,68 @@ function FormTrigger() {
     let validation = Array.prototype.filter.call(inputs, function (input) {
         // Image input gray placeholder
         if (input)
-        input.addEventListener('blur', function (event) {
-            // reset
-            input.classList.remove('is-invalid')
-            input.classList.remove('is-valid')
-            input.classList.remove('text-gray')
-            //Display required message if not valid
-            if (input.checkValidity() === false) {
-                input.classList.add('is-invalid')
-                input.classList.add('text-gray')
-                let parent = this.parentElement;
-                let elem = parent.getElementsByTagName('p')
-
-                if (elem[0]) {
-
-                    // error message for required fields add praceholder
-                } else {
-                    let para = document.createElement("P");
-                    para.classList.add('text-danger', 'invalid-p');
-                    let str = `${input.placeholder} field is Required.`
-                    para.innerHTML = str;
-                    parent.append(para);
-                }
-
-            } else {
-                input.classList.add('is-valid')
-                let parent = this.parentElement;
-                let elem = parent.getElementsByTagName('p')
+            input.addEventListener('blur', function (event) {
+                // reset
+                input.classList.remove('is-invalid')
+                input.classList.remove('is-valid')
                 input.classList.remove('text-gray')
-                if (elem[0]) {
-                    elem[0].remove()
+                //Display required message if not valid
+                if (input.checkValidity() === false) {
+                    input.classList.add('is-invalid')
+                    input.classList.add('text-gray')
+                    let parent = this.parentElement;
+                    let elem = parent.getElementsByTagName('p')
+
+                    if (elem[0]) {
+
+                        // error message for required fields add praceholder
+                    } else {
+                        let para = document.createElement("P");
+                        para.classList.add('text-danger', 'invalid-p');
+                        let str = `${input.placeholder} field is Required.`
+                        para.innerHTML = str;
+                        parent.append(para);
+                    }
+
+                } else {
+                    input.classList.add('is-valid')
+                    let parent = this.parentElement;
+                    let elem = parent.getElementsByTagName('p')
+                    input.classList.remove('text-gray')
+                    if (elem[0]) {
+                        elem[0].remove()
+                    }
                 }
-            }
-        }, false);
+            }, false);
     });
 }
 
 
 function FormTriggerOnSubmit() {
-let inputs = document.querySelectorAll('.form-control')
+    let inputs = document.querySelectorAll('.form-control')
     // Loop over each input and watch blue event
     let validation = Array.prototype.filter.call(inputs, function (input) {
-            input.classList.remove('is-invalid')
-            input.classList.remove('is-valid')
-            input.classList.remove('text-gray')
-            //Display required message if not valid
-            if (input.checkValidity() === false) {
-                input.classList.add('is-invalid')
-                input.classList.add('text-gray')
-                let parent = input.parentElement;
-                let elem = parent.getElementsByTagName('p')
+        input.classList.remove('is-invalid')
+        input.classList.remove('is-valid')
+        input.classList.remove('text-gray')
+        //Display required message if not valid
+        if (input.checkValidity() === false) {
+            input.classList.add('is-invalid')
+            input.classList.add('text-gray')
+            let parent = input.parentElement;
+            let elem = parent.getElementsByTagName('p')
 
-                if (elem[0]) {
+            if (elem[0]) {
 
-                    // error message for required fields add praceholder
-                } else {
-                    let para = document.createElement("P");
-                    para.classList.add('invalid-p');
-                    let str = `${input.placeholder} field is Required.`
-                    para.innerHTML = str;
-                    parent.append(para);
-                }
-
+                // error message for required fields add praceholder
+            } else {
+                let para = document.createElement("P");
+                para.classList.add('invalid-p');
+                let str = `${input.placeholder} field is Required.`
+                para.innerHTML = str;
+                parent.append(para);
             }
+
+        }
     }, false);
 }

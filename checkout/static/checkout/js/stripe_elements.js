@@ -39,12 +39,11 @@ card.mount("#card-element");
 
 card.on("change", function (event) {
     // Disable the Pay button if there are no card details in the Element
-    document.querySelector("button").disabled = event.empty;
+    document.querySelector("#btn-submit").disabled = event.empty;
     document.querySelector("#card-error").textContent = event.error ? event.error.message : "";
 });
 
 const form = document.getElementById('payment-form');
-
 // event Listener for submit button
 form.addEventListener('submit', function (ev) {
         ev.preventDefault();
@@ -85,6 +84,7 @@ form.addEventListener('submit', function (ev) {
             setLoading(false);
         });
     } else {
+
         setLoading(false);
     }
     })

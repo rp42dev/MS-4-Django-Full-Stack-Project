@@ -105,7 +105,6 @@ def order_view(request, order_number):
             order_list.append(i.product.id)
     else:
         order_list = None
-    
 
     template = 'checkout/checkout-success.html'
     context = {

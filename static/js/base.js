@@ -1,27 +1,31 @@
 window.addEventListener('DOMContentLoaded', event => {
     let FormToast = document.querySelector('#form-error')
+    path = window.location.pathname
 
-    // Display cart content on hover
-    let cartItems = [].slice.call(document.querySelectorAll('.cart'))
-
-    cartItems.map(function (cart) {
-        cart.addEventListener('mouseover', MyFunction)
-    })
-
-    function MyFunction() {
+    // show cart content toast on hover
+    // Do not show if on certain pages
+    if ( !(path === '/cart/' || path === '/checkout/') ) {
+        let cartItems = [].slice.call(document.querySelectorAll('.cart'))
         cartItems.map(function (cart) {
-            cart.removeEventListener("mouseover", MyFunction);
+            cart.addEventListener('mouseover', MyFunction)
         })
-        toaster = document.querySelector('#cart_toast');
-        toaster.classList.remove('d-none');
-        NewToast = new bootstrap.Toast(toaster);
-        NewToast.show();
-
-        toaster.addEventListener("hidden.bs.toast", function () {
+        function MyFunction() {
             cartItems.map(function (cart) {
-                cart.addEventListener('mouseover', MyFunction)
+                cart.removeEventListener("mouseover", MyFunction);
             })
-        });
+            toaster = document.querySelector('#cart_toast');
+
+            toaster.classList.remove('d-none');
+
+            NewToast = new bootstrap.Toast(toaster);
+            NewToast.show();
+
+            toaster.addEventListener("hidden.bs.toast", function () {
+                cartItems.map(function (cart) {
+                    cart.addEventListener('mouseover', MyFunction)
+                })
+            });
+        }
     }
 
     // Show / autohide bootstarp toasts
@@ -45,15 +49,12 @@ window.addEventListener('DOMContentLoaded', event => {
         } else {
             navbarCollapsible.classList.add('navbar-shrink')
         }
-
     };
 
     // Shrink the navbar 
     navbarShrink();
-
     // Shrink the navbar when page is scrolled
     document.addEventListener('scroll', navbarShrink);
-
     // Activate Bootstrap scrollspy on the main nav element
     const mainNav = document.body.querySelector('#mainNav');
     if (mainNav) {
