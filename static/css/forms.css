@@ -28,6 +28,10 @@ form {
     max-width: 550px;
 }
 
+.checkout {
+    max-width: 100%;
+}
+
 .form-control {
     padding: .6rem;
     font-weight: 700;

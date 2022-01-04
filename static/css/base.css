@@ -344,3 +344,10 @@ section#promise .section-heading {
   margin-left: -100px;
   display: inline-block;
 }
+
+.cart-conteiner .badge,
+.item .badge,
+.card .badge {
+    transform: rotate(25deg);
+    border-radius: 9px 3px;
+}

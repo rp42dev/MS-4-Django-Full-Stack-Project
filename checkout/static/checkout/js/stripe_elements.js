@@ -84,7 +84,6 @@ form.addEventListener('submit', function (ev) {
             setLoading(false);
         });
     } else {
-
         setLoading(false);
     }
     })

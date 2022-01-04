@@ -1,4 +1,5 @@
-from django.urls import path, include
+"""Customers app's Url's"""
+from django.urls import path
 from . import views
 
 

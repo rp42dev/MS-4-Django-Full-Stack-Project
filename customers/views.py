@@ -5,19 +5,15 @@ Customers app views
     3. A view to the order history
     4. A view to the delete user
 """
-from django.db import models
 from django.shortcuts import render, reverse, redirect, get_object_or_404
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+from checkout.models import Order
+from support.models import CustomerSuport
 from .models import UserAddress
 from .forms import EditProfileForm
 from .forms import UserAddressForm
-from shop.forms import OrderStatusForm
-from checkout.models import Order
-from support.models import CustomerSuport, Message
-from reviews.models import ProductReview
 
 
 @login_required
@@ -81,7 +77,7 @@ def user_details(request):
         'address_form': address_form,
         'user_form': user_form,
     }
-    
+
     return render(request, 'profile/user_details.html', context)
 
 
@@ -115,12 +111,13 @@ def order_history(request, order_number):
     except CustomerSuport.DoesNotExist:
         issue = None
 
-    order_reviews = profile.user_review.filter(order__order_number=order_number)
+    order_reviews = profile.user_review.filter(
+        order__order_number=order_number)
     order_list = list()
 
     for i in order_reviews:
         order_list.append(i.product.id)
- 
+
     template = 'checkout/checkout-success.html'
     context = {
         'status_form': status_form,

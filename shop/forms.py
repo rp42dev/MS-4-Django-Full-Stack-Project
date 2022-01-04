@@ -37,10 +37,10 @@ class ItemForm(forms.ModelForm):
             if field_name != 'sale' and field_name != 'item_count':
                 field.label = False
             elif field_name == 'item_count':
-                field.label = True
+                field.label
             else:
                 field.widget.attrs['class'] = 'me-2 checkboxinput'
-                field.label = True
+                field.label
             if field_name == 'image':
                 field.widget.attrs['class'] = 'form-control'
 
