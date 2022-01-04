@@ -17,7 +17,6 @@ if (path === '/support/') {
     let issue = document.querySelector('#id_support-issue')
     let item = document.querySelector('#sellect-product')
     let itemGroup = document.querySelector('#sellect-product-group')
-    // issue.classList.add('form-select')
     issue.addEventListener("change", myFuncIssue);
     item.addEventListener("change", myFuncItem);
     item.classList.add('text-gray')

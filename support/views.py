@@ -45,7 +45,7 @@ def support(request):
 
             issues = CustomerSuport.objects.filter(user_profile=profile)
             issue = issues.last()
-            issue_id = issue.id 
+            issue_id = issue.id
 
             inital_message = Message(
                 thread=issue,
@@ -54,7 +54,9 @@ def support(request):
             )
             inital_message.save()
 
-            messages.success(request, f'Your support ticket #{issue_id} wil get back to you asap')
+            messages.success(
+                request, f'Your support ticket #{issue_id}\
+                wil get back to you asap')
             return redirect(reverse('messages_view', args=[issue_id]))
 
         else:
@@ -106,7 +108,7 @@ def submit(request, order_number):
             )
             support_post.save()
             issue = issues.get(order__order_number=order_number)
-            issue_id = issue.id 
+            issue_id = issue.id
 
             inital_message = Message(
                 thread=issue,
@@ -135,6 +137,14 @@ def submit(request, order_number):
 
 @login_required
 def messages_view(request, issue_id):
+    """
+    Rerurn a Support messages view
+    Get costumer support ticket from database
+    Check if user profile contains current ticket
+    POST an messages regarding current issue to administrator
+    If user is Superuser then return all the messages to admin
+    Finaly save to database all the read messages as read
+    """
     issue = get_object_or_404(CustomerSuport, pk=issue_id)
     profile = request.user
     if not profile.is_superuser:
@@ -145,11 +155,12 @@ def messages_view(request, issue_id):
     else:
         status_form = IssueStatusForm(instance=issue)
         if 'issue_status-status' in request.POST:
-            if status_form.is_valid:
+            if status_form.is_valid():
                 status = request.POST['issue_status-status']
                 issue.status = status
                 issue.save()
-                messages.success(request, f'Issue status was changed to {status}')
+                messages.success(
+                    request, f'Issue status was changed to {status}')
                 return redirect(reverse('messages_view', args=[issue_id]))
 
     all_messages = Message.objects.all()
@@ -167,9 +178,9 @@ def messages_view(request, issue_id):
         messages.success(request, 'Your message was sent successfuly')
         return redirect(reverse('messages_view', args=[issue_id]))
     if 'unread' in request.GET:
-        for m in thread_messages:
-            m.unread = request.GET['unread']
-            m.save()
+        for message in thread_messages:
+            message.unread = request.GET['unread']
+            message.save()
     form = MessageForm()
     context = {
         'thread_messages': thread_messages,

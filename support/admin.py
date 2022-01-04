@@ -1,14 +1,23 @@
+"""
+    1. Admin Support messages fields
+    1. Admin customer Support fields
+"""
 from django.contrib import admin
 from .models import CustomerSuport, Message
 
 
 class MesageSuportAdmin(admin.TabularInline):
-    model =  Message
+    """Admin Support messages fields"""
+    model = Message
 
     fields = ('user', 'thread', 'message')
 
 
 class CustomerSuportAdmin(admin.ModelAdmin):
+    """
+    Admin customer Support fields
+    Included Admin messages fields
+    """
     inlines = (MesageSuportAdmin,)
 
     readonly_fields = ('user_profile', 'issue', 'message',
@@ -21,5 +30,6 @@ class CustomerSuportAdmin(admin.ModelAdmin):
                     'order_line', 'date', 'status')
 
     ordering = ('-date',)
+
 
 admin.site.register(CustomerSuport, CustomerSuportAdmin)

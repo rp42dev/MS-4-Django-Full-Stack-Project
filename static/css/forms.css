@@ -24,6 +24,10 @@ form .form-group {
     margin-bottom: .5rem;
 }
 
+form {
+    max-width: 550px;
+}
+
 .form-control {
     padding: .6rem;
     font-weight: 700;

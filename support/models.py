@@ -1,8 +1,17 @@
+"""
+    1. Customer Suport Model
+    2. Customer Suport messages Model
+"""
 from django.db import models
 from django.contrib.auth.models import User
 from checkout.models import Order, OrderLine
 
+
 class CustomerSuport(models.Model):
+    """
+    Customer Suport Model. Order status choices
+    order, order_line, user_profile Foreign keys
+    """
     SUBMITTED = 'Submitted'
     REVIEW = 'In Review'
     RESOLVED = 'Resolved'
@@ -47,11 +56,16 @@ class CustomerSuport(models.Model):
 
 
 class Message(models.Model):
+    """
+    Customer Suport Model messages
+    thread, user, Foreign keys
+    Boolean field read unread messags
+    """
     thread = models.ForeignKey(
              CustomerSuport, null=False, blank=False,
              on_delete=models.CASCADE, related_name='messages_thread')
     user = models.ForeignKey(
-             User, null=False, blank=False, 
+             User, null=False, blank=False,
              on_delete=models.CASCADE, related_name="sender")
     message = models.TextField(max_length=500)
     timestamp = models.DateTimeField(auto_now_add=True)

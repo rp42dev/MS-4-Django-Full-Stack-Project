@@ -1,11 +1,17 @@
+"""
+    1. Shop Product item form
+    2. Order status form
+"""
 from django import forms
-from .models import Product, Category
 from checkout.models import Order
+from .models import Product, Category
 
 
 class ItemForm(forms.ModelForm):
+    """Shop Product item form"""
 
     class Meta:
+        """Product Model meta slass"""
         model = Product
         exclude = ('rating', 'rating_counter',)
         fields = '__all__'
@@ -31,22 +37,26 @@ class ItemForm(forms.ModelForm):
             if field_name != 'sale' and field_name != 'item_count':
                 field.label = False
             elif field_name == 'item_count':
-                field.label
+                field.label = True
             else:
                 field.widget.attrs['class'] = 'me-2 checkboxinput'
-                field.label
+                field.label = True
             if field_name == 'image':
                 field.widget.attrs['class'] = 'form-control'
 
 
 class OrderStatusForm(forms.ModelForm):
+    """Order status form"""
+
     class Meta:
+        """Order Model meta slass"""
         model = Order
         fields = {
             'status'
         }
 
     def __init__(self, *args, **kwargs):
+        """Save place holders and field widgets"""
         super().__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'py-2'
