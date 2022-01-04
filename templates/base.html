@@ -138,27 +138,26 @@
         <div class="toast-container position-fixed end-0 p-3">
             <div id="cart_toast" class="toast d-none align-items-center rounded-3 shadow-sm border-0" role="alert"
                 aria-live="assertive" aria-atomic="true">
-            
-                <div class="toast-header mb-2 rounded-3">
+                <div class="toast-header rounded-3">
                     <span class="text-italic fw-bolder">Cart Items</span>
                     <button type="button" class="btn-close btn-close-primary me-2 m-auto" data-bs-dismiss="toast"
                         aria-label="Close"></button>
                 </div>
-                {% include 'includes/cart_items_toast.html' %}
+                <div class="toast-body p-2 rounded-3">
+                    {% include 'includes/cart_items_toast.html' %}
+                </div>
             </div>
         </div>
     </div>
-    {% endif %}
 
+    {% endif %}
     <!-- Message Container -->
     {% if messages %}
     {% include 'includes/toasts/message.html' %}
     {% endif %}
-
     <!-- Extra Header content -->
     {% block page_header %}
     {% endblock %}
-
     <!-- Main website page content -->
     {% block content %}
     {% endblock %}
@@ -210,36 +209,37 @@
     <footer class="footer bg-dark py-4">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-4 text-lg-start text-light">Copyright &copy; Your Website 2021</div>
+                <div class="col-lg-4 text-lg-start text-light">Copyright &copy; A Hat Shop 2022</div>
                 <div class="col-lg-4 my-3 my-lg-0">
                     <a class="btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                     <a class="btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                     <a class="btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
                 </div>
+
                 <div class="col-lg-4 text-lg-end">
+                    <!-- Llink for registered users to submit issues -->
                     {% if request.user.is_authenticated %}
                     <a class="link-warning me-2 text-decoration-none" href="{% url 'support' %}">Report
                         an issue</a>
                     {% endif %}
-                    <a class="link-warning text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        href="">Contact Us</a>
+                    <!-- Link to contact form -->
+                    <a class="link-warning text-decoration-none"
+                        href="{% url 'contact_view' %}">Contact Us</a>
                 </div>
+
             </div>
         </div>
     </footer>
 
-    {% include 'includes/contact.html' %}
+    <!-- Includes -->
     {% include 'includes/messages.html' %}
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="{% static 'js/base.js' %}"></script>
-
-
     <!-- Custom Form Control -->
     <script src="{% static 'js/forms.js' %}"></script>
-
 
     {% block postloadjs %}
 

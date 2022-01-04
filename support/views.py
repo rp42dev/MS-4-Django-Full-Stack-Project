@@ -1,12 +1,25 @@
+"""
+    1. A view to return the contact us page
+    2. A view to return the shop suport page
+    3. A view to submit support issue tickets
+"""
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.contrib import messages
 
 from checkout.models import Order, OrderLine
 from .models import CustomerSuport, Message
 from .forms import SupportForm, MessageForm, IssueStatusForm
 
+
+def contact_view(request):
+    """
+    A view to return the contact page
+    Renders page with contact form
+    Sends email message to the shop email
+    """
+
+    return render(request, 'support/contact.html')
 
 
 @login_required
@@ -15,11 +28,10 @@ def support(request):
     A view to return the shop suport page
     """
     profile = request.user
-    
+
     if request.POST:
         form = SupportForm(request.POST)
         if form.is_valid():
-
             support_post = CustomerSuport(
                 status='Submitted',
                 user_profile=profile,
@@ -60,7 +72,12 @@ def support(request):
 
 @login_required
 def submit(request, order_number):
-
+    """
+    A view to submit support issue tickets
+    If order was created get order from the database
+    Othervise User can submit issues without order
+    User must have account and logged in
+    """
     profile = request.user
     order = get_object_or_404(Order, order_number=order_number)
     order_line = OrderLine.objects.filter(order__order_number=order_number)

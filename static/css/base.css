@@ -263,6 +263,7 @@ header h1 {
 .toast {
   max-height: 80vh;
   overflow: auto;
+  overflow-x: hidden;
 }
 
 /* Footer section and Promise */

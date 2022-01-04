@@ -1,7 +1,8 @@
 {% if cart_items %}
 {% load thumbnail %}
 {% for item in cart_items %}
-<div class="cart-conteiner small-font mx-1 py-2 mb-2 shadow-sm rounded-3 bg-white row align-items-center">
+
+<div class="cart-conteiner small-font py-2 mb-2 shadow-sm rounded-3 bg-white align-items-center">
 
     <!-- Product Description -->
     <div class="col-12">
@@ -9,6 +10,7 @@
     </div>
 
     <!-- Product image -->
+    <div class="row">
     <div class="col-6 position-relative">
         {% thumbnail item.product.image "150" as im %}
         <a href="{% url 'shop_item' item.product.id %}">
@@ -37,7 +39,7 @@
             <p class="number font-monospace p-0 m-0 time">Quantity: {{ item.quantity }}</p>
         </div>
     </div>
-
+</div>
 </div>
 {% endfor %}
 
