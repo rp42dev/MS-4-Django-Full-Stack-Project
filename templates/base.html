@@ -53,14 +53,12 @@
         <div class="container">
             <div><a class="navbar-brand" href="{% url 'home' %}">A hat Shop</a></div>
 
-            <div class="navbar-toggler p-0 ms-auto" role="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <i class="fas fa-bars h1 ms-1"></i>
-            </div>
             <!-- Cark display on smal to medium screen sizes -->
-            <div class="cart nav-item me-2 ms-3 d-block d-md-none">
-                <a class="position-relative cart" href="{% url 'cart' %}">
+            <div class="cart nav-item me-2 ms-3 d-flex d-md-none ms-auto">
+                {% if shop %}
+                <span class="search_icon" href="#"><i class="fas fa-search h3"></i></span>
+                {% endif %}
+                <a class="position-relative cart mx-4" href="{% url 'cart' %}">
                     <i class="fas h3 fa-shopping-cart">
                     </i>
                     <span
@@ -69,7 +67,14 @@
                         <span class="visually-hidden">Cart items</span>
                     </span>
                 </a>
+
             </div>
+            <div class="navbar-toggler p-0" role="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars h1 ms-1"></i>
+            </div>
+
+
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-1 py-lg-0">
                     {% block extr_nav %}
@@ -82,7 +87,8 @@
                     {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
 
-                    <li class="nav-item"><a class="nav-link {% if request.get_full_path == '/manage/' %}disabled{% endif %}"
+                    <li class="nav-item"><a
+                            class="nav-link {% if request.get_full_path == '/manage/' %}disabled{% endif %}"
                             href="{% url 'admin_view' %}">Manage</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
                     {% endif %}
@@ -116,19 +122,20 @@
                     {% endif %}
 
                 </ul>
+                <!-- Cart display on medium and up screen size -->
+                <div class="cart nav-item me-2 ms-3 d-none d-md-block">
+                    <a class="position-relative cart" href="{% url 'cart' %}">
+                        <i class="fas h3 fa-shopping-cart">
+                        </i>
+                        <span
+                            class="cart-pill text-white position-absolute top-5 start-98 translate-middle font-monospace bg-danger rounded-circle">
+                            {{ item_count }}
+                            <span class="visually-hidden">Cart items</span>
+                        </span>
+                    </a>
+                </div>
             </div>
-            <!-- Cark display on medium and up screen size -->
-            <div class="cart nav-item me-2 ms-3 d-none d-md-block">
-                <a class="position-relative cart" href="{% url 'cart' %}">
-                    <i class="fas h3 fa-shopping-cart">
-                    </i>
-                    <span
-                        class="cart-pill text-white position-absolute top-5 start-98 translate-middle font-monospace bg-danger rounded-circle">
-                        {{ item_count }}
-                        <span class="visually-hidden">Cart items</span>
-                    </span>
-                </a>
-            </div>
+
         </div>
         {% block extr_nav_lg %}
         {% endblock %}

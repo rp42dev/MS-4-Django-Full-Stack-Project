@@ -4,30 +4,30 @@ let st = 0;
 
 var shopNavbarShrink = function () {
     const shopNav = document.body.querySelector('#shop-nav')
-
+    // Srool hide and unhide shop search bar
+    let = searchBody = document.querySelector('#search_body')
     if ((document.body.getBoundingClientRect()).top > st){
         shopNav.classList.add('extra-navbar-grow')
         shopNav.classList.remove('extra-navbar-shrink')
+
     } else {
+        searchBody.classList.add('search-shrink')
+        searchBody.classList.remove('search-grow')
         shopNav.classList.add('extra-navbar-shrink')
         shopNav.classList.remove('extra-navbar-grow')
     }
     st = (document.body.getBoundingClientRect()).top;
 };
 
-// Shrink the navbar when page is scrolled
 document.addEventListener('scroll', shopNavbarShrink);
 
-const searchIcon = document.querySelector('#search_icon')
-
-// Srool hide and unhide shop searck bar
+// Show, hide search bar on click
+let searchIcons = document.querySelectorAll('.search_icon')
 
 var searchShrink = function () {
-    console.log('here')
     let = searchBody = document.querySelector('#search_body')
     let theClass = document.getElementsByClassName('search-shrink')[0]
     if (theClass){
-        console.log('here')
         searchBody.classList.add('search-grow')
         searchBody.classList.remove('search-shrink')
     } else {
@@ -36,5 +36,6 @@ var searchShrink = function () {
     }
 };
 
-// Shrink the navbar when page is scrolled
-searchIcon.addEventListener('click', searchShrink);
+Array.prototype.filter.call(searchIcons, function (icon) {
+    icon.addEventListener('click', searchShrink);
+}, false);

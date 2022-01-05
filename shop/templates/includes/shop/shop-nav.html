@@ -1,6 +1,6 @@
 <!-- Query By category -->
 
-<li class="nav-item py-2 mx-0 mx-md-3 dropdown">
+<li class="nav-item my-auto dropdown">
         <div class="drop-link dropdown orange" href="#" id="cat" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 {% if cat and cat != 'None' %}{{ cat }} hats{% else %}All Hats{% endif %} <i
@@ -26,7 +26,7 @@
         </ul>
 </li>
 <!-- Query products by Style -->
-<li class="nav-item py-2 mx-0 mx-md-3 dropdown">
+<li class="nav-item my-3 my-md-auto dropdown">
         <div class="drop-link dropdown {% if style and style != 'None' %}orange{% endif %}" href="#" id="style"
                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {% if style and style != 'None' %}{{ style }} style{% else %}Sellect Style{% endif %} <i
@@ -50,7 +50,7 @@
         </ul>
 </li>
 <!-- Sort By name, price, rating Sorting descending and ascending orders -->
-<li class="nav-item py-2 mx-0 mx-md-3 dropdown">
+<li class="nav-item my-auto dropdown">
         <div class="drop-link dropdown {% if sortkey and sortkey != 'None' %}orange{% endif %}" href="#" id="sort"
                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {% if sortkey and sortkey != 'None' %}{{ sort_name }}{% else %}Sort By{% endif %} <i

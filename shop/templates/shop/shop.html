@@ -21,29 +21,32 @@
 <!-- Shop categories styles and query large navigation -->
 {% block extr_nav_lg %}
 
-<div id="shop-nav" class="container col-12 d-none d-md-flex justify-content-center">
+<div id="shop-nav" class="container col-12 d-none d-md-block">
 
-    <div>
+    
         <!-- Include Shop Navigation -->
-        <ul class="navbar-nav p-0 text-uppercase ms-auto py-lg-0">
+        <ul class="p-0 my-auto text-uppercase py-lg-0 d-flex justify-content-between">
             {% include 'includes/shop/shop-nav.html' %}
 
-            <li id="search_icon" class="nav-item"><a class="nav-link" href="#">Search <i class="fas fa-search"></i></a>
+            <li class="nav-item search_icon"><a class="nav-link" href="#">Search <i class="fas fa-search"></i></a>
             </li>
         </ul>
-    </div>
+    
 
 </div>
-<div id="search_body" class="search-shrink col-12">
-    <form class="form mx-auto" method="GET" action="{% url 'shop' %}">
-        <div class="input-group mb-3 col-12 px-3">
-            <input type="text" class="search form-control" name="search" placeholder="Searh"
-                aria-label="Search store">
-            <div class="input-group-append">
-                <button class="btn search-btn" type="submit"><i class="fas fa-search"></i></button>
+<!-- Search form -->
+<div class="container">
+    <div id="search_body" class="search-shrink col-12">
+        <form class="form mx-auto searh-form" method="GET" action="{% url 'shop' %}">
+            <div class="input-group mb-3 col-12">
+                <input type="text" class="search form-control" name="search" placeholder="Searh"
+                    aria-label="Search store">
+                <div class="input-group-append">
+                    <button class="btn search-btn" type="submit"><i class="fas fa-search"></i></button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 {% endblock %}
 

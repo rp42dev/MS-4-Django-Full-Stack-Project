@@ -80,6 +80,9 @@
 .search-btn:hover,
 .search-btn:active {
     color: #000000;
-    border-color: #fca311;
-   
+    border-color: #fca311;  
+}
+
+.searh-form {
+    max-width: 100%;
 }
