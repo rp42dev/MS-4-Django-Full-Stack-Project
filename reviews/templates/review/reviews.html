@@ -4,20 +4,14 @@
 {% block page_header %}
 <!-- Header-->
 <header class="bg-black py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center">
-
-            <h1 class="display-4 fw-bolder">Reviews</h1>
-
-        </div>
-    </div>
+  
 </header>
 {% endblock %}
 {% block content %}
 
 <!-- Product Detail section-->
 <section class="page-section">
-    <div class="container pb-5 px-4 px-lg-5"> 
+    <div class="container px-4 px-lg-5"> 
         <div class="item row gx-4 gx-lg-5">
            
             <!-- Include Review product -->
@@ -26,15 +20,17 @@
             <!-- If feedback was left return feedback instead -->
             
             <div class="col-md-6 border-start review-container">
-                
+                <h2 class="">All Revies</h2>
+                <p class="m-0 text-muted text-italic text-capitalize">For product {{ item.name }}</p>
                 {% for review in reviews reversed %}
-                <div class="mt-5 shadow-sm border rounded p-3 bg-white">
+                <div class="mt-4 shadow-sm border rounded p-3 bg-white">
                     <h5 class="m-0 fw-bolder text-muted text-italic text-capitalize">{{ review.user_profile }}</h5>
 
                     <!-- Include review stars -->
                     {% include 'includes/reviews-stars.html' %}
                 </div>
                 {% endfor %}
+                
             </div>
         </div>
     </div>

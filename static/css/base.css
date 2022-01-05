@@ -127,11 +127,14 @@ section,
   letter-spacing: .06rem;
 }
 
+.navbar {
+  background-color: #000000;
+}
 /* Main Navigation */
 #mainNav {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: #000000;
+
 }
 
 #mainNav .navbar-toggler {
@@ -203,6 +206,8 @@ section,
   color: #fca311;
 }
 
+
+
 @media (min-width: 992px) {
   #mainNav {
     padding-top: 1.5rem;
@@ -244,6 +249,17 @@ section,
     margin-right: 0;
   }
 }
+
+.transparent-bg {
+  background-color: transparent;
+  transition: background-color 1s ease-in-out;
+}
+
+.transparent-none {
+  background-color: #000;
+  transition: background-color 1s ease-in-out;
+}
+
 
 /* toast container */
 .toast-container {

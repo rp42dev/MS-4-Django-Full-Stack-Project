@@ -6,7 +6,6 @@ form.addEventListener('submit', function (event) {
     input.classList.remove('is-invalid')
     input.classList.remove('is-valid')
     if (star.value <= 0) {
-        print(star.value)
         event.preventDefault()
         event.stopPropagation()
         star.nextSibling.classList.add('is-invalid')

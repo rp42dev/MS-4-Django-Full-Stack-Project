@@ -46,6 +46,13 @@ a:hover .stars {
 }
 
 .review-container {
-    height: 100vh;
+    max-height: auto;
     overflow: auto;
+}
+
+@media (min-width: 768px) {
+    .review-container {
+        max-height: 90vh;
+    }
+
 }

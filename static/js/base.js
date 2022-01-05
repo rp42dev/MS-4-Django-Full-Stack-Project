@@ -17,10 +17,22 @@ window.addEventListener('DOMContentLoaded', event => {
         if (!navbarCollapsible) {
             return;
         }
-        if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
+        if (window.location.pathname === '/') {
+            if (window.scrollY < 350) {
+                navbarCollapsible.classList.remove('transparent-none');
+                navbarCollapsible.classList.add('transparent-bg');
+            } else {
+                navbarCollapsible.classList.remove('transparent-bg');
+                navbarCollapsible.classList.add('transparent-none');
+            }
         } else {
-            navbarCollapsible.classList.add('navbar-shrink')
+
+            if (window.scrollY === 0) {
+                navbarCollapsible.classList.remove('navbar-shrink')
+
+            } else {
+                navbarCollapsible.classList.add('navbar-shrink')
+            }
         }
     };
 

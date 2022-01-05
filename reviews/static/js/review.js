@@ -1,4 +1,5 @@
-// Review Stars
+// get all Review Stars add class specified
+// depending on range input based function below
 function Stars(value) {
     starz = document.querySelectorAll('.starz');
     for (let i = 0; i < 5; i++)
@@ -7,10 +8,14 @@ function Stars(value) {
         starz[i].classList.add('active')
 }
 
+// Review stars get start position and calculate
+// mouse position to match range input 
+// then add starr color class if mouse over
+// I'm using invisible range input to 
+// sellect rating based on 5 stars
 const container = document.querySelector("#star");
-let rect = container.getBoundingClientRect();
-
 container.addEventListener("mousemove", (e) => {
+    let rect = container.getBoundingClientRect();
     xp = parseInt(((e.clientX - rect.left) / (rect.right - rect.left)) * 100)
     starz = document.querySelectorAll('.starz');
     if (xp <= 20) {
@@ -29,10 +34,11 @@ container.addEventListener("mousemove", (e) => {
     for (let i = 0; i < value; i++)
         starz[i].classList.add('star_hover')
 });
+
+// Rmove color class when mouse out
 container.addEventListener("mouseout", (e) => {
     // Do math
     starz = document.querySelectorAll('.starz');
-
     for (let i = 0; i < 5; i++)
         starz[i].classList.remove('star_hover');
 });

@@ -59,3 +59,8 @@ class MessageForm(forms.ModelForm):
         labels st to be placeholders
         """
         super().__init__(*args, **kwargs)
+        for field in self.fields:
+            if self.fields[field].required:
+                placeholder = f'{self.fields[field].label} *'
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].label = False

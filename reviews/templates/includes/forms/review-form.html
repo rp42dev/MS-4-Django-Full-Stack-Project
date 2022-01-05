@@ -1,7 +1,7 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
-<form id="ad-to-cart" class="form" action="{% url 'review_view' item.id %}?order_id={{ order_id }}" method="POST"
+<form id="ad-to-cart d-flex" class="form" action="{% url 'review_view' item.id %}?order_id={{ order_id }}" method="POST"
     novalidate>
     {% csrf_token %}
 

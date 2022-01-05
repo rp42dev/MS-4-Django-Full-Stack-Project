@@ -9,84 +9,80 @@
 {% block page_header %}
 <!-- Header-->
 <header class="bg-black py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center">
 
-            <h1 class="display-4 fw-bolder">A Cart</h1>
-
-        </div>
-    </div>
 </header>
 {% endblock %}
 
 {% block content %}
 <!-- Product section-->
 <section class="page-section">
+    <div class="container">
+        <h2 class="text-capitalize">Cart items</h2>
+        <p class="text-muted text-italic ">Add or remove your cart items</p>
 
-    <div class="w-auto px-2">
-        <div class="col-12 mx-auto col-lg-8 col-md-10">
-            {% if cart_items %}
-            {% for item in cart_items %}
+            <div class="col-12 mx-auto">
+                {% if cart_items %}
+                {% for item in cart_items %}
 
-            <div
-                class="cart-conteiner mx-1 shadow-sm py-4 rounded-3 bg-white row align-items-center mt-2 mt-sm-4 position-relative">
-                <!-- Product image -->
-                <div class="col-6 col-sm-3 order-1 position-relative">
-                    {% thumbnail item.product.image "150" as im %}
-                    <a href="{% url 'shop_item' item.product.id %}">
-                        <div class="h-100 d-flex align-items-center ">
-                            <img class="card-img-top" src="{{ im.url }}" alt="{{ item.product.name }}" />
-                        </div>
-                    </a>
-                    <!-- Sales Badge -->
-                    {% if item.product.sale %}
-                    <div class="badge bg-danger text-white font-monospace position-absolute"
-                        style="top: 0.5rem; right: 0.5rem">
-                        Sale
-                    </div>
-                    {% endif %}
-                    {% endthumbnail %}
-                </div>
-                <!-- Product Description -->
-                <div class="col-12 col-sm-6 order-3 order-sm-2">
-                    <h3 class="text-capitalize">{{ item.product.name }}</h3>
-                    <p>{{ item.product.description }}</p>
-                </div>
-
-                <div class="col-3 text-center col-6 col-sm-3 order-2 order-sm-3">
-
-                    <div>
-                        <!-- Sale badge-->
+                <div
+                    class="cart-conteiner mx-1 shadow-sm py-4 rounded-3 bg-white row align-items-center mt-2 mt-sm-4 position-relative">
+                    <!-- Product image -->
+                    <div class="col-6 col-sm-3 order-1 position-relative">
+                        {% thumbnail item.product.image "150" as im %}
+                        <a href="{% url 'shop_item' item.product.id %}">
+                            <div class="h-100 d-flex align-items-center ">
+                                <img class="card-img-top" src="{{ im.url }}" alt="{{ item.product.name }}" />
+                            </div>
+                        </a>
+                        <!-- Sales Badge -->
                         {% if item.product.sale %}
-                        <h1 class="text-danger font-monospace fw-bolder">${{ item.subtotal }} </h1>
-                        {% else %}
-                        <h1 class="font-monospace fw-bolder">${{ item.subtotal }}</h1>
+                        <div class="badge bg-danger text-white font-monospace position-absolute"
+                            style="top: 0.5rem; right: 0.5rem">
+                            Sale
+                        </div>
                         {% endif %}
-
+                        {% endthumbnail %}
+                    </div>
+                    <!-- Product Description -->
+                    <div class="col-12 col-sm-6 order-3 order-sm-2">
+                        <h3 class="text-capitalize">{{ item.product.name }}</h3>
+                        <p>{{ item.product.description }}</p>
                     </div>
 
-                    <div>
-                        <!-- Add or remve item quantity include form -->
-                        {% include 'includes/forms/add-remove.html' %}
-                    </div>
+                    <div class="col-3 text-center col-6 col-sm-3 order-2 order-sm-3">
 
+                        <div>
+                            <!-- Sale badge-->
+                            {% if item.product.sale %}
+                            <h1 class="text-danger font-monospace fw-bolder">${{ item.subtotal }} </h1>
+                            {% else %}
+                            <h1 class="font-monospace fw-bolder">${{ item.subtotal }}</h1>
+                            {% endif %}
+
+                        </div>
+
+                        <div>
+                            <!-- Add or remve item quantity include form -->
+                            {% include 'includes/forms/add-remove.html' %}
+                        </div>
+
+                    </div>
+                    <!-- Remove item from cart -->
+                    {% include 'includes/forms/remove-item-form.html' %}
                 </div>
-                <!-- Remove item from cart -->
-                {% include 'includes/forms/remove-item-form.html' %}
+                {% endfor %}
+                {% endif %}
             </div>
-            {% endfor %}
-            {% endif %}
-        </div>
 
-        <!-- Button to checkout -->
-        <div class="col-12 mt-5 text-center">
-            <h1 class="font-monospace fw-bold total"> ${{ total|floatformat:2 }}</h1>
-            <input type="hidden" name="grand_total">
-            <a class="mt-4 btn btn-dark btn-xl text-uppercase flex-shrink-0" href="{% url 'checkout' %}">
-                Checkout Now
-            </a>
-        </div>
-
+            <!-- Button to checkout -->
+            <div class="col-12 mt-5 text-center">
+                <h1 class="font-monospace fw-bold total"> ${{ total|floatformat:2 }}</h1>
+                <input type="hidden" name="grand_total">
+                <a class="mt-4 btn btn-dark btn-xl text-uppercase flex-shrink-0" href="{% url 'checkout' %}">
+                    Checkout Now
+                </a>
+            </div>
+        
     </div>
 </section>
 {% endblock %}

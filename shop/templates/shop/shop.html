@@ -22,24 +22,20 @@
 {% block extr_nav_lg %}
 
 <div id="shop-nav" class="container col-12 d-none d-md-block">
+    <!-- Include Shop Navigation -->
+    <ul class="p-0 my-auto text-uppercase py-lg-0 d-flex justify-content-between">
+        {% include 'includes/shop/shop-nav.html' %}
 
-    
-        <!-- Include Shop Navigation -->
-        <ul class="p-0 my-auto text-uppercase py-lg-0 d-flex justify-content-between">
-            {% include 'includes/shop/shop-nav.html' %}
-
-            <li class="nav-item search_icon"><a class="nav-link" href="#">Search <i class="fas fa-search"></i></a>
-            </li>
-        </ul>
-    
-
+        <li class="nav-item search_icon"><a class="nav-link" href="#">Search <i class="fas fa-search"></i></a>
+        </li>
+    </ul>
 </div>
 <!-- Search form -->
 <div class="container">
     <div id="search_body" class="search-shrink col-12">
         <form class="form mx-auto searh-form" method="GET" action="{% url 'shop' %}">
             <div class="input-group mb-3 col-12">
-                <input type="text" class="search form-control" name="search" placeholder="Searh"
+                <input type="text" class="search form-control" name="search" placeholder="Searh Store..."
                     aria-label="Search store">
                 <div class="input-group-append">
                     <button class="btn search-btn" type="submit"><i class="fas fa-search"></i></button>
@@ -53,7 +49,7 @@
 {% block page_header %}
 <!-- Header-->
 <header class="py-5">
-
+    <div class="mb-4"></div>
 </header>
 {% endblock %}
 
