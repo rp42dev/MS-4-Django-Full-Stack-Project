@@ -60,9 +60,10 @@ a:hover {
   border-radius: 12px 0px 12px 12px;
 }
 
-header h1 {
-  color: #e5e5e5;
+.header h1 {
+  color: #e5e5e5 !important;
 }
+
 
 .invalid {
   color: #d2042d;
@@ -190,23 +191,6 @@ header h1 {
   color: #fca311;
 }
 
-.search {
-  padding-left: 6px;
-  border-radius: 12px;
-}
-
-.search-btn {
-  border-radius: 0px;
-  margin-left: -42px;
-}
-
-.search-btn:hover,
-.search-btn:active{
-  color: #000000;
-  background-color: #fca311;
-  border-color: #fca311;
-}
-
 .btn-dark:hover,
 .btn-dark:active,
 .navbar-toggler:hover {
@@ -219,7 +203,6 @@ header h1 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     border: none;
-    background-color: transparent;
     transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
   }
 
@@ -235,7 +218,7 @@ header h1 {
 
   #mainNav.navbar-shrink {
     padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: 0rem;
     background-color: #000000;
   }
 

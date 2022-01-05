@@ -5,17 +5,16 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 {% block page_header %}
 <!-- Header-->
-<header class="bg-black py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center">
-
-          <h1 class="display-4 text-white fw-bolder">{% trans "Sign Up" %}</h1>
-
-        </div>
-    </div>
+<header class="mt-5">
 </header>
+
 {% endblock %}
+
 {% block inner_content %}
+
+<div class="text-center">
+  <h1 class="display-4 fw-bolder mb-5">{% trans "Sign Up" %}</h1>
+</div>
 
 <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 

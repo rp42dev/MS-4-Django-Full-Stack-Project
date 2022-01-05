@@ -9,17 +9,10 @@
 {% block extr_nav %}
 <!-- Shop categories styles and query mobile navigation -->
 <ul class="d-block d-md-none navbar-nav border-bottom border-top border-warning py-3 mb-3">
-    <li>
-        <form class="form" method="GET" action="{% url 'shop' %}">
-            <div class="input-group input-group-sm mb-3">
-                <input type="text" class="search py-0" name="search" placeholder="Searh" aria-label="Search store">
-                <div class="input-group-append">
-                    <button class="btn search-btn py-0" type="submit"><i class="fas fa-search"></i></button>
-                </div>
-            </div>
-        </form>
-    </li>
-    {% include 'includes/shop/shop-nav.html' %}
+
+    <ul class="navbar-nav p-0 text-uppercase ms-auto py-lg-0">
+        {% include 'includes/shop/shop-nav.html' %}
+    </ul>
 
 </ul>
 
@@ -28,54 +21,56 @@
 <!-- Shop categories styles and query large navigation -->
 {% block extr_nav_lg %}
 
-<div class="container mt-3">
-    <div class="col-12 d-none d-md-flex justify-content-between">
-        <div>
-            <form class="form" method="GET" action="{% url 'shop' %}">
-                <div class="input-group input-group-sm mb-3">
-                    <input type="text" class="search py-0" name="search" placeholder="Searh" aria-label="Search store">
-                    <div class="input-group-append">
-                        <button class="btn search-btn py-0" type="submit"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
+<div id="shop-nav" class="container col-12 d-none d-md-flex justify-content-center">
 
-        <div>
-            <!-- Include Shop Navigation -->
+    <div>
+        <!-- Include Shop Navigation -->
+        <ul class="navbar-nav p-0 text-uppercase ms-auto py-lg-0">
             {% include 'includes/shop/shop-nav.html' %}
-        </div>
 
+            <li id="search_icon" class="nav-item"><a class="nav-link" href="#">Search <i class="fas fa-search"></i></a>
+            </li>
+        </ul>
     </div>
-    {% endblock %}
 
-    {% block page_header %}
-    <!-- Header-->
-    <header class="bg-black py-5">
-        <div class="container px-4 px-lg-5 pt-5 my-5">
-            <div class="text-center">
-
-                <h1 class="display-4 fw-bolder">Shop in style</h1>
-
-                <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+</div>
+<div id="search_body" class="search-shrink col-12">
+    <form class="form mx-auto" method="GET" action="{% url 'shop' %}">
+        <div class="input-group mb-3 col-12 px-3">
+            <input type="text" class="search form-control" name="search" placeholder="Searh"
+                aria-label="Search store">
+            <div class="input-group-append">
+                <button class="btn search-btn" type="submit"><i class="fas fa-search"></i></button>
             </div>
         </div>
-    </header>
-    {% endblock %}
+    </form>
+</div>
+{% endblock %}
 
-    {% block content %}
+{% block page_header %}
+<!-- Header-->
+<header class="py-5">
 
-    <!-- Section-->
-    <section class="page-section">
-        <div class="container mt-2 mt-sm-4 px-md-2">
-            <div class="row gx-2 gx-sm-3 gx-md-4 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                {% for product in products %}
-                {% if product.item_count != 0 or request.user.is_superuser %}
-                {% include 'includes/shop/item-card.html' %}
-                {% endif %}
-                {% endfor %}
-            </div>  
+</header>
+{% endblock %}
+
+{% block content %}
+
+<!-- Section-->
+<section class="page-section">
+    <div class="container mt-2 mt-sm-4 px-md-2">
+        <div class="row gx-2 gx-sm-3 gx-md-4 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for product in products %}
+            {% if product.item_count != 0 or request.user.is_superuser %}
+            {% include 'includes/shop/item-card.html' %}
+            {% endif %}
+            {% endfor %}
         </div>
-    </section>
-    {% endblock %}
+    </div>
+</section>
+{% endblock %}
 
+{% block postloadjs %}
+<!-- Shop form scripts -->
+<script src="{% static 'js/shop.js' %}"></script>
+{% endblock %}

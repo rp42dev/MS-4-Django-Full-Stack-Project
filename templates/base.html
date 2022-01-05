@@ -82,7 +82,7 @@
                     {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
 
-                    <li class="nav-item"><a class="nav-link {% if manage %}disabled{% endif %}"
+                    <li class="nav-item"><a class="nav-link {% if request.get_full_path == '/manage/' %}disabled{% endif %}"
                             href="{% url 'admin_view' %}">Manage</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
                     {% endif %}
