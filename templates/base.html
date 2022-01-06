@@ -10,10 +10,9 @@
     <meta name="description" content="Best e-shop to shop your for hats" />
     <meta name="author" content="Raivis Petrovskis" />
     {% endblock %}
+
     <link rel="icon" type="image/x-icon" href="#" />
 
-    {% block extra_meta %}
-    {% endblock %}
     <!-- Bootstrap CSS -->
     {% block corecss %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -30,9 +30,9 @@
     {% endblock %}
 
     {% block extra_css %}
-
     {% endblock %}
 
+    <!-- Core javasCript -->
     {% block corejs %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -48,101 +48,11 @@
 
 <body>
 
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-md fixed-top flex-column" id="mainNav">
-        <div class="container">
-            <div><a class="navbar-brand" href="{% url 'home' %}">A hat Shop</a></div>
+    <!-- Include Navigation -->
+    {% include 'includes/nav.html' %}
 
-            <!-- Cark display on smal to medium screen sizes -->
-            <div class="cart nav-item me-2 ms-3 d-flex d-md-none ms-auto">
-                {% if shop %}
-                <span class="search_icon" href="#"><i class="fas fa-search h3"></i></span>
-                {% endif %}
-                <a class="position-relative cart mx-4" href="{% url 'cart' %}">
-                    <i class="fas h3 fa-shopping-cart">
-                    </i>
-                    <span
-                        class="cart-pill text-white position-absolute top-5 start-98 translate-middle font-monospace bg-danger rounded-circle">
-                        {{ item_count }}
-                        <span class="visually-hidden">Cart items</span>
-                    </span>
-                </a>
-
-            </div>
-            <div class="navbar-toggler p-0" role="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars h1 ms-1"></i>
-            </div>
-
-
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav text-uppercase ms-auto py-1 py-lg-0">
-                    {% block extr_nav %}
-                    {% endblock %}
-                    <li class="nav-item"><a class="nav-link {% if request.get_full_path == '/' %}disabled{% endif %}"
-                            href="{% url 'home' %}">home</a></li>
-                    <li class="nav-item"><a class="nav-link {% if shop %}disabled{% endif %}"
-                            href="{% url 'shop' %}">shop</a></li>
-
-                    {% if request.user.is_authenticated %}
-                    {% if request.user.is_superuser %}
-
-                    <li class="nav-item"><a
-                            class="nav-link {% if request.get_full_path == '/manage/' %}disabled{% endif %}"
-                            href="{% url 'admin_view' %}">Manage</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
-                    {% endif %}
-                    <li class="nav-item"><a
-                            class="nav-link {% if request.get_full_path == '/user/' %}disabled{% endif %}"
-                            href="{% url 'user' %}">Profile</a></li>
-                    <li class="nav-item"><a
-                            class="nav-link {% if request.get_full_path == '/accounts/logout/' %}disabled{% endif %}"
-                            href="{% url 'account_logout' %}">Logout</a></li>
-
-                    <!-- User messages -->
-                    {% if user_messages %}
-                    <li id="message-icon" class="nav-item">
-                        <a class="nav-link" href="#" title="{{ unread_messages_count }} New Messages">
-                            <i class="fas h3 fa-comment"></i>
-                            <span
-                                class="cart-pill text-white position-absolute top-5 start-98 translate-middle font-monospace bg-danger rounded-circle">
-                                {{ unread_messages_count }}
-                                <span class="visually-hidden">{{ unread_messages_count }} Mew Messages</span>
-                            </span>
-
-                        </a>
-                    </li>
-
-                    {% endif %}
-
-                    {% else %}
-                    <li class="nav-item"><a
-                            class="nav-link {% if request.get_full_path == '/accounts/login/' %}disabled{% endif %}"
-                            href="{% url 'account_login' %}">Login</a></li>
-                    {% endif %}
-
-                </ul>
-                <!-- Cart display on medium and up screen size -->
-                <div class="cart nav-item me-2 ms-3 d-none d-md-block">
-                    <a class="position-relative cart" href="{% url 'cart' %}">
-                        <i class="fas h3 fa-shopping-cart">
-                        </i>
-                        <span
-                            class="cart-pill text-white position-absolute top-5 start-98 translate-middle font-monospace bg-danger rounded-circle">
-                            {{ item_count }}
-                            <span class="visually-hidden">Cart items</span>
-                        </span>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-        {% block extr_nav_lg %}
-        {% endblock %}
-    </nav>
-
+    <!-- Cart items toast -->
     {% if not request.get_full_path == '/cart/' and cart_items and not request.get_full_path == '/checkout/' %}
-    <!-- Message toast -->
     <div aria-live="polite" aria-atomic="true">
         <div class="toast-container position-fixed end-0 p-3">
             <div id="cart_toast" class="toast d-none align-items-center rounded-3 shadow-sm border-0" role="alert"
@@ -160,8 +70,8 @@
     </div>
     {% endif %}
 
-    {% if user_messages %}
     <!-- Message toast -->
+    {% if user_messages %}
     <div aria-live="polite" aria-atomic="true">
         <div class="toast-container position-fixed end-0 p-3">
             <div id="message-toast" class="toast d-none align-items-center rounded-3 shadow-sm border-0" role="alert"
@@ -179,86 +89,27 @@
     </div>
     {% endif %}
 
-    <!-- Message Container -->
+    <!-- Error Messages Container -->
     {% if messages %}
     {% include 'includes/toasts/message.html' %}
     {% endif %}
+
     <!-- Extra Header content -->
     {% block page_header %}
     {% endblock %}
-    <!-- Main website page content -->
+
+    <!-- Main website contant content -->
     {% block content %}
-
     {% endblock %}
-    <!-- promise -->
-    <section class="page-section bg-black" id="promise">
-        <div class="container">
-            <div class="text-center mt-5">
-                <h2 class="section-heading text-uppercase text-white">Our Promise</h2>
-                <h3 class="section-subheading text-light">Lorem ipsum dolor sit amet consectetur.</h3>
-            </div>
 
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x text-warning"></i>
-                        <i class="fas fa-shopping-cart fa-stack-1x fa-inverse text-light"></i>
-                    </span>
-                    <h4 class="my-3 text-white">E-Commerce</h4>
-                    <p class="text-light">
-                        Fast response times and a simple purchasing process. Customers needs is our top priority
-                        We have on sale fashion hats at up to 80% off. If you're someone who loves to shop for the latest hats at a good price 
-                       
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x text-warning"></i>
-                        <i class="fas fa-shipping-fast fa-stack-1x fa-inverse text-light"></i>
-                    </span>
-                    <h4 class="my-3 text-white">Shipping</h4>
-                    <p class="text-light">
-                        We are offering Fast express shipping for all orders small or large.
-                        All the customers get free shipping for orders over $50.
-                        For orders purcheiced before 13pm (GMT) same day dispatch</p>
-                </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x text-warning"></i>
-                        <i class="fab fa-cc-stripe fa-stack-1x fa-inverse text-light"></i>
-                    </span>
-                    <h4 class="my-3 text-white">Secure Payment</h4>
-                    <p class="text-light"> Pay with your credit card or debit card securely. Stripe is an industry leader in payment processing, and ensures all transactions are secure and protected from fraud.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- include promise section-->
+    {% include 'includes/promise.html' %}
 
-    <!-- Footer-->
-    <footer class="footer bg-dark py-4">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-4 text-lg-start text-light">Copyright &copy; A Hat Shop 2022</div>
-                <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                    <a class="btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                </div>
+    <!-- Include Footer section-->
+    {% include 'includes/footer.html' %}
 
-                <div class="col-lg-4 text-lg-end">
-                    <!-- Llink for registered users to submit issues -->
-                    {% if request.user.is_authenticated %}
-                    <a class="link-warning me-2 text-decoration-none" href="{% url 'support' %}">Report
-                        an issue</a>
-                    {% endif %}
-                    <!-- Link to contact form -->
-                    <a class="link-warning text-decoration-none" href="{% url 'contact_view' %}">Contact Us</a>
-                </div>
 
-            </div>
-        </div>
-    </footer>
-
+    <!-- All the postload javascript sources -->
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
@@ -266,16 +117,16 @@
     <!-- Custom Form Control -->
     <script src="{% static 'js/forms.js' %}"></script>
     <!-- ustom Cart Toast control -->
-
     {% if cart_items %}
     <!-- cart toast hower script -->
     <script src="{% static 'js/cart.js' %}"></script>
     {% endif %}
-
     {% if user_messages %}
     <!-- Support Mesages toast script-->
     <script src="{% static '/js/messages.js' %}"></script>
     {% endif %}
+
+    <!-- Postload JavaScript content block -->
     {% block postloadjs %}
 
     {% endblock %}

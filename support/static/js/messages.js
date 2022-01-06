@@ -1,12 +1,18 @@
 path = window.location.pathname
 
 // show support message toast on hover
-let messageIcon = document.querySelector('#message-icon')
-messageIcon.addEventListener('mouseover', messageFunction)
+let messageIcons = document.querySelectorAll('.message-icon')
+
+Array.prototype.filter.call(messageIcons, function (messageIcon) {
+    messageIcon.addEventListener('mouseover', messageFunction)
+}, false);
+
 
 function messageFunction() {
-    messageIcon.removeEventListener("mouseover", messageFunction);
-  
+    Array.prototype.filter.call(messageIcons, function (messageIcon) {
+        messageIcon.removeEventListener("mouseover", messageFunction);
+    }, false);
+    
     toaster = document.querySelector('#message-toast');
 
     toaster.classList.remove('d-none');
@@ -15,7 +21,8 @@ function messageFunction() {
     NewToast.show();
 
     toaster.addEventListener("hidden.bs.toast", function () {
-        messageIcon.addEventListener('mouseover', messageFunction)
-
+        Array.prototype.filter.call(messageIcons, function (messageIcon) {
+            messageIcon.addEventListener('mouseover', messageFunction)
+        }, false);
     });
 }

@@ -1,0 +1,25 @@
+<!-- Footer Page section -->
+<footer class="footer bg-dark py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-lg-start text-light">Copyright &copy; A Hat Shop 2022</div>
+
+            <div class="col-lg-4 my-3 my-lg-0">
+                <a class="btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                <a class="btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+            <div class="col-lg-4 text-lg-end">
+                <!-- Llink for registered users to submit issues -->
+                {% if request.user.is_authenticated %}
+                <a class="link-warning me-2 text-decoration-none" href="{% url 'support' %}">Report
+                    an issue</a>
+                {% endif %}
+                <!-- Link to contact form -->
+                <a class="link-warning text-decoration-none" href="{% url 'contact_view' %}">Contact Us</a>
+            </div>
+
+        </div>
+    </div>
+</footer>

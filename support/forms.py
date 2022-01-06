@@ -22,6 +22,13 @@ class SupportForm(forms.ModelForm):
         labels st to be placeholders
         """
         super().__init__(*args, **kwargs)
+        for field in self.fields:
+            print(self.fields[field])
+            if field != 'issue':
+                if self.fields[field].required:
+                    placeholder = f'{self.fields[field].label} *'
+                self.fields[field].widget.attrs['placeholder'] = placeholder
+                self.fields[field].label = False
 
 
 class IssueStatusForm(forms.ModelForm):

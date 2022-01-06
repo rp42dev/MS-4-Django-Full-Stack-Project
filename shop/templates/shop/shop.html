@@ -6,55 +6,11 @@
 {% endblock %}
 
 <!-- Shop search and general navigation -->
-{% block extr_nav %}
-<!-- Shop categories styles and query mobile navigation -->
-<ul class="d-block d-md-none navbar-nav border-bottom border-top border-warning py-3 mb-3">
-
-    <ul class="navbar-nav p-0 text-uppercase ms-auto py-lg-0">
-        {% include 'includes/shop/shop-nav.html' %}
-    </ul>
-
-</ul>
-
-{% endblock %}
-
-<!-- Shop categories styles and query large navigation -->
-{% block extr_nav_lg %}
-
-<div id="shop-nav" class="container col-12 d-none d-md-block">
-    <!-- Include Shop Navigation -->
-    <ul class="p-0 my-auto text-uppercase py-lg-0 d-flex justify-content-between">
-        {% include 'includes/shop/shop-nav.html' %}
-
-        <li class="nav-item search_icon"><a class="nav-link" href="#">Search <i class="fas fa-search"></i></a>
-        </li>
-    </ul>
-  <div class="feature">
-        <span>Free Shipping For Orders Over $50</span>
-    </div>
-</div>
-<!-- Search form -->
-<div class="container">
-    <div id="search_body" class="search-shrink col-12">
-        <form class="form mx-auto searh-form" method="GET" action="{% url 'shop' %}">
-            <div class="input-group mb-3 col-12">
-                <input type="text" class="search form-control" name="search" placeholder="Searh Store..."
-                    aria-label="Search store">
-                <div class="input-group-append">
-                    <button class="btn search-btn" type="submit"><i class="fas fa-search"></i></button>
-                </div>
-            </div>
-        </form>
-    </div>
-  
-</div>
-
-{% endblock %}
 
 {% block page_header %}
 <!-- Header-->
 <header class="py-5">
-    <div class="mb-4"></div>
+    <div class="my-0 my-md-5"></div>
 </header>
 {% endblock %}
 
