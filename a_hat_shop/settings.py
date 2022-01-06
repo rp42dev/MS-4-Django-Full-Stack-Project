@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = 'DEVELOPMENT' in os.environ
 
 
-ALLOWED_HOSTS = ['https://a-hat-shop.herokuapp.com/', 'localhost']
+ALLOWED_HOSTS = ['a-hat-shop.herokuapp.com', 'localhost']
 
 
 # Application definition
