@@ -55,7 +55,7 @@ class Product(models.Model):
         """create sku string"""
         if not self.sku:
             try:
-                num = Product.objects.latest('id') + 1
+                num = Product.objects.latest('id').id + 1
             except Product.DoesNotExist:
                 num = 1
             sku = f'{self.style[0]}{str(self.category)[0]}{self.color[0]}-{num}'

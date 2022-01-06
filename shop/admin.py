@@ -8,8 +8,9 @@ from .models import Product, Category
 
 class ProductAdmin(admin.ModelAdmin):
     """Admin product model fields"""
-    readonly_fields = ('rating', 'rating_counter')
+    readonly_fields = ('sku', 'rating', 'rating_counter')
     list_display = (
+        'sku',
         'name',
         'category',
         'style',
