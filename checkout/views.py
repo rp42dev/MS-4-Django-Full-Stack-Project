@@ -78,24 +78,31 @@ def checkout(request):
     if request.user.is_authenticated:
         form2 = ContactForm()
         profile = request.user
-        form2 = ContactForm(initial={
-            'full_name': f'{profile.first_name} {profile.last_name}',
-            'email': profile.email,
-        })
-
-        try:
-            address = UserAddress.objects.get(user=profile)
-            form = ShippingForm(initial={
-                'shipping_name': f'{profile.first_name} {profile.last_name}',
-                'address_line_1': address.address_line_1,
-                'address_line_2': address.address_line_2,
-                'city': address.city,
-                'county': address.county,
-                'postcode': address.postcode,
-                'country': address.country,
+        if profile.first_name or profile.last_name:
+            full_name = f'{profile.first_name} {profile.last_name}'
+        
+            form2 = ContactForm(initial={
+                'full_name': full_name,
+                'email': profile.email,
             })
 
-        except UserAddress.DoesNotExist:
+            try:
+                address = UserAddress.objects.get(user=profile)
+                shipping_name = f'{profile.first_name} {profile.last_name}'
+                form = ShippingForm(initial={
+                    'shipping_name': shipping_name,
+                    'address_line_1': address.address_line_1,
+                    'address_line_2': address.address_line_2,
+                    'city': address.city,
+                    'county': address.county,
+                    'postcode': address.postcode,
+                    'country': address.country,
+                })
+
+            except UserAddress.DoesNotExist:
+                form = ShippingForm()
+                form2 = ContactForm()
+        else:
             form = ShippingForm()
             form2 = ContactForm()
     else:

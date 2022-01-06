@@ -13,7 +13,7 @@ class ItemForm(forms.ModelForm):
     class Meta:
         """Product Model meta slass"""
         model = Product
-        exclude = ('rating', 'rating_counter',)
+        exclude = ('sku', 'rating', 'rating_counter',)
         fields = '__all__'
 
     image = forms.ImageField(label='image')
