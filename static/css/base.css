@@ -128,7 +128,7 @@ section,
 }
 
 .navbar {
-  background-color: #000000;
+  background-color: #292929;
 }
 /* Main Navigation */
 #mainNav {
@@ -227,7 +227,7 @@ section,
   #mainNav.navbar-shrink {
     padding-top: 1rem;
     padding-bottom: 0rem;
-    background-color: #000000;
+    background-color: #292929;
   }
 
   #mainNav.navbar-shrink .navbar-brand {
@@ -254,7 +254,7 @@ section,
 }
 
 .transparent-none {
-  background-color: #000;
+  background-color: #292929;
   transition: background-color 1s ease-in-out;
 }
 
@@ -309,7 +309,7 @@ section#promise .section-heading {
 .btn-social:hover {
   background-color: #e5e5e5;
   border-color: #e5e5e5;
-  color: #000000;
+  color: #292929;
 }
 
 .update{
@@ -319,7 +319,7 @@ section#promise .section-heading {
 
 .update:hover,
 .update:active {
-  background-color: #000000;
+  background-color: #292929;
 }
 
 #support-form .select option {
@@ -356,4 +356,12 @@ section#promise .section-heading {
 .card .badge {
     transform: rotate(25deg);
     border-radius: 9px 3px;
+}
+
+.scroll-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 300px;
+  overflow-x: auto;
+  width: auto;
 }

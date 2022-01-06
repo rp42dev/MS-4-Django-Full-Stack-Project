@@ -11,7 +11,7 @@
 {% block content %}
 <!-- success page item Detail section-->
 <section class="page-section">
-    <div class="container bg-white p-4 px-lg-5">
+    <div class="container bg-white px-3 pt-3 px-lg-5">
 
         <!-- Billing and shipping information -->
         <div class="col-12 text-uppercase text-center h4 text-warning">Thank You</div>
@@ -19,7 +19,7 @@
             <p class="px-0 fw-bolder text-uppercase font-monospace">Order #: {{ order.id }}</p>
             <hr class="p-1">
 
-            <div class="col-md-6">
+            <div class="px-0 col-md-6">
                 <p class="text-italic fw-bolder">Shipping Address:</p>
                 <p class="mb-0 font-monospace">Name: {{ order.shipping_name }}</p>
                 <p class="mb-0 font-monospace">Address 1: {{ order.address_line_1 }}</p>
@@ -36,7 +36,7 @@
                 <p class="mb-0 font-monospace">Country: {{ order.country }}</p>
             </div>
             <hr class="d-md-none dblock">
-            <div class="col-md-6 text-md-end">
+            <div class="col-md-6 text-md-end px-0">
                 <p class="text-italic fw-bolder">Order Summary:</p>
                 <p class="mb-0 font-monospace">Date: {{ order.date }}</p>
                 <p class="mb-0 font-monospace">User: {{ order.user_profile }}</p>
@@ -81,7 +81,7 @@
             </div>
 
             <!-- Delivery costs -->
-            <div class="col-6 h4 fw-bolder font-monospace text-end">
+            <div class="col-6 fw-bolder font-monospace text-end">
                 <p>
                     {% if delivery != 0 %}
                     <span class="font-monospace h6">Delivery: {{ delivery }}</span> <br>

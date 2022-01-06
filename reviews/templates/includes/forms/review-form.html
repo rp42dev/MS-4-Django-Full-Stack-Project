@@ -14,7 +14,7 @@
             <span class="starz">★</span>
         </div>
         <input type="range" class="form-range hidden form-fontrol" name="raiting" min="1" value="0" max="5" step="1"
-            id="star" onclick="Stars(this.value)" required>
+            id="star" onchange="Stars(this.value)" required>
         <div class="invalid-feedback">Rating is required</div>
         <input type="hidden" value="{{ order_id }}" name="order_id">
     </div>
