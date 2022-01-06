@@ -51,5 +51,16 @@ class Product(models.Model):
                        Avg('rating'))['rating__avg'] or 0
         self.save()
 
+    def save(self, *args, **kwargs):
+        """create sku string"""
+        if not self.sku:
+            try:
+                num = Product.objects.latest('id') + 1
+            except Product.DoesNotExist:
+                num = 1
+            sku = f'{self.style[0]}{str(self.category)[0]}{self.color[0]}-{num}'
+            self.sku = sku.upper()
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return str(self.name)
+        return str(self.id)

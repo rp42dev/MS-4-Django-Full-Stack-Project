@@ -1,0 +1,1 @@
+web: gunicorn a_hat_shop.wsgi.application
