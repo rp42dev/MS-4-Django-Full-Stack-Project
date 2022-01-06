@@ -1,7 +1,7 @@
  top
 ![top]()
 # *A Hat Shop*
-## [View the live project here.]()
+## [View the live project here.](https://a-hat-shop.herokuapp.com/)
 
 ### Table of contents
 
