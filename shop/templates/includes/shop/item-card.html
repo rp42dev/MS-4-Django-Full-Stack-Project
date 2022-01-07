@@ -11,7 +11,7 @@
 
     <div class="h-100 d-flex align-items-center">
         {% thumbnail product.image "250" as im %}
-        <img class="card-img-top" src="{{ im.url }}" alt="..." />
+        <img class="card-img-top" src="{{ im.url }}" alt="{{ product.name }}" />
         {% endthumbnail %}
     </div>
     <a class="card-img-overlay" href="{% url 'shop_item' product.id %}">

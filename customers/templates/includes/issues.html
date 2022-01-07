@@ -2,7 +2,7 @@
     <p class="text-muted text-italic">Customer support</p>
 </div>
 
-<div class="card mb-4">
+<div class="card">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
         Submitted user Issues
@@ -21,7 +21,7 @@
             <tbody>
                 <tr class="table-light ">
                     <td>
-                        <table class="table table-borderless">
+                        <table class="table table-borderless mb-0">
                             <thead>
                                 <tr>
                                     <th>Ticket</th>
@@ -30,7 +30,7 @@
                                 </tr>
                             </thead>
 
-                            <tbody class="border-bottom">
+                            <tbody class="">
                                 <tr class="table-light">
                                     <td class="col-4 font-monospace"><a class="btn btn-warning"
                                             href="{% url 'messages_view' issue.id %}?unread=False" title="{{ issue }}">

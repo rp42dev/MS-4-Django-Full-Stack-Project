@@ -122,7 +122,7 @@ def update_cart(request, item_id):
                 cart[item_id] -= 1
                 messages.success(
                     request, (f'The hat {product.name} quantity was updated'
-                              f' to {cart[item_id]}.'), extra_tags='update')
+                              f' to {cart[item_id]}.'))
         elif action == 'add':
             if product.item_count - cart[item_id] <= 0:
                 cart[item_id] = product.item_count
@@ -133,7 +133,7 @@ def update_cart(request, item_id):
                 cart[item_id] += 1
                 messages.success(
                     request, (f'The hat {product.name} quantity was updated'
-                              f' to {cart[item_id]}.'), extra_tags='update')
+                              f' to {cart[item_id]}.'))
 
     request.session['cart'] = cart
 

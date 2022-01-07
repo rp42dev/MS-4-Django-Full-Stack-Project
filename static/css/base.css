@@ -376,7 +376,7 @@ section#promise .section-heading {
 .feature {
   font-size: 1.2rem;
   color: #ffffff;
-  border: solid 5px #000000;
+  border: solid 5px #292929;
   padding: 0 12px 3px 12px;
   background-color: #fca311;
   margin-bottom: -36px;
@@ -396,7 +396,6 @@ section#promise .section-heading {
 .feature-grow {
   opacity: 1;
   height: 40px;
-  margin-bottom: -36px;
   transition: all 0.2s ease;
 }
 
@@ -422,4 +421,8 @@ section#promise .section-heading {
   transition: all 0.3s ease;
 }
 
+
+.accordion-body {
+  padding: 0;
+}
 
