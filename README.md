@@ -182,12 +182,11 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 - Shopping cart
     - Allows shopping customers to add a list of items for purchase.
     - The customer can easily add and remove items from their shopping cart.
-    - Allow Registered users to save their favorite products for future purchases.
-    - Button to fast checkout.
+    - Save user details for fast checkout.
 - Checkout 
     - Stripe checkout for credit cards 
     - Unregistered user will have to fill in shopping details each time shopper visits the shop.
-    - Registered user card and shipping details are saved and pre populated from saved profile details.
+    - Populate Saved registered user shipping details with data either saved.
 - User Account
     - View purchase history
         - Individual Card with image, title, and description.
@@ -196,7 +195,7 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
     - Delete profile
 
 - For Admin user all the products feature buttons with access to edit and delete        functionality.
-- Admin Add/Adit product forms
+- Admin Add/update product forms
     - Product Name
     - Product Category
     - Product Price
@@ -286,19 +285,29 @@ Navigation
 - Added link active to change color if active links
 - Shop has it's own navigation. Includes search and sorting functionatity.
 
-
 Shop App
 - Search functionality enables users to searsc by name and description keywords.
 - Sort products by Category, Style, Price (high to low) and (low to high), Product mane (a to z) and (z to a)
-
 
 Cart App
 - Add items to the cart session Item id, item count, item price.
 - In cart context perform various calculations such as item times count, 
  item count times price, shipping price, discount prie total, and finaly grand total.
 
+Checkout App
+- 
+
+Review App
+- 
+
+Suppord App
+- 
+
 Custommers App
-- A customer is able to add or update profile information and shopping address iformation.
+- A customer is able to add or update profile information and shopping address information.
+
+Adminidtration App
+- A superuser management interface for easy and fast product upload delete or update.
 
 Authentication and forms
 - added crispy forms and customize form imputs to match site.

@@ -19,12 +19,12 @@ Array.prototype.filter.call(textAreas, function (textarea) {
 Array.prototype.filter.call(FileInputs, function (input) {
     input.classList.add('text-gray')
 }, false);
+
 // Get all the sellect inputand add gray color 
 // css class to placeholder if not sellected
 Array.prototype.filter.call(SellectInputs, function (input) {
     input.classList.add('form-select')
 }, false);
-
 
 (function () {
     'use strict'
@@ -66,7 +66,7 @@ function FormTrigger() {
 
                     if (elem[0]) {
 
-                        // error message for required fields add praceholder
+                    // error message for required fields add praceholder
                     } else {
                         let para = document.createElement("P");
                         para.classList.add('text-danger', 'invalid-p');
@@ -74,7 +74,7 @@ function FormTrigger() {
                         para.innerHTML = str;
                         parent.append(para);
                     }
-
+                // add validation state valid
                 } else {
                     input.classList.add('is-valid')
                     let parent = this.parentElement;
