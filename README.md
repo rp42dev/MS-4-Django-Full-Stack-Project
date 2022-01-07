@@ -292,7 +292,7 @@ Shop App
 Cart App
 - Add items to the cart session Item id, item count, item price.
 - In cart context perform various calculations such as item times count, 
- item count times price, shipping price, discount prie total, and finaly grand total.
+- item count times price, shipping price, discount prie total, and finaly grand total.
 
 Checkout App
 - 

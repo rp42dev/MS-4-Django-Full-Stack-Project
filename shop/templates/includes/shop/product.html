@@ -36,7 +36,7 @@
         <!-- include stars rating -->
         <div>{% include 'includes/stars.html' %}</div>
 
-        <p class="lead">{{ item.description }}</p>
+        <p class="font-text">{{ item.description }}</p>
         {% if availability == 0 %}
         <p class="text-danger font-monospace">{{ availability }} Out of stock</p>
         {% elif availability < 5  %}

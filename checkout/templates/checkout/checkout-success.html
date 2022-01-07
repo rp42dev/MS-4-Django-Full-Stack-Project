@@ -55,7 +55,6 @@
         <div class="cart-conteiner bg-white row align-items-center mt-2 mt-sm-4">
             <div class="col-6">
                 <div>
-
                     <!-- Confirm Order reception if order status is shipped -->
                     <p class="text-italic fw-bolder">Order Status: {{ order.status }}</p>
                     {% if order.status != "Completed" and from_profile and order.status == "Shipped" %}
