@@ -13,7 +13,6 @@
         <button
             class="btn btn-dark btn-xl text-uppercase flex-shrink-0 mt-3 {% if availability == 0 %}disabled{% endif %}"
             type="submit">
-            <i class="bi-cart-fill me-1"></i>
             Add to cart
         </button>
 
@@ -25,7 +24,6 @@
 
         <div class="col mt-4">
             <a class="btn btn-warning flex-shrink-0" href="{% url 'edit_item' item.id %}">
-                <i class="bi-cart-fill me-1"></i>
                 Update Product
             </a>
         </div>

@@ -1,9 +1,6 @@
 {% load thumbnail %}
-<div class="px-2">
-    <p class="text-muted text-italic">Manage Stock items</p>
-</div>
 <!--  Out off stock products -->
-<div class="card mb-4">
+<div class="card">
     <div class="card-header text-danger">
         <i class="fas fa-table me-1"></i>
         Out of Stock
@@ -12,30 +9,25 @@
         <table class="table table-borderless">
             {% if out_of_stock %}
             {% for item in out_of_stock %}
-            <thead>
-                <tr>
-                    <th class="text-muted font-monospace text-italic">{{ item.name }}</th>
-
-                </tr>
-            </thead>
+            
             <tbody>
-                <tr class="table-light ">
+                <tr class="table-light border-bottom">
                     <td>
                         <table class="table table-borderless mb-0">
                             <thead>
                                 <tr>
-                                    <th>Item</th>
+                                    <th>{{ item.name }}</th>
                                     <th class="text-center">Item SKU</th>
                                     <th class="text-end">Item Stock</th>
                                 </tr>
                             </thead>
-                            <tbody class="">
+                            <tbody>
                                 <tr class="table-light">
                                     <td><a href="{% url 'shop_item' item.id %}" title="{{ order.name }}">
                                             {% thumbnail item.image "80" as im %}
-                                            <a class="" href="{% url 'shop_item' item.id %}">
+                                            <a href="{% url 'shop_item' item.id %}">
                                                 <div class="d-flex align-items-center ">
-                                                    <img class="" src="{{ im.url }}" alt="{{ item.product.name }}" />
+                                                    <img src="{{ im.url }}" alt="{{ item.product.name }}" />
                                                 </div>
                                             </a>
                                             {% endthumbnail %}
@@ -55,7 +47,7 @@
 </div>
 
 <!--  low stock Products -->
-<div class="card mb-4">
+<div class="card">
     <div class="card-header text-warning">
         <i class="fas fa-table me-1"></i>
         Low Stock
@@ -64,19 +56,14 @@
         <table class="table table-borderless">
             {% if low_stock %}
             {% for item in low_stock %}
-            <thead>
-                <tr>
-                    <th class="text-muted font-monospace text-italic">{{ item.name }}</th>
-                </tr>
-            </thead>
             <tbody>
-                <tr class="table-light ">
+                <tr class="table-light border-bottom">
                     <td>
                         <table class="table table-borderless mb-0">
                             <thead>
                                 <tr>
-                                    <th>Item</th>
-                                    <th class="text-center">Item SKU</th>
+                                    <th>{{ item.name }}</th>
+                                    <th class="text-center">Name</th>
                                     <th class="text-end">Item Stock</th>
                                 </tr>
                             </thead>

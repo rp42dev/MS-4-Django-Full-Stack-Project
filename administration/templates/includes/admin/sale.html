@@ -1,10 +1,6 @@
 {% load thumbnail %}
 <!--  Admin page include to monitor discount products -->
-<div class="px-2">
-    <p class="text-muted text-italic">Manage product discounts</p>
-</div>
-
-<div class="card mb-4">
+<div class="card">
     <div class="card-header text-success">
         <i class="fas fa-table me-1"></i>
         Product Discounts
@@ -13,19 +9,13 @@
         <table class="table table-borderless">
             {% if sale %}
             {% for item in sale %}
-
-            <thead>
-                <tr>
-                    <th class="text-muted font-monospace text-italic">{{ item }}</th>
-                </tr>
-            </thead>
             <tbody>
-                <tr class="table-light ">
+                <tr class="table-light border-bottom">
                     <td>
                         <table class="table table-borderless mb-0">
                             <thead>
                                 <tr>
-                                    <th>Item</th>
+                                    <th>{{ item.sku }}</th>
                                     <th class="font-monospace text-center">Original Price</th>
                                     <th class="font-monospace text-end">Sale Price</th>
                                 </tr>
@@ -56,7 +46,6 @@
             {% endfor %}
             {% endif %}
         </table>
-
     </div>
 </div>
 

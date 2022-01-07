@@ -1,25 +1,20 @@
-<div class="px-2">
-    <p class="text-muted text-italic">Customer support</p>
-</div>
-
+<!-- support tickets -->
 <div class="card">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        Submitted user Issues
+        Submitted support tickets
     </div>
     <div class="card-body p-0">
         <table class="table table-borderless">
-           
             {% for issue in issues %}
-           
             <thead>
                 <tr>
-                    <th class="font-monospace">{{ issue }} <br> <span class="time">Submitted: {{ issue.date }}</span>
+                    <th class="font-monospac small">{{ issue }} <br> <span class="time">Submitted: {{ issue.date }}</span>
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="table-light ">
+                <tr class="table-light border-bottom">
                     <td>
                         <table class="table table-borderless mb-0">
                             <thead>
@@ -29,14 +24,12 @@
                                     <th class="text-end">Status</th>
                                 </tr>
                             </thead>
-
-                            <tbody class="">
+                            <tbody>
                                 <tr class="table-light">
                                     <td class="col-4 font-monospace"><a class="btn btn-warning"
                                             href="{% url 'messages_view' issue.id %}?unread=False" title="{{ issue }}">
                                             #{{ issue.id}}
                                         </a></td>
-
                                     <td class="col-4 font-monospace text-center">{{ issue.issue }}</td>
                                     <td class="col-4 colfont-monospace text-end">{{ issue.status }}</td>
                                 </tr>
@@ -45,9 +38,7 @@
                     </td>
                 </tr>
             </tbody>
-            
             {% endfor %}
-          
         </table>
     </div>
 </div>

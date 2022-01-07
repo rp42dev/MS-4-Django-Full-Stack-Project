@@ -61,7 +61,7 @@
 
         <!-- User order history -->
         <p class="text-muted text-italic">Your order history | Track order status | Submit your reviews</p>
-        <div class="card mb-4">
+        <div class="card">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
                 My orders
@@ -77,7 +77,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="table-light ">
+                        <tr class="table-light border-bottom">
                             <td>
                                 <table class="table table-borderless mb-0">
                                     <thead>
@@ -107,10 +107,9 @@
                     {% endfor %}
                     {% endif %}
                 </table>
-
             </div>
-
         </div>
+
         <!-- show all orders -->
         {% if not all and not order_count <= 10 %}
         <p class="text-muted text-italic">Latest 10 orders are shown</p>

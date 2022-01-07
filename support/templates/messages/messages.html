@@ -16,53 +16,56 @@
 
     <div class="container col-12 col-sm-8 col-lg-6 px-2">
         <div class="mx-auto element-width">
-        <span class="h4">{{ issue }}</span>
-        <p class="text-muted text-italic ">Messages regarting recent reported issue</p>
-        {% if issue.order_line %}
-        
-        <p class="p-0 text-muted text-italic">Product: {{ issue.order_line }}</p>
-        {% endif %}
-        {% if issue.status == 'Resolved' %}
-        <p class="m-0 text-success fw-bolder font-monospace">Ticket Status: {{ issue.status }}</p>
-        {% else %}
-        <p class="m-0 text-danger fw-bolder font-monospace">Ticket Status: {{ issue.status }}</p>
-        {% endif %}
-        {% for message in thread_messages %}
+            <span class="h4">{{ issue }}</span>
+            <p class="text-muted text-italic ">Messages regarting recent reported issue</p>
+            {% if issue.order_line %}
 
-        {% if message.user.is_superuser %}
-        <div class="mb-4">
-            <div class="bg-white shadow-sm border rounded p-3">
-                <p class="m-0 fw-bolder text-muted text-italic text-capitalize">{{ message.user.username }}</p>
-                <p class="m-0 time font-monospace">{{ message.timestamp }}</p>
-                
-                <div class="text-admin bg-light p-2 shadow-sm">
-                    <p class="message fw-bolder font-monospace">{{ message.message }}</p>
+            <p class="p-0 text-muted text-italic">Product: {{ issue.order_line }}</p>
+            {% endif %}
+            {% if issue.status == 'Resolved' %}
+            <p class="m-0 text-success fw-bolder font-monospace">Ticket Status: {{ issue.status }}</p>
+            {% else %}
+            <p class="m-0 text-danger fw-bolder font-monospace">Ticket Status: {{ issue.status }}</p>
+            {% endif %}
+            <div class="messages-body bg-white rounded mb-4">
+                {% for message in thread_messages %}
+
+                {% if message.user.is_superuser %}
+
+                <div class="rounded p-3">
+                    <p class="m-0 fw-bolder text-muted text-italic text-capitalize small">{{ message.user.username }}
+                    </p>
+                    <p class="m-0 time font-monospace">{{ message.timestamp }}</p>
+
+                    <div class="text-admin bg-light p-2 shadow-sm">
+                        <p class="message font-monospace small">{{ message.message }}</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    
-        {% else %}
-        <div class="mb-4">
-            <div class="bg-white shadow-sm border rounded p-3">
 
-                 <p class="m-0 fw-bolder text-muted text-italic text-capitalize">{{ message.user.username }}</p>
-                <p class="m-0 time font-monospace">{{ message.timestamp }}</p>
-               
-                <div class="text bg-light p-2 shadow-sm border">
-                    <p class="message fw-bolder font-monospace">{{ message.message }}</p>
+
+                {% else %}
+
+                <div class="rounded p-3">
+
+                    <p class="m-0 fw-bolder text-muted text-italic text-capitalize small">{{ message.user.username }}
+                    </p>
+                    <p class="m-0 time font-monospace">{{ message.timestamp }}</p>
+
+                    <div class="text bg-light p-2 bg-light shadow-sm border">
+                        <p class="message font-monospace small">{{ message.message }}</p>
+                    </div>
                 </div>
+
+
+                {% endif %}
+                {% endfor %}
             </div>
+            <!-- Messages form  -->
+            {% include 'includes/forms/message-form.html' %}
+
+            <!-- Admin Change current issue status form  -->
+            {% include 'includes/forms/status-form.html' %}
         </div>
-  
-        {% endif %}
-        {% endfor %}
-
-        <!-- Messages form  -->
-       {% include 'includes/forms/message-form.html' %}
-
-        <!-- Admin Change current issue status form  -->
-       {% include 'includes/forms/status-form.html' %}
-    </div>
     </div>
     </div>
 </section>

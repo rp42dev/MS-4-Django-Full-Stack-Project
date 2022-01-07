@@ -1,21 +1,20 @@
 {% load thumbnail %}
 
 <!-- Individual product -->
-<div class="item align-items-center position-relative">
+<div class="item align-items-center d-lg-flex position-relative">
     {% if item.sale %}
     <div class="badge bg-danger text-white position-absolute w-auto" style="top: 0.5rem; right: 0.5rem">
         <h3 class="m-0 font-monospace">Sale</h3>
     </div>
     {% endif %}
     {% thumbnail item.image "500" as im %}
-    <div class="col-md-6 mb-4 mb-md-0"><img class="card-img-top mb-md-0" src="{{ im.url }}"
-            alt="{{ item.name }}" />
+    <div class="col-lg-6 mb-4 mb-md-0"><img class="card-img-top mb-md-0" src="{{ im.url }}" alt="{{ item.name }}" />
     </div>
     {% endthumbnail %}
 
-    <div class="col-md-6">
-        <div class="small mb-1 font-monospace">SKU: {{ item.sku }}</div>
+    <div class="col-lg-6">
         <h1 class="display-5 fw-bolder text-capitalize">{{ item.name }}</h1>
+        <div class="small mb-1 font-monospace">SKU: {{ item.sku }}</div>
 
         <div class="fs-5 mb-3">
             {% if item.sale %}

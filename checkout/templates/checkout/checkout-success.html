@@ -21,66 +21,41 @@
 
             <div class="px-0 col-md-6">
                 <p class="text-italic fw-bolder">Shipping Address:</p>
-                <p class="mb-0 font-monospace">Name: {{ order.shipping_name }}</p>
-                <p class="mb-0 font-monospace">Address 1: {{ order.address_line_1 }}</p>
+                <p class="mb-0 font-text">Name: {{ order.shipping_name }}</p>
+                <p class="mb-0 font-text">Address 1: {{ order.address_line_1 }}</p>
                 {% if order.address_line_2 %}
-                <p class="mb-0 font-monospace">Address 2: {{ order.address_line_2 }}</p>
+                <p class="mb-0 font-text">Address 2: {{ order.address_line_2 }}</p>
                 {% endif %}
-                <p class="mb-0 font-monospace">City: {{ order.city }}</p>
+                <p class="mb-0 font-text">City: {{ order.city }}</p>
                 {% if order.county %}
-                <p class="mb-0 font-monospace">County: {{ order.county }}</p>
+                <p class="mb-0 font-text">County: {{ order.county }}</p>
                 {% endif %}
                 {% if order.postcode %}
-                <p class="mb-0 font-monospace">Postcode: {{ order.postcode }}</p>
+                <p class="mb-0 font-text">Postcode: {{ order.postcode }}</p>
                 {% endif %}
-                <p class="mb-0 font-monospace">Country: {{ order.country }}</p>
+                <p class="mb-0 font-text">Country: {{ order.country }}</p>
             </div>
             <hr class="d-md-none dblock">
             <div class="col-md-6 text-md-end px-0">
                 <p class="text-italic fw-bolder">Order Summary:</p>
-                <p class="mb-0 font-monospace">Date: {{ order.date }}</p>
-                <p class="mb-0 font-monospace">User: {{ order.user_profile }}</p>
-                <p class="mb-0 font-monospace">Name: {{ order.full_name }}</p>
-                <p class="mb-0 font-monospace">Email: {{ order.email }}</p>
-                <p class="mb-0 font-monospace">Total: ${{ order.total }}</p>
-                <p class="mb-0 font-monospace">Delivery: {{ order.delivery }}</p>
-                <p class="mb-0 font-monospace">Paid: {{ order.paid }}</p>
+                <p class="mb-0 font-text">Date: {{ order.date }}</p>
+                <p class="mb-0 font-text">User: {{ order.user_profile }}</p>
+                <p class="mb-0 font-text">Name: {{ order.full_name }}</p>
+                <p class="mb-0 font-text">Email: {{ order.email }}</p>
+                <p class="mb-0 font-text">Total: ${{ order.total }}</p>
+                <p class="mb-0 font-text">Delivery: {{ order.delivery }}</p>
+                <p class="mb-0 font-text">Paid: {{ order.paid }}</p>
             </div>
 
         </div>
 
         <!-- Include Order Line Items -->
         {% include 'includes/order-line-items.html' %}
- 
-        <div class="cart-conteiner bg-white row align-items-center mt-2 mt-sm-4">
-            <div class="col-6">
-                <div>
-                    <!-- Confirm Order reception if order status is shipped -->
-                    <p class="text-italic fw-bolder">Order Status: {{ order.status }}</p>
-                    {% if order.status != "Completed" and from_profile and order.status == "Shipped" %}
-                    {% include 'includes/forms/confirm-order-status-form.html' %}
-                    {% endif %}
-
-                    <!-- Report an issue with order. Available only if order was placed -->
-                    {% if from_profile %}
-                    <div class="mt-3">
-                        {% if issue %}
-                        {% if issue.status == 'Resolved' %}
-                        <a href="{% url 'messages_view' issue.id %}" class="m-0 link-success fw-bolder font-monospace"> Ticket #{{ issue.id }} Status: {{ issue.status }}</a>
-                        {% else %}
-                        <a href="{% url 'messages_view' issue.id %}" class="m-0 link-danger fw-bolder font-monospace"> Ticket #{{ issue.id }} Status: {{ issue.status }}</a>
-                        {% endif %}
-                        
-                        {% else %}
-                        <a href="{% url 'submit' order.order_number %}">Report an issue</a>
-                        {% endif %}
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
+        <hr class="p-1 mt-4">
+        <div class="cart-conteiner bg-white align-items-center pb-3">
 
             <!-- Delivery costs -->
-            <div class="col-6 fw-bolder font-monospace text-end">
+            <div class="col-12 fw-bolder font-monospace">
                 <p>
                     {% if delivery != 0 %}
                     <span class="font-monospace h6">Delivery: {{ delivery }}</span> <br>
@@ -89,6 +64,32 @@
                     {% endif %}
                     <span class="h3 fw-bold font-monospace">Total ${{ order.total }} </span>
                 </p>   
+            </div>
+            <div class="col-12">
+                <div>
+                    <!-- Confirm Order reception if order status is shipped -->
+                    <p class="text-italic fw-bolder">Order Status: {{ order.status }}</p>
+                    {% if order.status != "Completed" and from_profile and order.status == "Shipped" %}
+                    {% include 'includes/forms/confirm-order-status-form.html' %}
+                    {% endif %}
+                    
+                </div>
+            </div>
+            <div class="col-12"><!-- Report an issue with order. Available only if order was placed -->
+                {% if from_profile %}
+                <div>
+                    {% if issue %}
+                    {% if issue.status == 'Resolved' %}
+                    <a href="{% url 'messages_view' issue.id %}" class="m-0 link-success fw-bolder font-monospace"> Ticket #{{ issue.id }} Status: {{ issue.status }}</a>
+                    {% else %}
+                    <a href="{% url 'messages_view' issue.id %}" class="m-0 link-danger fw-bolder font-monospace"> Ticket #{{ issue.id }} Status: {{ issue.status }}</a>
+                    {% endif %}
+                    
+                    {% else %}
+                    <a href="{% url 'submit' order.order_number %}">Report an issue</a>
+                    {% endif %}
+                </div>
+                {% endif %}
             </div>
 
         </div>

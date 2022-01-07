@@ -1,12 +1,8 @@
 <!-- Admin page include issues -->
-<div class="px-2">
-    <p class="text-muted text-italic">Customer support</p>
-</div>
-
-<div class="card mb-4">
+<div class="card">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        Submitted user Issues
+        Submitted user support tickets
     </div>
     <div class="card-body p-0">
         <table class="table table-borderless">
@@ -15,12 +11,13 @@
            
             <thead>
                 <tr>
-                    <th class="font-monospace">{{ issue }} <br> <span class="time">Submitted: {{ issue.date }}</span>
+                    <th class="font-monospace small">{{ issue }} <br> <span class="time">Submitted: {{ issue.date }}</span>
                     </th>
                 </tr>
             </thead>
+
             <tbody>
-                <tr class="table-light ">
+                <tr class="table-light border-bottom">
                     <td>
                         <table class="table table-borderless mb-0">
                             <thead>
@@ -47,10 +44,8 @@
                 </tr>
             </tbody>
 
-            
             {% endfor %}
             {% endif %}
-
         </table>
     </div>
 </div>

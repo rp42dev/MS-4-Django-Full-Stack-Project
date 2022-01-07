@@ -1,6 +1,6 @@
 <!-- Message form -->
 {% load crispy_forms_tags %}
-<form id="support-form" action="" class="form" method="POST" novalidate>
+<form id="support-form" class="form" method="POST" novalidate>
     {% csrf_token %}
     <div class="font-monospace">
         {{ form|crispy }}
