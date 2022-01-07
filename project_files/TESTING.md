@@ -28,35 +28,34 @@
 ### **User Stories Testing**
 
 ### **As A Unregistered user**
-✓ First time visitor is able to understand purpose of the website.<br>
-✓ User is able to easly navigate the website.<br>
-✓ User is able to find products by description and product name.<br>
-✓ Good product description and Product photography.<br>
-✓ To be able make easy and secure payments as a guest user.<br>
-✓ To be able to contact the company for any query or issue.<br>
+✓ First time visitor is able to understand purpose of the website.\
+✓ User is able to easly navigate the website.\
+✓ User is able to find products by description and product name.\
+✓ Good product description and Product photography.\
+✓ To be able make easy and secure payments as a guest user.\
+✓ To be able to contact the company for any query or issue.
 
 ### **As A Registered user**
-✓ All of the above and.. <br>
-✓ Saving shipping information for fast checkout.<br>
-✓ Access to complete overview of existing orders.<br>
-✓ Self-manage of account details and shipping adresses for fast checkout.<br>
-✓ Access to order history and other documents.<br>
+✓ All of the above and.\
+✓ Saving shipping information for fast checkout.\
+✓ Access to complete overview of existing orders.\
+✓ Self-manage of account details and shipping adresses for fast checkout.\
+✓ Access to order history and other documents.
 
 ### **As an Administrator**
-✓ As an Administrator, I want to monitor shop items with ease.<br>
-✓ As an Administrator, I want to add/edit and delete items.<br>
-✓ As an Administrator, I want to be able to track all the purchases.<br>
-✓ As an Administrator, I want track and manage all the shipping information.<br>
-✓ As an Administrator, I want to be able to manage User access and accounts.<br>
+✓ Administrator monitor shop items with ease.\
+✓ Administrator add/edit and delete items.\
+✓ Administrator track all the purchases.\
+✓ Administrator manage all the shipping information.\
+✓ Administrator manage User access and accounts.
 
 ### **Site Owner goals**
-✓ Get the business online and expand online presence.<br>
-✓ Drive new customers to the website Provide guest checkout option.<br>
-✓ Provide users with ability to create account, save shopping-cart and user deteails for fast checkout.<br>
-✓ Maximize sales, Offer range of Special Offers and deals.<br>
-✓ Offer customers a fast and secure payment option.<br>
-✓ Customer Support Improve customer satisfaction through better service<br>
-
+✓ Get the business online and expand online presence.\
+✓ Website Provide guest checkout option.\
+✓ Save user deteails for fast checkout.\
+✓ Offer range of Special Offers and deals.\
+✓ Fast and secure payment option integrated stripe payment proccessing.\
+✓ Customer Support service and product reviews.
 
 
 # [&#8686;](#Testing)

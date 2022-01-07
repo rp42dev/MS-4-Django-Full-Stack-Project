@@ -42,8 +42,8 @@
                 {% for st in style_list %}
                 <li class="nav-item">
                         <a class="nav-link {% if style == st.style %}orange{% endif %}"
-                                href="{% url 'shop' %}?category={{ cat }}&style={{ st.style }}&sort={{ sortkey }}">
-                                {{ st.style }}
+                                href="{% url 'shop' %}?category={{ cat }}&style={{ st.0 }}&sort={{ sortkey }}">
+                                {{ st.0 }}
                         </a>
                 </li>
                 {% endfor %}

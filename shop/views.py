@@ -15,9 +15,8 @@ Shop app views
         Get single item by id in Post method
         Delete item from Product model and return to the store page
 """
-
-
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
@@ -32,8 +31,9 @@ def shop(request):
     Product sort functionality name, price
     ascending order or descending order
     """
+    url_back = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     products = Product.objects.all().order_by('-id')
-    style_list = Product.objects.values('style').distinct()
+    style_list_all = Product.objects.values('style').distinct()
     categories = Category.objects.all()
     category = 'all'
     sort_name = None
@@ -41,7 +41,7 @@ def shop(request):
     style = 'all'
     query = 'None'
     is_shop = True
-
+    style_list = style_list_all
     if request.GET:
         if 'search' in request.GET:
             # Search by keyword in titles and description
@@ -54,7 +54,7 @@ def shop(request):
                 | Q(description__icontains=query)
             products = products.filter(queries)
             if not products:
-                messages.error(
+                messages.warning(
                     request, f'Did not find {query}\
                         in the store. Try somthing else')
                 return redirect(reverse('shop'))
@@ -96,6 +96,16 @@ def shop(request):
             elif sortkey == 'rating_desc':
                 sort_name = 'rating (H-L)'
                 products = products.order_by('-rating')
+    style_list = set(products.values_list('style'))
+    if not products:
+        messages.warning(
+            request, 'Nothing in the store with this\
+                    search criteria. Try somthing else')
+        if url_back is not None:
+            return HttpResponseRedirect(
+                request.META.get('HTTP_REFERER'))
+        else:
+            return redirect(reverse('shop'))
 
     context = {
         'style_list': style_list,
