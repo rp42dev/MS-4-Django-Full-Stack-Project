@@ -14,13 +14,13 @@
                 </li>
                 {% for categ in categories %}
                 <li class="nav-item"><a class="nav-link {% if cat == categ.name %}orange{% endif %}"
-                                href="{% url 'shop' %}?category={{ categ.name }}&style={{ style }}&sort={{ sortkey }}">
+                                href="{% url 'shop' %}?category={{ categ.name }}&style=all&sort={{ sortkey }}">
                                 {{ categ.friendly_name }}
                         </a>
                 </li>
                 {% endfor %}
                 <li class="nav-item"><a class="nav-link {% if cat == 'sale' %}orange{% endif %}"
-                                href="{% url 'shop' %}?category=sale&style={{ style }}&sort={{ sortkey }}">Hats
+                                href="{% url 'shop' %}?category=sale&style=all&sort={{ sortkey }}">Hats
                                 Sale</a></li>
 
         </ul>

@@ -80,24 +80,10 @@
 .search-btn:hover,
 .search-btn:active {
     color: #000000;
-    border-color: #fca311;  
+    border-color: #fca311;
 }
 
 .searh-form {
     max-width: 100%;
 }
 
-.feature {
-    font-size: 1.2rem;
-    color: #ffffff;
-    border: solid 5px #000000;
-    padding: 0 12px 3px 12px;
-    text-align: center;
-    background-color: #fca311;
-    bottom: -37px;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, 0);
-    border-radius: 0 0 6px 6px;
-  }
-  

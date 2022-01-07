@@ -33,7 +33,7 @@ def shop(request):
     """
     url_back = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     products = Product.objects.all().order_by('-id')
-    style_list_all = Product.objects.values('style').distinct()
+    style_list = set(products.values_list('style'))
     categories = Category.objects.all()
     category = 'all'
     sort_name = None
@@ -42,7 +42,6 @@ def shop(request):
     style = 'all'
     query = 'None'
     is_shop = True
-    style_list = style_list_all
     if request.GET:
         if 'search' in request.GET:
             # Search by keyword in titles and description
@@ -76,6 +75,7 @@ def shop(request):
             # Sort by style
             styles = True
             style = request.GET['style']
+            
             if style != 'all':
                 products = products.filter(style=style)
 

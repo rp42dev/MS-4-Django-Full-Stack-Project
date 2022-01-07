@@ -35,6 +35,7 @@
 
 html {
   scroll-padding-top: 4.5rem;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -370,3 +371,55 @@ section#promise .section-heading {
   overflow-x: auto;
   width: auto;
 }
+
+/* go up link */
+.feature {
+  font-size: 1.2rem;
+  color: #ffffff;
+  border: solid 5px #000000;
+  padding: 0 12px 3px 12px;
+  background-color: #fca311;
+  margin-bottom: -36px;
+  position: absolute;
+  bottom: 0;
+  border-radius: 0 0 6px 6px;
+}
+
+.feature-shrink {
+  opacity: 0;
+  margin-bottom: 0px;
+  height: 0;
+  transition: all 0.1s ease;
+  overflow: hidden;
+}
+
+.feature-grow {
+  opacity: 1;
+  height: 40px;
+  margin-bottom: -36px;
+  transition: all 0.2s ease;
+}
+
+.go_up_active {
+  position: fixed;
+  background-color: #292929;
+  border: 5px solid #fca311;
+  border-bottom: 0 solid transparent;
+  border-radius: 6px 6px 0 0;
+  height: 40px;
+  opacity: 1;
+  transition: all 0.3s ease;
+  inset: auto 30px 0 auto;
+  z-index: 10000000;
+}
+
+.go_up {
+  opacity: 0;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  height: 0;
+  inset: auto 30px 0 auto;
+  transition: all 0.3s ease;
+}
+
+
