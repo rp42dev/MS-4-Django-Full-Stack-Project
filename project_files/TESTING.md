@@ -26,13 +26,37 @@
 [Back to Readme.md](../README.md)
 ## ***UX*** 
 ### **User Stories Testing**
-#### User goals
 
-#### As Registered user
+### **As A Unregistered user**
+✓ First time visitor is able to understand purpose of the website.<br>
+✓ User is able to easly navigate the website.<br>
+✓ User is able to find products by description and product name.<br>
+✓ Good product description and Product photography.<br>
+✓ To be able make easy and secure payments as a guest user.<br>
+✓ To be able to contact the company for any query or issue.<br>
 
-#### As an Administrator
+### **As A Registered user**
+✓ All of the above and.. <br>
+✓ Saving shipping information for fast checkout.<br>
+✓ Access to complete overview of existing orders.<br>
+✓ Self-manage of account details and shipping adresses for fast checkout.<br>
+✓ Access to order history and other documents.<br>
 
-#### Site owner goals
+### **As an Administrator**
+✓ As an Administrator, I want to monitor shop items with ease.<br>
+✓ As an Administrator, I want to add/edit and delete items.<br>
+✓ As an Administrator, I want to be able to track all the purchases.<br>
+✓ As an Administrator, I want track and manage all the shipping information.<br>
+✓ As an Administrator, I want to be able to manage User access and accounts.<br>
+
+### **Site Owner goals**
+✓ Get the business online and expand online presence.<br>
+✓ Drive new customers to the website Provide guest checkout option.<br>
+✓ Provide users with ability to create account, save shopping-cart and user deteails for fast checkout.<br>
+✓ Maximize sales, Offer range of Special Offers and deals.<br>
+✓ Offer customers a fast and secure payment option.<br>
+✓ Customer Support Improve customer satisfaction through better service<br>
+
 
 
 # [&#8686;](#Testing)

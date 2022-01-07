@@ -75,7 +75,7 @@ source: [code institute](https://codeinstitute.net/)
 
 ### **As A Registered user**
 1. All of the above and..
-1. Saving shopping-cart items for possible later purchase.
+1. Saving shipping information for fast checkout.
 1. Access to complete overview of existing orders.
 1. Self-manage of account details and shipping adresses for fast checkout.
 1. Access to order history and other documents.
