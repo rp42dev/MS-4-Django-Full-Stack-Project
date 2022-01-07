@@ -38,6 +38,7 @@ def shop(request):
     category = 'all'
     sort_name = None
     sortkey = None
+    styles = False
     style = 'all'
     query = 'None'
     is_shop = True
@@ -53,6 +54,7 @@ def shop(request):
             queries = Q(name__icontains=query)\
                 | Q(description__icontains=query)
             products = products.filter(queries)
+            style_list = set(products.values_list('style'))
             if not products:
                 messages.warning(
                     request, f'Did not find {query}\
@@ -68,9 +70,11 @@ def shop(request):
                 products = products.all()
             else:
                 products = products.filter(category__name=category)
+            style_list = set(products.values_list('style'))
 
         if 'style' in request.GET:
             # Sort by style
+            styles = True
             style = request.GET['style']
             if style != 'all':
                 products = products.filter(style=style)
@@ -96,7 +100,8 @@ def shop(request):
             elif sortkey == 'rating_desc':
                 sort_name = 'rating (H-L)'
                 products = products.order_by('-rating')
-    style_list = set(products.values_list('style'))
+            if not styles:
+                style_list = set(products.values_list('style'))
     if not products:
         messages.warning(
             request, 'Nothing in the store with this\
