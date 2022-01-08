@@ -291,9 +291,9 @@ Thanks To:
 
 ### **Shop App** | 
 1. Shop page [image](project_files/images/surfaice/shop.png)
-    - Search functionality enables users to sersch by name and description keywords.
-    - Sort products by Category, Style, Price (high to low) and (low to high), Product mane (a to z) and (z to a)
-2.  Individual Product page [image](project_files/images/surfaice/product.png)
+    - Search functionality enables users to search by name and description keywords.
+    - Sort products by Category, Style, Price (high to low) and (low to high), Product mane (a to z) and (z to a), Rating (high to low) and (low to high).
+2. Individual Product page [image](project_files/images/surfaice/product.png)
     - Individual product page where user can add item to the cart.
     - Links for user to access review page for the current product.
     - User with superuser privileges has access to link to the update product page.
@@ -312,13 +312,13 @@ Thanks To:
 ### **Custommers App** [Profile image](project_files/images/surfaice/profile.png)
 - View purchase history, Interact and monitor orders, user support tickets.
 - A customer is able to add or update profile information and shopping address information.
-    1. Update or delete user profile form[image(project_files/images/surfaice/profile-details.JPG)
+    - Update or delete user profile form [image](project_files/images/surfaice/profile-details.JPG)
 
 ### **Adminidtration App** [Manage image](project_files/images/surfaice/manage.png)
 - Monitor and Update Orders, Inventory Items, Product discounts and User support tickets
 - A superuser management interface for easy and fast product upload delete or update. 
-    1. Add new product form [image](project_files/images/surfaice/add-form.JPG)
-    2. Update or delete product form [image](project_files/images/surfaice/update.JPG)
+    - Add new product form [image](project_files/images/surfaice/add-form.JPG)
+    - Update or delete product form [image](project_files/images/surfaice/update.JPG)
 
 ### **Review App** []()
 - 
