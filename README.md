@@ -1,5 +1,5 @@
  top
-![top]()
+![top](project_files/images/surfaice/home.png)
 # *A Hat Shop*
 ## [View the live project here.](https://a-hat-shop.herokuapp.com/)
 
@@ -280,38 +280,51 @@ Thanks To:
 
 # [&#8686;](#-)
 # ***Features***
-Home App
+### **Home App** [Index image](project_files/images/surfaice/home.png)
 - Hero section images with added Parallax effects on scroll.
 - Recently added hats horisontal scroll feature limited to letest 10 items.
 
-Navigation 
-- Added link active to change color if active links
-- Shop has it's own navigation. Includes search and sorting functionatity.
+### **Navigation** [mobile nav image](project_files/images/surfaice/m-nav.png) | [desktop nav image](project_files/images/surfaice/pc-nav.png)
+- Link active change color if active links on each page.
+- Shop page has it's own navigation. Includes search and sorting functionatity.
+- Shop page navigation shrinks while scrolling down and extends while scroll upwards and at top position nav is fully extended.
 
-Shop App
-- Search functionality enables users to sersch by name and description keywords.
-- Sort products by Category, Style, Price (high to low) and (low to high), Product mane (a to z) and (z to a)
+### **Shop App** | 
+1. Shop page [image](project_files/images/surfaice/shop.png)
+    - Search functionality enables users to sersch by name and description keywords.
+    - Sort products by Category, Style, Price (high to low) and (low to high), Product mane (a to z) and (z to a)
+2.  Individual Product page [image](project_files/images/surfaice/product.png)
+    - Individual product page where user can add item to the cart.
+    - Links for user to access review page for the current product.
+    - User with superuser privileges has access to link to the update product page.
 
-Cart App
+### **Cart App** [Cart image](project_files/images/surfaice/cart.png)
 - Add items to the cart session Item id, item count, item price.
 - In cart context perform various calculations such as item times count, 
 - item count times price, shipping price, discount prie total, and finaly grand total.
+- Sunchronize inventory and cart session product quantity. Check each time the cart is accessed for inventory update then adjust acordingly. The products actual stock quantity is not changed in cart but only after successfull payment.
 
-Checkout App
-- 
+### **Checkout App** [Checkout image](project_files/images/surfaice/checkout.png)
+- Stripe checkout payment proccesor pay with credit card or debit card securely.
+- For registered user form will populate with user details if shipping details was saved in profile details page.
+- Automated inventory updating. Automatically updates inventory whenever there is a new  payment success or payment failure stripe webhook received.
 
-Review App
-- 
-
-Suppord App
-- 
-
-Custommers App
+### **Custommers App** [Profile image](project_files/images/surfaice/profile.png)
+- View purchase history, Interact and monitor orders, user support tickets.
 - A customer is able to add or update profile information and shopping address information.
+    1. Update or delete user profile form[image(project_files/images/surfaice/profile-details.JPG)
 
-Adminidtration App
-- A superuser management interface for easy and fast product upload delete or update.
+### **Adminidtration App** [Manage image](project_files/images/surfaice/manage.png)
+- Monitor and Update Orders, Inventory Items, Product discounts and User support tickets
+- A superuser management interface for easy and fast product upload delete or update. 
+    1. Add new product form [image](project_files/images/surfaice/add-form.JPG)
+    2. Update or delete product form [image](project_files/images/surfaice/update.JPG)
 
+### **Review App** []()
+- 
+
+### **Suppord App** []()
+- 
 Authentication and forms
 - added crispy forms and customize form imputs to match site.
 - Added javascript function for realtime input required field checks.

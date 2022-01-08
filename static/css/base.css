@@ -385,6 +385,14 @@ section#promise .section-heading {
   border-radius: 0 0 6px 6px;
 }
 
+@media screen and (max-width: 400px){
+  .feature{
+    font-size: .9rem;
+    padding-top: .1rem;
+  }
+}
+
+
 .feature-shrink {
   opacity: 0;
   margin-bottom: 0px;
