@@ -14,38 +14,41 @@
 <!-- Product Detail section-->
 <section class="page-section">
 
-    <div class="mx-auto col-12 col-sm-8 col-lg-6 px-2">
-        <h2 class="text-capitalize">Submit support ticket</h2>
-        <p class="text-muted text-italic ">If any problem with account | order #{{ order.id }} or product</p>
-         
-        <form id="support-form" action="{% url 'submit' order.order_number %}" class="form" method="POST" novalidate>
-            {% csrf_token %}
-           
+    <div class="container">
+        <div class="w-container mx-auto">
+            <h2 class="text-capitalize">Submit support ticket</h2>
+            <p class="text-muted text-italic ">If any problem with account | order #{{ order.id }} or product</p>
+
+            <form id="support-form" action="{% url 'submit' order.order_number %}" class="form" method="POST"
+                novalidate>
+                {% csrf_token %}
+
                 {{ form.issue | as_crispy_field }}
-            
-            <div id="sellect-product-group" id class="d-none">
-                <label for="sellect-product">Select Product</label>
 
-                <select id="sellect-product" name="product" class="select form-control mb-2  fw-bolder">
+                <div id="sellect-product-group" id class="d-none">
+                    <label for="sellect-product">Select Product</label>
 
-                    <option selected value="">Select Product</option>
-                    {% for item in order_line %}
-                    <option value="{{ item.product.id }}">{{ item }}</option>
+                    <select id="sellect-product" name="product" class="select form-control mb-2  fw-bolder">
 
-                    {{ item }}
-                    {% endfor %}
-                </select>
-            </div>
+                        <option selected value="">Select Product</option>
+                        {% for item in order_line %}
+                        <option value="{{ item.product.id }}">{{ item }}</option>
 
-            <div class="fw-bolder font-monospace">
-                {{ form.message | as_crispy_field }}
-            </div>
-            <button id="review-submit" class="btn btn-dark btn-xl text-uppercase flex-shrink-0" type="submit">
-                Submit
-            </button>
-        </form>
-        <p class="text-muted text-italic mt-2">Or you may <a href="{% url 'contact_view' %}">Contact us</a> for any assistance</p>       
+                        {{ item }}
+                        {% endfor %}
+                    </select>
+                </div>
 
+                <div class="fw-bolder font-monospace">
+                    {{ form.message | as_crispy_field }}
+                </div>
+                <button id="review-submit" class="btn btn-dark btn-xl text-uppercase flex-shrink-0" type="submit">
+                    Submit
+                </button>
+            </form>
+            <p class="text-muted text-italic mt-2">Or you may <a href="{% url 'contact_view' %}">Contact us</a> for any
+                assistance</p>
+        </div>
     </div>
 </section>
 {% endblock %}
