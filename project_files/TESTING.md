@@ -98,18 +98,23 @@ Friends and family members helped point out any bugs or issues.
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)
 ### **Solved issues or bugs**
-- If cart is empty return user back to previose page but if previose page was cart raised key error.
- 
 
-```python
-# To solve this i have used return two addresses for each scenario 
-# if previos url was cart redirect to shopping else return previos url.
-    cart = request.session.get('cart', {})
-    url_back = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    if url_back != None:
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    else:
-        return redirect(reverse('shop'))
+- Sorting by rating returns Null values before number
+  I found solutin [here Stack overflow link](https://stackoverflow.com/questions/7749216/django-order-by-date-but-have-none-at-end) and by adding Quary string bellow
+  ````python
+  products.order_by(F('rating').asc(nulls_last=True))
+  ````
+
+- If cart is empty return user back to previose page but if previose page was cart raised key error.
+  ```python
+  # To solve this i have used return two addresses for each scenario 
+  # if previos url was cart redirect to shopping else return previos url.
+      cart = request.session.get('cart', {})
+      url_back = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+      if url_back != None:
+          return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+      else:
+          return redirect(reverse('shop'))
 ```
 
 - fixed cart after removeing items and then going back using back button and trying to remove the same item again rised key error.

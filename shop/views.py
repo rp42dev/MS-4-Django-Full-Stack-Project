@@ -19,7 +19,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, F
 
 from .models import Product, Category
 from .forms import ItemForm
@@ -96,10 +96,10 @@ def shop(request):
                 products = products.order_by('-price')
             elif sortkey == 'rating_asc':
                 sort_name = 'rating (L-H)'
-                products = products.order_by('rating')
+                products = products.order_by(F('rating').asc(nulls_last=True))
             elif sortkey == 'rating_desc':
                 sort_name = 'rating (H-L)'
-                products = products.order_by('-rating')
+                products = products.order_by(F('rating').desc(nulls_last=True))
             if not styles:
                 style_list = set(products.values_list('style'))
     if not products:
