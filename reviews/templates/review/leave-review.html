@@ -18,8 +18,8 @@
             {% include 'includes/review-product.html' %}
 
             <!-- If feedback was left return feedback instead -->
-            <div class="col-md-6 mt-5">
 
+            <div class="col-md-6 mt-5">
                 {% if feedback_left %}
                 <div class="bg-white shadow-sm border rounded p-3">
                     <h2 class="">Your Review for</h2>
@@ -37,8 +37,8 @@
                             <p class="message fw-bolder font-monospace">{{ review}}</p>
                         </div>
                     </div>
-           
                 </div>
+
                 {% else %}
                 <!-- Product add to cart POST form -->
                 <h2 class="">Submit Your Review</h2>

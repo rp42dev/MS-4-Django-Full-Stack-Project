@@ -426,3 +426,7 @@ section#promise .section-heading {
   padding: 0;
 }
 
+
+.w-container {
+  max-width: 600px;
+}

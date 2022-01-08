@@ -6,43 +6,44 @@
 
 {% endblock %}
 {% block page_header %}
-    <!-- Header-->
-    <header class="py-5">
+<!-- Header-->
+<header class="py-5">
 
-    </header>
+</header>
 {% endblock %}
 {% block content %}
 
 <!-- Update User Details section-->
 <section class="page-section">
 
-    <div class="mx-auto col-12 col-sm-8 col-lg-6 px-2">
-        <h2 class="text-capitalize">{{ request.user}}</h2>
-        <p class="text-muted text-italic">Update your contact Information</p>
-        <form class="mt-3" action="{% url 'user_details' %}" method="POST" id="profile-update-form">
-            {% csrf_token %}
-            {{ user_form|crispy }}
+    <div class="container">
+        <div class="w-container mx-auto">
+            <h2 class="text-capitalize">{{ request.user}}</h2>
+            <p class="text-muted text-italic">Update your contact Information</p>
+            <form class="mt-3" action="{% url 'user_details' %}" method="POST" id="profile-update-form">
+                {% csrf_token %}
+                {{ user_form|crispy }}
 
-            <p class="text-muted text-italic">Update your Shipping Information</p>
-            {{ address_form|crispy }}
+                <p class="text-muted text-italic">Update your Shipping Information</p>
+                {{ address_form|crispy }}
 
-            <button class="btn btn-xl btn-dark text-uppercase float-right">Update</button>
-            <a href="{% url 'account_change_password' %}">Change Password</a>
-        </form>
+                <button class="btn btn-xl btn-dark text-uppercase float-right">Update</button>
+                <a href="{% url 'account_change_password' %}">Change Password</a>
+            </form>
 
-        <p class="text-danger mt-5 border-top border-danger text-italic">Permanently Delete Account</p>
+            <p class="text-danger mt-5 border-top border-danger text-italic">Permanently Delete Account</p>
 
-        <form class="form delete" action="{% url 'user_delete' %}" method="POST" novalidate>
-            {% csrf_token %}
-            <input id="myCheck" class="form-check-input" type="checkbox" name="checkbox" id="invalidCheck"
-                onchange="check(this)" required>
-            <label class="text-danger pe-1 form-check-label" for="invalidCheck">
-                Check to Delete
-            </label>
-            <button id="btn-e" class="btn btn-sm btn-danger text-uppercase disabled">Delete</button>
-        </form>
+            <form class="form delete" action="{% url 'user_delete' %}" method="POST" novalidate>
+                {% csrf_token %}
+                <input id="myCheck" class="form-check-input" type="checkbox" name="checkbox" id="invalidCheck"
+                    onchange="check(this)" required>
+                <label class="text-danger pe-1 form-check-label" for="invalidCheck">
+                    Check to Delete
+                </label>
+                <button id="btn-e" class="btn btn-sm btn-danger text-uppercase disabled">Delete</button>
+            </form>
+        </div>
     </div>
-
 </section>
 
 {% block postloadjs %}
