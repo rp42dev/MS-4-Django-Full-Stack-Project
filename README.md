@@ -221,16 +221,16 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 
 ## **Skeleton**
 ### **Wireframes**
-![landing page wireframe](project_files/images/wireframes/home-wf.png)
-![Shopping Categories](project_files/images/wireframes/categories.png)
-![Item Detailed view](project_files/images/wireframes/detailed.png)
-![Admin Shopping Categories](project_files/images/wireframes/admin-categories.png)
-![Admin Add New Item](project_files/images/wireframes/add.png)
-![Admin Edit Item](project_files/images/wireframes/edit.png)
-![Edit Account Details](project_files/images/wireframes/account-details.png)
-![My Account](project_files/images/wireframes/account.png)
-![Shopping Cart](project_files/images/wireframes/cart.png)
-![Checkout](project_files/images/wireframes/checkout.png)
+1. [landing page wireframe](project_files/images/wireframes/home-wf.png)
+1. [Shopping Categories](project_files/images/wireframes/categories.png)
+1. [Item Detailed view](project_files/images/wireframes/detailed.png)
+1. [Admin Shopping Categories](project_files/images/wireframes/admin-categories.png)
+1. [Admin Add New Item](project_files/images/wireframes/add.png)
+1. [Admin Edit Item](project_files/images/wireframes/edit.png)
+1. [Edit Account Details](project_files/images/wireframes/account-details.png)
+1. [My Account](project_files/images/wireframes/account.png)
+1. [Shopping Cart](project_files/images/wireframes/cart.png)
+1. [Checkout](project_files/images/wireframes/checkout.png)
 
 # [&#8686;](#top)
 ## **Surfaice**
@@ -240,35 +240,38 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 ### **Fonts**
 
 ### **Media**
-Image by <a href="https://pixabay.com/users/koczot-8279644/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3387253">Koczot</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3387253">Pixabay</a>
+Most copyright free images sourced from [pixabay ](https://pixabay.com)
+
+Thanks To:
+
+- hats Image by <a href="https://pixabay.com/users/koczot-8279644/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3387253">Koczot</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3387253">Pixabay</a>
 
 
-Image by <a href="https://pixabay.com/users/alles-2597842/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4632733">Alexander Lesnitsky</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4632733">Pixabay</a>
+- Most hats Images by <a href="https://pixabay.com/users/alles-2597842/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4632733">Alexander Lesnitsky</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4632733">Pixabay</a>
 
 
-Image by <a href="https://pixabay.com/users/heatherdawnkemp-4440879/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3334230">Heather Kemp</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3334230">Pixabay</a>
+- hats Image by <a href="https://pixabay.com/users/heatherdawnkemp-4440879/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3334230">Heather Kemp</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3334230">Pixabay</a>
 
 
-Image by <a href="https://pixabay.com/users/victoria_borodinova-6314823/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5780902">Press 👍👍 Thanks! 💖</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5780902">Pixabay</a>
+- hats sImage by <a href="https://pixabay.com/users/victoria_borodinova-6314823/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5780902">Press 👍👍 Thanks! 💖</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5780902">Pixabay</a>
 
-Photo by <a href="https://unsplash.com/@dtolokonov?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dmytro Tolokonov</a> on <a href="https://unsplash.com/s/photos/vintage-hat?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+ hats Photo by <a href="https://unsplash.com/@dtolokonov?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dmytro Tolokonov</a> on <a href="https://unsplash.com/s/photos/vintage-hat?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
+ 
+- main Image by <a href="https://pixabay.com/users/greendragon-gecko-6553018/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2819946">S Greendragon</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2819946">Pixabay</a>
 
-main 
-Image by <a href="https://pixabay.com/users/greendragon-gecko-6553018/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2819946">S Greendragon</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2819946">Pixabay</a>
+- Hats Image by <a href="https://pixabay.com/users/blende12-201217/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2268994">Gerhard G.</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2268994">Pixabay</a>
 
-Image by <a href="https://pixabay.com/users/blende12-201217/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2268994">Gerhard G.</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2268994">Pixabay</a>
+- Hats Image by <a href="https://pixabay.com/users/juniorxy-14617424/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4694291">Júnior Castro Júnior</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4694291">Pixabay</a>
 
-Image by <a href="https://pixabay.com/users/juniorxy-14617424/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4694291">Júnior Castro Júnior</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4694291">Pixabay</a>
+- Hats Image by <a href="https://pixabay.com/users/mirelaschenk-2784640/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1469121">MirelaSchenk</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1469121">Pixabay</a>
 
-Image by <a href="https://pixabay.com/users/mirelaschenk-2784640/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1469121">MirelaSchenk</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1469121">Pixabay</a>
-
-Image by <a href="https://pixabay.com/users/angle-weixin-2129673/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1226644">Angle-weixin</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1226644">Pixabay</a>
+- Hats Image by <a href="https://pixabay.com/users/angle-weixin-2129673/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1226644">Angle-weixin</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1226644">Pixabay</a>
   
 
-Image by <a href="https://pixabay.com/users/jean52photosstock-14428522/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5996646">Jean photosstock</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5996646">Pixabay</a>
+- Hats Image by <a href="https://pixabay.com/users/jean52photosstock-14428522/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5996646">Jean photosstock</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5996646">Pixabay</a>
 
-Image by <a href="https://pixabay.com/users/sergeitokmakov-3426571/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4883895">Sergei Tokmakov Terms.Law</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4883895">Pixabay</a>
+- Hats Image by <a href="https://pixabay.com/users/sergeitokmakov-3426571/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4883895">Sergei Tokmakov Terms.Law</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4883895">Pixabay</a>
 
 ### *Templates*
 - [Landing Page Startup template ](https://startbootstrap.com/theme/agency)
@@ -286,7 +289,7 @@ Navigation
 - Shop has it's own navigation. Includes search and sorting functionatity.
 
 Shop App
-- Search functionality enables users to searsc by name and description keywords.
+- Search functionality enables users to sersch by name and description keywords.
 - Sort products by Category, Style, Price (high to low) and (low to high), Product mane (a to z) and (z to a)
 
 Cart App
@@ -337,14 +340,16 @@ Toasts for messages
 
 ## **Frameworks, Libraries & Programs Used**
 - [Google Fonts:](https://fonts.google.com/) Making the web more beautiful.
-- [Font Awesome:](https://fontawesome.com/) to add icons to the website..
+- [Font Awesome:](https://fontawesome.com/) to add icons to the website.
 - [Git](https://git-scm.com/) Git was used for version control.
 - [GitHub:](https://github.com/) used to store the projects code.
 - [gitpod.io](https://gitpod.io/) gitpod Was used for codding.
 - [dbdocs](https://dbdocs.io/) Create DB diagram.
 - [Balsamiq:](https://balsamiq.com/) was used to create the wireframes.
-- [Heroku](https://heroku.com/) Application hosting platform. 
-- [Django: The web framework](https://www.djangoproject.com/) Django is a high-level Python web framework.
+- [Heroku](https://heroku.com/) Application hosting platform.
+- [AWS](https://aws.amazon.com/s3/) Amazon S£ for hosting media and static files.
+- [Bootstrp](https://getbootstrap.com/docs/5.0/getting-started/introduction/) Bootstrap 5 framework.
+- [Django: The web framework](https://www.djangoproject.com/) Django is a high-level Python web.framework.
 
 # [&#8686;](#top)
 # ***Deployment***
@@ -468,10 +473,12 @@ Now you can add app to automaticly push updates from git.
 
 | Config|	Vars |
 | -- | -- |
-| ALOWED_HOSTS | Your heroku deployment URL |
 | SECRET_KEY |	Your secret key |
-| S3_SECRET_KEY |	Your S3 secret key |
-| STRIPE_SECRET | Your Stripe Key|
+| DATABASE_URL|	Your postgres URL |
+| STRIPE_PUBLIC_KEY | Your Stripe Public Key|
+| STRIPE_SECRET_KEY | Your Stripe secred Key|
+| AWS_ACCESS_KEY_ID | Your AWS S3 access key |
+| AWS_SECRET_ACCESS_KEY |	Your AWS S3 secret key |
 
 Add all stripe keys to heroku config variables STRIPE_SECRET.
 
@@ -480,7 +487,6 @@ Make sure to enter your own SECRET_KEY, Amazon AWS S3 S3_SCRET_KEY variables.
 More Detailed information on GitHub Pages can be found here: [here](https://devcenter.heroku.com/categories/deployment) "Link to Heroku deployment docs"
 
 ### **AWS-S3-deployment**
-
 - create s3 bucket and enable ststic storage
 - in permissions tab 
     -  CORS configuration
@@ -584,15 +590,21 @@ cach media files
 # ***Credits***
 ## **Code**
 
-I was referring back to code institute walkthrough Project Bautique Ado videos series for general and technical code instructions.
-As well ass some of the code syntax help and code tips sourced from following sources.
+Base for this project was Code institute walkthrough Project Bautique Ado videos series. 
+Without that i wouldn't have got this done.
 
--  [stackoverflow.com](https://stackoverflow.com/): Useful website for code tips.
--  [www.w3schools](https://www.w3schools.com/): Useful website for code tips.
+
+Most of the code syntax errors and errors in general, "why not working" and "how too" was sourced from following sources.
+
+- [stackoverflow.com](https://stackoverflow.com/) Debug errors and how too's.
+- [www.w3schools](https://www.w3schools.com/) How too's HTMS, CSS, JS, simplified.
+- [django docs](https://docs.djangoproject.com/en/4.0/) Django documentation.
+- [Mozilla developer](https://developer.mozilla.org/) How too's HTMS, CSS, JS.
+- [Stripe Docs](https://stripe.com/docs) Stripe payment proccessing Documentation.
 
 ## **Content**
-In order to start this project I'm using following templates.
 
+In order to start this project I'm using following templates.
 - Landing Page Startup template [Here](https://startbootstrap.com/theme/agency)
 - Shop startup template [Here](https://startbootstrap.com/template/shop-homepage)
 - Shop item detailed template [Here](https://startbootstrap.com/template/shop-item)
@@ -605,6 +617,7 @@ Start Bootstrap was created by and is maintained by **[David Miller](https://dav
 * <https://github.com/davidtmiller>
 
 Start Bootstrap is based on the [Bootstrap](https://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
+
 ## **Acknowledgements**
 - Thanks to My Mentor Owonikoko Oluwaseun, for continuous support and inspire me to push myself beyond where I think I can go.
 - Tutor support at Code Institute for their support.

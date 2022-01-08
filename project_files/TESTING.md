@@ -99,13 +99,14 @@ Friends and family members helped point out any bugs or issues.
 [Back to Readme.md](../README.md)
 ### **Solved issues or bugs**
 
-- Sorting by rating returns Null values before number
-  I found solutin [here Stack overflow link](https://stackoverflow.com/questions/7749216/django-order-by-date-but-have-none-at-end) and by adding Quary string bellow
-  ````python
+- Sorting by rating returns Null values before rated items
+  I found solutin [here Stack overflow link](https://stackoverflow.com/questions/7749216/django-order-by-date-but-have-none-at-end)
+  ```python
+  # Solved by adding Quary string bellow
   products.order_by(F('rating').asc(nulls_last=True))
-  ````
 
-- If cart is empty return user back to previose page but if previose page was cart raised key error.
+
+- If cart is empty return user back to previose page but, if previose page was cart then raised key error.
   ```python
   # To solve this i have used return two addresses for each scenario 
   # if previos url was cart redirect to shopping else return previos url.
@@ -115,15 +116,22 @@ Friends and family members helped point out any bugs or issues.
           return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
       else:
           return redirect(reverse('shop'))
-```
-
-- fixed cart after removeing items and then going back using back button and trying to remove the same item again rised key error.
 
 
-```python
-#  I have added it check in cart views cart function if cart session has items in or not.
-  if request.POST and cart:
-```
+- Cart issue.. after removeing cart items and if using back button going back to the cart, and trying to remove alredy deleted item again rised key error.
+  ```python
+  # To solve this issue.. I have added check function to check on POST if the item is cart session.
+  # If item in sot in the session items simply return to the user message.
+    if request.POST and cart:
+ 
+ - Tables cell misalignment.
+
+  ![img](images/bugs/missalignment-tables.JPG)
+
+  ```html
+  <!--  simpe solution to add bootstrap col-4 class for each column. -->
+  <th class="col-4">{{ item.sku }}</th>
+  ```
 
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)

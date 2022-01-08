@@ -24,9 +24,19 @@
                 <div class="bg-white shadow-sm border rounded p-3">
                     <h2 class="">Your Review for</h2>
                     <p class="m-0 text-muted text-italic text-capitalize">{{ item.name }}</p>
-
+                    
                     <!-- Include review stars -->
-                    {% include 'includes/reviews-stars.html' %}
+                    <div>
+                        <p class="m-0 time font-monospace">{{ date }}</p>
+                        <div class="stars h1"
+                            style="background-image: linear-gradient(to right, orange, orange {% widthratio rating 5 100 %}%, gray {% widthratio rating 5 100 %}%, gray 100%)">
+                            ★★★★★
+                        </div>
+                    
+                        <div class="text bg-light p-2 shadow-sm">
+                            <p class="message fw-bolder font-monospace">{{ review}}</p>
+                        </div>
+                    </div>
            
                 </div>
                 {% else %}

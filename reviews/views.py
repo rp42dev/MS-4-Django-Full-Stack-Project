@@ -47,11 +47,11 @@ def review_view(request, item_id):
     review = ''
     date = ''
 
-    for i in order_reviews:
-        if item.id == i.product.id:
-            rating = i.rating
-            review = i.review
-            date = i.date
+    for i_review in order_reviews:
+        if item.id == i_review.product.id:
+            rating = i_review.rating
+            review = i_review.review
+            date = i_review.date
             feedback_left = True
 
     if request.POST:
