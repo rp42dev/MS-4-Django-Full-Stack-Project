@@ -15,8 +15,9 @@
 {% block content %}
 <!-- Product Detail section-->
 <section class="page-section">
-    <div class="container pb-5 px-2 px-lg-5">
-        <h2 class="">Checkout Now</h2>
+    <div class="container">
+        <div class="mx-auto">
+        <h2>Checkout Now</h2>
         <!-- Order Summary -->
         <p class="text-muted text-italic">Order Summary</p>
 
@@ -38,7 +39,7 @@
 
         <!-- Include Shipping Form and stripe card element -->
        {% include 'includes/forms/checkout-form.html' %}
-
+</div>
     </div>
 </section>
 {% endblock %}
