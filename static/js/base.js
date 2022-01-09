@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', event => {
     let FormToast = document.querySelector('#form-error')
-
+    path = window.location.pathname
     // Show / autohide bootstarp toasts
     var toasts = function () {
         var toastElList = [].slice.call(document.querySelectorAll('.toast'))
@@ -49,36 +49,39 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     };
 
-    let st = 0;
-    var goUpFunc = function () {
-        const goUp = document.body.querySelector('#go_up_active');
-        const feature = document.body.querySelector('#feture');
-        // Srool hide and unhide shop search bar
-        if (window.scrollY === 0) {
-            feature.classList.remove('feature-shrink');
-            feature.classList.add('feature-grow');
+    if (path === '/shop/') {
+        let st = 0;
+        var goUpFunc = function () {
 
-        } else {
-            feature.classList.remove('feature-grow');
-            feature.classList.add('feature-shrink');
+            const goUp = document.body.querySelector('#go_up_active');
+            const feature = document.body.querySelector('#feture');
+            // Srool hide and unhide shop search bar
+            if (window.scrollY === 0) {
+                feature.classList.remove('feature-shrink');
+                feature.classList.add('feature-grow');
 
-        }
+            } else {
+                feature.classList.remove('feature-grow');
+                feature.classList.add('feature-shrink');
 
-        if ((document.body.getBoundingClientRect()).top > st) {
-            goUp.classList.remove('go_up');
-            goUp.classList.add('go_up_active');
+            }
+
+            if ((document.body.getBoundingClientRect()).top > st) {
+                goUp.classList.remove('go_up');
+                goUp.classList.add('go_up_active');
 
 
-        } else {
-            goUp.classList.add('go_up');
-            goUp.classList.remove('.go_up_active');
+            } else {
+                goUp.classList.add('go_up');
+                goUp.classList.remove('.go_up_active');
 
-        }
-        st = (document.body.getBoundingClientRect()).top;
+            }
+            st = (document.body.getBoundingClientRect()).top;
 
-    };
+        };
 
-    document.addEventListener('scroll', goUpFunc);
+        document.addEventListener('scroll', goUpFunc);
+    }
 
     // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector('.navbar-toggler');

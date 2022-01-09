@@ -36,6 +36,7 @@ var searchShrink = function () {
     }
 };
 
+
 Array.prototype.filter.call(searchIcons, function (icon) {
     icon.addEventListener('click', searchShrink);
 }, false);

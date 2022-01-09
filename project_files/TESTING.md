@@ -98,6 +98,15 @@ Friends and family members helped point out any bugs or issues.
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)
 ### **Solved issues or bugs**
+- ![img](images/bugs/Capture.JPG)
+
+  ```javascript
+      // To avoid javascript error I have 
+      // added if check for current url.
+      // Function Only available on shop page
+      path = window.location.pathname
+      if (path === '/shop/') {
+  ```
 
 - Sorting by rating returns Null values before rated items
   I found solutin [here Stack overflow link](https://stackoverflow.com/questions/7749216/django-order-by-date-but-have-none-at-end)
