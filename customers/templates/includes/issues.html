@@ -5,40 +5,29 @@
         Submitted support tickets
     </div>
     <div class="card-body p-0">
-        <table class="table table-borderless">
-            {% for issue in issues %}
+        {% for issue in issues %}
+
+        <p class="font-monospac small px-2">{{ issue }} <br> <span class="time">Submitted: {{ issue.date }}</span>
+        </p>
+        <table class="table table-borderless mb-0">
             <thead>
                 <tr>
-                    <th class="font-monospac small">{{ issue }} <br> <span class="time">Submitted: {{ issue.date }}</span>
-                    </th>
+                    <th>Ticket</th>
+                    <th class=" text-center">Issue</th>
+                    <th class="text-end">Status</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="table-light border-bottom">
-                    <td>
-                        <table class="table table-borderless mb-0">
-                            <thead>
-                                <tr>
-                                    <th>Ticket</th>
-                                    <th class=" text-center">Issue</th>
-                                    <th class="text-end">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="table-light">
-                                    <td class="col-4 font-monospace"><a class="btn btn-warning"
-                                            href="{% url 'messages_view' issue.id %}?unread=False" title="{{ issue }}">
-                                            #{{ issue.id}}
-                                        </a></td>
-                                    <td class="col-4 font-monospace text-center">{{ issue.issue }}</td>
-                                    <td class="col-4 colfont-monospace text-end">{{ issue.status }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
+                <tr class="table-light">
+                    <td class="col-4 font-monospace"><a class="btn btn-warning"
+                            href="{% url 'messages_view' issue.id %}?unread=False" title="{{ issue }}">
+                            #{{ issue.id}}
+                        </a></td>
+                    <td class="col-4 font-monospace text-center">{{ issue.issue }}</td>
+                    <td class="col-4 colfont-monospace text-end">{{ issue.status }}</td>
                 </tr>
             </tbody>
-            {% endfor %}
         </table>
+        {% endfor %}
     </div>
 </div>

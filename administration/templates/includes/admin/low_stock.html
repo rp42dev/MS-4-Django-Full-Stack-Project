@@ -6,43 +6,36 @@
         Out of Stock
     </div>
     <div class="card-body p-0">
-        <table class="table table-borderless">
-            {% if out_of_stock %}
-            {% for item in out_of_stock %}
-            
+        {% if out_of_stock %}
+        {% for item in out_of_stock %}
+
+        <table class="table table-borderless mb-0">
+            <thead>
+                <tr>
+                    <th class="col-4">{{ item.name }}</th>
+                    <th class="text-center col-4">Item SKU</th>
+                    <th class="text-end col-4">Item Stock</th>
+                </tr>
+            </thead>
             <tbody>
-                <tr class="table-light border-bottom">
-                    <td>
-                        <table class="table table-borderless mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="col-4">{{ item.name }}</th>
-                                    <th class="text-center col-4">Item SKU</th>
-                                    <th class="text-end col-4">Item Stock</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="table-light">
-                                    <td class="col-4"><a href="{% url 'shop_item' item.id %}" title="{{ order.name }}">
-                                            {% thumbnail item.image "80" as im %}
-                                            <a href="{% url 'shop_item' item.id %}">
-                                                <div class="d-flex align-items-center ">
-                                                    <img src="{{ im.url }}" alt="{{ item.product.name }}" />
-                                                </div>
-                                            </a>
-                                            {% endthumbnail %}
-                                        </a></td>
-                                    <td class="col-4 font-monospace text-center">{{ item.sku}}</td>
-                                    <td class="Col-4 font-monospace text-end">{{ item.item_count }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
+                <tr class="table-light">
+                    <td class="col-4"><a href="{% url 'shop_item' item.id %}" title="{{ order.name }}">
+                            {% thumbnail item.image "80" as im %}
+                            <a href="{% url 'shop_item' item.id %}">
+                                <div class="d-flex align-items-center ">
+                                    <img src="{{ im.url }}" alt="{{ item.product.name }}" />
+                                </div>
+                            </a>
+                            {% endthumbnail %}
+                        </a></td>
+                    <td class="col-4 font-monospace text-center">{{ item.sku}}</td>
+                    <td class="Col-4 font-monospace text-end">{{ item.item_count }}</td>
                 </tr>
             </tbody>
-            {% endfor %}
-            {% endif %}
         </table>
+
+        {% endfor %}
+        {% endif %}
     </div>
 </div>
 
@@ -53,41 +46,35 @@
         Low Stock
     </div>
     <div class="card-body p-0">
-        <table class="table table-borderless">
-            {% if low_stock %}
-            {% for item in low_stock %}
-            <tbody>
-                <tr class="table-light border-bottom">
-                    <td>
-                        <table class="table table-borderless mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="col-4">{{ item.name }}</th>
-                                    <th class="text-center col-4">Name</th>
-                                    <th class="text-end col-4">Item Stock</th>
-                                </tr>
-                            </thead>
-                            <tbody class="">
-                                <tr class="table-light font-monospace">
-                                    <td class="col-4"><a href="{% url 'shop_item' item.id %}" title="{{ order.name }}">
-                                            {% thumbnail item.image "80" as im %}
-                                            <a href="{% url 'shop_item' item.id %}">
-                                                <div class="d-flex align-items-center ">
-                                                    <img src="{{ im.url }}" alt="{{ item.product.name }}" />
-                                                </div>
-                                            </a>
-                                            {% endthumbnail %}
-                                        </a></td>
-                                    <td class="col-4 font-monospace text-center">{{ item.sku}}</td>
-                                    <td class="col-4 font-monospace text-end">{{ item.item_count }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
+        {% if low_stock %}
+        {% for item in low_stock %}
+
+        <table class="table table-borderless mb-0">
+            <thead>
+                <tr>
+                    <th class="col-4">{{ item.name }}</th>
+                    <th class="text-center col-4">Name</th>
+                    <th class="text-end col-4">Item Stock</th>
+                </tr>
+            </thead>
+            <tbody class="">
+                <tr class="table-light font-monospace">
+                    <td class="col-4"><a href="{% url 'shop_item' item.id %}" title="{{ order.name }}">
+                            {% thumbnail item.image "80" as im %}
+                            <a href="{% url 'shop_item' item.id %}">
+                                <div class="d-flex align-items-center ">
+                                    <img src="{{ im.url }}" alt="{{ item.product.name }}" />
+                                </div>
+                            </a>
+                            {% endthumbnail %}
+                        </a></td>
+                    <td class="col-4 font-monospace text-center">{{ item.sku}}</td>
+                    <td class="col-4 font-monospace text-end">{{ item.item_count }}</td>
                 </tr>
             </tbody>
-            {% endfor %}
-            {% endif %}
         </table>
+
+        {% endfor %}
+        {% endif %}
     </div>
 </div>

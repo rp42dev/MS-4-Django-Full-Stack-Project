@@ -27,6 +27,7 @@
 1. [Credits](#Credits)
 
 # [&#8686;](#top)
+
 # ***Introduction***
 
 ## **Full Stack Frameworks with Django Milestone Project.**
@@ -317,10 +318,22 @@ Cart screenshot [image](project_files/images/surfaice/cart.png)
 - Sunchronize inventory and cart session product quantity. Check each time the cart is accessed for inventory update then adjust acordingly. The products actual stock quantity is not changed in cart but only after successfull payment.
 
 ### **Checkout App** 
+
+The website is connected to stripe test account.\
+Use test payment details bellow.
+
+| PAYMENT METHOD | SCENARIO | HOW TO TEST |
+| ----- | ----- | ----- |
+| Credit card|The card payment succeeds and doesn’t require authentication | Credit card number 4242 4242 4242 4242 with any expiry, CVC, and postal code. |
+| Credit card  | The card payment requires authentication. | Credit card number 4000 0025 0000 3155 with any expiry, CVC, and postal code. |
+| Credit card | The card is declined with a decline code such as insufficient_funds. | Credit card number 4000 0000 0000 9995 with any expiry, CVC, and postal code. |
+#
+
 Checkout page screenshot [image](project_files/images/surfaice/checkout.png)
 - Stripe checkout payment proccesor pay with credit card or debit card securely.
 - For registered user form will populate with user details if shipping details was saved in profile details page.
 - Automated inventory updating. Automatically updates inventory whenever there is a stripe payment success or payment failure webhook received.
+
 
 Checkout succes page screenshot [image](project_files/images/surfaice/success.png)
 - Checkout succes page view order summary, payment succes or failure.
@@ -354,9 +367,7 @@ Add new product form screenshot [image](project_files/images/surfaice/add-form.J
 Update or delete product form screenshot [image](project_files/images/surfaice/update.JPG)
 - A superuser management interface for easy and fast product upload delete or update.
 
-
 ### **Review App**
-
 Leave review page screenshoot [image](project_files/images/surfaice/leave-review.png)
 - Enable user to leave a review and rate the product based on 5-star rating.
 - Product review access is available for registered users and after product purchase.

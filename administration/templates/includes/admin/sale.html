@@ -6,45 +6,36 @@
         Product Discounts
     </div>
     <div class="card-body p-0">
-        <table class="table table-borderless">
-            {% if sale %}
-            {% for item in sale %}
-            <tbody>
-                <tr class="table-light border-bottom">
-                    <td>
-                        <table class="table table-borderless mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="col-4">{{ item.sku }}</th>
-                                    <th class="col-4 font-monospace text-center">Original Price</th>
-                                    <th class="col-4 font-monospace text-end">Sale Price</th>
-                                </tr>
-                            </thead>
 
-                            <tbody >
-                                <tr class="table-light font-monospace">
-                                    <td class="col-4"><a  href="{% url 'shop_item' item.id %}"
-                                            title="{{ order.name }}">
-                                            {% thumbnail item.image "80" as im %}
-                                            <a href="{% url 'shop_item' item.id %}">
-                                                <div class="d-flex align-items-center ">
-                                                    <img src="{{ im.url }}"
-                                                        alt="{{ item.product.name }}" />
-                                                </div>
-                                            </a>
-                                            {% endthumbnail %}
-                                        </a></td>
-                                    <td class="font-monospace text-center col-4">{{ item.price }}</td>
-                                    <td class="font-monospace text-end col-4">{{ item.sale_price }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
+        {% if sale %}
+        {% for item in sale %}
+
+        <table class="table table-borderless mb-0">
+            <thead>
+                <tr>
+                    <th class="col-4">{{ item.sku }}</th>
+                    <th class="col-4 font-monospace text-center">Original Price</th>
+                    <th class="col-4 font-monospace text-end">Sale Price</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr class="table-light font-monospace">
+                    <td class="col-4"><a href="{% url 'shop_item' item.id %}" title="{{ order.name }}">
+                            {% thumbnail item.image "80" as im %}
+                            <a href="{% url 'shop_item' item.id %}">
+                                <div class="d-flex align-items-center ">
+                                    <img src="{{ im.url }}" alt="{{ item.product.name }}" />
+                                </div>
+                            </a>
+                            {% endthumbnail %}
+                        </a></td>
+                    <td class="font-monospace text-center col-4">{{ item.price }}</td>
+                    <td class="font-monospace text-end col-4">{{ item.sale_price }}</td>
                 </tr>
             </tbody>
-            {% endfor %}
-            {% endif %}
         </table>
+        {% endfor %}
+        {% endif %}
     </div>
 </div>
-

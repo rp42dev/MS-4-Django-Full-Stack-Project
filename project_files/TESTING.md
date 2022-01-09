@@ -15,7 +15,22 @@
   The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
 - W3C Markup Validator
-  - [Index Page](../project_files/validation/index.PNG)
+
+- Manual testing for folowing pages app pagos are error free expect for stripe iframe throws errors.
+  - Profile page
+  - Update user profile
+  - Reviews page
+  - Report problen
+  - Contact us page
+  - Checkout page
+  - Support messages
+  - Checkout success page 
+  - Add new product
+  - Admin manage
+
+- [Index Page](../project_files/images/validation/html/home.JPG)
+- [product Page](../project_files/images/validation/html/product.JPG)
+- [shop Page](../project_files/images/validation/html/shop.JPG)
 
 - W3C CSS Validation
 - PEP8 requirements
@@ -95,6 +110,34 @@ Friends and family members helped point out any bugs or issues.
 [Back to Readme.md](../README.md)
 ### **Bugs**
 
+Sripe iframe throws w3 html valitation errors.
+-
+  ```html
+  Error: Bad value __privateStripeMetricsController2980 for attribute name on element iframe: Browsing context name started with the underscore.
+
+  From line 453, column 1; to line 453, column 933
+
+  ↩↩    ↩↩↩↩<iframe name="__privateStripeMetricsController2980" frameborder="0" allowtransparency="true" scrolli…!important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></ifra
+
+  Error: The frameborder attribute on the iframe element is obsolete. Use CSS instead.
+
+  From line 453, column 1; to line 453, column 933
+
+  ↩↩    ↩↩↩↩<iframe name="__privateStripeMetricsController2980" frameborder="0" allowtransparency="true" scrolli…!important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></ifra
+
+  Error: The allowtransparency attribute on the iframe element is obsolete. Use CSS instead.
+
+  From line 453, column 1; to line 453, column 933
+
+  ↩↩    ↩↩↩↩<iframe name="__privateStripeMetricsController2980" frameborder="0" allowtransparency="true" scrolli…!important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></ifra
+
+  Error: The scrolling attribute on the iframe element is obsolete. Use CSS instead.
+
+  From line 453, column 1; to line 453, column 933
+
+  ↩↩    ↩↩↩↩<iframe name="__privateStripeMetricsController2980" frameborder="0" allowtransparency="true" scrolli…!important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></ifra
+  ```
+
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)
 ### **Solved issues or bugs**
@@ -142,5 +185,112 @@ Friends and family members helped point out any bugs or issues.
   <th class="col-4">{{ item.sku }}</th>
   ```
 
+w3 testing
+
+Cart no errors
+
+Profile page no errors
+
+Update user profile page no errors
+
+Reviews page no errors
+
+Report problen no errors
+
+Contact us page no errors
+
+Checkout page no errors
+
+Shop page
+
+-
+  dublicate id's shop navigation include used twice for mobile and desktop.
+
+  ```html
+    Error: Duplicate ID cat.
+
+    From line 247, column 9; to line 248, column 38
+
+    >↩        <div class="drop-link dropdown orange" href="#" id="cat" role="button" data-bs-toggle="dropdown"↩                aria-expanded="false">↩ 
+  ```
+
+Shop product page
+
+-
+  ```html 
+    Error: Duplicate attribute id.
+
+    At line 209, column 99
+
+    e="quantity" id="inputQuantity
+  ```
+
+
+Admin manage
+
+-
+  ```html
+    Error: Element thead not allowed as child of element table in this context. (Suppressing further errors from this subtree.)
+
+    From line 365, column 21; to line 369, column 19
+
+    </tbody>↩            ↩            ↩            ↩            <thead>↩    
+  ``` 
+
+-
+  ```html
+  Error: The aria-labelledby attribute must point to an element in the same document.
+
+  From line 323, column 9; to line 323, column 126
+
+  >↩        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionOne">↩   
+  ```
+
+Add new product
+
+-
+  ```html
+  Error: Attribute placeholder is only allowed when the input type is email, number, password, search, tel, text, or url.
+
+  From line 310, column 1150; to line 310, column 1314
+
+  class=""> <input type="file" name="image" accept="image/*" placeholder="image *" class="form-control clearablefileinput form-control-file text-gray" required="" id="id_image"> </div
+  ```
+
+- 
+  ```html
+  Error: Attribute placeholder is only allowed when the input type is email, number, password, search, tel, text, or url.
+
+  From line 310, column 1397; to line 310, column 1507
+
+  m-check"> <input type="checkbox" name="sale" placeholder="Sale" class="me-2 checkboxinput form-check-input" id="id_sale"> <label>
+
+     <!-- Exclude from forms fields if field_name != 'category' and field_name != 'image' and field_name != 'sale': -->
+  ```
+
+Checkout success page 
+
+-
+  ```html
+  Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.
+
+  From line 294, column 1; to line 294, column 30
+
+  ection-->↩<section class="page-section">↩  
+  ```
+
+Support messages
+
+- 
+  ```html
+  Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.
+
+  From line 295, column 1; to line 295, column 30
+
+  ection-->↩<section class="page-section">↩↩    
+  ```
+
+
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)
+

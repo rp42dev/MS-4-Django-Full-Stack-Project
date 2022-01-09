@@ -1,12 +1,12 @@
 <!-- Query By category -->
 
 <li class="nav-item my-auto dropdown">
-        <div class="drop-link dropdown orange" id="cat-button" role="button" data-bs-toggle="dropdown"
+        <div class="drop-link dropdown orange" id="cat-button-m" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 {% if cat and cat != 'None' %}{{ cat }} hats{% else %}All Hats{% endif %} <i
                         class="fas fa-sort-down"></i>
         </div>
-        <ul class="dropdown-menu" aria-labelledby="cat-button">
+        <ul class="dropdown-menu" aria-labelledby="cat-button-m">
                 <li class="nav-item"><a class="nav-link {% if cat == 'all' %}orange{% endif %}"
                                 href="{% url 'shop' %}?category=all&style={{ style }}&sort={{ sortkey }}">
                                 All Hats
@@ -27,12 +27,12 @@
 </li>
 <!-- Query products by Style -->
 <li class="nav-item my-3 my-md-auto dropdown">
-        <div class="drop-link dropdown {% if style and style != 'None' %}orange{% endif %}" id="style"
+        <div class="drop-link dropdown {% if style and style != 'None' %}orange{% endif %}" id="style-m"
                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {% if style and style != 'None' %}{{ style }} style{% else %}Sellect Style{% endif %} <i
                         class="fas fa-sort-down"></i>
         </div>
-        <ul class="dropdown-menu" aria-labelledby="style">
+        <ul class="dropdown-menu" aria-labelledby="style-m">
                 <li class="nav-item">
                         <a class="nav-link {% if style == 'all' %}orange{% endif %}"
                                 href="{% url 'shop' %}?category={{ cat }}&style=all&sort={{ sortkey }}">
@@ -51,12 +51,12 @@
 </li>
 <!-- Sort By name, price, rating Sorting descending and ascending orders -->
 <li class="nav-item my-auto dropdown">
-        <div class="drop-link dropdown {% if sortkey and sortkey != 'None' %}orange{% endif %}" id="sort"
+        <div class="drop-link dropdown {% if sortkey and sortkey != 'None' %}orange{% endif %}" id="sort-m"
                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {% if sortkey and sortkey != 'None' %}{{ sort_name }}{% else %}Sort By{% endif %} <i
                         class="fas fa-sort-down"></i>
         </div>
-        <ul class="dropdown-menu" aria-labelledby="sort">
+        <ul class="dropdown-menu" aria-labelledby="sort-m">
                 <li><a class="dropdown-item fw-bolder {% if sortkey == 'name_asc' %}orange{% endif %}"
                                 href="{% url 'shop' %}?category={{ cat }}&style={{ style }}&sort=name_asc">
                                 Name (A-Z)

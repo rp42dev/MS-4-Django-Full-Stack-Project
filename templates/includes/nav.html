@@ -56,13 +56,13 @@
                     <!-- Extra navigation link block -->
                     <!-- Shop categories styles and query mobile navigation -->
                     {% if shop %}
-                    <ul class="d-block d-md-none navbar-nav border-bottom border-top border-warning py-3 mb-3">
+                    <li class="d-block d-md-none navbar-nav border-bottom border-top border-warning py-3 mb-3">
 
                         <ul class="navbar-nav p-0 text-uppercase ms-auto py-lg-0">
                             {% include 'includes/shop/shop-nav.html' %}
                         </ul>
 
-                    </ul>
+                    </li>
                     {% endif %}
 
                     <li class="nav-item"><a class="nav-link {% if request.get_full_path == '/' %}disabled{% endif %}"
@@ -122,13 +122,13 @@
             </div>
 
         </div>
+
         <!-- Shop categories styles and query large navigation -->
         {% if shop %}
         <div id="shop-nav" class="container col-12 d-none d-md-block">
             <!-- Include Shop Navigation -->
             <ul class="p-0 my-auto text-uppercase py-lg-0 d-flex justify-content-between">
-                {% include 'includes/shop/shop-nav.html' %}
-
+                {% include 'includes/shop/shop-nav-m.html' %}
                 <li class="nav-item search_icon">
                     <div class="nav-link">Search <i class="fas fa-search"></i></div>
                 </li>
