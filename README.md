@@ -355,18 +355,46 @@ Update or delete product form screenshot [image](project_files/images/surfaice/u
 - A superuser management interface for easy and fast product upload delete or update.
 
 
-### **Review App** []()
-- 
+### **Review App**
 
-### **Suppord App** []()
-- 
-Authentication and forms
-- added crispy forms and customize form imputs to match site.
-- Added javascript function for realtime input required field checks.
+Leave review page screenshoot [image](project_files/images/surfaice/leave-review.png)
+- Enable user to leave a review and rate the product based on 5-star rating.
+- Product review access is available for registered users and after product purchase.
 
-Toasts for messages
-- Added bootstrap toast messages template
-- Added message level checks levels 40 error, 30 warling, 25 success, and info for rest of the messages
+Reviews page screenshoot [image](project_files/images/surfaice/review.png)
+- All the product reviews available to view for any user.
+
+### **Suppord App** 
+Sumbit support ticket [image](project_files/images/surfaice/submit.JPG)
+
+- Users can submit if any issues with Account | Order or Product 
+
+Suppor Messsages [image](project_files/images/surfaice/support-messsages.png)
+
+- Support messages available after submitting support ticket. 
+- Users get notifications in nav bar for new, unread messages.
+- User can directly communicate with support team regarding the issue.
+- User with Superuser privilages has acces to Ticket status form.
+    - Status form choices:
+        - Sumbitted
+        - In review
+        - Resolved
+
+
+Contact us form [image](project_files/images/surfaice/contact.JPG)
+
+- Users are able to message company for any inquiries they might have.
+
+### **Authentication and forms**
+- Crispy forms styling and customized form imputs to match the site styling.
+- Javascript validation for frontend input required field validation.
+- Original Django backend form regex and orher vield validation.
+
+### **Toasts for messages**
+- Bootstrap toast template used to display backend messages.
+- Message level checks levels 40 error, 30 warling, 25 success, and info for rest of the messages.
+- Bootstrap Toast used to display cart content if user adds new item or hovers over cart icon in nav bar.
+- Support messages toast is shown if user hover over message icon in nav bar.
 
 ## **Features to implement**
 

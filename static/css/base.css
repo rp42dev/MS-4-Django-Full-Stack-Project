@@ -434,7 +434,10 @@ section#promise .section-heading {
   padding: 0;
 }
 
-
 .w-container {
   max-width: 600px;
+}
+
+.btn-width {
+  max-width: 650px !important;
 }
