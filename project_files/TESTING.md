@@ -106,7 +106,7 @@ Friends and family members helped point out any bugs or issues.
       // Function Only available on shop page
       path = window.location.pathname
       if (path === '/shop/') {
-  ```
+ 
 
 - Sorting by rating returns Null values before rated items
   I found solutin [here Stack overflow link](https://stackoverflow.com/questions/7749216/django-order-by-date-but-have-none-at-end)

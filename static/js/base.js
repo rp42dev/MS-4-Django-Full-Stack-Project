@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', event => {
         if (!navbarCollapsible) {
             return;
         }
-        if (window.location.pathname === '/') {
+        if (path === '/') {
             if (window.scrollY < 350) {
                 navbarCollapsible.classList.remove('transparent-none');
                 navbarCollapsible.classList.add('transparent-bg');

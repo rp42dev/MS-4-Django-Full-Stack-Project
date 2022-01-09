@@ -17,29 +17,42 @@
         <div class="w-container mx-auto">
             <h2 class="text-capitalize">Contact Us</h2>
             <p class="text-muted text-italic">Leave us a message and we will get back to you asap</p>
-            <form id="contactForm" class="needs-validation" novalidate>
+            <form id="contactForm" class="needs-validation" action="{% url 'contact_view' %}" novalidate method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <!-- Phone number input-->
+                    <input class="form-control" name="subject" id="subject" type="text" placeholder="Subject *" required
+                        pattern="[a-zA-Z].{2,30}" />
+                    <div class="invalid-feedback">
+                        Invalid: a-z A-Z max-30.
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <!-- Name input-->
-                    <input class="form-control" id="name" type="text" placeholder="Your Name *" required />
+                    <input class="form-control" name="name" id="name" type="text" placeholder="Your Name *" required
+                        pattern="[a-zA-Z].{2,30}" />
+                    <div class="invalid-feedback">
+                        Invalid: a-z A-Z max-30.
+                    </div>
                 </div>
                 <div class="form-group">
                     <!-- Email address input-->
-                    <input class="form-control" id="email" type="email" placeholder="Your Email *" required />
-
+                    <input class="form-control" name="email" id="email" type="email" placeholder="Your Email *" required
+                        minlength="2" maxlength="50"/>
+                    <div class="invalid-feedback">
+                        example@email.com max-50.
+                    </div>
                 </div>
-                <div class="form-group">
-                    <!-- Phone number input-->
-                    <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" required />
-
-                </div>
-
 
                 <div class="form-group form-group-textarea">
                     <!-- Message input-->
-                    <textarea class="textarea text-area form-control" id="message" placeholder="Your Message *"
-                        required></textarea>
-
+                    <textarea class="textarea text-area form-control" name="message" id="message"
+                        placeholder="Your Message *" minlength="10" maxlength="500" oncopy="return false" onpaste="return false" autocomplete="off" required></textarea>
+                    <div class="invalid-feedback">
+                        min-10 max-500.
+                    </div>
                 </div>
 
                 <!-- Submit Button-->

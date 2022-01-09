@@ -1,0 +1,12 @@
+Hello {{ name }}!
+
+Thank you for reaching out to A Hat Shop.
+We have received your message and will be in touch with you asap.
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Thank you.
+
+Sincerely,
+
+A Hat Shop

@@ -148,3 +148,7 @@ select:-webkit-autofill {
 .textarea {
     overflow-y: hidden;
 }
+
+.quantity {
+    padding: .2rem .5rem;
+}

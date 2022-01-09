@@ -5,7 +5,10 @@
 """
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.contrib import messages
+from django.conf import settings
 
 from checkout.models import Order, OrderLine
 from .models import CustomerSuport, Message
@@ -18,6 +21,35 @@ def contact_view(request):
     Renders page with contact form
     Sends email message to the shop email
     """
+    if request.POST:
+        subject = request.POST.get('subject')
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        body = render_to_string(
+                'email/customer-message.txt',
+                {'name': name, 'email': email, 'message': message})
+
+        # Message from user
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [settings.DEFAULT_FROM_EMAIL]
+        )
+
+        body = render_to_string(
+                'email/auto-response.txt',
+                {'name': name, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+
+        # Auto response
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [email]
+        )
 
     return render(request, 'support/contact.html')
 
