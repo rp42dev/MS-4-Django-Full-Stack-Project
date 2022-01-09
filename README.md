@@ -124,9 +124,9 @@ source: [code institute](https://codeinstitute.net/)
 
 # [&#8686;](#top)
 ## **Scope**
-Features to implement in terms of viability/feasibility. Below is a Dot Plot chart consisting of data points plotted on a scale of 1 represents least and 5 the most.
-
-![Line-plots](project_files/images/wireframes/plot.jpg)
+Features to implement in terms of viability/feasibility.\
+Below is a Dot Plot chart consisting of data points plotted on a scale of 1 represents least and 5 the most.\
+Line plots screenshot [image](project_files/images/wireframes/plot.jpg)
 
 #### Functionality Requirements
 - Website Navigation with internal site links.
@@ -216,8 +216,11 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 # [&#8686;](#top)
 
 ## **Structure**
-![site-structure](project_files/images/structure/structure.png)
-![Relational database structure](project_files/images/structure/structure-db.png)
+Site structure screenshot [image](project_files/images/structure/structure.png)\
+Site structure Has changed slightly while progressing into the project.
+
+Relational database structure screenshot [image](project_files/images/structure/structure-db.png)\
+DB structure has slight changes made while progressing with this project.
 
 ## **Skeleton**
 ### **Wireframes**
@@ -236,89 +239,121 @@ Features to implement in terms of viability/feasibility. Below is a Dot Plot cha
 ## **Surfaice**
 
 ### **Colour Scheme**
-![Color Pallete](project_files/images/Capture.JPG)
+<img src="project_files/images/color.JPG" width=400>
+
 ### **Fonts**
+-  For comments bootstrap classes "text-muted text-italic"
+- For small text or numbers bootstrap fort class "font-monospace"
+- For forms and buttons google [Montserrat](https://fonts.google.com/specimen/Montserrat) with font-weight: 700;
+- For paragraph Text content google [Roboto+Slab](https://fonts.google.com/specimen/Roboto+Slab)
+
 
 ### **Media**
-Most copyright free images sourced from [pixabay ](https://pixabay.com)
-
+Most copyright free images sourced from [pixabay ](https://pixabay.com)\
 Thanks To:
 
-- hats Image by <a href="https://pixabay.com/users/koczot-8279644/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3387253">Koczot</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3387253">Pixabay</a>
+- hats Image by [Koczot](https://pixabay.com/users/koczot-8279644/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3387253) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3387253)
+
+- Most hats Images by [Alexander Lesnitsky](https://pixabay.com/users/alles-2597842/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4632733) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4632733)
 
 
-- Most hats Images by <a href="https://pixabay.com/users/alles-2597842/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4632733">Alexander Lesnitsky</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4632733">Pixabay</a>
+- hats Image by [Heather Kemp](https://pixabay.com/users/heatherdawnkemp-4440879/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3334230) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3334230)
 
 
-- hats Image by <a href="https://pixabay.com/users/heatherdawnkemp-4440879/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3334230">Heather Kemp</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3334230">Pixabay</a>
+- hats Image by [Press 👍👍 Thanks! 💖](https://pixabay.com/users/victoria_borodinova-6314823/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5780902) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5780902)
 
-
-- hats sImage by <a href="https://pixabay.com/users/victoria_borodinova-6314823/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5780902">Press 👍👍 Thanks! 💖</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5780902">Pixabay</a>
-
- hats Photo by <a href="https://unsplash.com/@dtolokonov?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dmytro Tolokonov</a> on <a href="https://unsplash.com/s/photos/vintage-hat?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+ - hats Photo by [Dmytro Tolokonov](https://unsplash.com/@dtolokonov?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/vintage-hat?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
  
-- main Image by <a href="https://pixabay.com/users/greendragon-gecko-6553018/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2819946">S Greendragon</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2819946">Pixabay</a>
+- main Image by [S Greendragon](https://pixabay.com/users/greendragon-gecko-6553018/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2819946) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2819946)
 
-- Hats Image by <a href="https://pixabay.com/users/blende12-201217/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2268994">Gerhard G.</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2268994">Pixabay</a>
+- Hats Image by [Gerhard G](https://pixabay.com/users/blende12-201217/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2268994) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2268994)
 
-- Hats Image by <a href="https://pixabay.com/users/juniorxy-14617424/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4694291">Júnior Castro Júnior</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4694291">Pixabay</a>
+- Hats Image by [Júnior Castro Júnior](ttps://pixabay.com/users/juniorxy-14617424/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4694291) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4694291)
 
-- Hats Image by <a href="https://pixabay.com/users/mirelaschenk-2784640/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1469121">MirelaSchenk</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1469121">Pixabay</a>
+- Hats Image by [MirelaSchenk](https://pixabay.com/users/mirelaschenk-2784640/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1469121) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1469121)
 
-- Hats Image by <a href="https://pixabay.com/users/angle-weixin-2129673/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1226644">Angle-weixin</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1226644">Pixabay</a>
+- Hats Image by [Angle-weixin ](https://pixabay.com/users/angle-weixin-2129673/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1226644)from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1226644)
   
 
-- Hats Image by <a href="https://pixabay.com/users/jean52photosstock-14428522/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5996646">Jean photosstock</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5996646">Pixabay</a>
+- Hats Image by [Jean photosstock](https://pixabay.com/users/jean52photosstock-14428522/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5996646) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5996646)
 
-- Hats Image by <a href="https://pixabay.com/users/sergeitokmakov-3426571/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4883895">Sergei Tokmakov Terms.Law</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4883895">Pixabay</a>
+- Hats Image by [Sergei Tokmakov Terms Law](https://pixabay.com/users/sergeitokmakov-3426571/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4883895) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4883895)
 
 ### *Templates*
-- [Landing Page Startup template ](https://startbootstrap.com/theme/agency)
-- [Shop startup template ](https://startbootstrap.com/template/shop-homepage)
-- [Shop item detailed template ](https://startbootstrap.com/template/shop-item)
+- Landing Page Startup template [startbootstrap.com](https://startbootstrap.com/theme/agency)
+- Shop page startup template [startbootstrap.com](https://startbootstrap.com/template/shop-homepage)
+- Shop product item detailed template [startbootstrap.com](https://startbootstrap.com/template/shop-item)
 
 # [&#8686;](#-)
 # ***Features***
-### **Home App** [Index image](project_files/images/surfaice/home.png)
+### **Home App** 
+Index page screenshot [image](project_files/images/surfaice/home.png)
 - Hero section images with added Parallax effects on scroll.
 - Recently added hats horisontal scroll feature limited to letest 10 items.
 
-### **Navigation** [mobile nav image](project_files/images/surfaice/m-nav.png) | [desktop nav image](project_files/images/surfaice/pc-nav.png)
+### **Navigation** 
+Mobile version nav screenshot [image](project_files/images/surfaice/m-nav.png)\
+Desktop version nav screenshot [image](project_files/images/surfaice/pc-nav.png)
 - Link active change color if active links on each page.
 - Shop page has it's own navigation. Includes search and sorting functionatity.
 - Shop page navigation shrinks while scrolling down and extends while scroll upwards and at top position nav is fully extended.
 
-### **Shop App** | 
-1. Shop page [image](project_files/images/surfaice/shop.png)
-    - Search functionality enables users to search by name and description keywords.
-    - Sort products by Category, Style, Price (high to low) and (low to high), Product mane (a to z) and (z to a), Rating (high to low) and (low to high).
-2. Individual Product page [image](project_files/images/surfaice/product.png)
-    - Individual product page where user can add item to the cart.
-    - Links for user to access review page for the current product.
-    - User with superuser privileges has access to link to the update product page.
+### **Shop App**
+Shop page screenshot [image](project_files/images/surfaice/shop.png)
+- Search functionality enables users to search by name and description keywords.
+- Sort products by Category, Style, Price (high to low)/(low to high), by name (a to z)/(z to a)and by rating (high to low)/(low to high).
 
-### **Cart App** [Cart image](project_files/images/surfaice/cart.png)
+Individual Product page screenshot [image](project_files/images/surfaice/product.png)
+- Individual product page where user can add item to the cart.
+- Links for user to access review page for the current product.
+- User with superuser privileges has access to link to the update product page.
+
+### **Cart App** 
+Cart screenshot [image](project_files/images/surfaice/cart.png)
 - Add items to the cart session Item id, item count, item price.
 - In cart context perform various calculations such as item times count, 
 - item count times price, shipping price, discount prie total, and finaly grand total.
 - Sunchronize inventory and cart session product quantity. Check each time the cart is accessed for inventory update then adjust acordingly. The products actual stock quantity is not changed in cart but only after successfull payment.
 
-### **Checkout App** [Checkout image](project_files/images/surfaice/checkout.png)
+### **Checkout App** 
+Checkout page screenshot [image](project_files/images/surfaice/checkout.png)
 - Stripe checkout payment proccesor pay with credit card or debit card securely.
 - For registered user form will populate with user details if shipping details was saved in profile details page.
-- Automated inventory updating. Automatically updates inventory whenever there is a new  payment success or payment failure stripe webhook received.
+- Automated inventory updating. Automatically updates inventory whenever there is a stripe payment success or payment failure webhook received.
 
-### **Custommers App** [Profile image](project_files/images/surfaice/profile.png)
-- View purchase history, Interact and monitor orders, user support tickets.
+Checkout succes page screenshot [image](project_files/images/surfaice/success.png)
+- Checkout succes page view order summary, payment succes or failure.
+- Button for user to confirm order reception.
+- Link to the product review page, only visible after product purchase and if order status has been marked as shipped.
+- Link to the problem resolution page for user to report an issue with Order, product or other.
+- For user with superuser privilages.. Change Order status form is available.
+    - Order status form options:
+        - Submitted
+        - Payment received - *update automaticly after stripe payment succes webhook received*
+        - Proccessed
+        - Shipped
+        - Canceled
+
+### **Custommers App** 
+Profile page screenshot [image](project_files/images/surfaice/profile.png)
+- User can view resolution support tickets if any was submited, that link to the support message app.
+- User can view purchase history with Links to the success order summary page.
+
+Update or delete user profile form screenshoot [here](project_files/images/surfaice/profile-details.JPG)
 - A customer is able to add or update profile information and shopping address information.
-    - Update or delete user profile form [image](project_files/images/surfaice/profile-details.JPG)
 
-### **Adminidtration App** [Manage image](project_files/images/surfaice/manage.png)
-- Monitor and Update Orders, Inventory Items, Product discounts and User support tickets
-- A superuser management interface for easy and fast product upload delete or update. 
-    - Add new product form [image](project_files/images/surfaice/add-form.JPG)
-    - Update or delete product form [image](project_files/images/surfaice/update.JPG)
+### **Adminidtration App**
+Admin manage page screenshot [image](project_files/images/surfaice/manage.png)
+- Admin can Monitor and Update uncompleded user orders with links to the order summary page, 
+- Admin can view Inventory Items that are low stock or out of stock with links to product updates page. 
+- Admin can view All the Products with discounts applied and links to each product for easy access.
+- Admin can view all the unresolved User resolution support tickets. Each ticket links to the support message app to be able to interact with user.
+
+Add new product form screenshot [image](project_files/images/surfaice/add-form.JPG)\
+Update or delete product form screenshot [image](project_files/images/surfaice/update.JPG)
+- A superuser management interface for easy and fast product upload delete or update.
+
 
 ### **Review App** []()
 - 
