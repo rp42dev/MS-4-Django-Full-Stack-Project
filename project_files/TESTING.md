@@ -20,7 +20,7 @@
   Corrected test errors [here](#w3-HTML-Validation-errors)
   ✓ Index Page screenshot [result](../project_files/images/validation/html/home.JPG)\
   ✓ product Page screenshot [result](../project_files/images/validation/html/product.JPG)\
-  ✓ shop Page screenshot [result](../project_files/images/validation/html/shop.JPG)\
+  ✓ shop Page screenshot [result](../project_files/images/validation/html/shop.JPG)
   -  Manual testing performed for the folowing pages.
       ✓ Profile page\
       ✓ Update user profile\
@@ -34,23 +34,24 @@
       ✓ Add new product\
       ✓ Admin manage\
 
-- W3C CSS Validation
+- W3C CSS Validation\
   ✓ All the CSS files are error free [result](../project_files/images/validation/css.JPG) corrected test errors [here](#W3C-CSS-Validation-errors)\
-- PEP8 compliance test
-  ✓ All the custom .py files are error free. Scaning found some errors and all of them was was corrected [error result here](#PEP8-compliance-test-errors)\
+- PEP8 compliance test\
+  ✓ All the custom .py files are error free. Scaning found some errors and all of them was was corrected [error result here](#PEP8-compliance-test-errors)
 
-- Jshint
-  ✓ Main base.js
-  ✓ Main forms.js
-  ✓ Main paralax.js
-  ✓ Support support.js
-  ✓ Support messages.js
-  ✓ Reviews reviews.js
-  ✓ Home scrool-x.js
-  ✓ Cart cart.js
-  ✓ Shop shop.js
+- Jshint\
+All the javaScript files was tested using [jshint.com](https://jshint.com/)
+
+  ✓ Main base.js\
+  ✓ Main forms.js\
+  ✓ Main paralax.js\
+  ✓ Support support.js\
+  ✓ Support messages.js\
+  ✓ Reviews reviews.js\
+  ✓ Home scrool-x.js\
+  ✓ Cart cart.js\
+  ✓ Shop shop.js\
   ✓ Checkout stripe_elements.js
-
 
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)
@@ -142,6 +143,7 @@ Friends and family members helped point out any bugs or issues.
 ### **Bugs**
 
 Sripe iframe throws w3 html valitation errors.
+
 -
   ```html
   Error: Bad value __privateStripeMetricsController2980 for attribute name on element iframe: Browsing context name started with the underscore.

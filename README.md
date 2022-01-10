@@ -217,11 +217,12 @@ Line plots screenshot [image](project_files/images/wireframes/plot.jpg)
 # [&#8686;](#top)
 
 ## **Structure**
-Site structure screenshot [image](project_files/images/structure/structure.png)\
+Site structure [image](project_files/images/structure/structure.png)\
 Site structure Has changed slightly while progressing into the project.
 
-Relational database structure screenshot [image](project_files/images/structure/structure-db.png)\
-DB structure has slight changes made while progressing with this project.
+Old Relational database Django models diagram [image](project_files/images/structure/structure-db.png)\
+DB structure has slight changes made while progressing with this project.\
+New Relational database django models diagram [image](project_files/images/structure/db-models.png)
 
 ## **Skeleton**
 ### **Wireframes**
@@ -304,6 +305,8 @@ Desktop version nav screenshot [image](project_files/images/surfaice/pc-nav.png)
 Shop page screenshot [image](project_files/images/surfaice/shop.png)
 - Search functionality enables users to search by name and description keywords.
 - Sort products by Category, Style, Price (high to low)/(low to high), by name (a to z)/(z to a)and by rating (high to low)/(low to high).
+- Product DB Model field table [image](project_files/images/models/product-model.JPG)
+- Product Category DB Model field table [image](project_files/images/models/category-model.JPG)
 
 Individual Product page screenshot [image](project_files/images/surfaice/product.png)
 - Individual product page where user can add item to the cart.
@@ -333,7 +336,8 @@ Checkout page screenshot [image](project_files/images/surfaice/checkout.png)
 - Stripe checkout payment proccesor pay with credit card or debit card securely.
 - For registered user form will populate with user details if shipping details was saved in profile details page.
 - Automated inventory updating. Automatically updates inventory whenever there is a stripe payment success or payment failure webhook received.
-
+- Order DB Model field tale [image](project_files/images/models/model-Order.JPG)
+- Order DB Model field table [image](project_files/images/models/order-line-mdel.JPG)
 
 Checkout succes page screenshot [image](project_files/images/surfaice/success.png)
 - Checkout succes page view order summary, payment succes or failure.
@@ -355,6 +359,7 @@ Profile page screenshot [image](project_files/images/surfaice/profile.png)
 
 Update or delete user profile form screenshoot [here](project_files/images/surfaice/profile-details.JPG)
 - A customer is able to add or update profile information and shopping address information.
+- User Address DB Model Fields [image](project_files/images/models/address-model.JPG)
 
 ### **Adminidtration App**
 Admin manage page screenshot [image](project_files/images/surfaice/manage.png)
@@ -374,6 +379,7 @@ Leave review page screenshoot [image](project_files/images/surfaice/leave-review
 
 Reviews page screenshoot [image](project_files/images/surfaice/review.png)
 - All the product reviews available to view for any user.
+- Review DB Model Fields table [iamge](project_files/images/models/review-model.JPG)
 
 ### **Suppord App** 
 Sumbit support ticket [image](project_files/images/surfaice/submit.JPG)
@@ -390,7 +396,8 @@ Suppor Messsages [image](project_files/images/surfaice/support-messsages.png)
         - Sumbitted
         - In review
         - Resolved
-
+- Customer support DB Model Fields table [image](project_files/images/models/customer-sipport-model.JPG)
+- Support message DB Model Fields table[image](project_files/images/models/message-model.JPG)
 
 Contact us form [image](project_files/images/surfaice/contact.JPG)
 
@@ -399,10 +406,10 @@ Contact us form [image](project_files/images/surfaice/contact.JPG)
 ### **Authentication and forms**
 - Crispy forms styling and customized form imputs to match the site styling.
 - Frontend validation\
-  - Bootstrap combined with custom Javascript required field validation.\
-  - Custom Javascript checkbox validation to prevent accidental deletion.\
+  - Bootstrap combined with custom Javascript required field validation.
+  - Custom Javascript checkbox validation to prevent accidental deletion.
 - Backend validation\
-  - Django out of the box form field validation such as regex, required and other...\
+  - Django out of the box form field validation such as regex, required and other...
 
 ### **Toasts for messages**
 - Bootstrap toast template used to display backend messages.
