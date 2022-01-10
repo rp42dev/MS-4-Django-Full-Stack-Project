@@ -289,38 +289,59 @@ Thanks To:
 
 # [&#8686;](#-)
 # ***Features***
-### **Home App** 
+## **Home App** 
 Index page screenshot [image](project_files/images/surfaice/home.png)
 - Hero section images with added Parallax effects on scroll.
 - Recently added hats horisontal scroll feature limited to letest 10 items.
 
-### **Navigation** 
+## **Navigation** 
 Mobile version nav screenshot [image](project_files/images/surfaice/m-nav.png)\
 Desktop version nav screenshot [image](project_files/images/surfaice/pc-nav.png)
 - Link active change color if active links on each page.
 - Shop page has it's own navigation. Includes search and sorting functionatity.
 - Shop page navigation shrinks while scrolling down and extends while scroll upwards and at top position nav is fully extended.
 
-### **Shop App**
+## **Shop App**
 Shop page screenshot [image](project_files/images/surfaice/shop.png)
 - Search functionality enables users to search by name and description keywords.
 - Sort products by Category, Style, Price (high to low)/(low to high), by name (a to z)/(z to a)and by rating (high to low)/(low to high).
-- Product DB Model field table [image](project_files/images/models/product-model.JPG)
-- Product Category DB Model field table [image](project_files/images/models/category-model.JPG)
+
+**Product Model**
+| Field Name | Field type | options |
+| ----- | ----- | ----- |
+|sku |CharField|max_length=60|
+|category |ForeignKey|'Category', null=True, blank=True, on_delete=models.SET_NULL|
+|style |CharField|max_length=60|
+|color |CharField|max_length=60|
+|name |CharField|max_length=60|
+|description |TextField|max_length=250|
+|price |DecimalField| max_digits=6, decimal_places=2|
+|image |ImageField|null=True, blank=True|
+|sale |BooleanField|default=False|
+|sale_price |DecimalField|max_digits=6, decimal_places=2, null=True, blank=True|
+|item_count |IntegerField|blank=False, null=False, default=0|
+|rating |DecimalField|max_digits=6, decimal_places=2, null=True, blank=True|
+|rating_counter |PositiveSmallIntegerField|default=0|
+
+**Categories Model**
+| Field Name | Field type | options |
+| ----- | ----- | ----- |
+|name |CharField|max_length=60|
+|friendly_name |CharField|max_length=60, null=True, blank=True|
 
 Individual Product page screenshot [image](project_files/images/surfaice/product.png)
 - Individual product page where user can add item to the cart.
 - Links for user to access review page for the current product.
 - User with superuser privileges has access to link to the update product page.
 
-### **Cart App** 
+## **Cart App** 
 Cart screenshot [image](project_files/images/surfaice/cart.png)
 - Add items to the cart session Item id, item count, item price.
 - In cart context perform various calculations such as item times count, 
 - item count times price, shipping price, discount prie total, and finaly grand total.
 - Sunchronize inventory and cart session product quantity. Check each time the cart is accessed for inventory update then adjust acordingly. The products actual stock quantity is not changed in cart but only after successfull payment.
 
-### **Checkout App** 
+## **Checkout App** 
 
 The website is connected to stripe test account.\
 Use test payment details bellow.
@@ -330,14 +351,41 @@ Use test payment details bellow.
 | Credit card|The card payment succeeds and doesn’t require authentication | Credit card number 4242 4242 4242 4242 with any expiry, CVC, and postal code. |
 | Credit card  | The card payment requires authentication. | Credit card number 4000 0025 0000 3155 with any expiry, CVC, and postal code. |
 | Credit card | The card is declined with a decline code such as insufficient_funds. | Credit card number 4000 0000 0000 9995 with any expiry, CVC, and postal code. |
-#
 
 Checkout page screenshot [image](project_files/images/surfaice/checkout.png)
 - Stripe checkout payment proccesor pay with credit card or debit card securely.
 - For registered user form will populate with user details if shipping details was saved in profile details page.
 - Automated inventory updating. Automatically updates inventory whenever there is a stripe payment success or payment failure webhook received.
-- Order DB Model field tale [image](project_files/images/models/model-Order.JPG)
-- Order DB Model field table [image](project_files/images/models/order-line-mdel.JPG)
+
+**Order Model**
+| Field Name | Field type | options |
+| ----- | ----- | ----- |
+|date |DateTimeField|auto_now_add=True|
+|status |CharField| max_length=50, default=SUBMITTED, choices=ORDER_STATUS|
+|order_number |CharField| max_length=32, null=False, editable=False|
+|total |DecimalField| max_digits=10, decimal_places=2, default=0)
+|delivery |DecimalField| max_digits=6, decimal_places=2, default=0|
+|items |TextField |null=False, blank=False, default=''|
+|stripe_pid |CharField| max_length=254, null=False, blank=False, default=''|
+|paid |BooleanField|default=False)
+|user_profile |ForeignKey| User, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders'|
+|full_name |CharField|max_length=50|
+|email |EmailField|max_length=50|
+|shipping_name |CharField|max_length=50|
+|address_line_1 |CharField|max_length=100|
+|address_line_2 |CharField|max_length=100, blank=True|
+|city |CharField|max_length=60|
+|county |CharField|max_length=60, blank=True|
+|postcode |CharField|max_length=30, blank=True|
+|country |CountryField|blank_label='Country'|
+
+**OrderLine Model**
+| Field Name | Field type | options |
+| ----- | ----- | ----- |
+|product |ForeignKey|Product, on_delete=models.CASCADE|
+|quantity |IntegerField|default=1|
+|order |ForeignKey|Order, on_delete=models.CASCADE, related_name='lineitems'|
+|product_total |DecimalField|max_digits=6, decimal_places=2, editable=False, default=0|
 
 Checkout succes page screenshot [image](project_files/images/surfaice/success.png)
 - Checkout succes page view order summary, payment succes or failure.
@@ -352,16 +400,26 @@ Checkout succes page screenshot [image](project_files/images/surfaice/success.pn
         - Shipped
         - Canceled
 
-### **Custommers App** 
+## **Custommers App** 
 Profile page screenshot [image](project_files/images/surfaice/profile.png)
 - User can view resolution support tickets if any was submited, that link to the support message app.
 - User can view purchase history with Links to the success order summary page.
 
 Update or delete user profile form screenshoot [here](project_files/images/surfaice/profile-details.JPG)
 - A customer is able to add or update profile information and shopping address information.
-- User Address DB Model Fields [image](project_files/images/models/address-model.JPG)
 
-### **Adminidtration App**
+**UserAddress Model**
+| Field Name | Field type | options |
+| ----- | ----- | ----- |
+|user|OneToOneField|User, on_delete=models.CASCADE|
+|address_line_1|CharField|max_length=100, null=True, blank=True|
+|address_line_2|CharField|max_length=100, null=True, blank=True|
+|city|CharField|max_length=60, null=True, blank=True|
+|county|CharField|max_length=60, null=True, blank=Tru|
+|postcode|CharField|max_length=30, null=True, blank=True|
+|country |CountryField|blank_label='Country', null=True, blank=True|
+
+## **Adminidtration App**
 Admin manage page screenshot [image](project_files/images/surfaice/manage.png)
 - Admin can Monitor and Update uncompleded user orders with links to the order summary page, 
 - Admin can view Inventory Items that are low stock or out of stock with links to product updates page. 
@@ -372,16 +430,26 @@ Add new product form screenshot [image](project_files/images/surfaice/add-form.J
 Update or delete product form screenshot [image](project_files/images/surfaice/update.JPG)
 - A superuser management interface for easy and fast product upload delete or update.
 
-### **Review App**
+## **Review App**
 Leave review page screenshoot [image](project_files/images/surfaice/leave-review.png)
 - Enable user to leave a review and rate the product based on 5-star rating.
 - Product review access is available for registered users and after product purchase.
 
 Reviews page screenshoot [image](project_files/images/surfaice/review.png)
 - All the product reviews available to view for any user.
-- Review DB Model Fields table [iamge](project_files/images/models/review-model.JPG)
 
-### **Suppord App** 
+**Review Model**
+| Field Name | Field type | options |
+| ----- | ----- | ----- |
+|user_profile| ForeignKey|User, on_delete=models.CASCADE, related_name='user_review'|
+|product| ForeignKey|Product, on_delete=models.CASCADE, related_name='product_review'|
+|rating |PositiveSmallIntegerField|default=5, choices=CHOICES|
+|review| TextField|max_length=500|
+|order| ForeignKey|Order, on_delete=models.CASCADE, related_name='order_review', null=True|
+|date |DateTimeField|auto_now_add=True|
+
+
+## **Suppord App** 
 Sumbit support ticket [image](project_files/images/surfaice/submit.JPG)
 
 - Users can submit if any issues with Account | Order or Product 
@@ -396,8 +464,27 @@ Suppor Messsages [image](project_files/images/surfaice/support-messsages.png)
         - Sumbitted
         - In review
         - Resolved
-- Customer support DB Model Fields table [image](project_files/images/models/customer-sipport-model.JPG)
-- Support message DB Model Fields table[image](project_files/images/models/message-model.JPG)
+
+**CustomerSuport Model**
+| Field Name | Field type | options |
+| ----- | ----- | ----- |
+|status|CharField|max_length=60, default=SUBMITTED, choices=STATUS_CHOICES|
+|user_profile|ForeignKey|User, on_delete=models.CASCADE, related_name='user_support'|
+|issue|CharField|max_length=60, default=SELECT, choices=ISSUE_CHOICES|
+|message|TextField|max_length=500|
+|order_line|ForeignKey|OrderLine, on_delete=models.CASCADE related_name='orderline_support', null=True|
+|order|ForeignKey|Order, on_delete=models.CASCADE, related_name='order_support', null=True|
+|date|DateTimeField|auto_now_add=True|
+
+**Messages Model**
+| Field Name | Field type | options |
+| ----- | ----- | ----- |
+|thread |ForeignKey| CustomerSuport, null=False, blank=False, on_delete=models.CASCADE, related_name='messages_thread'|
+|user| ForeignKey| User, null=False, blank=False, on_delete=models.CASCADE, related_name="sender"|
+|message| extField| max_length=500|
+|timestamp| DateTime| Fieldauto_now_add=True|
+|unread| BooleanField| default=True|
+
 
 Contact us form [image](project_files/images/surfaice/contact.JPG)
 
@@ -416,6 +503,9 @@ Contact us form [image](project_files/images/surfaice/contact.JPG)
 - Message level checks levels 40 error, 30 warling, 25 success, and info for rest of the messages.
 - Bootstrap Toast used to display cart content if user adds new item or hovers over cart icon in nav bar.
 - Support messages toast is shown if user hover over message icon in nav bar.
+
+
+
 
 ## **Features to implement**
 
