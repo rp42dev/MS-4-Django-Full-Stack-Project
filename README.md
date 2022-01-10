@@ -102,7 +102,7 @@ source: [code institute](https://codeinstitute.net/)
 1. Easy navigate and find the products that they are interested in buying.
 1. Easily select the product that user wishes to purchase.
 1. Register account to have personal account.
-1. Login and Save shopping-cart and shipping details for fast checkout.
+1. Login and Save shipping details for fast checkout.
 1. Update account details/shipping details or delete their account.
 1. Enable the User to track their order history.
 1. To be able to make instant and safe payments.
@@ -398,8 +398,11 @@ Contact us form [image](project_files/images/surfaice/contact.JPG)
 
 ### **Authentication and forms**
 - Crispy forms styling and customized form imputs to match the site styling.
-- Javascript validation for frontend input required field validation.
-- Original Django backend form regex and orher vield validation.
+- Frontend validation\
+  - Bootstrap combined with custom Javascript required field validation.\
+  - Custom Javascript checkbox validation to prevent accidental deletion.\
+- Backend validation\
+  - Django out of the box form field validation such as regex, required and other...\
 
 ### **Toasts for messages**
 - Bootstrap toast template used to display backend messages.

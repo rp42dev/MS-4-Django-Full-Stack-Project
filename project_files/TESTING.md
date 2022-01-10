@@ -15,22 +15,24 @@
   The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
 - W3C Markup Validator
-
-- Manual testing for folowing pages app pagos are error free expect for stripe iframe throws errors.
-  - Profile page
-  - Update user profile
-  - Reviews page
-  - Report problen
-  - Contact us page
-  - Checkout page
-  - Support messages
-  - Checkout success page 
-  - Add new product
-  - Admin manage
-
-- [Index Page](../project_files/images/validation/html/home.JPG)
-- [product Page](../project_files/images/validation/html/product.JPG)
-- [shop Page](../project_files/images/validation/html/shop.JPG)
+  All the pages are HTML error free expect for stripe iframe errors.
+  For Certain pages manual testing was performed, due to a w3-Html-checker unable access pages for reasons like.. requeries login, administrative privilages, requeres post or other...
+  Test errors can be seen [here](#w3-HTML-Validation)
+  - Index Page screenshot [result](../project_files/images/validation/html/home.JPG)
+  - product Page screenshot [result](../project_files/images/validation/html/product.JPG)
+  - shop Page screenshot [result](../project_files/images/validation/html/shop.JPG)
+  -  Manual testing performed for the folowing pages.
+      - Profile page
+      - Update user profile
+      - Reviews page
+      - Report problen
+      - Contact us page
+      - Checkout page
+      - Cart page
+      - Support messages
+      - Checkout success page 
+      - Add new product
+      - Admin manage
 
 - W3C CSS Validation
 - PEP8 requirements
@@ -77,32 +79,45 @@
 [Back to Readme.md](../README.md)
 
 ### Site Responsive design test
-The Website is fully responsive and will cover most of the devices (screen sizes) and resolutions with minimum width of 330px.
+ 
+Testing was performed for responsiveness across different browsers such as  Chrome, Opera, Microsoft Edge, and Firefox desktop version browsers and Huawei p30 Pro chrome and android browser.
 
-Below i have attached testing gif video for each page tested.
-- Index Page [GIF]()
+As well I have performed various tests in Chrome DevTools to Test a variety of devices such as Desktop, Laptop, iPhone7, iPhone 8 & iPhone X.
+
+The Website is fully responsive and will cover most of the devices (screen sizes) and resolutions with minimum width of 320px.
 
 
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)
 
-### CRUD 
-(create, read, update, and delete) Test
-- Create
+### **CRUD** 
+Databases (create, read, update, and delete).
+- All users are able to Create a purchase order
 
-- Read
-
-- Update
-
-- Delete
-
+- Administrator account:\
+    ✓ Add new products to the store inventory.\
+    ✓ Update product details, inventory stock, product discounts.\
+    ✓ Delete products from the inventory altogether.\
+    ✓ Update purchase order status to shippedor or cancelled.\
+    ✓ Update resolution support ticket status to in-review or resolved.\
+    ✓ Create messages after  resolution support ticket was created.\
+- Registered users:\
+    ✓ User is able to create account to have personal account.\
+    ✓ Update account contact and shipping details.\
+    ✓ User can delete their account if they wish so.\
+    ✓ Create review for the products after purchase.\
+    ✓ Update purchase order status to shippedor completed.\
+    ✓ Create resolution support tickets if they encounter any problems.\
+    ✓ Create messages after resolution support ticket was created.\
 
 ### Testing Forms and validation
+- Frontend\
+  ✓ Bootstrap combined with custom Javascript required field validation.\
+  ✓ Custom Javascript checkbox validation to prevent accidental deletion.\
+- Backend\
+  ✓ Django out of the box form field validation such as regex, required and other...\
 
 ### **Future Testing**
-I have tested the app on a variety of browsers such as  Chrome, Opera, Microsoft Edge, and Firefox desktop version browsers and Huawei p30 Pro chrome and android browser.
-
-I have used Chrome DevTools to Test a variety of devices such as Desktop, Laptop, iPhone7, iPhone 8 & iPhone X for responsive design.
 
 Friends and family members helped point out any bugs or issues.
 
@@ -178,14 +193,14 @@ Sripe iframe throws w3 html valitation errors.
  
  - Tables cell misalignment.
 
-  ![img](images/bugs/missalignment-tables.JPG)
+    ![img](images/bugs/missalignment-tables.JPG)
 
-  ```html
-  <!--  simpe solution to add bootstrap col-4 class for each column. -->
-  <th class="col-4">{{ item.sku }}</th>
-  ```
+    ```html
+    <!--  simpe solution to add bootstrap col-4 class for each column. -->
+    <th class="col-4">{{ item.sku }}</th>
+    ```
 
-w3 testing
+#### **w3-HTML-Validation**
 
 Cart no errors
 
