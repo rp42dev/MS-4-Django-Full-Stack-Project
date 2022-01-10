@@ -21,15 +21,15 @@
 
             <tbody>
                 <tr class="table-light font-monospace">
-                    <td class="col-4"><a href="{% url 'shop_item' item.id %}" title="{{ order.name }}">
-                            {% thumbnail item.image "80" as im %}
-                            <a href="{% url 'shop_item' item.id %}">
-                                <div class="d-flex align-items-center ">
-                                    <img src="{{ im.url }}" alt="{{ item.product.name }}" />
-                                </div>
-                            </a>
-                            {% endthumbnail %}
-                        </a></td>
+                    <td class="col-4">
+                        {% thumbnail item.image "80" as im %}
+                        <a href="{% url 'update_item' item.id %}" title="{{ order.name }}">
+                            <div class="d-flex align-items-center ">
+                                <img src="{{ im.url }}" alt="{{ item.product.name }}" />
+                            </div>
+                        </a>
+                        {% endthumbnail %}
+                    </td>
                     <td class="font-monospace text-center col-4">{{ item.price }}</td>
                     <td class="font-monospace text-end col-4">{{ item.sale_price }}</td>
                 </tr>

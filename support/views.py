@@ -185,14 +185,15 @@ def messages_view(request, issue_id):
             messages.error(request, 'Error loading support ticket')
             return redirect(reverse('home'))
     else:
-        status_form = IssueStatusForm(instance=issue)
+        status_form = IssueStatusForm(
+            instance=issue, data=request.POST or None)
         if 'issue_status-status' in request.POST:
             if status_form.is_valid():
                 status = request.POST['issue_status-status']
                 issue.status = status
                 issue.save()
                 messages.success(
-                    request, f'Issue status was changed to {status}')
+                    request, f'Issue status changed to {status}')
                 return redirect(reverse('messages_view', args=[issue_id]))
 
     all_messages = Message.objects.all()
@@ -207,7 +208,7 @@ def messages_view(request, issue_id):
                 message=request.POST['mesage-message'],
             )
         message.save()
-        messages.success(request, 'Your message was sent successfuly')
+        messages.success(request, 'Your message sent successfuly')
         return redirect(reverse('messages_view', args=[issue_id]))
     if 'unread' in request.GET:
         for message in thread_messages:

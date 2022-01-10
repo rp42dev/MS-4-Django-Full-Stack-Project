@@ -34,7 +34,7 @@
       - Add new product
       - Admin manage
 
-- W3C CSS Validation
+- W3C CSS Validation [result](../project_files/images/validation/css.JPG)
 - PEP8 requirements
 - Jshint
 
@@ -159,6 +159,13 @@ Sripe iframe throws w3 html valitation errors.
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)
 ### **Solved issues or bugs**
+- Status form was not validating\
+solution was to add folowing to the form [source](https://stackoverflow.com/questions/28551146/django-form-returns-is-valid-false-and-no-errors)
+  ```python
+  data=request.POST or None
+  ```
+
+
 - ![img](images/bugs/Capture.JPG)
 
   ```javascript
@@ -308,6 +315,45 @@ Support messages
   ection-->↩<section class="page-section">↩↩    
   ```
 
+#### **W3C-CSS-Validation-errors**
+- error
+  ```css
+  /* I have romoved folowing property from css file */
+
+  Value Error : max-height auto is not a max-height value : auto
+  ```
+- error
+  ```css
+  /* I have romoved properties from css file */
+
+  ::-webkit-input-placeholder is a vendor extended pseudo-element
+  ::-moz-placeholder is a vendor extended pseudo-element
+  :-ms-input-placeholder is a vendor extended pseudo-class
+  ```
+
+- warning
+  ```css
+  /* I have replaced property*/
+
+  "Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" is a vendor extension
+  ```
+
+- warning
+  ```css
+  /* I have corrected property */
+
+   Same color for background-color and border-color
+  ```
+
+- warnings
+  ```css
+  /* I have corrected properties with correct values */
+
+  309		Same color for background-color and border-color
+  316	.btn-social:active	Same color for background-color and border-color
+  316	.btn-social:hover	Same color for background-color and border-color
+  351		-webkit-overflow-scrolling is a vendor extension
+  ```
 
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)

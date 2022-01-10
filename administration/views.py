@@ -73,10 +73,9 @@ def order_view(request, order_number):
 
     profile = order.user_profile
     admin = True
-    status_form = OrderStatusForm(instance=order)
-
+    status_form = OrderStatusForm(
+        instance=order, data=request.POST or None)
     if 'status' in request.POST:
-        status_form = OrderStatusForm(request.POST)
         if status_form.is_valid():
             order.status = request.POST['status']
             order.save()

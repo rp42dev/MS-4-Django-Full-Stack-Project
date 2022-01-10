@@ -181,9 +181,9 @@ def add_item(request):
 
 
 @login_required
-def edit_item(request, item_id):
+def update_item(request, item_id):
     """
-    Edit items from the store requeres
+    Update items from the store requeres
     login and superuser privileges
     Get for field date to template
     POST the form field data and save
@@ -211,7 +211,7 @@ def edit_item(request, item_id):
         'item': item,
     }
 
-    return render(request, 'admin/edit.html', context)
+    return render(request, 'admin/update.html', context)
 
 
 @login_required

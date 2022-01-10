@@ -46,7 +46,6 @@ a:hover .stars {
 }
 
 .review-container {
-    max-height: auto;
     overflow: auto;
 }
 

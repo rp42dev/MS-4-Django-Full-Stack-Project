@@ -32,9 +32,9 @@
         <div>
             <!-- Sale badge-->
             {% if item.product.sale %}
-            <p class="text-danger font-monospace  p-0 m-0  fw-bolder">${{ item.subtotal }} </p>
+            <p class="text-danger font-monospace p-0 m-0  fw-bolder">${{ item.subtotal }} </p>
             {% else %}
-            <p class="font-monospace  p-0 m-0  fw-bolder">${{ item.subtotal }}</p>
+            <p class="font-monospace p-0 m-0 fw-bolder">${{ item.subtotal }}</p>
             {% endif %}
             <p class="number font-monospace p-0 m-0 time">Quantity: {{ item.quantity }}</p>
         </div>

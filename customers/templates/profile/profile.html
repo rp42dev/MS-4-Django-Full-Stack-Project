@@ -67,11 +67,10 @@
                 My orders
             </div>
             <div class="card-body p-0">
+
                 {% if orders %}
                 {% for order in orders reversed %}
-
                 <p class="time font-monospace px-2">Odrer Date: {{ order.date }}</p>
-
                 <table class="table table-borderless mb-0">
                     <thead>
                         <tr>
