@@ -17,7 +17,7 @@
 - W3C Markup Validator
   All the pages are HTML error free expect for stripe iframe errors.
   For Certain pages manual testing was performed, due to a w3-Html-checker unable access pages for reasons like.. requeries login, administrative privilages, requeres post or other...
-  Test errors can be seen [here](#w3-HTML-Validation)
+  Corrected test errors [here](#w3-HTML-Validation)
   - Index Page screenshot [result](../project_files/images/validation/html/home.JPG)
   - product Page screenshot [result](../project_files/images/validation/html/product.JPG)
   - shop Page screenshot [result](../project_files/images/validation/html/shop.JPG)
@@ -34,8 +34,11 @@
       - Add new product
       - Admin manage
 
-- W3C CSS Validation [result](../project_files/images/validation/css.JPG)
-- PEP8 requirements
+- W3C CSS Validation
+  - All the CSS files are error free [result](../project_files/images/validation/css.JPG) corrected test errors [here](#W3C-CSS-Validatio)
+- PEP8 compliance test
+  - All the custom .py files are error free. Scaning found some errors and all of them was was corrected [error result here](#PEP8-compliance-test-error)
+
 - Jshint
 
 
@@ -316,6 +319,7 @@ Support messages
   ```
 
 #### **W3C-CSS-Validation-errors**
+
 - error
   ```css
   /* I have romoved folowing property from css file */
@@ -354,6 +358,45 @@ Support messages
   316	.btn-social:hover	Same color for background-color and border-color
   351		-webkit-overflow-scrolling is a vendor extension
   ```
+
+#### **PEP8-compliance-test-errors**
+- 
+```python
+/workspace/MS-4-Django-Full-Stack-Project./a_hat_shop/settings.py:145:80: E501 line too long (91 > 79 characters)
+/workspace/MS-4-Django-Full-Stack-Project./a_hat_shop/settings.py:148:80: E501 line too long (81 > 79 characters)
+/workspace/MS-4-Django-Full-Stack-Project./a_hat_shop/settings.py:151:80: E501 line too long (82 > 79 characters)
+/workspace/MS-4-Django-Full-Stack-Project./a_hat_shop/settings.py:154:80: E501 line too long (83 > 79 characters)
+/workspace/MS-4-Django-Full-Stack-Project./a_hat_shop/settings.py:226:30: E261 at least two spaces before inline comment
+/workspace/MS-4-Django-Full-Stack-Project./administration/views.py:98:25: E126 continuation line over-indented for hanging indent
+/workspace/MS-4-Django-Full-Stack-Project./cart/views.py:33:21: E126 continuation line over-indented for hanging indent
+/workspace/MS-4-Django-Full-Stack-Project./cart/views.py:76:21: E126 continuation line over-indented for hanging indent
+/workspace/MS-4-Django-Full-Stack-Project./cart/views.py:93:13: E126 continuation line over-indented for hanging indent
+/workspace/MS-4-Django-Full-Stack-Project./cart/views.py:144:21: E126 continuation line over-indented for hanging indent
+/workspace/MS-4-Django-Full-Stack-Project./cart/views.py:161:21: E126 continuation line over-indented for hanging indent
+/workspace/MS-4-Django-Full-Stack-Project./cart/views.py:167:21: E126 continuation line over-indented for hanging indent
+/workspace/MS-4-Django-Full-Stack-Project./checkout/urls.py:10:80: E501 line too long (94 > 79 characters)
+/workspace/MS-4-Django-Full-Stack-Project./checkout/views.py:83:1: W293 blank line contains whitespace
+/workspace/MS-4-Django-Full-Stack-Project./checkout/webhook_handler.py:85:1: W293 blank line contains whitespace
+/workspace/MS-4-Django-Full-Stack-Project./customers/forms.py:17:17: E126 continuation line over-indented for hanging indent
+/workspace/MS-4-Django-Full-Stack-Project./customers/views.py:42:13: E126 continuation line over-indented for hanging indent
+/workspace/MS-4-Django-Full-Stack-Project./customers/views.py:48:9: E121 continuation line under-indented for hanging indent
+/workspace/MS-4-Django-Full-Stack-Project./customers/views.py:94:36: E241 multiple spaces after ','
+/workspace/MS-4-Django-Full-Stack-Project./customers/views.py:103:21: E241 multiple spaces after ','
+/workspace/MS-4-Django-Full-Stack-Project./reviews/admin.py:14:24: E241 multiple spaces after ','
+/workspace/MS-4-Django-Full-Stack-Project./shop/forms.py:29:18: E126 continuation line over-indented for hanging indent
+/workspace/MS-4-Django-Full-Stack-Project./shop/models.py:8:1: E302 expected 2 blank lines, found 1
+/workspace/MS-4-Django-Full-Stack-Project./shop/models.py:51:24: E126 continuation line over-indented for hanging indent
+/workspace/MS-4-Django-Full-Stack-Project./shop/models.py:61:80: E501 line too long (80 > 79 characters)
+/workspace/MS-4-Django-Full-Stack-Project./shop/views.py:78:1: W293 blank line contains whitespace
+/workspace/MS-4-Django-Full-Stack-Project./support/admin.py:26:40: E241 multiple spaces after ','
+/workspace/MS-4-Django-Full-Stack-Project./support/admin.py:27:28: E241 multiple spaces after ','
+/workspace/MS-4-Django-Full-Stack-Project./support/models.py:65:14: E126 continuation line over-indented for hanging indent
+/workspace/MS-4-Django-Full-Stack-Project./support/models.py:68:14: E126 continuation line over-indented for hanging indent
+/workspace/MS-4-Django-Full-Stack-Project./support/views.py:31:17: E126 continuation line over-indented for hanging indent
+/workspace/MS-4-Django-Full-Stack-Project./support/views.py:43:17: E126 continuation line over-indented for hanging indent
+```
+
+
 
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)

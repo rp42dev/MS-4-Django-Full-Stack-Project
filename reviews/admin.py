@@ -11,7 +11,7 @@ class ProductReviewAdmin(admin.ModelAdmin):
                        'rating', 'order', 'order_id', 'date')
 
     fields = ('user_profile', 'order', 'product', 'rating',
-              'review',  'order_id', 'date')
+              'review', 'order_id', 'date')
 
     list_display = ('user_profile', 'product',
                     'rating', 'order_id', 'date')

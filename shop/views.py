@@ -75,7 +75,7 @@ def shop(request):
             # Sort by style
             styles = True
             style = request.GET['style']
-            
+
             if style != 'all':
                 products = products.filter(style=style)
 

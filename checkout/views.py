@@ -80,7 +80,7 @@ def checkout(request):
         profile = request.user
         if profile.first_name or profile.last_name:
             full_name = f'{profile.first_name} {profile.last_name}'
-        
+
             form2 = ContactForm(initial={
                 'full_name': full_name,
                 'email': profile.email,

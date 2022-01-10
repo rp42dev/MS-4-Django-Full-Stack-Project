@@ -28,8 +28,8 @@ def contact_view(request):
         message = request.POST.get('message')
 
         body = render_to_string(
-                'email/customer-message.txt',
-                {'name': name, 'email': email, 'message': message})
+            'email/customer-message.txt',
+            {'name': name, 'email': email, 'message': message})
 
         # Message from user
         send_mail(
@@ -40,8 +40,8 @@ def contact_view(request):
         )
 
         body = render_to_string(
-                'email/auto-response.txt',
-                {'name': name, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+            'email/auto-response.txt',
+            {'name': name, 'contact_email': settings.DEFAULT_FROM_EMAIL})
 
         # Auto response
         send_mail(

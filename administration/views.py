@@ -95,7 +95,7 @@ def order_view(request, order_number):
 
     if profile:
         order_reviews = profile.user_review.filter(
-                        order__order_number=order_number)
+            order__order_number=order_number)
 
         order_list = list()
 

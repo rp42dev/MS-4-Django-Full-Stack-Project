@@ -62,11 +62,11 @@ class Message(models.Model):
     Boolean field read unread messags
     """
     thread = models.ForeignKey(
-             CustomerSuport, null=False, blank=False,
-             on_delete=models.CASCADE, related_name='messages_thread')
+        CustomerSuport, null=False, blank=False,
+        on_delete=models.CASCADE, related_name='messages_thread')
     user = models.ForeignKey(
-             User, null=False, blank=False,
-             on_delete=models.CASCADE, related_name="sender")
+        User, null=False, blank=False,
+        on_delete=models.CASCADE, related_name="sender")
     message = models.TextField(max_length=500)
     timestamp = models.DateTimeField(auto_now_add=True)
     unread = models.BooleanField(default=True)

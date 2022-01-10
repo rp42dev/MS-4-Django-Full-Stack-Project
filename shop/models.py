@@ -5,6 +5,7 @@
 from django.db import models
 from django.db.models import Avg
 
+
 class Category(models.Model):
     """Product categogy model"""
     name = models.CharField(max_length=60)
@@ -48,7 +49,7 @@ class Product(models.Model):
         """Agregate rating each time user rates the product"""
         self.rating_counter = self.rating_counter + 1
         self.rating = self.product_review.aggregate(
-                       Avg('rating'))['rating__avg'] or 0
+            Avg('rating'))['rating__avg'] or 0
         self.save()
 
     def save(self, *args, **kwargs):
@@ -58,7 +59,8 @@ class Product(models.Model):
                 num = Product.objects.latest('id').id + 1
             except Product.DoesNotExist:
                 num = 1
-            sku = f'{self.style[0]}{str(self.category)[0]}{self.color[0]}-{num}'
+            sku = f'{self.style[0]}\
+                {str(self.category)[0]}{self.color[0]}-{num}'
             self.sku = sku.upper()
         super().save(*args, **kwargs)
 

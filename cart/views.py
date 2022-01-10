@@ -30,7 +30,7 @@ def cart_view(request):
 
     if not cart:
         messages.warning(
-                    request, 'Your cart is empty.')
+            request, 'Your cart is empty.')
         if url_back is not None:
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         else:
@@ -73,8 +73,8 @@ def add_to_cart(request, item_id):
         stock_cart = stock - cart[item_id]
         if stock_cart < 0:
             messages.warning(
-                    request, f'Only {product.item_count}\
-                        {product.name} was in stock items.')
+                request, f'Only {product.item_count}\
+                    {product.name} was in stock items.')
             return redirect(redirect_url)
         else:
             cart[item_id] += quantity
@@ -90,8 +90,8 @@ def add_to_cart(request, item_id):
 
     request.session['cart'] = cart
     messages.success(
-            request, f'{quantity} \
-                {product.name} added to the cart!', extra_tags='update')
+        request, f'{quantity} \
+            {product.name} added to the cart!', extra_tags='update')
 
     return redirect(redirect_url)
 
@@ -141,7 +141,7 @@ def update_cart(request, item_id):
         return redirect(reverse('cart'))
     else:
         messages.warning(
-                    request, 'Your cart is empty.')
+            request, 'Your cart is empty.')
         return redirect(reverse('shop'))
 
 
@@ -158,11 +158,11 @@ def remove_cart_item(request, item_id):
     cart.pop(item_id)
     request.session.modified = True
     messages.success(
-                    request, f'The hat {product.name}\
-                            was removed from cart')
+        request, f'The hat {product.name}\
+            was removed from cart')
     if cart:
         return redirect(reverse('cart'))
     else:
         messages.info(
-                    request, 'Your cart is empty.')
+            request, 'Your cart is empty.')
         return redirect(reverse('shop'))

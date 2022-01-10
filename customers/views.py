@@ -39,13 +39,13 @@ def customers(request):
         orders = False
 
     context = {
-            'issues_count': issues_count,
-            'order_count': order_count,
-            'reviews': reviews,
-            'all': all_orders,
-            'issues': issues,
-            'orders': profile.orders.all(),
-        }
+        'issues_count': issues_count,
+        'order_count': order_count,
+        'reviews': reviews,
+        'all': all_orders,
+        'issues': issues,
+        'orders': profile.orders.all(),
+    }
 
     return render(request, 'profile/profile.html', context)
 
@@ -91,7 +91,7 @@ def order_history(request, order_number):
 
     if not profile.is_superuser:
         if not order.user_profile == profile:
-            messages.error(request,  'Only order owner can view this page')
+            messages.error(request, 'Only order owner can view this page')
             return redirect(reverse('home'))
     admin = False
     status_form = None
@@ -100,7 +100,7 @@ def order_history(request, order_number):
         order.status = request.POST['completed']
         order.save()
         messages.success(
-            request,  f'Thanks for confirming\
+            request, f'Thanks for confirming\
             the receipt of the order #: {order.id}.')
         return redirect(reverse('order_history', args=[order_number]))
 

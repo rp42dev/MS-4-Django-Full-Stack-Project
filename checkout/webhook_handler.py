@@ -82,7 +82,7 @@ class StripeWhHandler:
         while attempt <= 5:
             try:
                 order = Order.objects.get(stripe_pid=pid)
-               
+
                 order_exists = True
                 break
             except Order.DoesNotExist:

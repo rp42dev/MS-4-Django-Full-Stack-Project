@@ -14,9 +14,9 @@ class EditProfileForm(forms.ModelForm):
         """User model meta class form"""
         model = User
         fields = (
-                'email',
-                'first_name',
-                'last_name',
+            'email',
+            'first_name',
+            'last_name',
         )
 
     def __init__(self, *args, **kwargs):
