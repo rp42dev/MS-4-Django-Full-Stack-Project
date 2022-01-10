@@ -14,6 +14,19 @@ function Stars(value) {
 // I'm using invisible range input to 
 // sellect rating based on 5 stars
 const container = document.querySelector("#star");
+
+// Validate review form
+const button = document.querySelector('#review-submit');
+const star = document.querySelector('#star');
+
+// Disabled submit button
+// enable on clicking stars element
+button.disabled = true
+star.addEventListener('click', function (){ 
+    button.disabled = false
+})
+
+// Change star color baser on mouse position
 container.addEventListener("mousemove", (e) => {
     let rect = container.getBoundingClientRect();
     xp = parseInt(((e.clientX - rect.left) / (rect.right - rect.left)) * 100)

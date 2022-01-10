@@ -17,29 +17,36 @@
 - W3C Markup Validator
   All the pages are HTML error free expect for stripe iframe errors.
   For Certain pages manual testing was performed, due to a w3-Html-checker unable access pages for reasons like.. requeries login, administrative privilages, requeres post or other...
-  Corrected test errors [here](#w3-HTML-Validation)
-  - Index Page screenshot [result](../project_files/images/validation/html/home.JPG)
-  - product Page screenshot [result](../project_files/images/validation/html/product.JPG)
-  - shop Page screenshot [result](../project_files/images/validation/html/shop.JPG)
+  Corrected test errors [here](#w3-HTML-Validation-errors)
+  ✓ Index Page screenshot [result](../project_files/images/validation/html/home.JPG)\
+  ✓ product Page screenshot [result](../project_files/images/validation/html/product.JPG)\
+  ✓ shop Page screenshot [result](../project_files/images/validation/html/shop.JPG)\
   -  Manual testing performed for the folowing pages.
-      - Profile page
-      - Update user profile
-      - Reviews page
-      - Report problen
-      - Contact us page
-      - Checkout page
-      - Cart page
-      - Support messages
-      - Checkout success page 
-      - Add new product
-      - Admin manage
+      ✓ Profile page\
+      ✓ Update user profile\
+      ✓ Reviews page\
+      ✓ Report problen\
+      ✓ Contact us page\
+      ✓ Checkout page\
+      ✓ Cart page\
+      ✓ Support messages\
+      ✓ Checkout success page\
+      ✓ Add new product\
+      ✓ Admin manage\
 
 - W3C CSS Validation
-  - All the CSS files are error free [result](../project_files/images/validation/css.JPG) corrected test errors [here](#W3C-CSS-Validatio)
+  ✓ All the CSS files are error free [result](../project_files/images/validation/css.JPG) corrected test errors [here](#W3C-CSS-Validation-errors)\
 - PEP8 compliance test
-  - All the custom .py files are error free. Scaning found some errors and all of them was was corrected [error result here](#PEP8-compliance-test-error)
+  ✓ All the custom .py files are error free. Scaning found some errors and all of them was was corrected [error result here](#PEP8-compliance-test-errors)\
 
 - Jshint
+  ✓ Support support.js
+  ✓ Support messages.js
+  ✓ Main forms.js
+  ✓ Main base.js
+  ✓ Support js
+  ✓ Support js
+  ✓ Support js
 
 
 # [&#8686;](#Testing)
@@ -162,6 +169,17 @@ Sripe iframe throws w3 html valitation errors.
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)
 ### **Solved issues or bugs**
+- Submit support ticket form
+  User was able to submit form without giving any stars
+  ```javascript
+  // Disabled submit button
+  // enable on clicking stars element
+  button.disabled = true
+  star.addEventListener('click', function (){ 
+      button.disabled = false
+  })
+  ```
+
 - Status form was not validating\
 solution was to add folowing to the form [source](https://stackoverflow.com/questions/28551146/django-form-returns-is-valid-false-and-no-errors)
   ```python
@@ -213,7 +231,7 @@ solution was to add folowing to the form [source](https://stackoverflow.com/ques
     <th class="col-4">{{ item.sku }}</th>
     ```
 
-#### **w3-HTML-Validation**
+#### **w3 HTML Validation errors**
 
 Cart no errors
 
@@ -318,7 +336,7 @@ Support messages
   ection-->↩<section class="page-section">↩↩    
   ```
 
-#### **W3C-CSS-Validation-errors**
+#### **W3C CSS Validation errors**
 
 - error
   ```css
@@ -359,7 +377,7 @@ Support messages
   351		-webkit-overflow-scrolling is a vendor extension
   ```
 
-#### **PEP8-compliance-test-errors**
+#### **PEP8 compliance test errors**
 - 
 ```python
 /workspace/MS-4-Django-Full-Stack-Project./a_hat_shop/settings.py:145:80: E501 line too long (91 > 79 characters)

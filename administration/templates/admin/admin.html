@@ -38,10 +38,14 @@
             data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
             Orders
             <span
-              class="cart-pill text-white position-absolute top-0 start-0 translate-middle font-monospace bg-success {% if orders_count != 0 %}bg-danger{% endif %} rounded-circle">
-              {{ orders_count }}
-              <span class="visually-hidden">Order items</span>
+              class="cart-pill text-white position-absolute top-0 start-0 translate-middle font-monospace bg-success {% if new_orders_count != 0 %}bg-danger{% endif %} rounded-circle">
+              {{ new_orders_count }}
+              <span class="visually-hidden">New Orders</span>
             </span>
+            <span
+            class="cart-pill text-white position-absolute top-0 start-10  ms-1 translate-middle font-monospace bg-success {% if orders_count != 0 %}bg-warning{% endif %} rounded-circle">
+            {{ orders_count }} 
+            <span class="visually-hidden">Orders</span>
           </button>
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionOne">

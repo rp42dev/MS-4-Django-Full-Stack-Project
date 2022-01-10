@@ -32,22 +32,33 @@ def admin_view(request):
     out_of_stock = products.filter(item_count=0)
     sale = products.filter(sale=True)
 
-    orders = Order.objects.all().exclude(status='Completed')
+    all_orders = Order.objects.all().exclude(
+        status='Completed')
 
+    orders = all_orders.exclude(
+        status='Submitted').order_by('id')
+
+    new_orders = all_orders.filter(
+        status='Submitted').order_by('id')
+
+    new_orders_count = new_orders.count()
     out_of_stock_count = out_of_stock.count()
     low_stock_count = low_stock.count()
     sale_count = sale.count()
     orders_count = orders.count()
 
-    issues = CustomerSuport.objects.all().exclude(status='Resolved')
+    issues = CustomerSuport.objects.all().exclude(
+        status='Resolved').order_by('id')
     issues_count = issues.count()
     context = {
         'out_of_stock_count': out_of_stock_count,
+        'new_orders_count': new_orders_count,
         'low_stock_count': low_stock_count,
         'out_of_stock': out_of_stock,
         'orders_count': orders_count,
         'issues_count': issues_count,
         'sale_count': sale_count,
+        'new_orders': new_orders,
         'low_stock': low_stock,
         'orders': orders,
         'issues': issues,

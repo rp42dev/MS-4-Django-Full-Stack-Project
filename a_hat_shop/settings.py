@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'reviews',
     'support',
     'storages',
-    'test_pep8',
 ]
 
 

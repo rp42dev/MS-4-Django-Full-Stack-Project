@@ -1,14 +1,15 @@
 window.addEventListener('DOMContentLoaded', event => {
-    let FormToast = document.querySelector('#form-error')
-    path = window.location.pathname
-    // Show / autohide bootstarp toasts
+    let FormToast = document.querySelector('#form-error');
+    path = window.location.pathname;
+
+    // Show or autohide bootstarp toasts
     var toasts = function () {
-        var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+        var toastElList = [].slice.call(document.querySelectorAll('.toast'));
         var toastList = toastElList.map(function (toastEl) {
-            return new bootstrap.Toast(toastEl)
-        })
+            return new bootstrap.Toast(toastEl);
+        });
         toastList.forEach(toast => toast.show());
-    }
+    };
     toasts();
 
     // Navbar shrink function
@@ -26,12 +27,10 @@ window.addEventListener('DOMContentLoaded', event => {
                 navbarCollapsible.classList.add('transparent-none');
             }
         } else {
-
             if (window.scrollY === 0) {
-                navbarCollapsible.classList.remove('navbar-shrink')
-
+                navbarCollapsible.classList.remove('navbar-shrink');
             } else {
-                navbarCollapsible.classList.add('navbar-shrink')
+                navbarCollapsible.classList.add('navbar-shrink');
             }
         }
     };
@@ -47,15 +46,19 @@ window.addEventListener('DOMContentLoaded', event => {
             target: '#mainNav',
             offset: 74,
         });
-    };
-
+    }
+    
+    // Shrink and grow on scrool
+    // 1 navigation shipping feature
+    // 2 Show / hide go up button 
     if (path === '/shop/') {
         let st = 0;
         var goUpFunc = function () {
 
             const goUp = document.body.querySelector('#go_up_active');
             const feature = document.body.querySelector('#feture');
-            // Srool hide and unhide shop search bar
+
+            // 1 navigation shipping feature
             if (window.scrollY === 0) {
                 feature.classList.remove('feature-shrink');
                 feature.classList.add('feature-grow');
@@ -63,23 +66,17 @@ window.addEventListener('DOMContentLoaded', event => {
             } else {
                 feature.classList.remove('feature-grow');
                 feature.classList.add('feature-shrink');
-
             }
-
+            // 2 Show / hide go up button 
             if ((document.body.getBoundingClientRect()).top > st) {
                 goUp.classList.remove('go_up');
                 goUp.classList.add('go_up_active');
-
-
             } else {
                 goUp.classList.add('go_up');
                 goUp.classList.remove('.go_up_active');
-
             }
             st = (document.body.getBoundingClientRect()).top;
-
         };
-
         document.addEventListener('scroll', goUpFunc);
     }
 

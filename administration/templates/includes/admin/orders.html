@@ -1,13 +1,13 @@
 <!-- Admin page include for low stock items -->
 <div class="card">
-    <div class="card-header">
+    <div class="card-header text-danger">
         <i class="fas fa-table me-1"></i>
-        Orders
+        New Orders
     </div>
     <div class="card-body p-0">
-        {% if orders %}
-        {% for order in orders %}
-        {% if order.status != 'Completed' %}
+        {% if new_orders %}
+        
+        {% for order in new_orders %}
 
         <p class="time font-monospace px-2">Odrer Date: {{ order.date }}</p>
 
@@ -21,17 +21,59 @@
             </thead>
             <tbody>
                 <tr class="table-light font-monospace">
-                    <td class="col-4"><a class="btn btn-warning" href="{% url 'order_view' order.order_number %}"
+                    <td class="col-4"><a class="btn {% if not order.status == 'Submitted' %} btn-warning {% else %} btn-danger {% endif %}" href="{% url 'order_view' order.order_number %}"
                             title="{{ order.order_number }}">
                             #{{ order.id}}
                         </a></td>
+
                     <td class="font-monospace col-4 text-center">${{ order.total }}</td>
                     <td class="font-monospace col-4 text-end">{{ order.status }}</td>
 
                 </tr>
             </tbody>
         </table>
+        {% endfor %}
         {% endif %}
+
+    </div>
+</div>
+
+
+<!-- orders not completed -->
+<div class="card">
+    <div class="card-header text-warning">
+        <i class="fas fa-table me-1"></i>
+        Orders
+    </div>
+    <div class="card-body p-0">
+        {% if orders %}
+
+        {% for order in orders %}
+
+        <p class="time font-monospace px-2">Odrer Date: {{ order.date }}</p>
+
+        <table class="table table-borderless mb-0">
+            <thead>
+                <tr>
+                    <th class="col-4">Odrer</th>
+                    <th class="text-center col-4">Total</th>
+                    <th class="text-end col-4">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-light font-monospace">
+                    <td class="col-4"><a class="btn {% if not order.status == 'Submitted' %} btn-warning {% else %} btn-danger {% endif %}" href="{% url 'order_view' order.order_number %}"
+                            title="{{ order.order_number }}">
+                            #{{ order.id}}
+                        </a></td>
+
+                    <td class="font-monospace col-4 text-center">${{ order.total }}</td>
+                    <td class="font-monospace col-4 text-end">{{ order.status }}</td>
+
+                </tr>
+            </tbody>
+        </table>
+
         {% endfor %}
         {% endif %}
 

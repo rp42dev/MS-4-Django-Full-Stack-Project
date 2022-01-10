@@ -30,10 +30,10 @@ def customers(request):
     print(profile.orders)
     if profile.orders:
         if 'all' in request.GET:
-            orders = profile.orders.all()
+            orders = profile.orders.all().order_by('id')
             all_orders = True
         else:
-            orders = profile.orders.all()[:10]
+            orders = profile.orders.all().order_by('id')[:10]
             order_count = orders.count()
     else:
         orders = False
