@@ -98,27 +98,30 @@ Databases (create, read, update, and delete).
     ✓ Add new products to the store inventory.\
     ✓ Update product details, inventory stock, product discounts.\
     ✓ Delete products from the inventory altogether.\
-    ✓ Update purchase order status to shippedor or cancelled.\
-    ✓ Update resolution support ticket status to in-review or resolved.\
-    ✓ Create messages after  resolution support ticket was created.\
+    ✓ Update purchase order status to: proccessed, shipped or cancelled.\
+    ✓ Update resolution support ticket status to: in-review or resolved.\
+    ✓ Create messages after resolution support ticket was created.
 - Registered users:\
     ✓ User is able to create account to have personal account.\
     ✓ Update account contact and shipping details.\
     ✓ User can delete their account if they wish so.\
     ✓ Create review for the products after purchase.\
-    ✓ Update purchase order status to shippedor completed.\
+    ✓ Update purchase order status to: completed.\
     ✓ Create resolution support tickets if they encounter any problems.\
-    ✓ Create messages after resolution support ticket was created.\
+    ✓ Create messages after resolution support ticket was created.
 
 ### Testing Forms and validation
-- Frontend\
+Validation test was performed and functioning with no issues.
+
+- Frontend All the forms including allouth\
   ✓ Bootstrap combined with custom Javascript required field validation.\
-  ✓ Custom Javascript checkbox validation to prevent accidental deletion.\
-- Backend\
-  ✓ Django out of the box form field validation such as regex, required and other...\
+  ✓ Custom Javascript checkbox validation to prevent accidental deletion.
+- Frontend Stripe card field.\
+  ✓ Custom Javascript validation to prevent double payment.
+- Backend All the forms including allouth\
+  ✓ Django out of the box form field validation such as regex, required and other...
 
 ### **Future Testing**
-
 Friends and family members helped point out any bugs or issues.
 
 # [&#8686;](#Testing)
