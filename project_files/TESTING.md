@@ -40,13 +40,16 @@
   ✓ All the custom .py files are error free. Scaning found some errors and all of them was was corrected [error result here](#PEP8-compliance-test-errors)\
 
 - Jshint
+  ✓ Main base.js
+  ✓ Main forms.js
+  ✓ Main paralax.js
   ✓ Support support.js
   ✓ Support messages.js
-  ✓ Main forms.js
-  ✓ Main base.js
-  ✓ Support js
-  ✓ Support js
-  ✓ Support js
+  ✓ Reviews reviews.js
+  ✓ Home scrool-x.js
+  ✓ Cart cart.js
+  ✓ Shop shop.js
+  ✓ Checkout stripe_elements.js
 
 
 # [&#8686;](#Testing)

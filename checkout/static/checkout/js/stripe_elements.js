@@ -86,7 +86,7 @@ form.addEventListener('submit', function (ev) {
     } else {
         setLoading(false);
     }
-    })
+    });
 
 // Show a spinner on payment submission
 function setLoading(isLoading) {
