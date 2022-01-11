@@ -217,15 +217,20 @@ Line plots screenshot [image](project_files/images/wireframes/plot.jpg)
 # [&#8686;](#top)
 
 ## **Structure**
+
 Site structure [image](project_files/images/structure/structure.png)\
 Site structure Has changed slightly while progressing into the project.
 
 Old Relational database Django models diagram [image](project_files/images/structure/structure-db.png)\
 DB structure has slight changes made while progressing with this project.\
-New Relational database django models diagram [image](project_files/images/structure/db-models.png)
+
+New updated relational database django models diagram [image](project_files/images/structure/db-models.png)
+
+<img src="project_files/images/structure/db-models.png" width=500>
 
 ## **Skeleton**
 ### **Wireframes**
+
 1. [landing page wireframe](project_files/images/wireframes/home-wf.png)
 1. [Shopping Categories](project_files/images/wireframes/categories.png)
 1. [Item Detailed view](project_files/images/wireframes/detailed.png)
@@ -237,11 +242,13 @@ New Relational database django models diagram [image](project_files/images/struc
 1. [Shopping Cart](project_files/images/wireframes/cart.png)
 1. [Checkout](project_files/images/wireframes/checkout.png)
 
+<img src="project_files/images/wireframes/home-wf.png" width=500>
+
 # [&#8686;](#top)
 ## **Surfaice**
 
 ### **Colour Scheme**
-<img src="project_files/images/color.JPG" width=400>
+<img src="project_files/images/color.JPG" width=500>
 
 ### **Fonts**
 -  For comments bootstrap classes "text-muted text-italic"
@@ -300,6 +307,7 @@ Desktop version nav screenshot [image](project_files/images/surfaice/pc-nav.png)
 - Link active change color if active links on each page.
 - Shop page has it's own navigation. Includes search and sorting functionatity.
 - Shop page navigation shrinks while scrolling down and extends while scroll upwards and at top position nav is fully extended.
+- Shop page include go up link for user to get to the top of the page with one click
 
 ## **Shop App**
 Shop page screenshot [image](project_files/images/surfaice/shop.png)
@@ -339,7 +347,7 @@ Cart screenshot [image](project_files/images/surfaice/cart.png)
 - Add items to the cart session Item id, item count, item price.
 - In cart context perform various calculations such as item times count, 
 - item count times price, shipping price, discount prie total, and finaly grand total.
-- Sunchronize inventory and cart session product quantity. Check each time the cart is accessed for inventory update then adjust acordingly. The products actual stock quantity is not changed in cart but only after successfull payment.
+- Sunchronize inventory actual product quantity with cart session product quantity. Check each time the cart is accessed for inventory update then adjust acordingly. The products actual stock quantity is not changed in cart but only after successfull payment.
 
 ## **Checkout App** 
 
@@ -405,8 +413,9 @@ Profile page screenshot [image](project_files/images/surfaice/profile.png)
 - User can view resolution support tickets if any was submited, that link to the support message app.
 - User can view purchase history with Links to the success order summary page.
 
-Update or delete user profile form screenshoot [here](project_files/images/surfaice/profile-details.JPG)
-- A customer is able to add or update profile information and shopping address information.
+Update or delete user profile.
+- A customer is able to add or update profile information and shopping address information.\
+    delete user profile form screenshoot [here](project_files/images/surfaice/profile-details.JPG)
 
 **UserAddress Model**
 | Field Name | Field type | options |
@@ -426,16 +435,21 @@ Admin manage page screenshot [image](project_files/images/surfaice/manage.png)
 - Admin can view All the Products with discounts applied and links to each product for easy access.
 - Admin can view all the unresolved User resolution support tickets. Each ticket links to the support message app to be able to interact with user.
 
-Add new product form screenshot [image](project_files/images/surfaice/add-form.JPG)\
-Update or delete product form screenshot [image](project_files/images/surfaice/update.JPG)
-- A superuser management interface for easy and fast product upload delete or update.
+- A page for admin to  add new products to inventory.
+    - A superuser Enables an administrator add new prod.\
+    Add new product form screenshot [image](project_files/images/surfaice/add-form.JPG)
+
+- A page for admin to update Product
+    - In product page for administrator user update product link has been enabled to update product details, stock availability count and more...
+    - Administrators are able to delete products from inventory. Delete button has been disabled using javaScript and is reenabled if confirm checkbox is checked.\
+    Update or delete product form screenshot [image](project_files/images/surfaice/update.JPG)
 
 ## **Review App**
-Leave review page screenshoot [image](project_files/images/surfaice/leave-review.png)
+Leave product review page screenshoot [image](project_files/images/surfaice/leave-review.png)
 - Enable user to leave a review and rate the product based on 5-star rating.
 - Product review access is available for registered users and after product purchase.
 
-Reviews page screenshoot [image](project_files/images/surfaice/review.png)
+Product reviews page screenshoot [image](project_files/images/surfaice/review.png)
 - All the product reviews available to view for any user.
 
 **Review Model**
@@ -452,7 +466,7 @@ Reviews page screenshoot [image](project_files/images/surfaice/review.png)
 ## **Suppord App** 
 Sumbit support ticket [image](project_files/images/surfaice/submit.JPG)
 
-- Users can submit if any issues with Account | Order or Product 
+- Users can submit if any issues with account | order or oroduct 
 
 Suppor Messsages [image](project_files/images/surfaice/support-messsages.png)
 

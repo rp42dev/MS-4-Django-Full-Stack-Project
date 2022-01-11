@@ -21,7 +21,7 @@
   ✓ Index Page screenshot [result](../project_files/images/validation/html/home.JPG)\
   ✓ product Page screenshot [result](../project_files/images/validation/html/product.JPG)\
   ✓ shop Page screenshot [result](../project_files/images/validation/html/shop.JPG)
-  -  Manual testing performed for the folowing pages.
+  -  Manual testing performed for the folowing pages.\
       ✓ Profile page\
       ✓ Update user profile\
       ✓ Reviews page\
@@ -32,16 +32,16 @@
       ✓ Support messages\
       ✓ Checkout success page\
       ✓ Add new product\
-      ✓ Admin manage\
+      ✓ Admin manage
 
 - W3C CSS Validation\
-  ✓ All the CSS files are error free [result](../project_files/images/validation/css.JPG) corrected test errors [here](#W3C-CSS-Validation-errors)\
+  ✓ All the CSS files are error free [result](../project_files/images/validation/css.JPG) corrected test errors [here](#W3C-CSS-Validation-errors)
 - PEP8 compliance test\
   ✓ All the custom .py files are error free. Scaning found some errors and all of them was was corrected [error result here](#PEP8-compliance-test-errors)
 
 - Jshint\
-All the javaScript files was tested using [jshint.com](https://jshint.com/)
-
+All the javaScript files was tested using [jshint.com](https://jshint.com/)\
+All the errors was resolved, majority of the errors was missing semicolon.\
   ✓ Main base.js\
   ✓ Main forms.js\
   ✓ Main paralax.js\
@@ -238,19 +238,13 @@ solution was to add folowing to the form [source](https://stackoverflow.com/ques
 
 #### **w3 HTML Validation errors**
 
-Cart no errors
-
-Profile page no errors
-
-Update user profile page no errors
-
-Reviews page no errors
-
-Report problen no errors
-
-Contact us page no errors
-
-Checkout page no errors
+Cart no errors\
+Profile page no errors\
+Update user profile page no errors\
+Reviews page no errors\
+Report problen no errors\
+Contact us page no errors\
+Checkout page no errors\
 
 Shop page
 
