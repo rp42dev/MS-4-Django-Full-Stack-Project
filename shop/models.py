@@ -53,7 +53,7 @@ class Product(models.Model):
                 Avg('rating'))['rating__avg']
         else:
             self.rating_counter = 0
-            self.rating = null=True
+            self.rating = None
         self.save()
 
     def save(self, *args, **kwargs):
