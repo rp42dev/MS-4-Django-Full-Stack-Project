@@ -100,6 +100,17 @@ As well I have performed various tests in Chrome DevTools to Test a variety of d
 
 The Website is fully responsive and will cover most of the devices (screen sizes) and resolutions with minimum width of 320px.
 
+✓ Index page screenshot [image](../project_files/images/surfaice/home.png)\
+✓ Shop page screenshot [image](../project_files/images/surfaice/shop.png)\
+✓ Individual Product page screenshot [image](../project_files/images/surfaice/product.png)\
+✓ Cart screenshot [image](../project_files/images/surfaice/cart.png)\
+✓ Checkout page screenshot [image](../project_files/images/surfaice/checkout.png)\
+✓ Checkout succes page screenshot [image](../project_files/images/surfaice/success.png)\
+✓ Profile page screenshot [image](../project_files/images/surfaice/profile.png)\
+✓ Admin manage page screenshot [image](../project_files/images/surfaice/manage.png)\
+✓ Leave product review page screenshoot [image](../project_files/images/surfaice/leave-review.png)\
+✓ Product reviews page screenshoot [image](../project_files/images/surfaice/review.png)\
+✓ Sumbit support ticket [image](../project_files/images/surfaice/submit.JPG)
 
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)
@@ -174,6 +185,31 @@ Sripe iframe throws w3 html valitation errors.
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)
 ### **Solved issues or bugs**
+
+```python
+    # After deleting order caused an issue to aggregate product rating
+    # For this reason I have changed the code to resset the counter
+    # Issue with this code
+    def update_rating(self):
+    """Agregate rating each time user rates the product"""
+    self.rating_counter = self.rating_counter + 1
+    self.rating = self.product_review.aggregate(
+        Avg('rating'))['rating__avg'] or 0
+    self.save()
+
+  # New code solved db issues
+  def update_rating(self):
+      """Agregate rating each time user rates the product"""
+      if (self.product_review):
+          self.rating_counter = self.product_review.count()
+          self.rating = self.product_review.aggregate(
+              Avg('rating'))['rating__avg']
+      else:
+          self.rating_counter = 0
+          self.rating = null=True
+      self.save()
+```
+
 - Submit support ticket form
   User was able to submit form without giving any stars
   ```javascript

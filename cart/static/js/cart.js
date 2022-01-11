@@ -6,6 +6,9 @@ function outerFunction(){
     cartItems.map(function (cart) {
         cart.addEventListener('mouseover', MyFunction);
     });
+
+    // If mouse over disable moureover listener
+    // Enable mouseover once mouse leaves the cart icon
     function MyFunction() {
         cartItems.map(function (cart) {
             cart.removeEventListener("mouseover", MyFunction);
@@ -25,7 +28,7 @@ function outerFunction(){
     }
  }
  
-// Do not show if on certain pages
+// Do not show on cart and checkout pages
 if ( !(path === '/cart/' || path === '/checkout/') ) {
     outerFunction();
 }

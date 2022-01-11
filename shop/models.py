@@ -47,9 +47,13 @@ class Product(models.Model):
 
     def update_rating(self):
         """Agregate rating each time user rates the product"""
-        self.rating_counter = self.rating_counter + 1
-        self.rating = self.product_review.aggregate(
-            Avg('rating'))['rating__avg'] or 0
+        if (self.product_review):
+            self.rating_counter = self.product_review.count()
+            self.rating = self.product_review.aggregate(
+                Avg('rating'))['rating__avg']
+        else:
+            self.rating_counter = 0
+            self.rating = null=True
         self.save()
 
     def save(self, *args, **kwargs):

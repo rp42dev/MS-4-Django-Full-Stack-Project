@@ -499,10 +499,10 @@ Suppor Messsages [image](project_files/images/surfaice/support-messsages.png)
 |timestamp| DateTime| Fieldauto_now_add=True|
 |unread| BooleanField| default=True|
 
-
 Contact us form [image](project_files/images/surfaice/contact.JPG)
 
-- Users are able to message company for any inquiries they might have.
+- Users are able to email the company for any inquiries they might have.
+- An auto reply on a email is sent back to customer.
 
 ### **Authentication and forms**
 - Crispy forms styling and customized form imputs to match the site styling.
@@ -517,9 +517,6 @@ Contact us form [image](project_files/images/surfaice/contact.JPG)
 - Message level checks levels 40 error, 30 warling, 25 success, and info for rest of the messages.
 - Bootstrap Toast used to display cart content if user adds new item or hovers over cart icon in nav bar.
 - Support messages toast is shown if user hover over message icon in nav bar.
-
-
-
 
 ## **Features to implement**
 
