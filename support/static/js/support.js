@@ -15,26 +15,26 @@ function mainFunction() {
 
     // Add gray color class to the form placeholders
     function myFuncItem() {
-        if (item.value == '') {
-            item.classList.add('text-gray');
+        if (this.value == '') {
+            this.classList.add('text-gray');
         } else {
-            item.classList.remove('text-gray');
+            this.classList.remove('text-gray');
         }
     }
 
-    // Add or remove product sellect option
+    // Add product sellect option if option is product
     function myFuncIssue() {
-        if (issue.value == 'Product') {
+        if (this.value == 'Product') {
             itemGroup.classList.remove('d-none');
             itemGroup.classList.add('d-block');
         } else {
             itemGroup.classList.add('d-none');
             itemGroup.classList.remove('d-block');
         }
-        if (issue.value == 'Select') {
-            issue.classList.add('text-gray');
+        if (this.value == 'Select') {
+            this.classList.add('text-gray');
         } else {
-            issue.classList.remove('text-gray');
+            this.classList.remove('text-gray');
         }
     }
 }
@@ -46,10 +46,10 @@ function supportFunction(){
     issue.classList.add('text-gray');
 
     function myFuncIssue() {
-        if (issue.value == 'Select') {
-            issue.classList.add('text-gray');
+        if (this.value == 'Select') {
+            this.classList.add('text-gray');
         } else {
-            issue.classList.remove('text-gray');
+            this.classList.remove('text-gray');
         }
     }
 }
