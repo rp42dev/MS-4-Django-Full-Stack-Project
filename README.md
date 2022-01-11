@@ -364,6 +364,7 @@ Checkout page screenshot [image](project_files/images/surfaice/checkout.png)
 - Stripe checkout payment proccesor pay with credit card or debit card securely.
 - For registered user form will populate with user details if shipping details was saved in profile details page.
 - Automated inventory updating. Automatically updates inventory whenever there is a stripe payment success or payment failure webhook received.
+- Order backup for failed orders if Stripe successfull payment Webhook receeived will create an order.
 
 **Order Model**
 | Field Name | Field type | options |

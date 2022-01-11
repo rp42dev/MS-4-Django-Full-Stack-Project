@@ -186,29 +186,42 @@ Sripe iframe throws w3 html valitation errors.
 [Back to Readme.md](../README.md)
 ### **Solved issues or bugs**
 
-```python
-    # After deleting order caused an issue to aggregate product rating
-    # For this reason I have changed the code to resset the counter
-    # Issue with this code
-    def update_rating(self):
-    """Agregate rating each time user rates the product"""
-    self.rating_counter = self.rating_counter + 1
-    self.rating = self.product_review.aggregate(
-        Avg('rating'))['rating__avg'] or 0
-    self.save()
+-
+  ```python
+  # Issue with webhook handler recreating an failed order
+  # the order was missing was missing "shipping name"
+      full_name=shipping_details.name,
 
-  # New code solved db issues
-  def update_rating(self):
+    # Fixed by correct the code as follows
+      full_name=billing_details.name,
+      shipping_name=shipping_details.name,
+
+  ```
+
+-
+  ```python
+      # After deleting order caused an issue to aggregate product rating
+      # For this reason I have changed the code to resset the counter
+      # Issue with this code
+      def update_rating(self):
       """Agregate rating each time user rates the product"""
-      if (self.product_review):
-          self.rating_counter = self.product_review.count()
-          self.rating = self.product_review.aggregate(
-              Avg('rating'))['rating__avg']
-      else:
-          self.rating_counter = 0
-          self.rating = null=True
+      self.rating_counter = self.rating_counter + 1
+      self.rating = self.product_review.aggregate(
+          Avg('rating'))['rating__avg'] or 0
       self.save()
-```
+
+    # New code solved aggregate product rating issues
+    def update_rating(self):
+        """Agregate rating each time user rates the product"""
+        if (self.product_review):
+            self.rating_counter = self.product_review.count()
+            self.rating = self.product_review.aggregate(
+                Avg('rating'))['rating__avg']
+        else:
+            self.rating_counter = 0
+            self.rating = null=True
+        self.save()
+  ```
 
 - Submit support ticket form
   User was able to submit form without giving any stars

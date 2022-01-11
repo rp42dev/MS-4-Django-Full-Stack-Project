@@ -103,8 +103,9 @@ class StripeWhHandler:
             try:
                 order = Order.objects.create(
                     user_profile=profile,
-                    full_name=shipping_details.name,
+                    full_name=billing_details.name,
                     email=billing_details.email,
+                    shipping_name=shipping_details.name,
                     address_line_1=shipping_details.address.line1,
                     address_line_2=shipping_details.address.line2,
                     city=shipping_details.address.city,
