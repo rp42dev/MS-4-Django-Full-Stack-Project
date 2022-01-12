@@ -242,8 +242,6 @@ New updated relational database django models diagram [image](project_files/imag
 1. [Shopping Cart](project_files/images/wireframes/cart.png)
 1. [Checkout](project_files/images/wireframes/checkout.png)
 
-<img src="project_files/images/wireframes/home-wf.png" width=500>
-
 # [&#8686;](#top)
 ## **Surfaice**
 

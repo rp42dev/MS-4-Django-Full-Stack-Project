@@ -6,7 +6,7 @@
     </div>
     <div class="card-body p-0">
         {% if new_orders %}
-        
+
         {% for order in new_orders %}
 
         <p class="time font-monospace px-2">Odrer Date: {{ order.date }}</p>
@@ -21,8 +21,9 @@
             </thead>
             <tbody>
                 <tr class="table-light font-monospace">
-                    <td class="col-4"><a class="btn {% if not order.status == 'Submitted' %} btn-warning {% else %} btn-danger {% endif %}" href="{% url 'order_view' order.order_number %}"
-                            title="{{ order.order_number }}">
+                    <td class="col-4"><a
+                            class="btn {% if not order.status == 'Payment received' %} btn-warning {% else %} btn-danger {% endif %}"
+                            href="{% url 'order_view' order.order_number %}" title="{{ order.order_number }}">
                             #{{ order.id}}
                         </a></td>
 
@@ -62,8 +63,9 @@
             </thead>
             <tbody>
                 <tr class="table-light font-monospace">
-                    <td class="col-4"><a class="btn {% if not order.status == 'Submitted' %} btn-warning {% else %} btn-danger {% endif %}" href="{% url 'order_view' order.order_number %}"
-                            title="{{ order.order_number }}">
+                    <td class="col-4"><a
+                            class="btn {% if not order.status == 'Submitted' %} btn-warning {% else %} btn-danger {% endif %}"
+                            href="{% url 'order_view' order.order_number %}" title="{{ order.order_number }}">
                             #{{ order.id}}
                         </a></td>
 

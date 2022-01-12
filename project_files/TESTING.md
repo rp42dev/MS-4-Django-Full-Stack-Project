@@ -188,6 +188,20 @@ Sripe iframe throws w3 html valitation errors.
 
 -
   ```python
+  #Folowing code created loop if cart was empty and previous url was cart
+  if not cart:
+      if url_back is not None:
+          return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+      else:
+          return redirect(reverse('shop'))
+
+  # To solve this probllem i have added donot include cart url
+  if url_back is not None or url_back != 'cart':
+
+  ```
+
+-
+  ```python
   # Issue with webhook handler recreating an failed order
   # the order was missing was missing "shipping name"
       full_name=shipping_details.name,
