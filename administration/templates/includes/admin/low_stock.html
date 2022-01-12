@@ -20,7 +20,7 @@
             <tbody>
                 <tr class="table-light">
                     <td class="col-4">
-                        {% thumbnail item.image "80" as im %}
+                        {% thumbnail item.image "80" format="WEBP" as im %}
                         <a href="{% url 'update_item' item.id %}" aria-label="A link to product {{ item.name }} update page">
                             <div class="d-flex align-items-center ">
                                 <img src="{{ im.url }}" alt="An image for product {{ item.name }} color {{ item.color }}" />

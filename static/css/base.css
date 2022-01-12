@@ -30,7 +30,7 @@
 .text-italic {
   font-weight: 400;
   font-style: italic;
-  font-family: "Roboto Slab", sans-serif;
+  font-family: 'Roboto Slab', serif;
 }
 
 html {
@@ -105,7 +105,7 @@ section,
   font-size: 1rem;
   font-weight: 400;
   font-style: italic;
-  font-family: "Roboto Slab", sans-serif;
+  font-family: 'Roboto Slab', serif;
   margin-bottom: 4rem;
 }
 

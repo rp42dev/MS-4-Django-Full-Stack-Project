@@ -11,13 +11,13 @@
         <!-- Product image-->
 
         <div class="h-100 d-flex align-items-center">
-            {% thumbnail product.image "250" as im %}
+            {% thumbnail product.image "250" format="WEBP" as im %}
             <img class="card-img-top" src="{{ im.url }}"
                 alt="An image for product {{ item.name }} color {{ item.color }}" />
             {% endthumbnail %}
         </div>
         <a class="card-img-overlay"
-            aria-label="A {{ product.color }} {{ product.name }} hat, {% if product.sale %} discount price €{{ product.sale_price }} {% else %} price €{{ product.price }} {% endif %} click here to got to {{ product.name }} details page"
+            aria-label="{{ product.color }} {{ product.name }} hat, {% if product.sale %} discount price €{{ product.sale_price }} {% else %} price €{{ product.price }} {% endif %} click here to got to {{ product.name }} details page"
             href="{% url 'shop_item' product.id %}" title="Go to details">
         </a>
         <!-- Product details-->

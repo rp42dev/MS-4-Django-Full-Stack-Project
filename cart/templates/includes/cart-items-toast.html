@@ -11,7 +11,7 @@
     <!-- Product image -->
     <div class="row">
         <div class="col-6 position-relative">
-            {% thumbnail item.product.image "150" as im %}
+            {% thumbnail item.product.image "150" format="WEBP" as im %}
             <a href="{% url 'shop_item' item.product.id %}"
                 aria-label="A link to product {{ item.product.name }} details page">
                 <div class="h-100 d-flex align-items-center ">

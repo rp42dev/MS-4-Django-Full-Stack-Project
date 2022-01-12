@@ -4,33 +4,39 @@
 {% block page_header %}
 <!-- Header-->
 <header class="py-5">
-  
+
 </header>
 {% endblock %}
 {% block content %}
 
 <!-- Product Detail section-->
 <section class="page-section">
-    <div class="container px-lg-5"> 
+    <div class="container px-lg-5">
         <div class="item d-md-flex">
-           
+
             <!-- Include Review product -->
             {% include 'includes/review-product.html' %}
 
             <!-- If feedback was left return feedback instead -->
-            
+
             <div class="col-md-6 border-start review-container">
-                <h2 ><i class="far fa-star"></i> All Reviews</h2>
+                <div class="star-fearure">
+                    <span class="text-warning"><i class="fas fa-star"></i></span><span class="text-warning">
+                        <i class="fas h2 fa-star"></i></span><span class="text-warning"><i
+                            class="fas h3 fa-star"></i></span><span class="text-warning"><i
+                            class="fas h6 fa-star"></i></span>
+                </div>
+                <h2><span class="text-warning"><i class="fas fa-star"></i></span> All Reviews</h2>
                 <p class="m-0 text-muted text-italic text-capitalize">For {{ item.name }} hat</p>
                 {% for review in reviews reversed %}
                 <div class="mt-4 shadow-sm border rounded p-3 bg-white">
                     <h5 class="m-0 fw-bolder text-muted text-italic text-capitalize">{{ review.user_profile }}</h5>
-                    
+
                     <!-- Include review stars -->
                     {% include 'includes/reviews-stars.html' %}
                 </div>
                 {% endfor %}
-                
+
             </div>
         </div>
     </div>

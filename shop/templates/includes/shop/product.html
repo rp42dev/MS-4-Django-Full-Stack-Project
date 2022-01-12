@@ -3,7 +3,7 @@
 <!-- Individual product -->
 <div class="item align-items-center d-md-flex ">
 
-    {% thumbnail item.image "500" as im %}
+    {% thumbnail item.image "500" format="WEBP" as im %}
     <div class="col-md-6 mb-4 mb-md-0 position-relative">
         <img class="card-img-top mb-md-0" src="{{ im.url }}"
             alt="An image for product {{ item.name }} color {{ item.color }}" />

@@ -53,6 +53,9 @@ All the errors was resolved, majority of the errors was missing semicolon.\
   ✓ Shop shop.js\
   ✓ Checkout stripe_elements.js
 
+### **Google Lighthouse Test**
+
+
 # [&#8686;](#Testing)
 [Back to Readme.md](../README.md)
 ## ***UX*** 
