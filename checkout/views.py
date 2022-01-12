@@ -35,8 +35,8 @@ def checkout(request):
     cart = request.session.get('cart', {})
 
     if not cart:
-        messages.error(request, "There's nothing\
-                in your cart at the moment")
+        messages.warning(
+            request, "There's nothing in your cart at the moment.")
         return redirect(reverse('shop'))
 
     for item_id, quantity in cart.items():
@@ -45,8 +45,8 @@ def checkout(request):
             stock = product.item_count - quantity
             if product.item_count <= 0:
                 messages.error(request, (
-                    f"The {product.name} in your cart\
-                        stock quantity changed. Curently out of stock"))
+                    f"The {product.name} stock quantity \
+                       has changed. Curently out of stock"))
                 return redirect(reverse('cart'))
             elif stock < 0:
                 messages.error(request, (

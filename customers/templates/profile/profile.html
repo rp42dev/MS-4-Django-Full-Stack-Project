@@ -20,10 +20,10 @@
 
     <div class="container px-sm-2">
         <div class="col-12 text-left">
-            <p class="col-12 text-end"><a class="btn btn-dark orrange" href="{% url 'user_details' %}">Change account
+            <p class="col-12 text-end"><a class="btn btn-dark orrange" href="{% url 'user_details' %}"><i class="fas fa-user-edit"></i> Change account
                     Details</a></p>
         </div>
-        <h2 class="text-capitalize">{{ request.user }}</h2>
+        <h2 class="text-capitalize"><i class="fas fa-history"></i> {{ request.user }}</h2>
 
         <!-- how only if unresolved user support tickets -->
         {% if issues %}

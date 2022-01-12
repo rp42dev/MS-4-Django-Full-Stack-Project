@@ -1,24 +1,97 @@
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-md fixed-top flex-column" id="mainNav">
-        <div class="container">
-            <div><a class="navbar-brand d-none d-sm-block d-md-none d-lg-block" href="{% url 'home' %}"><i
-                        class="fab h3 my-auto fa-redhat"> </i> A hat Shop</a>
-                <a class="navbar-brand d-block d-sm-none d-md-block d-lg-none" href="{% url 'home' %}"><i
-                        class="fab h3 my-auto fa-redhat"></i></a>
-            </div>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-md fixed-top flex-column" id="mainNav">
+    <div class="container">
+        <div><a class="navbar-brand d-none d-sm-block d-md-none d-lg-none d-xl-block" href="{% url 'home' %}"><i
+                    class="fab h3 my-auto fa-redhat"> </i> A hat Shop</a>
+            <a class="navbar-brand d-block d-sm-none d-lg-block d-md-none d-xl-none" href="{% url 'home' %}"><i
+                    class="fab h3 my-auto fa-redhat"></i></a>
+        </div>
 
-            <!-- Cark display on smal to medium screen sizes -->
-            <div class="nav-item d-flex d-md-none ms-auto align-items-center">
-                {% if shop %}
+        <!-- Cark display on smal to medium screen sizes -->
+        <div class="nav-item d-flex d-md-none ms-auto align-items-center">
+            {% if shop %}
+            <div class="nav-link">
+                <span class="search_icon">
+                    <i class="fas my-auto fa-search h3"></i>
+                </span>
+            </div>
+            {% endif %}
+
+            <!-- Shopping cart Icon -->
+            <div class="nav-link">
+                <a class="position-relative cart" href="{% url 'cart' %}">
+                    <i class="fas h3 my-auto fa-shopping-cart">
+                    </i>
+                    <span
+                        class="cart-pill text-white position-absolute top-5 start-98 translate-middle font-monospace bg-danger rounded-circle">
+                        {{ item_count }}
+                        <span class="visually-hidden">Cart items</span>
+                    </span>
+                </a>
+            </div>
+            <!-- User messages icon-->
+            {% if user_messages %}
+            <div class="message-icon nav-item">
                 <div class="nav-link">
-                    <span class="search_icon">
-                        <i class="fas my-auto fa-search h3"></i>
+                    <i class="fas my-auto h3 fa-comment"></i>
+                    <span
+                        class="cart-pill text-white position-absolute top-5 start-98 translate-middle font-monospace bg-danger rounded-circle">
+                        {{ unread_messages_count }}
+                        <span class="visually-hidden">{{ unread_messages_count }} Mew Messages</span>
                     </span>
                 </div>
+            </div>
+            {% endif %}
+
+        </div>
+        <div class="navbar-toggler py-0" role="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars h1 ms-1"></i>
+        </div>
+
+        <!-- Main nav links -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ms-auto me-md-auto py-1 py-lg-0">
+
+                <!-- Extra navigation link block -->
+                <!-- Shop categories styles and query mobile navigation -->
+                {% if shop %}
+                <li class="d-block d-md-none navbar-nav border-bottom border-top border-warning py-3 mb-3">
+
+                    <ul class="navbar-nav p-0 text-uppercase ms-auto py-lg-0">
+                        {% include 'includes/shop/shop-nav.html' %}
+                    </ul>
+
+                </li>
                 {% endif %}
 
-                <!-- Shopping cart Icon -->
-                <div class="nav-link">
+                <li class="nav-item"><a class="nav-link {% if request.get_full_path == '/' %}disabled{% endif %}"
+                        href="{% url 'home' %}"><i class="fas fa-home"></i> home</a></li>
+                <li class="nav-item"><a class="nav-link {% if shop %}disabled{% endif %}"
+                        href="{% url 'shop' %}"><i class="fas fa-shopping-bag"></i> shop</a></li>
+
+                {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                <li class="nav-item"><a class="nav-link {% if request.get_full_path == '/manage/' %}disabled{% endif %}"
+                        href="{% url 'admin_view' %}"><i class="fas fa-tasks"></i> Manage</a></li>
+                <li class="nav-item"><a target="_blank" class="nav-link" href="{% url 'admin:index' %}"><i class="fas fa-tools"></i> Admin</a></li>
+                {% endif %}
+                <li class="nav-item"><a class="nav-link {% if request.get_full_path == '/user/' %}disabled{% endif %}"
+                        href="{% url 'user' %}"><i class="fas fa-user"></i> Profile</a></li>
+                <li class="nav-item"><a
+                        class="nav-link {% if request.get_full_path == '/accounts/logout/' %}disabled{% endif %}"
+                        href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt"></i> Sign-out</a></li>
+
+                {% else %}
+                <li class="nav-item"><a
+                        class="nav-link {% if request.get_full_path == '/accounts/login/' %}disabled{% endif %}"
+                        href="{% url 'account_login' %}"><i class="fas fa-sign-in-alt"></i> Sign-in</a></li>
+                {% endif %}
+
+            </ul>
+            <!-- Cart display on medium and up screen size -->
+            <div class="d-none d-md-flex ms-auto">
+                <div class="cart nav-link">
                     <a class="position-relative cart" href="{% url 'cart' %}">
                         <i class="fas h3 my-auto fa-shopping-cart">
                         </i>
@@ -29,9 +102,9 @@
                         </span>
                     </a>
                 </div>
-                <!-- User messages icon-->
+                <!-- User messages -->
                 {% if user_messages %}
-                <div class="message-icon nav-item">
+                <div class="message-icon nav-item mx-2">
                     <div class="nav-link">
                         <i class="fas my-auto h3 fa-comment"></i>
                         <span
@@ -42,119 +115,44 @@
                     </div>
                 </div>
                 {% endif %}
-
-            </div>
-            <div class="navbar-toggler py-0" role="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars h1 ms-1"></i>
             </div>
 
-            <!-- Main nav links -->
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav text-uppercase ms-auto me-md-auto py-1 py-lg-0">
+        </div>
 
-                    <!-- Extra navigation link block -->
-                    <!-- Shop categories styles and query mobile navigation -->
-                    {% if shop %}
-                    <li class="d-block d-md-none navbar-nav border-bottom border-top border-warning py-3 mb-3">
+    </div>
 
-                        <ul class="navbar-nav p-0 text-uppercase ms-auto py-lg-0">
-                            {% include 'includes/shop/shop-nav.html' %}
-                        </ul>
+    <!-- Shop categories styles and query large navigation -->
+    {% if shop %}
+    <div id="shop-nav" class="container col-12 d-none d-md-block">
+        <!-- Include Shop Navigation -->
+        <ul class="p-0 my-auto text-uppercase py-lg-0 d-flex justify-content-between">
+            {% include 'includes/shop/shop-nav-m.html' %}
+            <li class="nav-item search_icon">
+                <div class="nav-link">Search <i class="fas fa-search"></i></div>
+            </li>
+        </ul>
 
-                    </li>
-                    {% endif %}
+    </div>
 
-                    <li class="nav-item"><a class="nav-link {% if request.get_full_path == '/' %}disabled{% endif %}"
-                            href="{% url 'home' %}">home</a></li>
-                    <li class="nav-item"><a class="nav-link {% if shop %}disabled{% endif %}"
-                            href="{% url 'shop' %}">shop</a></li>
-
-                    {% if request.user.is_authenticated %}
-                    {% if request.user.is_superuser %}
-                    <li class="nav-item"><a
-                            class="nav-link {% if request.get_full_path == '/manage/' %}disabled{% endif %}"
-                            href="{% url 'admin_view' %}">Manage</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
-                    {% endif %}
-                    <li class="nav-item"><a
-                            class="nav-link {% if request.get_full_path == '/user/' %}disabled{% endif %}"
-                            href="{% url 'user' %}">Profile</a></li>
-                    <li class="nav-item"><a
-                            class="nav-link {% if request.get_full_path == '/accounts/logout/' %}disabled{% endif %}"
-                            href="{% url 'account_logout' %}">Logout</a></li>
-
-                    {% else %}
-                    <li class="nav-item"><a
-                            class="nav-link {% if request.get_full_path == '/accounts/login/' %}disabled{% endif %}"
-                            href="{% url 'account_login' %}">Login</a></li>
-                    {% endif %}
-
-                </ul>
-                <!-- Cart display on medium and up screen size -->
-                <div class="d-none d-md-flex ms-auto">
-                    <div class="cart nav-link">
-                        <a class="position-relative cart" href="{% url 'cart' %}">
-                            <i class="fas h3 my-auto fa-shopping-cart">
-                            </i>
-                            <span
-                                class="cart-pill text-white position-absolute top-5 start-98 translate-middle font-monospace bg-danger rounded-circle">
-                                {{ item_count }}
-                                <span class="visually-hidden">Cart items</span>
-                            </span>
-                        </a>
+    <!-- Search form -->
+    <div class="container">
+        <div id="search_body" class="search-shrink col-12">
+            <form class="form mx-auto searh-form" method="GET" action="{% url 'shop' %}">
+                <div class="input-group mb-3 col-12">
+                    <input type="text" class="search form-control" name="search" placeholder="Searh Store..."
+                        aria-label="Search store">
+                    <div class="input-group-append">
+                        <button class="btn search-btn" type="submit"><i class="fas fa-search"></i></button>
                     </div>
-                    <!-- User messages -->
-                    {% if user_messages %}
-                    <div class="message-icon nav-item mx-2">
-                        <div class="nav-link">
-                            <i class="fas my-auto h3 fa-comment"></i>
-                            <span
-                                class="cart-pill text-white position-absolute top-5 start-98 translate-middle font-monospace bg-danger rounded-circle">
-                                {{ unread_messages_count }}
-                                <span class="visually-hidden">{{ unread_messages_count }} Mew Messages</span>
-                            </span>
-                        </div>
-                    </div>
-                    {% endif %}
                 </div>
-
-            </div>
-
+            </form>
         </div>
 
-        <!-- Shop categories styles and query large navigation -->
-        {% if shop %}
-        <div id="shop-nav" class="container col-12 d-none d-md-block">
-            <!-- Include Shop Navigation -->
-            <ul class="p-0 my-auto text-uppercase py-lg-0 d-flex justify-content-between">
-                {% include 'includes/shop/shop-nav-m.html' %}
-                <li class="nav-item search_icon">
-                    <div class="nav-link">Search <i class="fas fa-search"></i></div>
-                </li>
-            </ul>
-
-        </div>
-
-        <!-- Search form -->
-        <div class="container">
-            <div id="search_body" class="search-shrink col-12">
-                <form class="form mx-auto searh-form" method="GET" action="{% url 'shop' %}">
-                    <div class="input-group mb-3 col-12">
-                        <input type="text" class="search form-control" name="search" placeholder="Searh Store..."
-                            aria-label="Search store">
-                        <div class="input-group-append">
-                            <button class="btn search-btn" type="submit"><i class="fas fa-search"></i></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-        {% endif %}
-        {% if shop %}
-        <div id="feture" class="feature col-12 col-md-6 mx-auto text-center">
-            <span>Free Shipping For Orders Over $50</span>
-        </div>
-        {% endif %}
-    </nav>
+    </div>
+    {% endif %}
+    {% if shop %}
+    <div id="feture" class="feature col-12 col-md-6 mx-auto text-center">
+        <span>Free Shipping For Orders Over $50</span>
+    </div>
+    {% endif %}
+</nav>

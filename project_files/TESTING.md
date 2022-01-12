@@ -17,7 +17,7 @@
 - W3C Markup Validator
   All the pages are HTML error free expect for stripe iframe errors.
   For Certain pages manual testing was performed, due to a w3-Html-checker unable access pages for reasons like.. requeries login, administrative privilages, requeres post or other...
-  Corrected test errors [here](#w3-HTML-Validation-errors)
+  Corrected test errors [here](#w3-HTML-Validation-errors)\
   ✓ Index Page screenshot [result](../project_files/images/validation/html/home.JPG)\
   ✓ product Page screenshot [result](../project_files/images/validation/html/product.JPG)\
   ✓ shop Page screenshot [result](../project_files/images/validation/html/shop.JPG)
@@ -307,7 +307,7 @@ Update user profile page no errors\
 Reviews page no errors\
 Report problen no errors\
 Contact us page no errors\
-Checkout page no errors\
+Checkout page no errors
 
 Shop page
 

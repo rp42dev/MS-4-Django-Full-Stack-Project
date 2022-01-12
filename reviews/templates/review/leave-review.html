@@ -21,10 +21,10 @@
 
             <div class="col-md-6 mt-5">
                 {% if feedback_left %}
-                <div class="bg-white shadow-sm border rounded p-3">
-                    <h2 class="">Your Review for</h2>
-                    <p class="m-0 text-muted text-italic text-capitalize">{{ item.name }}</p>
-                    
+                
+                <h2 class=""><i class="far fa-star"></i> Your Review for</h2>
+                <p class="m-0 text-muted text-italic text-capitalize">{{ item.name }}</p>
+                 <div class="bg-white shadow-sm border rounded p-3">   
                     <!-- Include review stars -->
                     <div>
                         <p class="m-0 time font-monospace">{{ date }}</p>
@@ -41,7 +41,7 @@
 
                 {% else %}
                 <!-- Product add to cart POST form -->
-                <h2 class="">Submit Your Review</h2>
+                <h2 class=""><i class="far fa-star"></i>  Submit Your Review</h2>
                 <p class="text-muted text-italic">For product {{ item.name }} in your recent order</p>
                 <div>
                     <!-- Reviews form-->

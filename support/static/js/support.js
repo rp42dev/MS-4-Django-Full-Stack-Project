@@ -2,8 +2,6 @@
 // Add gray color class to the form placeholders
 // Add or remove product sellect option
 
-let path = window.location.pathname;
-
 function mainFunction() {
     let issue = document.querySelector('#id_support-issue');
     let item = document.querySelector('#sellect-product');
