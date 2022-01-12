@@ -5,8 +5,8 @@ This is a confirmation of your order at A Hat Shop. Your order information is be
 Order Number: {{ order.id }}
 Order Date: {{ order.date }}
 
-Delivery: ${{ order.delivery }}
-Grand Total: ${{ order.total }}
+Delivery: €{{ order.delivery }}
+Grand Total: €{{ order.total }}
 
 Your order will be shipped to {{ order.address_line_1 }} in {{ order.city }}, {{ order.country }}.
 

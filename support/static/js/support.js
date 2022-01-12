@@ -53,7 +53,7 @@ function supportFunction(){
 }
 
 // Do not show if on certain pages
-if (path === '/support/') {
+if (window.location.pathname === '/support/') {
     supportFunction();
 } else {
     mainFunction();

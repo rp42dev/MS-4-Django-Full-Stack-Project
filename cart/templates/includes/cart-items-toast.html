@@ -1,4 +1,3 @@
-
 {% load thumbnail %}
 {% for item in cart_items %}
 
@@ -11,42 +10,43 @@
 
     <!-- Product image -->
     <div class="row">
-    <div class="col-6 position-relative">
-        {% thumbnail item.product.image "150" as im %}
-        <a href="{% url 'shop_item' item.product.id %}">
-            <div class="h-100 d-flex align-items-center ">
-                <img class="card-img-top" src="{{ im.url }}" alt="{{ item.product.name }}" />
-            </div>
-        </a>
-        <!-- Sales Badge -->
-        {% if item.product.sale %}
-        <div class="badge bg-danger text-white font-monospace position-absolute"
-            style="top: 0.5rem; right: 0.5rem">
-            Sale
-        </div>
-        {% endif %}
-        {% endthumbnail %}
-    </div>
-
-    <div class="col-6 text-center">
-        <div>
-            <!-- Sale badge-->
+        <div class="col-6 position-relative">
+            {% thumbnail item.product.image "150" as im %}
+            <a href="{% url 'shop_item' item.product.id %}"
+                aria-label="A link to product {{ item.product.name }} details page">
+                <div class="h-100 d-flex align-items-center ">
+                    <img class="card-img-top" src="{{ im.url }}"
+                        alt="An image for product {{ item.product.name }} color {{ item.product.color }}" />
+                </div>
+            </a>
+            <!-- Sales Badge -->
             {% if item.product.sale %}
-            <p class="text-danger font-monospace p-0 m-0  fw-bolder">${{ item.subtotal }} </p>
-            {% else %}
-            <p class="font-monospace p-0 m-0 fw-bolder">${{ item.subtotal }}</p>
+            <div class="badge bg-danger text-white font-monospace position-absolute" style="top: 0.5rem; right: 0.5rem">
+                Sale
+            </div>
             {% endif %}
-            <p class="number font-monospace p-0 m-0 time">Quantity: {{ item.quantity }}</p>
+            {% endthumbnail %}
+        </div>
+
+        <div class="col-6 text-center">
+            <div>
+                <!-- Sale badge-->
+                {% if item.product.sale %}
+                <p class="text-danger font-monospace p-0 m-0  fw-bolder">€{{ item.subtotal }} </p>
+                {% else %}
+                <p class="font-monospace p-0 m-0 fw-bolder">€{{ item.subtotal }}</p>
+                {% endif %}
+                <p class="number font-monospace p-0 m-0 time">Quantity: {{ item.quantity }}</p>
+            </div>
         </div>
     </div>
-</div>
 </div>
 {% endfor %}
 
 <!-- Button to checkout -->
 <div class="col-12 p-2 text-center bg-white rounded">
-    <p class="p-0 m-0 font-monospace">Delivery: {{ delivery }}</p>
-    <h4 class="font-monospace fw-bold">Grand Total ${{ grand_total|floatformat:2 }}</h4>
+    <p class="p-0 m-0 font-monospace">Delivery: €{{ delivery }}</p>
+    <h4 class="font-monospace fw-bold">Grand Total €{{ grand_total|floatformat:2 }}</h4>
     <input type="hidden" name="grand_total">
     <a class="btn btn-dark btn-xl text-uppercase flex-shrink-0" href="{% url 'checkout' %}">
         Checkout Now

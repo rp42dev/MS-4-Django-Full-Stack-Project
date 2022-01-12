@@ -5,8 +5,8 @@ There was a problem proccessing payment for your order at A Hat Shop. Your order
 Order Number: {{ order.id }}
 Order Date: {{ order.date }}
 
-Delivery: ${{ order.delivery }}
-Grand Total: ${{ order.total }}
+Delivery: €{{ order.delivery }}
+Grand Total: €{{ order.total }}
 
 Your order was cacelled.
 If you have any questions, feel free to contact us at {{ contact_email }}.

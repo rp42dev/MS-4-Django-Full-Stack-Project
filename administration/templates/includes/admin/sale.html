@@ -23,15 +23,17 @@
                 <tr class="table-light font-monospace">
                     <td class="col-4">
                         {% thumbnail item.image "80" as im %}
-                        <a href="{% url 'update_item' item.id %}" title="{{ order.name }}">
+                        <a href="{% url 'update_item' item.id %}" 
+                        aria-label="A link to the product #{{ item.name }} update page"
+                        title="{{ item.name }}" >
                             <div class="d-flex align-items-center ">
-                                <img src="{{ im.url }}" alt="{{ item.product.name }}" />
+                                <img src="{{ im.url }}" alt="An image for product {{ item.name }} color {{ item.color }}" />
                             </div>
                         </a>
                         {% endthumbnail %}
                     </td>
-                    <td class="font-monospace text-center col-4">{{ item.price }}</td>
-                    <td class="font-monospace text-end col-4">{{ item.sale_price }}</td>
+                    <td class="font-monospace text-center col-4">€{{ item.price }}</td>
+                    <td class="font-monospace text-end col-4">€{{ item.sale_price }}</td>
                 </tr>
             </tbody>
         </table>

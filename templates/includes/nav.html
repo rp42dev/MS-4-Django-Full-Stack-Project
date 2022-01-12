@@ -19,7 +19,8 @@
 
             <!-- Shopping cart Icon -->
             <div class="nav-link">
-                <a class="position-relative cart" href="{% url 'cart' %}">
+                <a class="position-relative cart" href="{% url 'cart' %}"
+                    aria-label="A link a cart there is {{ item_count }} items in your cart">
                     <i class="fas h3 my-auto fa-shopping-cart">
                     </i>
                     <span
@@ -67,14 +68,15 @@
 
                 <li class="nav-item"><a class="nav-link {% if request.get_full_path == '/' %}disabled{% endif %}"
                         href="{% url 'home' %}"><i class="fas fa-home"></i> home</a></li>
-                <li class="nav-item"><a class="nav-link {% if shop %}disabled{% endif %}"
-                        href="{% url 'shop' %}"><i class="fas fa-shopping-bag"></i> shop</a></li>
+                <li class="nav-item"><a class="nav-link {% if shop %}disabled{% endif %}" href="{% url 'shop' %}"><i
+                            class="fas fa-shopping-bag"></i> shop</a></li>
 
                 {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
                 <li class="nav-item"><a class="nav-link {% if request.get_full_path == '/manage/' %}disabled{% endif %}"
                         href="{% url 'admin_view' %}"><i class="fas fa-tasks"></i> Manage</a></li>
-                <li class="nav-item"><a target="_blank" class="nav-link" href="{% url 'admin:index' %}"><i class="fas fa-tools"></i> Admin</a></li>
+                <li class="nav-item"><a target="_blank" class="nav-link" href="{% url 'admin:index' %}"><i
+                            class="fas fa-tools"></i> Admin</a></li>
                 {% endif %}
                 <li class="nav-item"><a class="nav-link {% if request.get_full_path == '/user/' %}disabled{% endif %}"
                         href="{% url 'user' %}"><i class="fas fa-user"></i> Profile</a></li>
@@ -92,7 +94,8 @@
             <!-- Cart display on medium and up screen size -->
             <div class="d-none d-md-flex ms-auto">
                 <div class="cart nav-link">
-                    <a class="position-relative cart" href="{% url 'cart' %}">
+                    <a class="position-relative cart" href="{% url 'cart' %}"
+                        aria-label="A link a cart there is {{ item_count }} items in your cart">
                         <i class="fas h3 my-auto fa-shopping-cart">
                         </i>
                         <span

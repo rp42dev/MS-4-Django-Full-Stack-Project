@@ -3,7 +3,8 @@
     <!-- Review product -->
     <div class="position-relative mb-3">
         {% thumbnail item.image "500" as im %}
-        <img class="card-img-top mb-md-0" src="{{ im.url }}" alt="{{ item.name }}" />
+        <img class="card-img-top mb-md-0" src="{{ im.url }}"
+            alt="An image for product {{ item.name }} color {{ item.color }}" />
         {% endthumbnail %}
         {% if item.sale %}
 
@@ -30,14 +31,13 @@
 
     {% if item.item_count == 0 %}
     <p class="text-danger font-monospace">{{ item.item_count }} Out of stock</p>
-    {% elif item.item_count < 5  %}
-    <p class="text-danger font-monospace">
+    {% elif item.item_count < 5 %} <p class="text-danger font-monospace">
         Only {{ item.item_count }} left in stock.
-    </p>
-    {% else %}
-    <p class="font-monospace">{{ item.item_count }} items in stock</p>
-    {% endif %}
+        </p>
+        {% else %}
+        <p class="font-monospace">{{ item.item_count }} items in stock</p>
+        {% endif %}
 
-    <a href="{% url 'shop_item' item.id %}" class="btn btn-dark">Buy {{ item.name }}</a>
+        <a href="{% url 'shop_item' item.id %}" class="btn btn-dark">Buy {{ item.name }}</a>
 </div>
 <hr class="d-md-none d-block">

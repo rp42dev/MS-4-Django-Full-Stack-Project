@@ -1,4 +1,3 @@
-let path = window.location.pathname;
 
 // show cart content toast on hover
 function outerFunction(){
@@ -29,6 +28,8 @@ function outerFunction(){
  }
  
 // Do not show on cart and checkout pages
+let path = window.location.pathname;
+
 if ( !(path === '/cart/' || path === '/checkout/') ) {
     outerFunction();
 }

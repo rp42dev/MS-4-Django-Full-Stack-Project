@@ -42,8 +42,8 @@
                 <p class="mb-0 font-text">User: {{ order.user_profile }}</p>
                 <p class="mb-0 font-text">Name: {{ order.full_name }}</p>
                 <p class="mb-0 font-text">Email: {{ order.email }}</p>
-                <p class="mb-0 font-text">Total: ${{ order.total }}</p>
-                <p class="mb-0 font-text">Delivery: {{ order.delivery }}</p>
+                <p class="mb-0 font-text">Total: €{{ order.total }}</p>
+                <p class="mb-0 font-text">Delivery: €{{ order.delivery }}</p>
                 <p class="mb-0 font-text">Paid: {{ order.paid }}</p>
             </div>
 
@@ -58,11 +58,11 @@
             <div class="col-12 fw-bolder font-monospace">
                 <p>
                     {% if delivery != 0 %}
-                    <span class="font-monospace h6">Delivery: {{ delivery }}</span> <br>
+                    <span class="font-monospace h6">Delivery: €{{ delivery }}</span> <br>
                     {% else %}
-                    <span class="text-danger m-0 h6 font-monospace">Free delivery over $50</span> <br>
+                    <span class="text-danger m-0 h6 font-monospace">Free delivery over €50</span> <br>
                     {% endif %}
-                    <span class="h3 fw-bold font-monospace">Total ${{ order.total }} </span>
+                    <span class="h3 fw-bold font-monospace">Total €{{ order.total }} </span>
                 </p>   
             </div>
             <div class="col-12">

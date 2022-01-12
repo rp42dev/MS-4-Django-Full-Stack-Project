@@ -1,43 +1,47 @@
 {% load thumbnail %}
 <div class="col-6 col-sm-4 col-lg-3 mb-2 mb-sm-3">
-<div class="card shadow-sm rounded-3 pt-2 h-100">
-    <!-- Sale badge-->
-    {% if product.sale %}
-    <div class="badge bg-danger p-2 text-white position-absolute p-2 font-monospace" style="top: 0.5rem; right: 0.5rem">
-        Sale
-    </div>
-    {% endif %}
-    <!-- Product image-->
+    <div class="card shadow-sm rounded-3 pt-2 h-100">
+        <!-- Sale badge-->
+        {% if product.sale %}
+        <div class="badge bg-danger p-2 text-white position-absolute p-2 font-monospace"
+            style="top: 0.5rem; right: 0.5rem">
+            Sale
+        </div>
+        {% endif %}
+        <!-- Product image-->
 
-    <div class="h-100 d-flex align-items-center">
-        {% thumbnail product.image "250" as im %}
-        <img class="card-img-top" src="{{ im.url }}" alt="{{ product.name }}" />
-        {% endthumbnail %}
-    </div>
-    <a class="card-img-overlay" href="{% url 'shop_item' product.id %}">
-    </a>
-    <!-- Product details-->
-    <div class="card-body p-2">
-        <div class="text-center align-items-end">
-            <!-- Product name-->
-            <h5 class="fw-bolder text-capitalize">{{ product.name }}</h5>
-            <div class="d-flex justify-content-center small text-warning mb-2">
+        <div class="h-100 d-flex align-items-center">
+            {% thumbnail product.image "250" as im %}
+            <img class="card-img-top" src="{{ im.url }}"
+                alt="An image for product {{ item.name }} color {{ item.color }}" />
+            {% endthumbnail %}
+        </div>
+        <a class="card-img-overlay"
+            aria-label="A {{ product.color }} {{ product.name }} hat, {% if product.sale %} discount price €{{ product.sale_price }} {% else %} price €{{ product.price }} {% endif %} click here to got to {{ product.name }} details page"
+            href="{% url 'shop_item' product.id %}" title="Go to details">
+        </a>
+        <!-- Product details-->
+        <div class="card-body p-2">
+            <div class="text-center align-items-end">
+                <!-- Product name-->
+                <h5 class="fw-bolder text-capitalize">{{ product.name }}</h5>
+                <div class="d-flex justify-content-center small text-warning mb-2">
 
-                <!-- incluse stars rating -->
-                {% include 'includes/product-stars.html' %}
+                    <!-- incluse stars rating -->
+                    {% include 'includes/product-stars.html' %}
 
+                </div>
+                <!-- Product price-->
+                {% if product.sale %}
+                <span class="text-decoration-line-through font-monospace">€{{ product.price }}</span>
+                <span class="text-danger font-monospace fw-bolder">€{{ product.sale_price }} </span>
+                {% else %}
+                <span class="font-monospace fw-bolder">€{{ product.price }} </span>
+                {% endif %}
             </div>
-            <!-- Product price-->
-            {% if product.sale %}
-            <span class="text-decoration-line-through font-monospace">${{ product.price }}</span>
-            <span class="text-danger font-monospace fw-bolder">${{ product.sale_price }} </span>
-            {% else %}
-            <span class="font-monospace fw-bolder">${{ product.price }} </span>
-            {% endif %}
+        </div>
+        <!-- Product actions-->
+        <div class="card-footer pt-0 border-top-0 bg-transparent justify-self-end">
         </div>
     </div>
-    <!-- Product actions-->
-    <div class="card-footer pt-0 border-top-0 bg-transparent justify-self-end">
-    </div>
-</div>
 </div>

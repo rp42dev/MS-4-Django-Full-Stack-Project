@@ -20,8 +20,9 @@
 
     <div class="container px-sm-2">
         <div class="col-12 text-left">
-            <p class="col-12 text-end"><a class="btn btn-dark orrange" href="{% url 'user_details' %}"><i class="fas fa-user-edit"></i> Change account
-                    Details</a></p>
+            <p class="col-12 text-end"><a class="btn btn-dark orrange" href="{% url 'user_details' %}"><i
+                        class="fas fa-user-edit"></i> Profile
+                    details</a></p>
         </div>
         <h2 class="text-capitalize"><i class="fas fa-history"></i> {{ request.user }}</h2>
 
@@ -84,10 +85,11 @@
                         <tr class="table-light">
                             <td class="col-4"><a class="btn btn-warning"
                                     href="{% url 'order_history' order.order_number %}"
-                                    title="{{ order.order_number }}">
-                                    #{{ order.id}}
+                                    aria-label="A link to the order #{{ order.id }} summary page"
+                                    title="{{ order }}" >
+                                    #{{ order.id }}
                                 </a></td>
-                            <td class="font-monospace col-4 text-center">${{ order.total }}</td>
+                            <td class="font-monospace col-4 text-center">€{{ order.total }}</td>
                             <td class="font-monospace col-4 text-end">{{ order.status }}</td>
 
                         </tr>

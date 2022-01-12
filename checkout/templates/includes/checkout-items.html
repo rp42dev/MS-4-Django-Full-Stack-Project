@@ -8,16 +8,17 @@
 
         <!-- item image -->
         {% thumbnail item.product.image "150" as im %}
-        <a class="" href="{% url 'shop_item' item.product.id %}">
+        <a href="{% url 'shop_item' item.product.id %}"
+            aria-label="A link to product {{ item.product.name }} details page">
             <div class="h-100 d-flex align-items-center ">
-                <img class="card-img-top" src="{{ im.url }}" alt="{{ item.product.name }}" />
+                <img class="card-img-top" src="{{ im.url }}"
+                    alt="An image for product {{ item.product.name }} color {{ item.product.color }}" />
             </div>
         </a>
 
         <!-- product discount badge -->
         {% if item.product.sale %}
-        <div class="badge bg-danger text-white font-monospace position-absolute"
-            style="top: -.5rem; right: 0.5rem">
+        <div class="badge bg-danger text-white font-monospace position-absolute" style="top: -.5rem; right: 0.5rem">
             Sale
         </div>
         {% endif %}
@@ -33,10 +34,10 @@
         <div>
             <!-- Sale badge -->
             {% if item.product.sale %}
-            <span class="text-decoration-line-through font-monospace">${{ item.product.price }}</span>
-            <span class="text-danger font-monospace fw-bolder">${{ item.product.sale_price }} </span>
+            <span class="text-decoration-line-through font-monospace">€{{ item.product.price }}</span>
+            <span class="text-danger font-monospace fw-bolder">€{{ item.product.sale_price }} </span>
             {% else %}
-            <span class="font-monospace fw-bolder">${{ item.product.price }} </span>
+            <span class="font-monospace fw-bolder">€{{ item.product.price }} </span>
             {% endif %}
             <p class="">Quantity: {{ item.quantity }}</p>
         </div>

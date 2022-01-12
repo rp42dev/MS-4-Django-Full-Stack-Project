@@ -23,11 +23,13 @@
                 <tr class="table-light font-monospace">
                     <td class="col-4"><a
                             class="btn {% if not order.status == 'Payment received' %} btn-warning {% else %} btn-danger {% endif %}"
-                            href="{% url 'order_view' order.order_number %}" title="{{ order.order_number }}">
-                            #{{ order.id}}
+                            href="{% url 'order_view' order.order_number %}"
+                            aria-label="A link to the order  #{{ order.id }} summary"
+                            title="{{ order }}">
+                            #{{ order.id }}
                         </a></td>
 
-                    <td class="font-monospace col-4 text-center">${{ order.total }}</td>
+                    <td class="font-monospace col-4 text-center">€{{ order.total }}</td>
                     <td class="font-monospace col-4 text-end">{{ order.status }}</td>
 
                 </tr>
@@ -64,11 +66,11 @@
                 <tr class="table-light font-monospace">
                     <td class="col-4"><a
                             class="btn {% if not order.status == 'Submitted' %} btn-warning {% else %} btn-danger {% endif %}"
-                            href="{% url 'order_view' order.order_number %}" title="{{ order.order_number }}">
+                            href="{% url 'order_view' order.order_number %}" title="{{ order }}">
                             #{{ order.id}}
                         </a></td>
 
-                    <td class="font-monospace col-4 text-center">${{ order.total }}</td>
+                    <td class="font-monospace col-4 text-center">€{{ order.total }}</td>
                     <td class="font-monospace col-4 text-end">{{ order.status }}</td>
 
                 </tr>

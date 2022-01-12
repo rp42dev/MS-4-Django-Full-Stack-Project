@@ -52,7 +52,7 @@ class CustomerSuport(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Ticket #{self.id}. {self.issue} Issue. In {self.order}'
+        return f'Ticket #{self.id}. {self.issue} Issue. In order #{self.order.id}'
 
 
 class Message(models.Model):

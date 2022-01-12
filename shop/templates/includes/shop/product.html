@@ -5,7 +5,8 @@
 
     {% thumbnail item.image "500" as im %}
     <div class="col-md-6 mb-4 mb-md-0 position-relative">
-        <img class="card-img-top mb-md-0" src="{{ im.url }}" alt="{{ item.name }}" />
+        <img class="card-img-top mb-md-0" src="{{ im.url }}"
+            alt="An image for product {{ item.name }} color {{ item.color }}" />
         {% if item.sale %}
         <div class="badge bg-danger text-white position-absolute w-auto" style="top: 0.5rem; right: 0.5rem">
             <h3 class="m-0 font-monospace">Sale</h3>
@@ -20,10 +21,10 @@
 
         <div class="fs-5 mb-3">
             {% if item.sale %}
-            <span class="text-decoration-line-through h3 font-monospace">${{ item.price }}</span>
-            <span class="text-danger h3 font-monospace">${{ item.sale_price }} </span>
+            <span class="text-decoration-line-through h3 font-monospace">€{{ item.price }}</span>
+            <span class="text-danger h3 font-monospace">€{{ item.sale_price }} </span>
             {% else %}
-            <span class="font-monospace h3">${{ item.price }} </span>
+            <span class="font-monospace h3">€{{ item.price }} </span>
             {% endif %}
         </div>
 
@@ -40,15 +41,14 @@
         <p class="font-text">{{ item.description }}</p>
         {% if availability == 0 %}
         <p class="text-danger font-monospace">{{ availability }} Out of stock</p>
-        {% elif availability < 5  %}
-        <p class="text-danger font-monospace">
+        {% elif availability < 5 %} <p class="text-danger font-monospace">
             Only {{ availability }} left in stock.
-        </p>
-        {% else %}
-        <p class="font-monospace">{{ availability }} items in stock</p>
-        {% endif %}
+            </p>
+            {% else %}
+            <p class="font-monospace">{{ availability }} items in stock</p>
+            {% endif %}
 
-        <!-- Product add to cart POST form -->
-        {% include 'includes/forms/add-to-cart-form.html' %}
+            <!-- Product add to cart POST form -->
+            {% include 'includes/forms/add-to-cart-form.html' %}
     </div>
 </div>

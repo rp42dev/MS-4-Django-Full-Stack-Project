@@ -7,15 +7,16 @@
     <!-- Product image -->
     <div class="col-6 col-sm-3 order-2 order-sm-1 position-relative">
         {% thumbnail item.product.image "150" as im %}
-        <a class="" href="{% url 'shop_item' item.product.id %}">
+        <a class="" href="{% url 'shop_item' item.product.id %}"
+            aria-label="A link to product {{ item.product.name }} details page">
             <div class="h-100 d-flex align-items-center ">
-                <img class="card-img-top" src="{{ im.url }}" alt="{{ item.product.name }}" />
+                <img class="card-img-top" src="{{ im.url }}"
+                    alt="An image for product {{ item.product.name }} color {{ item.product.color }}" />
             </div>
         </a>
         <!-- Discount badge -->
         {% if item.product.sale %}
-        <div class="badge bg-danger text-white position-absolute font-monospace"
-            style="top: 0.5rem; right: 0.5rem">
+        <div class="badge bg-danger text-white position-absolute font-monospace" style="top: 0.5rem; right: 0.5rem">
             Sale
         </div>
         {% endif %}
@@ -60,15 +61,14 @@
     <div class="col-3 col-6 col-sm-3 order-2 order-sm-3">
         <div class="text-end">
             {% if item.product.sale %}
-            <span
-                class="text-decoration-line-through text-danger  font-monospace">${{ item.product.price }}</span>
-            <span class="text-danger  font-monospace">${{ item.product.sale_price }} </span>
+            <span class="text-decoration-line-through text-danger  font-monospace">€{{ item.product.price }}</span>
+            <span class="text-danger  font-monospace">€{{ item.product.sale_price }} </span>
             {% else %}
-            <span class="font-monospace">${{ item.product.price }}</span>
+            <span class="font-monospace">€{{ item.product.price }}</span>
             {% endif %}
 
             <p class="mb-0 font-monospace">Quantity: {{ item.quantity }}</p>
-            <p class="mb-0 font-monospace">Sub total ${{ item.product_total }} </p>
+            <p class="mb-0 font-monospace">Sub total €{{ item.product_total }} </p>
         </div>
     </div>
 

@@ -29,9 +29,11 @@
                 <!-- Product image -->
                 <div class="col-6 col-sm-3 order-2 order-sm-1 position-relative">
                     {% thumbnail item.product.image "150" as im %}
-                    <a href="{% url 'shop_item' item.product.id %}">
+                    <a href="{% url 'shop_item' item.product.id %}"
+                        aria-label="A link to product {{ item.product.name }} details page">
                         <div class="h-100 d-flex align-items-center ">
-                            <img class="card-img-top" src="{{ im.url }}" alt="{{ item.product.name }}" />
+                            <img class="card-img-top" src="{{ im.url }}"
+                                alt="An image for product {{ item.product.name }} color {{ item.product.color }}" />
                         </div>
                     </a>
                     <!-- Sales Badge -->
@@ -45,24 +47,24 @@
                 </div>
                 <div class="col-12 col-sm-6 order-1 order-sm-2">
                     <p class="text-capitalize fw-bolder h5 text-center">{{ item.product.name }}</p>
-        
+
                     <p class="font-text d-none d-sm-block mb-0 py-0 text-center">{{ item.product.description }}</p>
                 </div>
 
                 <div class="col-3 text-center col-6 col-sm-3 order-2 order-sm-3">
-                        <!-- Sale badge-->
-                        {% if item.product.sale %}
-                        
-                        <h1 class="text-danger font-monospace fw-bolder">${{ item.subtotal }} </h1>
-                        {% else %}
-                        <h1 class="font-monospace fw-bolder">${{ item.subtotal }}</h1>
-                        {% endif %}
-  
+                    <!-- Sale badge-->
+                    {% if item.product.sale %}
+
+                    <h1 class="text-danger font-monospace fw-bolder">€{{ item.subtotal }} </h1>
+                    {% else %}
+                    <h1 class="font-monospace fw-bolder">€{{ item.subtotal }}</h1>
+                    {% endif %}
+
                     <div>
                         <!-- Add or remve item quantity include form -->
                         {% include 'includes/forms/add-remove.html' %}
 
-                       <span class="font-monospace"> {{ item.availability }} available</span>
+                        <span class="font-monospace"> {{ item.availability }} available</span>
                     </div>
                 </div>
                 <!-- Remove item from cart -->
@@ -74,7 +76,7 @@
 
         <!-- Button to checkout -->
         <div class="col-12 mt-5 text-center">
-            <h1 class="font-monospace fw-bold total"> ${{ total|floatformat:2 }}</h1>
+            <h1 class="font-monospace fw-bold total"> €{{ total|floatformat:2 }}</h1>
             <input type="hidden" name="grand_total">
             <a class="mt-4 btn btn-dark btn-xl text-uppercase flex-shrink-0" href="{% url 'checkout' %}">
                 Checkout Now
