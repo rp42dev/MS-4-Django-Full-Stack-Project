@@ -20,7 +20,7 @@
 
         {% if request.user.is_superuser  %}
         <hr class="mt-4">
-        <p class="text-muted text-italic">Update product quantity/details/discounts/etc...</p>
+        <p class="text-muted text-italic">Update the product </p>
 
         <div class="col mt-4">
             <a class="btn btn-warning flex-shrink-0" href="{% url 'update_item' item.id %}">

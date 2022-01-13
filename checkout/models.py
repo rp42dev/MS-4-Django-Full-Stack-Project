@@ -125,4 +125,4 @@ class OrderLine(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'SKU {self.product.sku} Product id {self.product.id}'
+        return f'SKU {self.product.sku} Product id #{self.product.id}'

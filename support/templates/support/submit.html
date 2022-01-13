@@ -16,8 +16,8 @@
 
     <div class="container">
         <div class="w-container mx-auto">
-            <h2 class="text-capitalize"><i class="fas fa-file-signature"></i> Submit support ticket</h2>
-            <p class="text-muted text-italic ">If any problem with account | order #{{ order.id }} or product</p>
+            <h2 class="text-capitalize"><i class="fas fa-file-signature"></i> Report</h2>
+            <p class="text-muted text-italic ">Problem with order #{{ order.id }} ?</p>
 
             <form id="support-form" action="{% url 'submit' order.order_number %}" class="form" method="POST"
                 novalidate>
@@ -46,8 +46,7 @@
                     Submit
                 </button>
             </form>
-            <p class="text-muted text-italic mt-2">Or you may <a href="{% url 'contact_view' %}">Contact us</a> for any
-                assistance</p>
+            <p class="text-muted text-italic mt-2">Or <a href="{% url 'contact_view' %}">Contact us</a> </p>
         </div>
     </div>
 </section>

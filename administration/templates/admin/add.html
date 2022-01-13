@@ -17,7 +17,7 @@
     <div class="container">
         <div class="w-container mx-auto">
             <h2 class=""><i class="fas fa-folder-plus"></i> Add new product</h2>
-            <p class="text-muted text-italic">Add new item to the store inventory</p>
+            <p class="text-muted text-italic">Add new product to inventory</p>
             <form class="mt-3" action="{% url 'add_item' %}" method="POST" enctype="multipart/form-data" id="add_item"
                 novalidate>
                 {% csrf_token %}

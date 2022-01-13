@@ -15,8 +15,8 @@
 
     <div class="container">
         <div class="w-container mx-auto">
-            <h2 class="text-capitalize"><i class="fas fa-file-signature"></i> Report an issue</h2>
-            <p class="text-muted text-italic p-0 m-0">Submit if any issues with Account | Order | Product</p>
+            <h2 class="text-capitalize"><i class="fas fa-file-signature"></i> Report</h2>
+            <p class="text-muted text-italic p-0 m-0">Report a Problem</p>
 
             <form id="support-form" action="{% url 'support' %}" class="form" method="POST" novalidate>
                 {% csrf_token %}
@@ -28,7 +28,7 @@
                     Submit
                 </button>
             </form>
-            <p class="text-muted text-italic mt-2"><a href="{% url 'contact_view' %}">Contact us</a> for assistance</p>
+            <p class="text-muted text-italic mt-2">Or <a href="{% url 'contact_view' %}">contact us</a></p>
         </div>
     </div>
 </section>
