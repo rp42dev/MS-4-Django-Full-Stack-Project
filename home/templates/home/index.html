@@ -20,14 +20,26 @@
 <!-- Services-->
 <section class="page-section" id="services">
     <div class="container text-center">
+
         <div class="text-center">
+
             <h2 class="text-uppercase">Newest additions</h2>
             <h3 class="section-subheading text-muted">Shop hats with confidence!</h3>
-            <div class="row gx-2 gx-sm-3 h-25 scroll-wrapper flex-nowrap">
-                {% for product in related %}
-                {% include 'includes/shop/item-card.html' %}
-                {% endfor %}
 
+            <div class="position-relative">
+                <div id="left" class="bar left d-none d-md-flex">
+                    <div class="bar-btn my-auto px-2 btn-left py-3"><i class="fas h1 fa-angle-left"></i></div>
+                </div>
+                <div class="row gx-2 gx-sm-3 h-25 scroll-wrapper flex-nowrap">
+
+                    {% for product in related %}
+                    {% include 'includes/shop/item-card.html' %}
+                    {% endfor %}
+
+                </div>
+                <div id="right" class="bar right d-none d-md-flex">
+                    <div class="bar-btn my-auto px-2 btn-right py-3"> <i class="fas h1 fa-angle-right"></i></div>
+                </div>
             </div>
         </div>
         <a class="btn mt-4 btn-xl text-uppercase btn-dark" href="{% url 'shop' %}">Shop more hats</a>

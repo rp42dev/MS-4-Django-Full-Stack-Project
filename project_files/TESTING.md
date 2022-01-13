@@ -189,6 +189,31 @@ Sripe iframe throws w3 html valitation errors.
 [Back to Readme.md](../README.md)
 ### **Solved issues or bugs**
 
+- 
+  <img src="../project_files/images/bugs/passive-listener.JPG" width="500">
+
+  ```javascript
+
+  // folowing code caused the issues
+  window.addEventListener('load', (event) => {
+
+      const scrolling = document.querySelector(".scroll-wrapper");
+      scrolling.scrollLeft = 130;
+      scrolling.addEventListener("wheel", (evt) => {
+          evt.preventDefault();
+          scrolling.scrollLeft += evt.deltaY;
+      });
+  });
+
+  // Repaced with this code mousedown event instead
+
+  document.querySelector('#left').addEventListener('mousedown', () => scrolling.scrollLeft += 300);
+
+  document.querySelector("#right").addEventListener('mousedown', () => scrolling.scrollLeft -= 300);
+
+  ```
+
+
 -
   ```javascript
     // Error if form hidden after feadback left

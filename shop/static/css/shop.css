@@ -87,3 +87,38 @@
     max-width: 100%;
 }
 
+/* carousel */
+.bar {
+    position: absolute;
+    height: 96%;
+    color: #fff;
+    top:0;
+    z-index: 100000;
+    opacity: .6;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.bar-btn {
+    background-color: rgba(41, 41, 41, 0.178);
+}
+
+.btn-left {
+    border-radius: 0 6px 6px 0;
+}
+.btn-right{
+    border-radius: 6px 0 0 6px;
+    
+}
+.bar-btn:hover {
+    background-color: rgba(41, 41, 41, 0.473);
+}
+
+.left {
+    border-radius: 6px 0 0 6px;
+    left: -10px;
+}
+
+.right {
+    border-radius: 0 6px 6px 0;
+    right: -10px;
+}
