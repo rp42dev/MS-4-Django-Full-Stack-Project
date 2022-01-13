@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load webp_converter %}
 
 {% block extra_css %}
 <link href="{% static 'css/home.css' %}" rel="stylesheet" />
@@ -10,8 +11,8 @@
 {% block content %}
 <!-- Masthead-->
 <header class="masthead h-auto d-flex flex-column justify-content-center align-items-center">
-    <img class="bg parallax" src="{% static 'img/bg.jpg' %}" alt="paralax image bottom layer">
-    <img class="bg-3 parallax2" src="{% static 'img/bg-3.png' %}" alt="Paraklax image top alyer">
+    <img class="bg parallax" src="{% static_webp 'img/bg.jpg' %}" alt="paralax image bottom layer">
+    <img class="bg-3 parallax2" src="{% static_webp 'img/bg-3.png' %}" alt="Paraklax image top alyer">
     <div class="container">
         <div class="masthead-subheading">Welcome To!</div>
         <div class="masthead-heading text-uppercase">A Hat Shop</div>

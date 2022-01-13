@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', event => {
             } else {
                 navbarCollapsible.classList.add('navbar-shrink');
             }
-        }
+        } 
     };
 
     // Shrink the navbar 

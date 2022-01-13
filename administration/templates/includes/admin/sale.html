@@ -22,7 +22,7 @@
             <tbody>
                 <tr class="table-light font-monospace">
                     <td class="col-4">
-                        {% thumbnail item.image format="WEBP" "80" as im %}
+                        {% thumbnail item.image "80" format="WEBP" as im %}
                         <a href="{% url 'update_item' item.id %}" 
                         aria-label="A link to the product #{{ item.name }} update page"
                         title="{{ item.name }}" >
