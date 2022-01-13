@@ -12,9 +12,8 @@
         <!-- Product image-->
 
         <div class="h-100 d-flex align-items-center">
-            {% thumbnail product.image "350" format="WEBP" as im %}
+            {% thumbnail product.image "300" format="WEBP" as im %}
             <img class="card-img-top" src="{{ im.url }}"
-            width="350" height="100%"
                 alt="An image for product {{ item.name }} color {{ item.color }}" />
             {% endthumbnail %}
         </div>
