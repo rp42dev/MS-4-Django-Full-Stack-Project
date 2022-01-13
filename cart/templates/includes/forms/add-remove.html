@@ -7,7 +7,8 @@
                 <div class="input-group">
 
                     <input type="hidden" name="action" value="minus">
-                    <button type='submit' class='btn count-btn my-auto'><i class="fas h3 my-auto fa-minus-circle"></i></button>
+                    <button type='submit' class='btn count-btn my-auto' aria-label="delete one item button"><i
+                            class="fas h3 my-auto fa-minus-circle"></i></button>
 
                 </div>
             </div>
@@ -15,7 +16,7 @@
     </div>
 
     <div class="my-auto ">
-        <h3 class="px-0 my-auto fw-bolder font-monospace">{{ item.quantity }}</h3>
+        <span class="px-0 my-auto fw-bolder h3 font-monospace">{{ item.quantity }}</span>
     </div>
 
     <div class="btn-outline-light">
@@ -26,11 +27,12 @@
 
                     <input type="hidden" name="action" value="add">
 
-                    <button type='submit' class='btn my-auto count-btn'><i class="fas h3 my-auto fa-plus-circle"></i></button>
+                    <button type='submit' class='btn my-auto count-btn' aria-label="add one item button"><i
+                            class="fas h3 my-auto fa-plus-circle"></i></button>
 
                 </div>
             </div>
         </form>
     </div>
-    
+
 </div>

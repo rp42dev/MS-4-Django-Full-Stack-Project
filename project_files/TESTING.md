@@ -190,6 +190,18 @@ Sripe iframe throws w3 html valitation errors.
 ### **Solved issues or bugs**
 
 -
+  ```javascript
+    // Error if form hidden after feadback left
+    review.js:23 Uncaught TypeError: Cannot set properties of null (setting 'disabled')
+
+    // Fix is to add if statement to the form element
+      {% if feedback_left %}
+    <script src="{% static 'js/review.js' %}"></script>
+    { % endif %}
+  ```
+
+
+-
   ```python
   #Folowing code created loop if cart was empty and previous url was cart
   if not cart:

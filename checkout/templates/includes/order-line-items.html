@@ -6,11 +6,12 @@
 
     <!-- Product image -->
     <div class="col-6 col-sm-3 order-2 order-sm-1 position-relative">
-        {% thumbnail item.product.image "150" format="WEBP" as im %}
+        {% thumbnail item.product.image "300" format="WEBP" as im %}
         <a class="" href="{% url 'shop_item' item.product.id %}"
             aria-label="A link to product {{ item.product.name }} details page">
             <div class="h-100 d-flex align-items-center ">
                 <img class="card-img-top" src="{{ im.url }}"
+                width="300" height="100%"
                     alt="An image for product {{ item.product.name }} color {{ item.product.color }}" />
             </div>
         </a>

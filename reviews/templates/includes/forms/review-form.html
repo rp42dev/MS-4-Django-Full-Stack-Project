@@ -15,8 +15,11 @@
         </div>
         <input type="range" class="form-range hidden form-fontrol" name="raiting" min="1" value="0" max="5" step="1"
             id="star" onchange="Stars(this.value)" required>
+        <label for="star" class="text-muted text-italic text-center w-100">Write your review</label>
         <div class="invalid-feedback">Rating is required</div>
+
         <input type="hidden" value="{{ order_id }}" name="order_id">
+    
     </div>
     <div class="fw-bolder font-monospace">
         {{ form|crispy }}
@@ -31,6 +34,8 @@
 
 </form>
 
-{% block postloadjs %}
-<script src="{% static 'js/forms.js' %}"></script>
-{% endblock %}
+
+{% if not feedback_left %}
+<!-- Review form scripts -->
+<script src="{% static 'js/review.js' %}"></script>
+{% endif %}

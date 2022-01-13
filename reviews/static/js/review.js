@@ -20,7 +20,10 @@ const star = document.querySelector('#star');
 
 // Disabled submit button
 // enable on clicking stars element
-button.disabled = true;
+if (button){
+   button.disabled = true;
+}
+
 star.addEventListener('click', function (){ 
     button.disabled = false;
 });

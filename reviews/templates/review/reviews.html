@@ -30,7 +30,7 @@
                 <p class="m-0 text-muted text-italic text-capitalize">For {{ item.name }} hat</p>
                 {% for review in reviews reversed %}
                 <div class="mt-4 shadow-sm border rounded p-3 bg-white">
-                    <h5 class="m-0 fw-bolder text-muted text-italic text-capitalize">{{ review.user_profile }}</h5>
+                    <span class="m-0 fw-bolder text-muted h5 text-italic text-capitalize">{{ review.user_profile }}</span>
 
                     <!-- Include review stars -->
                     {% include 'includes/reviews-stars.html' %}

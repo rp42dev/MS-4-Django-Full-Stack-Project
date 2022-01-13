@@ -1,10 +1,11 @@
 // Form validation
 
-let FileInputs = document.querySelectorAll('input[type=file]');
-let SellectInputs = document.querySelectorAll('select');
+
+var SellectInputs = document.querySelectorAll('select');
 
 // resize text area and expand automaticly
-let textAreas = document.querySelectorAll('.textarea');
+var textAreas = document.querySelectorAll('.textarea');
+
 Array.prototype.filter.call(textAreas, function (textarea) {
     textarea.setAttribute("rows", 5);
 
@@ -15,11 +16,6 @@ Array.prototype.filter.call(textAreas, function (textarea) {
     }
 }, false);
 
-// Get file inputs and add gray color css
-// class to placeholder if file net sellected
-Array.prototype.filter.call(FileInputs, function (input) {
-    input.classList.add('text-gray');
-}, false);
 
 // Get all the sellect inputand add gray color 
 // css class to placeholder if not sellected

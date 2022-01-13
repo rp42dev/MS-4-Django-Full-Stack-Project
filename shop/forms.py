@@ -32,7 +32,8 @@ class ItemForm(forms.ModelForm):
                 else:
                     placeholder = field.label
                 field.widget.attrs['placeholder'] = placeholder
-            if field_name != 'sale' and field_name != 'item_count':
+            if field_name != 'sale' and\
+                    field_name != 'item_count' and field_name != 'image':
                 field.label = False
             elif field_name == 'item_count':
                 field.label
