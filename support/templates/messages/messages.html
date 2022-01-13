@@ -16,29 +16,33 @@
 
     <div class="container col-12 col-sm-8 col-lg-6">
         <div class="mx-auto element-width">
-            <h4 ><i class="fas fa-comments"></i> {{ issue }}</h4>
-            <p class="text-muted text-italic ">Messages regarting recent reported issue</p>
-            {% if issue.order_line %}
+            <h4 ><i class="fas fa-comments"></i> Messages</h4>
 
-            <p class="p-0 text-muted text-italic">Product: {{ issue.order_line }}</p>
-            {% endif %}
+            <div class="mb-2">
+                <span class="text-muted text-italic ">{{ issue }}</span> <br>
+                {% if issue.order_line %}
+    
+                <span class="p-0 text-muted text-italic">Product: {{ issue.order_line }}</span>
+                {% endif %}
+            </div>
+ 
             {% if issue.status == 'Resolved' %}
-            <p class="m-0 text-success fw-bolder font-monospace">Ticket Status: {{ issue.status }}</p>
+            <p class="m-0 text-success fw-bolder small font-monospace">Ticket Status: {{ issue.status }}</p>
             {% else %}
-            <p class="m-0 text-danger fw-bolder font-monospace">Ticket Status: {{ issue.status }}</p>
+            <p class="m-0 text-danger fw-bolder small font-monospace">Ticket Status: {{ issue.status }}</p>
             {% endif %}
-            <div class="messages-body bg-white rounded mb-4">
+            <div class="messages-body bg-white rounded mb-4 messages">
                 {% for message in thread_messages %}
 
                 {% if message.user.is_superuser %}
 
                 <div class="rounded p-3">
-                    <p class="m-0 fw-bolder text-muted text-italic text-capitalize small">{{ message.user.username }}
-                    </p>
-                    <p class="m-0 time font-monospace">{{ message.timestamp }}</p>
+                    <span class="m-0 fw-bolder text-muted text-italic text-capitalize small">{{ message.user.username }}
+                    </span> <br>
+                    <sman class="time font-monospace">{{ message.timestamp }}</span>
 
                     <div class="text-admin bg-light p-2 shadow-sm">
-                        <p class="message font-monospace small">{{ message.message }}</p>
+                        <p class="message mb-0 font-monospace small">{{ message.message }}</p>
                     </div>
                 </div>
 
@@ -46,13 +50,13 @@
                 {% else %}
 
                 <div class="rounded p-3">
+                    <span class="m-0 fw-bolder text-muted text-italic text-capitalize small">{{ message.user.username }}
+                    </span> <br>
+                    <sman class="time font-monospace">{{ message.timestamp }}</span>
 
-                    <p class="m-0 fw-bolder text-muted text-italic text-capitalize small">{{ message.user.username }}
-                    </p>
-                    <p class="m-0 time font-monospace">{{ message.timestamp }}</p>
 
                     <div class="text bg-light p-2 bg-light shadow-sm border">
-                        <p class="message font-monospace small">{{ message.message }}</p>
+                        <p class="message mb-0 font-monospace small">{{ message.message }}</p>
                     </div>
                 </div>
 
