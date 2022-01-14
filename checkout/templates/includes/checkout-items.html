@@ -3,7 +3,7 @@
 
 {% if cart_items %}
 {% for item in cart_items %}
-<div class="cart-conteiner rounded bg-white p-2 row gx-0 align-items-center my-2 mt-sm-4 mb-3 mb-md-0">
+<div class="cart-conteiner rounded shadow-sm bg-white p-2 row gx-0 align-items-center my-2 mt-sm-4 mb-3 mb-md-0">
     <div class="col-6 col-sm-3 order-2 order-sm-1 position-relative">
 
         <!-- item image -->
@@ -34,10 +34,10 @@
         <div>
             <!-- Sale badge -->
             {% if item.product.sale %}
-            <span class="text-decoration-line-through font-monospace">€{{ item.product.price }}</span>
-            <span class="text-danger font-monospace fw-bolder">€{{ item.product.sale_price }} </span>
+            <span class="text-decoration-line-through h3 font-monospace">€{{ item.product.price }}</span>
+            <span class="text-danger h3 font-monospace">€{{ item.product.sale_price }} </span>
             {% else %}
-            <span class="font-monospace fw-bolder">€{{ item.product.price }} </span>
+            <span class="font-monospace h3">€{{ item.product.price }} </span>
             {% endif %}
             <p class="">Quantity: {{ item.quantity }}</p>
         </div>

@@ -139,11 +139,13 @@ def shop_item(request, item_id):
         availability = item.item_count - cart[item_id]
 
     related = Product.objects.filter(style=item.style).order_by('-id')
+    related_count = related.count()
+
     context = {
         'item': item,
         'related': related,
+        'related_count': related_count,
         'availability': availability,
-
     }
     return render(request, 'shop/shop_item.html', context)
 

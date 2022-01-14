@@ -3,14 +3,14 @@
 .drop-link {
     font-family: "Montserrat", sans-serif;
     font-size: 0.95rem;
-    color: #e5e5e5;
+    color: #f5f5f5;
     font-weight: 600;
     letter-spacing: 0.0625em;
 }
 
 .drop-link,
 .dropdown-item {
-    color: #e5e5e5;
+    color: #f5f5f5;
     transition: color 0.2s ease-in-out;
 }
 
@@ -38,6 +38,7 @@
     padding-top: 60px;
 }
 
+/* extra shop nav */
 .extra-navbar-grow {
     margin-top: 12px;
     height: 50px;
@@ -55,6 +56,7 @@
     }
 }
 
+/* nav search bar */
 .search-shrink {
     margin-top: 0px;
     height: 0px;
@@ -72,7 +74,7 @@
 
 .search-btn {
     height: 100%;
-    color: #e5e5e5;
+    color: #f5f5f5;
     background-color: #fca311;
     border-radius: 0 4px 4px 0;
 }

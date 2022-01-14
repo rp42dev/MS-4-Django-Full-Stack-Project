@@ -19,6 +19,7 @@
         {% include 'includes/shop/product.html' %}
     </div>
 
+    {% if related_count > 1 %}
     <!-- Include Related products -->
     <div class="container pt-4 px-2 px-lg-5">
         <h2 class="fw-bolder mb-4 text-capitalize">More {{ item.style }} hats</h2>
@@ -38,9 +39,9 @@
                 <div class="bar-btn my-auto px-2 btn-right py-3"> <i class="fas h1 fa-angle-right"></i></div>
             </div>
         </div>
-
     </div>
-  
+    {% endif %}
+
 </section>
 
 {% endblock %}
