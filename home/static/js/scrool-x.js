@@ -3,7 +3,7 @@ const scrolling = document.querySelector(".scroll-wrapper");
 
 
 if (window.innerWidth < 400) {
-    scrolling.scrollLeft = 130;
+    scrolling.scrollLeft = 80;
 }
 
 let left= false;

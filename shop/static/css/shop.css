@@ -101,19 +101,6 @@
     transition: all 0.2s ease-in-out;
 }
 
-.bar-btn {
-    transition: all 0.2s ease-in-out;
-}
-
-.btn-left {
-    border-radius: 0 6px 6px 0;
-}
-.btn-right{
-    border-radius: 6px 0 0 6px;
-    
-}
-
-
 .bar:hover {
     background-color: rgba(41, 41, 41, 0.473);
 }
@@ -145,15 +132,8 @@
 }
 
 @media screen and (max-width: 400px){
+    .shop-item,
     .related-item {
         width: 100%;
     }
-}
-
-.related-container div:first-of-type {
-    padding-left: 0;
-}
-
-.related-container div:last-of-type {
-    padding-right: 0;
 }
