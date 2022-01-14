@@ -76,19 +76,20 @@ header.masthead .masthead-heading {
     }
 }
 
-/* Carousel */
+/* Custo carousel gallery*/
 .bar {
     position: absolute;
-    height: 96%;
+    height: 100%;
     color: #fff;
     top:0;
     z-index: 100000;
+    background-color: rgba(41, 41, 41, 0.178);
     opacity: .6;
-    transition: opacity 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 .bar-btn {
-    background-color: rgba(41, 41, 41, 0.178);
+    transition: all 0.2s ease-in-out;
 }
 
 .btn-left {
@@ -98,7 +99,9 @@ header.masthead .masthead-heading {
     border-radius: 6px 0 0 6px;
     
 }
-.bar-btn:hover {
+
+
+.bar:hover {
     background-color: rgba(41, 41, 41, 0.473);
 }
 
@@ -110,4 +113,28 @@ header.masthead .masthead-heading {
 .right {
     border-radius: 0 6px 6px 0;
     right: -10px;
+}
+
+.related-item {
+    width: 23%;
+}
+
+@media screen and (max-width: 768px){
+    .related-item {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .related-item {
+        width: 43%;
+    }
+}
+
+.related-container div:first-of-type {
+    padding-left: 0;
+}
+
+.related-container div:last-of-type {
+    padding-right: 0;
 }

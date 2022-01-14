@@ -19,19 +19,40 @@
         {% include 'includes/shop/product.html' %}
     </div>
 
-    {% if related_count > 1 %}
-    <!-- Include Related products -->
     <div class="container pt-4 px-2 px-lg-5">
+        {% if related_count > 1 %}
+        <!-- Include Related products -->
+
         <h2 class="fw-bolder mb-4 text-capitalize">More {{ item.style }} hats</h2>
 
         <div class="position-relative">
             <div id="left" class="bar left d-none d-md-flex">
                 <div class="bar-btn my-auto px-2 btn-left py-3"><i class="fas h1 fa-angle-left"></i></div>
             </div>
-            <div class="row gx-2 gx-sm-3 h-25 scroll-wrapper flex-nowrap ">
+            <div class="related-container row gx-2 gx-sm-3 h-25 scroll-wrapper flex-nowrap ">
                 {% for product in related %}
                 {% if product.id != item.id %}
-                {% include 'includes/shop/item-card.html' %}
+                <div class="related-item col-lg-3">
+                    {% include 'includes/shop/item-card.html' %}
+                </div>
+                <div class="related-item col-lg-3">
+                    {% include 'includes/shop/item-card.html' %}
+                </div>
+                <div class="related-item col-lg-3">
+                    {% include 'includes/shop/item-card.html' %}
+                </div>
+                <div class="related-item col-lg-3">
+                    {% include 'includes/shop/item-card.html' %}
+                </div>
+                <div class="related-item col-lg-3">
+                    {% include 'includes/shop/item-card.html' %}
+                </div>
+                <div class="related-item col-lg-3">
+                    {% include 'includes/shop/item-card.html' %}
+                </div>
+                <div class="related-item col-lg-3">
+                    {% include 'includes/shop/item-card.html' %}
+                </div>
                 {% endif %}
                 {% endfor %}
             </div>
@@ -39,9 +60,9 @@
                 <div class="bar-btn my-auto px-2 btn-right py-3"> <i class="fas h1 fa-angle-right"></i></div>
             </div>
         </div>
-    </div>
-    {% endif %}
 
+        {% endif %}
+    </div>
 </section>
 
 {% endblock %}
