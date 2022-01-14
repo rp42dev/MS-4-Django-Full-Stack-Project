@@ -54,6 +54,29 @@ All the errors was resolved, majority of the errors was missing semicolon.\
   ✓ Checkout stripe_elements.js
 
 ### **Google Lighthouse Test**
+- Home page 
+  - [before](../project_files/google-lighthouse/home-first.jpg)
+  - [after](../project_files/google-lighthouse/home.jpg)
+- Shop page
+  - [before](../project_files/google-lighthouse/shop-first.jpg)
+  - [after](../project_files/google-lighthouse/shop.jpg)
+- Productpage
+  - [before](../project_files/google-lighthouse/product-first.jpg)
+  - [after](../project_files/google-lighthouse/product.jpg)
+- Cart page
+  - [before](../project_files/google-lighthouse/cart-first.jpg)
+  - [after](../project_files/google-lighthouse/cart.jpg)
+- Checkout page
+  - [before](../project_files/google-lighthouse/checkout-first.jpg)
+- Checkout Success page 
+  - [after](../project_files/google-lighthouse/success.jpg)
+- Profile page
+  - [after](../project_files/google-lighthouse/profile.jpg)
+- Manage page
+  - [after](../project_files/google-lighthouse/admin.jpg)
+- Reviews page
+  - [after](../project_files/google-lighthouse/review.jpg)
+
 
 
 # [&#8686;](#Testing)

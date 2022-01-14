@@ -119,15 +119,21 @@ header.masthead .masthead-heading {
     width: 23%;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 992px){
     .related-item {
         width: 30%;
     }
 }
 
-@media screen and (max-width: 576px){
+@media screen and (max-width: 768px){
     .related-item {
         width: 43%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .related-item {
+        width: 100%;
     }
 }
 
