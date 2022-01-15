@@ -94,15 +94,16 @@
     position: absolute;
     height: 100%;
     color: #fff;
-    top:0;
+    top: 0;
     z-index: 100000;
-    background-color: rgba(41, 41, 41, 0.178);
+
     opacity: .6;
     transition: all 0.2s ease-in-out;
 }
 
+
 .bar:hover {
-    background-color: rgba(41, 41, 41, 0.473);
+
 }
 
 .left {
@@ -116,24 +117,21 @@
 }
 
 .related-item {
-    width: 23%;
+    width: 30%;
 }
 
-@media screen and (max-width: 992px){
+@media screen and (max-width: 768px) {
     .related-item {
         width: 30%;
     }
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 576px) {
     .related-item {
-        width: 43%;
+        width: 60%;
     }
 }
 
-@media screen and (max-width: 400px){
-    .shop-item,
-    .related-item {
-        width: 100%;
-    }
+.related-container {
+    scroll-behavior: smooth;
 }

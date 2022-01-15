@@ -76,50 +76,18 @@ header.masthead .masthead-heading {
     }
 }
 
-/* Custo carousel gallery*/
-.bar {
-    position: absolute;
-    height: 100%;
-    color: #fff;
-    top:0;
-    z-index: 100000;
-    background-color: rgba(41, 41, 41, 0.178);
-    opacity: .6;
+.card-caption {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: rgba(255, 255, 255, 0.452);
+    background-color: rgba(41, 41, 41, 0.144);
     transition: all 0.2s ease-in-out;
 }
 
-.bar:hover {
-    background-color: rgba(41, 41, 41, 0.473);
-}
-
-.left {
-    border-radius: 6px 0 0 6px;
-    left: -10px;
-}
-
-.right {
-    border-radius: 0 6px 6px 0;
-    right: -10px;
-}
-
-.related-item {
-    width: 23%;
-}
-
-@media screen and (max-width: 992px){
-    .related-item {
-        width: 30%;
-    }
-}
-
-@media screen and (max-width: 768px){
-    .related-item {
-        width: 43%;
-    }
-}
-
-@media screen and (max-width: 400px){
-    .related-item {
-        width: 100%;
-    }
+.card-caption:hover,
+.card-caption:active {
+    color: #fff;
+    background-color: rgba(41, 41, 41, 0.377);
 }

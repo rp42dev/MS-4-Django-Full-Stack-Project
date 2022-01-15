@@ -2,6 +2,7 @@
 
 ### Table of contents
 1. [W3C Validation](#Validation)
+1. [Google Lighthouse Test](#Google-Lighthouse-Test)
 1. [User Stories Testing](#User-Stories-Testing)
 1. [Responsive Design Test](#Site-Responsive-design-test)
 1. [CRUD Test](#CRUD)
@@ -14,7 +15,7 @@
 ### **Validation**
   The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
-- W3C Markup Validator
+- **W3C Markup Validator**
   All the pages are HTML error free expect for stripe iframe errors.
   For Certain pages manual testing was performed, due to a w3-Html-checker unable access pages for reasons like.. requeries login, administrative privilages, requeres post or other...
   Corrected test errors [here](#w3-HTML-Validation-errors)\
@@ -34,12 +35,12 @@
       ✓ Add new product\
       ✓ Admin manage
 
-- W3C CSS Validation\
+- **W3C CSS Validation**\
   ✓ All the CSS files are error free [result](../project_files/images/validation/css.JPG) corrected test errors [here](#W3C-CSS-Validation-errors)
-- PEP8 compliance test\
+- **PEP8 compliance test**\
   ✓ All the custom .py files are error free. Scaning found some errors and all of them was was corrected [error result here](#PEP8-compliance-test-errors)
 
-- Jshint\
+- **Jshint**\
 All the javaScript files was tested using [jshint.com](https://jshint.com/)\
 All the errors was resolved, majority of the errors was missing semicolon.\
   ✓ Main base.js\
@@ -60,7 +61,7 @@ All the errors was resolved, majority of the errors was missing semicolon.\
 - Shop page
   - [before](../project_files/google-lighthouse/shop-first.jpg)
   - [after](../project_files/google-lighthouse/shop.jpg)
-- Productpage
+- Product page
   - [before](../project_files/google-lighthouse/product-first.jpg)
   - [after](../project_files/google-lighthouse/product.jpg)
 - Cart page
@@ -68,6 +69,7 @@ All the errors was resolved, majority of the errors was missing semicolon.\
   - [after](../project_files/google-lighthouse/cart.jpg)
 - Checkout page
   - [before](../project_files/google-lighthouse/checkout-first.jpg)
+  - [after](../project_files/google-lighthouse/checkout.jpg)
 - Checkout Success page 
   - [after](../project_files/google-lighthouse/success.jpg)
 - Profile page

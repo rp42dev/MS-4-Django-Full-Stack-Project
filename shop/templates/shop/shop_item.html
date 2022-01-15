@@ -29,7 +29,7 @@
             <div id="left" class="bar left d-none d-md-flex">
                 <div class="bar-btn my-auto px-2 btn-left py-3"><i class="fas h1 fa-angle-left"></i></div>
             </div>
-            <div class="related-container row gx-3 gx-sm-3 h-25 scroll-wrapper flex-nowrap ">
+            <div class="related-container row gx-2 gx-sm-3 h-25 scroll-wrapper flex-nowrap ">
                 {% for product in related %}
                 {% if product.id != item.id %}
                 <div class="related-item col-lg-3">
@@ -48,7 +48,11 @@
 </section>
 
 {% endblock %}
+
+<!-- Postload JavaScript content block -->
 {% block postloadjs %}
+{% if related_count > 1 %}
 <!-- Custom scrooleffects -->
 <script src="{% static 'js/scrool-x.js' %}"></script>
+{% endif %}
 {% endblock %}

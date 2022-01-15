@@ -259,6 +259,7 @@ New updated relational database django models diagram [image](project_files/imag
 Most copyright free images sourced from [pixabay ](https://pixabay.com)\
 Thanks To:
 
+
 - hats Image by [Koczot](https://pixabay.com/users/koczot-8279644/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3387253) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3387253)
 
 - Most hats Images by [Alexander Lesnitsky](https://pixabay.com/users/alles-2597842/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4632733) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4632733)
