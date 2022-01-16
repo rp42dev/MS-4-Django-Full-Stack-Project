@@ -1,0 +1,13 @@
+<form id="ad-to-cart" class="form" action="{% url 'add_to_cart' product.id %}" method="POST" novalidate>
+    {% csrf_token %}
+
+    <input type="hidden" name="redirect_url" value="{{ request.get_full_path }}">
+    <input type="hidden" name="item_id" value="{{ product.id }}">
+    <!-- Phone number input-->
+    <input name="quantity" type="hidden" value="1"/>
+
+    <button class="btn btn-dark btn-sm text-uppercase w-100" type="submit">
+       Add to cart
+    </button>
+
+</form>

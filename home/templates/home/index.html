@@ -11,7 +11,7 @@
 <!-- Masthead-->
 <header class="masthead h-auto bg-primary d-flex flex-column justify-content-center align-items-center">
     <img class="bg parallax" src="{% static 'img/bg.webp' %}" alt="paralax image bottom layer">
-    <img class="bg-3 parallax2" src="{% static 'img/bg-3.webp' %}" alt="Paraklax image top alyer">
+    <img class="bg-3 parallax2" src="{% static 'img/bg-3.webp' %}" alt="Man With a Tophat">
     <div class="container">
         <div class="masthead-subheading">Welcome To!</div>
         <div class="masthead-heading text-uppercase text-light">A Hat Shop</div>
@@ -23,18 +23,19 @@
 
         <div class="text-center">
 
-            <h1>Shop hats with confidence! </h1>
+            <h2 class="text-uppercase">Shop hats with confidence! </h2>
             <!-- Order Summary -->
 
             <div class="text-center">
 
-                <div class="d-flex flex-column flex-sm-row my-5 gap-2 gap-md-3 gap-lg-4 justify-content-between">
+                <div class="d-flex flex-column flex-sm-row mt-3 mb-5 gap-2 gap-md-3 gap-lg-4 justify-content-between">
 
                     <!-- Men card -->
                     <div class=" position-relative">
-                        <a href="{% url 'shop' %}?category=mens">
+                        <a href="{% url 'shop' %}?category=mens"
+                        aria-label="A Thumbnail link to a Men's hats shop section">
                             <img class="card-img-top rounded shadow-sm" src="{% static 'img/mens.webp' %}"
-                                alt="A man with a hat image" />
+                                alt="A man with a hat image thumbnail" />
                             <div class="card-caption  rounded position-absolute d-flex flex-column align-items-center justify-content-between">
                                 <div>
                                   <span class="h3">  Shop For</span>
@@ -49,10 +50,11 @@
 
                     <!-- women card -->
                     <div class="position-relative mt-5 mt-sm-0">
-                        <a href="{% url 'shop' %}?category=womans">
+                        <a href="{% url 'shop' %}?category=womens"
+                        aria-label="A Thumbnail link to a Women's hats shop section">
 
                             <img class="card-img-top rounded shadow-sm" src="{% static 'img/women.webp' %}"
-                                alt="A woman with a hat image" />
+                                alt="A women with a hat image thumbnail" />
                                 <div class="card-caption  rounded position-absolute d-flex flex-column align-items-center justify-content-between">
                                     <div>
                                         <span class="h3">  Shop For</span>
@@ -66,7 +68,7 @@
 
                 </div>
 
-                <h2>Recently added </h2>
+                <h2 class="text-uppercase">Recently added </h2>
 
                 <div class="position-relative mt-4">
                     <div id="left" class="bar left d-none d-md-flex">

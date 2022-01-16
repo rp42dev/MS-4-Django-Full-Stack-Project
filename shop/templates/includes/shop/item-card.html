@@ -1,6 +1,6 @@
 {% load thumbnail %}
 
-    <div class="card shadow-sm rounded-3 pt-2 h-100">
+    <div class="card shadow-sm rounded-3 pt-2 h-100 position-relative">
         <!-- Sale badge-->
         {% if product.sale %}
         <div class="badge bg-danger p-2 text-white position-absolute p-2 font-monospace"
@@ -25,7 +25,7 @@
             <div class="text-center align-items-end">
                 <!-- Product name-->
                 <span class="fw-bolder h5 text-capitalize">{{ product.name }}</span>
-                <div class="d-flex justify-content-center small text-warning mb-2">
+                <div class="d-flex justify-content-center small text-warning">
 
                     <!-- incluse stars rating -->
                     {% include 'includes/product-stars.html' %}
@@ -33,14 +33,17 @@
                 </div>
                 <!-- Product price-->
                 {% if product.sale %}
-                <span class="text-decoration-line-through font-monospace">€{{ product.price }}</span>
-                <span class="text-danger font-monospace fw-bolder">€{{ product.sale_price }} </span>
+                <span class="text-decoration-line-through h5 font-monospace">€{{ product.price }}</span>
+                <span class="text-danger font-monospace h5 fw-bolder">€{{ product.sale_price }} </span>
                 {% else %}
-                <span class="font-monospace fw-bolder">€{{ product.price }} </span>
+                <span class="font-monospace h5 fw-bolder">€{{ product.price }} </span>
                 {% endif %}
             </div>
         </div>
         <!-- Product actions-->
-        <div class="card-footer pt-0 border-top-0 bg-transparent justify-self-end">
+        <div class="card-footer pt-0 border-top-0 bg-transparent p-4 justify-self-end">
+        </div>
+        <div class="position-absolute card-btns mt-1 w-100">
+            {% include 'includes/forms/add-to-cart-card-item.html' %}
         </div>
     </div>

@@ -160,3 +160,7 @@
 .related-container {
     scroll-behavior: smooth;
 }
+
+.card-btns {
+    bottom: 0;
+}
