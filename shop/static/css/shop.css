@@ -93,42 +93,67 @@
 .bar {
     position: absolute;
     height: 100%;
-    color: #fff;
+    color: #292929;
     top: 0;
     z-index: 100000;
-
     opacity: .6;
     transition: all 0.2s ease-in-out;
 }
 
-
 .bar:hover {
+    opacity: .9;
+}
 
+.bar-btn .h1{
+    margin-bottom: 0;
+}
+
+.bar-btn{
+    background-color: #f5f5f5;
+}
+
+.btn-left .h1{
+    margin: 0  0 0 12px;
+    border-radius: 0 6px 6px 0;
+}
+
+.btn-right .h1{
+    margin: 0 12px 0 0;
+    border-radius: 6px 0 0 6px;
 }
 
 .left {
-    border-radius: 6px 0 0 6px;
-    left: -10px;
+    left: -15px;
 }
 
 .right {
-    border-radius: 0 6px 6px 0;
-    right: -10px;
+    right: -15px;
 }
 
 .related-item {
     width: 30%;
 }
+@media screen and (max-width: 992px) {
+    .related-item {
+        width: 38%;
+    }
+}
 
 @media screen and (max-width: 768px) {
     .related-item {
-        width: 30%;
+        width: 40%;
     }
 }
 
 @media screen and (max-width: 576px) {
     .related-item {
-        width: 60%;
+        width: 43%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .related-item {
+        width: 75%;
     }
 }
 

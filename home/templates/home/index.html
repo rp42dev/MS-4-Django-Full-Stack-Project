@@ -23,56 +23,56 @@
 
         <div class="text-center">
 
-            <h2>Shop hats with confidence! </h2>
+            <h1>Shop hats with confidence! </h1>
             <!-- Order Summary -->
 
             <div class="text-center">
 
                 <div class="d-flex flex-column flex-sm-row my-5 gap-2 gap-md-3 gap-lg-4 justify-content-between">
 
-
+                    <!-- Men card -->
                     <div class=" position-relative">
                         <a href="{% url 'shop' %}?category=mens">
-                            <img class="card-img-top rounded shadow-sm" src="{% static 'img/men.webp' %}"
+                            <img class="card-img-top rounded shadow-sm" src="{% static 'img/mens.webp' %}"
                                 alt="A man with a hat image" />
-
-                            <div
-                                class="card-caption  rounded position-absolute d-flex align-items-center justify-content-center">
+                            <div class="card-caption  rounded position-absolute d-flex flex-column align-items-center justify-content-between">
                                 <div>
-                                    <h2> Men Hats</h2>
+                                  <span class="h3">  Shop For</span>
                                 </div>
-
+ 
+                                <div class="text-uppercase btn btn-dark btn-xl w-100 p-2">
+                                    <span> Men's Hats</span>
+                                </div>
                             </div>
                         </a>
-
                     </div>
 
-
-                    <div class="position-relative mt-4 mt-sm-0">
+                    <!-- women card -->
+                    <div class="position-relative mt-5 mt-sm-0">
                         <a href="{% url 'shop' %}?category=womans">
 
-                            <img class="card-img-top rounded shadow-sm" src="{% static 'img/woman.webp' %}"
+                            <img class="card-img-top rounded shadow-sm" src="{% static 'img/women.webp' %}"
                                 alt="A woman with a hat image" />
-
-
-                            <div
-                                class="card-caption rounded position-absolute d-flex align-items-center justify-content-center">
-
-                                <h2> Woman Hats</h2>
-                            </div>
+                                <div class="card-caption  rounded position-absolute d-flex flex-column align-items-center justify-content-between">
+                                    <div>
+                                        <span class="h3">  Shop For</span>
+                                    </div>
+                                    <div class="text-uppercase btn btn-xl btn-dark w-100 p-2">
+                                        <span> Women's Hats</span>
+                                    </div>
+                                </div>
                         </a>
                     </div>
 
                 </div>
 
-
-                <h2>Newest additions </h2>
+                <h2>Recently added </h2>
 
                 <div class="position-relative mt-4">
                     <div id="left" class="bar left d-none d-md-flex">
-                        <div class="bar-btn my-auto px-2 btn-left py-3"><i class="fas h1 fa-angle-left"></i></div>
+                        <div class="bar-btn my-auto rounded px-2 btn-left py-3"><i class="fas h1 fa-angle-left"></i></div>
                     </div>
-                    <div class="related-container row gx-2 gx-sm-3 gx-md-4 h-25 scroll-wrapper flex-nowrap ">
+                    <div class="related-container row gx-2 gx-sm-3 gx-lg-4 h-25 scroll-wrapper flex-nowrap ">
                         {% for product in related %}
                         {% if product.id != item.id %}
                         <div class="related-item ">
@@ -85,7 +85,7 @@
                         {% endfor %}
                     </div>
                     <div id="right" class="bar right d-none d-md-flex">
-                        <div class="bar-btn my-auto px-2 btn-right py-3"> <i class="fas h1 fa-angle-right"></i></div>
+                        <div class="bar-btn my-auto px-2 rounded btn-right py-3"> <i class="fas h1 fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
