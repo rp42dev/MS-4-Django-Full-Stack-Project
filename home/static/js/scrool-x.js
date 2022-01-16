@@ -2,7 +2,6 @@
  // side scrool function
  const scrolling = document.querySelector(".scroll-wrapper");
 
- console.log('working')
  let left= false;
  let right = false;
  

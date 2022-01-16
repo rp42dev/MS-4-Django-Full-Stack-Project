@@ -443,3 +443,7 @@ section#promise .section-heading {
 .btn-width {
   max-width: 650px !important;
 }
+
+.card-img-top {
+  padding: .5rem;
+}

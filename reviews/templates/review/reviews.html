@@ -19,7 +19,7 @@
 
             <!-- If feedback was left return feedback instead -->
 
-            <div class="col-md-6 border-start review-container">
+            <div class="col-md-6  review-container">
                 <div class="star-fearure">
                     <span class="text-warning"><i class="fas fa-star"></i></span><span class="text-warning">
                         <i class="fas h2 fa-star"></i></span><span class="text-warning"><i
@@ -28,6 +28,7 @@
                 </div>
                 <h2><span class="text-warning"><i class="fas fa-star"></i></span> All Reviews</h2>
                 <p class="m-0 text-muted text-italic text-capitalize">For {{ item.name }} hat</p>
+                {% if reviews %}
                 {% for review in reviews reversed %}
                 <div class="mt-4 shadow-sm border rounded p-3 bg-white">
                     <span class="m-0 fw-bolder text-muted h5 text-italic text-capitalize">{{ review.user_profile }}</span>
@@ -36,6 +37,7 @@
                     {% include 'includes/reviews-stars.html' %}
                 </div>
                 {% endfor %}
+                {% endif %}
 
             </div>
         </div>
