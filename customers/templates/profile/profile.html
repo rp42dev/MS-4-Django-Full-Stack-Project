@@ -85,9 +85,9 @@
                         <tr class="table-light">
                             <td class="col-4"><a class="btn btn-warning"
                                     href="{% url 'order_history' order.order_number %}"
-                                    aria-label="A link to the order #{{ order.id }} summary page"
+                                    aria-label="A link to the order id {{ order.id }} summary page"
                                     title="{{ order }}" >
-                                    #{{ order.id }}
+                                   # {{ order.order_number | truncatechars:4 }}
                                 </a></td>
                             <td class="font-monospace col-4 text-center">€{{ order.total }}</td>
                             <td class="font-monospace col-4 text-end">{{ order.status }}</td>

@@ -34,7 +34,7 @@
         <div>
             <!-- Sale badge -->
             {% if item.product.sale %}
-            <span class="text-decoration-line-through h3 font-monospace">€{{ item.product.price }}</span>
+            <span class="text-decoration-line-through h6 font-monospace">€{{ item.product.price }}</span>
             <span class="text-danger h3 font-monospace">€{{ item.product.sale_price }} </span>
             {% else %}
             <span class="font-monospace h3">€{{ item.product.price }} </span>

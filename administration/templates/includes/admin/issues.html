@@ -9,7 +9,9 @@
         {% if issues %}
         {% for issue in issues %}
 
-        <p class="font-monospace small px-2">{{ issue }} <br> <span class="time">Submitted: {{ issue.date }}</span>
+        <p class="font-monospace small px-2">{{ issue }} <br> 
+            <span class="time">Order #{{ issue.order.order_number }}</span> <br>
+            <span class="time">Submitted: {{ issue.date }}</span>
         </p>
 
         <table class="table table-borderless mb-0">

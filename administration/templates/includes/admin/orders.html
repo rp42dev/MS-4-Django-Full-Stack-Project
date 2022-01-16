@@ -14,7 +14,7 @@
         <table class="table table-borderless mb-0">
             <thead>
                 <tr>
-                    <th class="col-4">Odrer</th>
+                    <th class="col-4">Odrer ID: {{ order.id }}</th>
                     <th class="text-center col-4">Total</th>
                     <th class="text-end col-4">Status</th>
                 </tr>
@@ -24,9 +24,9 @@
                     <td class="col-4"><a
                             class="btn {% if not order.status == 'Payment received' %} btn-warning {% else %} btn-danger {% endif %}"
                             href="{% url 'order_view' order.order_number %}"
-                            aria-label="A link to the order  #{{ order.id }} summary"
+                            aria-label="A link to the order ID {{ order.id }} summary"
                             title="{{ order }}">
-                            #{{ order.id }}
+                            # {{ order.order_number | truncatechars:4 }}
                         </a></td>
 
                     <td class="font-monospace col-4 text-center">€{{ order.total }}</td>
@@ -57,7 +57,7 @@
         <table class="table table-borderless mb-0">
             <thead>
                 <tr>
-                    <th class="col-4">Odrer</th>
+                    <th class="col-4">Odrer ID: {{ order.id }}</th>
                     <th class="text-center col-4">Total</th>
                     <th class="text-end col-4">Status</th>
                 </tr>
@@ -66,8 +66,10 @@
                 <tr class="table-light font-monospace">
                     <td class="col-4"><a
                             class="btn {% if not order.status == 'Submitted' %} btn-warning {% else %} btn-danger {% endif %}"
-                            href="{% url 'order_view' order.order_number %}" title="{{ order }}">
-                            #{{ order.id}}
+                            href="{% url 'order_view' order.order_number %}"
+                            aria-label="A link to the order ID {{ order.id }} summary"
+                            title="{{ order }}">
+                            # {{ order.order_number | truncatechars:4 }}
                         </a></td>
 
                     <td class="font-monospace col-4 text-center">€{{ order.total }}</td>

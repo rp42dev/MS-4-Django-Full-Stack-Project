@@ -524,6 +524,12 @@ Contact us form [image](project_files/images/surfaice/contact.JPG)
 - Support messages toast is shown if user hover over message icon in nav bar.
 
 ## **Features to implement**
+- Payment Proccessor to Accept varios payment options.
+- More work for checkout and after checkout functionality.
+- More work on inventory automation functionality.
+- More work on admin management interace functionality.
+- Django Social Login, single sign-on for end users.
+- Improve Customer Service functionality, Messages etc..
 
 # [&#8686;](#top)
 # [TESTING](project_files/TESTING.md)

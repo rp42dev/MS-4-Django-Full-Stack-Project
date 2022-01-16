@@ -19,7 +19,10 @@
             <h4 ><i class="fas fa-comments"></i> Messages</h4>
 
             <div class="mb-2">
-                <span class="text-muted text-italic ">{{ issue }}</span> <br>
+                <span class="text-muted small text-italic ">{{ issue }}</span> <br>
+             
+                <span class="time">Order # {{ issue.order.order_number }}</span> <br>
+
                 {% if issue.order_line %}
     
                 <span class="p-0 text-muted text-italic">Product: {{ issue.order_line }}</span>

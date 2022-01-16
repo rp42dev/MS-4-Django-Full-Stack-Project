@@ -7,7 +7,9 @@
     <div class="card-body p-0">
         {% for issue in issues %}
 
-        <p class="font-monospac small px-2">{{ issue }} <br> <span class="time">Submitted: {{ issue.date }}</span>
+        <p class="font-monospac small px-2">{{ issue }} <br>
+            <span class="time">Order # {{ issue.order.order_number }}</span> <br>
+             <span class="time">Submitted: {{ issue.date }}</span>
         </p>
         <table class="table table-borderless mb-0">
             <thead>
@@ -22,7 +24,7 @@
                     <td class="col-4 font-monospace"><a class="btn btn-warning"
                             href="{% url 'messages_view' issue.id %}?unread=False" title="{{ issue }}"
                             aria-label="A link to a {{ issue }} resolution mesage page">
-                            #{{ issue.id}}
+                            ID: {{ issue.id}}
                         </a></td>
                     <td class="col-4 font-monospace text-center">{{ issue.issue }}</td>
                     <td class="col-4 colfont-monospace text-end">{{ issue.status }}</td>

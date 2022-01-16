@@ -60,7 +60,7 @@
     <div class="col-3 col-6 col-sm-3 order-2 order-sm-3">
         <div class="text-end">
             {% if item.product.sale %}
-            <span class="text-decoration-line-through text-danger  font-monospace">€{{ item.product.price }}</span>
+            <span class="text-decoration-line-through font-monospace">€{{ item.product.price }}</span>
             <span class="text-danger  font-monospace">€{{ item.product.sale_price }} </span>
             {% else %}
             <span class="font-monospace">€{{ item.product.price }}</span>

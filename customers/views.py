@@ -27,13 +27,12 @@ def customers(request):
     issues_count = issues.count()
 
     reviews = request.user.user_review.all()
-    print(profile.orders)
     if profile.orders:
         if 'all' in request.GET:
-            orders = profile.orders.all().order_by('id')
+            orders = profile.orders.all().order_by('date')
             all_orders = True
         else:
-            orders = profile.orders.all().order_by('id')[:10]
+            orders = profile.orders.all().order_by('date')[:10]
             order_count = orders.count()
     else:
         orders = False

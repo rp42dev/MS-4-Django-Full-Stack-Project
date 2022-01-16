@@ -36,10 +36,10 @@ def admin_view(request):
         status='Completed')
 
     orders = all_orders.exclude(
-        status='Payment received').order_by('id')
+        status='Payment received').order_by('date')
 
     new_orders = all_orders.filter(
-        status='Payment received').order_by('id')
+        status='Payment received').order_by('date')
 
     new_orders_count = new_orders.count()
     out_of_stock_count = out_of_stock.count()

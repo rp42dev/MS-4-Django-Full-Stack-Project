@@ -33,7 +33,7 @@
                 </div>
                 <!-- Product price-->
                 {% if product.sale %}
-                <span class="text-decoration-line-through h5 font-monospace">€{{ product.price }}</span>
+                <span class="text-decoration-line-through font-monospace">€{{ product.price }}</span>
                 <span class="text-danger font-monospace h5 fw-bolder">€{{ product.sale_price }} </span>
                 {% else %}
                 <span class="font-monospace h5 fw-bolder">€{{ product.price }} </span>
