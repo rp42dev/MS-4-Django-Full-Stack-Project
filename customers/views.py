@@ -29,10 +29,12 @@ def customers(request):
     reviews = request.user.user_review.all()
     if profile.orders:
         if 'all' in request.GET:
-            orders = profile.orders.all().order_by('date')
+            orders = profile.orders.all().order_by('pk')
             all_orders = True
         else:
-            orders = profile.orders.all().order_by('date')[:10]
+            orders = profile.orders.all().order_by('pk')
+            for i in orders:
+                print(i.id)
             order_count = orders.count()
     else:
         orders = False
@@ -43,7 +45,7 @@ def customers(request):
         'reviews': reviews,
         'all': all_orders,
         'issues': issues,
-        'orders': profile.orders.all(),
+        'orders': orders,
     }
 
     return render(request, 'profile/profile.html', context)

@@ -17,8 +17,8 @@
     <div class="container">
         <div class="w-container mx-auto">
             <h2 class="text-capitalize"><i class="fas fa-file-signature"></i> Report</h2>
-            <p class="text-muted text-italic ">Problem with order #{{ order.id }} ?</p>
-
+            <span class="text-muted small text-italic ">Problem with order ID: {{ order.id }} ?</span> <br>
+            <span class="text-muted small text-italic ">Order # {{ order.order_number }}</span> <br>
             <form id="support-form" action="{% url 'submit' order.order_number %}" class="form" method="POST"
                 novalidate>
                 {% csrf_token %}
