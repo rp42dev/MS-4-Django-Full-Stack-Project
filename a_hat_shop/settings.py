@@ -107,6 +107,10 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
+# https://stackoverflow.com/questions/40758711/how-to-set-a-default-handler-for-csrf-verification-failed-in-django
+CSRF_FAILURE_VIEW = 'a_hat_shop.views.csrf_failure'
+
+
 SITE_ID = 1
 
 

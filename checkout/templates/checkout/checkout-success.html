@@ -17,7 +17,7 @@
         <h3 class="col-12 text-uppercase text-center">Thank You</h3>
         <div class="row m-0 p-0">
             <span class="px-0 fw-bolder text-uppercase font-monospace">Id: {{ order.id }}</span> <br>
-            <span class="px-0 fw-bolder time text-uppercase font-monospace"># {{ order.order_number }}</span>
+            <span class="px-0 fw-bolder small text-uppercase font-monospace"># {{ order.order_number }}</span>
             <hr class="p-1">
 
             <div class="px-0 col-md-6">
@@ -45,7 +45,6 @@
                 <p class="mb-0 font-text">Email: {{ order.email }}</p>
                 <p class="mb-0 font-text">Total: €{{ order.total }}</p>
                 <p class="mb-0 font-text">Delivery: €{{ order.delivery }}</p>
-                <p class="mb-0 font-text">Paid: {{ order.paid }}</p>
             </div>
 
         </div>

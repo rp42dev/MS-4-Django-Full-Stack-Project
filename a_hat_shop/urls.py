@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import handler400, handler403, handler404, handler500
 
 
 urlpatterns = [
@@ -31,3 +32,9 @@ urlpatterns = [
     path('support/', include('support.urls')),
     path('manage/', include('administration.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+handler404 = 'a_hat_shop.views.error_404'
+handler500 = 'a_hat_shop.views.error_500'
+handler403 = 'a_hat_shop.views.error_403'
+handler400 = 'a_hat_shop.views.error_400'

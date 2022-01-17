@@ -46,7 +46,7 @@
 {% endif %}
 
 <form class="login needs-validation" novalidate method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
+  
   
   {{ form|crispy }}
 
