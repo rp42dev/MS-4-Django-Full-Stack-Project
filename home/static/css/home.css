@@ -7,7 +7,6 @@ header.masthead {
     overflow: hidden;
 }
 
-
 .bg-3 {
     position: absolute;
     min-height: 70vh;
@@ -16,7 +15,6 @@ header.masthead {
     background-repeat: no-repeat;
     background-position: right center;
     background-size: cover;
-
 }
 
 header.masthead .masthead-subheading {
@@ -71,13 +69,12 @@ header.masthead .masthead-heading {
     left: 0;
     right: 0;
     bottom: 0;
-    color: rgba(255, 255, 255, 0.658);
+    color: #fff;
     background-color: rgba(41, 41, 41, 0.144);
     transition: all 0.2s ease-in-out;
 }
 
 .card-caption:hover,
 .card-caption:active {
-    color: #fff;
     background-color: rgba(41, 41, 41, 0.377);
 }

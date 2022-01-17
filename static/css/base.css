@@ -3,16 +3,15 @@
 :root {
   --bs-warning: #fca311;
   --bs-white: #ffffff;
-  --bs-gray: #292929;
   --bs-light: #f5f5f5;
-  --bs-dark: #000000;
+  --bs-dark: #141414;
   --bs-danger: #d2042d;
   --bs-success: #6a994e;
 
-  --bs-primary: #292929;
+  --bs-primary: #141414;
   --bs-secondary: #f5f5f5;
 
-  --bs-primary-rgb: 41, 41, 41;
+  --bs-primary-rgb: 20, 20, 20;
   --bs-secondary-rgb: 245, 245, 245;
 
   --bs-warning-rgb: 252, 163, 17;
@@ -20,7 +19,7 @@
   --bs-danger-rgb: 210, 4, 45;
   --bs-white-rgb: 255, 255, 255;
   --bs-light-rgb: 245, 245, 245;
-  --bs-dark-rgb: 0, 0, 0;
+  --bs-dark-rgb: 20, 20, 20;
 }
 
 .text-muted {
@@ -138,7 +137,7 @@ section,
 }
 
 .navbar {
-  background-color: #292929;
+  background-color: #141414;
 }
 /* Main Navigation */
 #mainNav {
@@ -212,7 +211,7 @@ section,
 .btn-dark:hover,
 .btn-dark:active,
 .navbar-toggler:hover {
-  background-color: #292929;
+  background-color: #141414;
   color: #fca311;
 }
 
@@ -237,7 +236,7 @@ section,
   #mainNav.navbar-shrink {
     padding-top: 1rem;
     padding-bottom: 0rem;
-    background-color: #292929;
+    background-color: #141414;
   }
 
   #mainNav.navbar-shrink .navbar-brand {
@@ -264,7 +263,7 @@ section,
 }
 
 .transparent-none {
-  background-color: #292929;
+  background-color: #141414;
   transition: background-color 1s ease-in-out;
 }
 
@@ -289,11 +288,6 @@ section,
   font-family: "Montserrat", sans-serif;
 }
 
-section#promise {
-  background-image: url("../img/map-image.png");
-  background-repeat: no-repeat;
-  background-position: center;
-}
 
 section#promise .section-heading {
   color: #f5f5f5;
@@ -319,7 +313,7 @@ section#promise .section-heading {
 .btn-social:hover {
   background-color: #e5e5e6;
   border-color: #f5f5f5;
-  color: #292929;
+  color: #141414;
 }
 
 .update{
@@ -329,7 +323,7 @@ section#promise .section-heading {
 
 .update:hover,
 .update:active {
-  background-color: #292929;
+  background-color: #141414;
 }
 
 #support-form .select option {
@@ -340,6 +334,7 @@ section#promise .section-heading {
 .time {
   font-size: .6rem;
 }
+
 .message {
   font-size: .9rem;
 }
@@ -379,7 +374,7 @@ section#promise .section-heading {
 .feature {
   font-size: 1.2rem;
   color: #ffffff;
-  border: solid 5px #292929;
+  border: solid 5px #141414;
   padding: 0 12px 3px 12px;
   background-color: #fca311;
   margin-bottom: -36px;
@@ -411,7 +406,7 @@ section#promise .section-heading {
 
 .go_up_active {
   position: fixed;
-  background-color: #292929;
+  background-color: #141414;
   border: 5px solid #fca311;
   border-bottom: 0 solid transparent;
   border-radius: 6px 6px 0 0;

@@ -20,11 +20,11 @@
 
 .dropdown-related-item,
 .dropdown-menu {
-    background-color: #292929;
+    background-color: #141414;
 }
 
 .dropdown-related-item:hover {
-    background-color: #292929;
+    background-color: #141414;
     color: #fca311;
 }
 
@@ -93,7 +93,7 @@
 .bar {
     position: absolute;
     height: 100%;
-    color: #292929;
+    color: #141414;
     top: 0;
     z-index: 100000;
     opacity: .6;

@@ -1,4 +1,4 @@
-<form id="ad-to-cart" class="form" action="{% url 'add_to_cart' product.id %}" method="POST" novalidate>
+<form class="form" action="{% url 'add_to_cart' product.id %}" method="POST" novalidate>
     {% csrf_token %}
 
     <input type="hidden" name="redirect_url" value="{{ request.get_full_path }}">

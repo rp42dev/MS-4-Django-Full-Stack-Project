@@ -98,7 +98,7 @@ form .form-control:active {
 .btn-submit:active,
 .btn-submit:hover {
     background-color: #e5e5e5;
-    color: #000000;
+    color: #141414;
 }
 
 .form-check-input:focus,

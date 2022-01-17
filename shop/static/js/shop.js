@@ -1,6 +1,12 @@
 // Srool hide and unhide shop nav with help from here
 // https://codepen.io/lehollandaisvolant/pen/ryrrGx
-window.addEventListener('load', (event) => {
+
+document.addEventListener("DOMContentLoaded", function(event) { 
+    // https://stackoverflow.com/questions/17642872/refresh-page-and-keep-scroll-position
+    // Maintain scrool position
+        var scrollpos = localStorage.getItem('scrollpos');
+        if (scrollpos) window.scrollTo(0, scrollpos);
+
     let st = 0;
     var shopNavbarShrink = function () {
         const shopNav = document.body.querySelector('#shop-nav');
@@ -40,3 +46,7 @@ window.addEventListener('load', (event) => {
         icon.addEventListener('click', searchShrink);
     }, false);
 });
+
+window.onbeforeunload = function(e) {
+    localStorage.setItem('scrollpos', window.scrollY);
+};
