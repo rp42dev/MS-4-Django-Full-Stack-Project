@@ -43,7 +43,7 @@
 
 <!-- Disable delete button check box confirm to delete -->
 {% block postloadjs %}
-<script>
+<script type="text/javascript">
     function check(obj) {
         if (obj.checked === true) {
             document.querySelector('#btn-e').classList.remove('disabled')
@@ -53,7 +53,7 @@
     }
 </script>
  <!-- Postload JavaScript content block -->
-<script src="{% static 'js/shop-form.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/shop-form.js' %}"></script>
 {% endblock %}
 
 {% endblock %}
