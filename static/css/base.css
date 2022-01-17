@@ -57,7 +57,7 @@ a {
 }
 
 a:hover {
-  color: #000000;
+  color: #141414;
 }
 
 .text {
@@ -208,10 +208,14 @@ section,
   color: #fca311;
 }
 
+.btn-dark {
+  background-color: #141414;
+}
+
 .btn-dark:hover,
 .btn-dark:active,
 .navbar-toggler:hover {
-  background-color: #141414;
+  background-color: #333;
   color: #fca311;
 }
 

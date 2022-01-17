@@ -11,7 +11,7 @@
 {% endblock %}
 {% block content %}
 
-<!-- Product Detail section-->
+<!-- support Messages -->
 <section class="page-section">
 
     <div class="container col-12 col-sm-8 col-lg-6">
@@ -41,7 +41,7 @@
                     </span> <br>
                     <sman class="time font-monospace">{{ message.timestamp }}</span>
 
-                    <div class="text-admin bg-light p-2 shadow-sm">
+                    <div class="text-admin bg-light p-2 shadow-sm border">
                         <p class="message mb-0 font-monospace small">{{ message.message }}</p>
                     </div>
                 </div>
@@ -54,12 +54,10 @@
                     </span> <br>
                     <sman class="time font-monospace">{{ message.timestamp }}</span>
 
-
                     <div class="text bg-light p-2 bg-light shadow-sm border">
                         <p class="message mb-0 font-monospace small">{{ message.message }}</p>
                     </div>
                 </div>
-
 
                 {% endif %}
                 {% endfor %}
