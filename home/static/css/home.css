@@ -7,15 +7,6 @@ header.masthead {
     overflow: hidden;
 }
 
-.bg {
-    position: absolute;
-    min-height: 70vh;
-    min-width: 100%;
-    width: auto;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
 
 .bg-3 {
     position: absolute;
@@ -25,7 +16,6 @@ header.masthead {
     background-repeat: no-repeat;
     background-position: right center;
     background-size: cover;
-    opacity: .8;
 
 }
 

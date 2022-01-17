@@ -32,9 +32,8 @@ def customers(request):
             orders = profile.orders.all().order_by('pk')
             all_orders = True
         else:
-            orders = profile.orders.all().order_by('pk')
-            for i in orders:
-                print(i.id)
+            orders = profile.orders.all().order_by('pk')[:10]
+
             order_count = orders.count()
     else:
         orders = False
