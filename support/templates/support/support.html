@@ -10,14 +10,14 @@
 {% endblock %}
 {% block content %}
 
-<!-- Product Detail section-->
+<!-- General support page -->
 <section class="page-section">
 
     <div class="container">
         <div class="w-container mx-auto">
             <h2 class="text-capitalize"><i class="fas fa-file-signature"></i> Report</h2>
             <p class="text-muted text-italic p-0 m-0">Report a Problem</p>
-
+            <!-- Support form -->
             <form id="support-form" action="{% url 'support' %}" class="form" method="POST" novalidate>
                 {% csrf_token %}
 

@@ -11,7 +11,7 @@
 {% endblock %}
 {% block content %}
 
-<!-- Product Detail section-->
+<!-- Submit support ticket -->
 <section class="page-section">
 
     <div class="container">
@@ -23,11 +23,13 @@
                 novalidate>
                 {% csrf_token %}
 
+                <!-- Sellect issue field -->
                 {{ form.issue | as_crispy_field }}
 
                 <div id="sellect-product-group" id class="d-none">
                     <label for="sellect-product">Select Product</label>
 
+                    <!-- If product issue show this sellect field -->
                     <select id="sellect-product" name="product" class="select form-control mb-2  fw-bolder">
 
                         <option selected value="">Select Product</option>
@@ -39,6 +41,7 @@
                     </select>
                 </div>
 
+                <!-- Message field -->
                 <div class="fw-bolder font-monospace">
                     {{ form.message | as_crispy_field }}
                 </div>

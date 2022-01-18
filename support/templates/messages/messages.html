@@ -21,11 +21,14 @@
             <div class="mb-2">
                 <span class="text-muted small text-italic ">{{ issue }}</span> <br>
                 <span class="text-muted time text-italic ">Order # {{ issue.order.order_number }}</span> <br>
+
+                <!-- If issue is produvt show orderline -->
                 {% if issue.order_line %}
                 <span class="p-0 text-muted time text-italic">Product: {{ issue.order_line }}</span>
                 {% endif %}
             </div>
- 
+
+            <!-- Current issue status -->
             {% if issue.status == 'Resolved' %}
             <p class="m-0 text-success fw-bolder small font-monospace">Ticket Status: {{ issue.status }}</p>
             {% else %}
@@ -35,7 +38,7 @@
                 {% for message in thread_messages %}
 
                 {% if message.user.is_superuser %}
-
+                <!-- Admin messages -->
                 <div class="rounded p-3">
                     <span class="m-0 fw-bolder text-muted text-italic text-capitalize small">{{ message.user.username }}
                     </span> <br>
@@ -45,10 +48,8 @@
                         <p class="message mb-0 font-monospace small">{{ message.message }}</p>
                     </div>
                 </div>
-
-
                 {% else %}
-
+                <!-- User messages -->
                 <div class="rounded p-3">
                     <span class="m-0 fw-bolder text-muted text-italic text-capitalize small">{{ message.user.username }}
                     </span> <br>
