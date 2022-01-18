@@ -17,16 +17,16 @@
 
 - **W3C Markup Validator**
   All the pages are HTML error free expect for stripe iframe errors.
-  For Certain pages manual testing was performed, due to a w3-Html-checker unable access pages for reasons like.. requeries login, administrative privilages, requeres post or other...
+  For Certain pages manual testing was performed, due to a w3-Html-checker unable access pages for reasons like.. requeries login, administrator privileges, required post or other...
   Corrected test errors [here](#w3-HTML-Validation-errors)\
   ✓ Index Page screenshot [result](../project_files/images/validation/html/home.JPG)\
   ✓ product Page screenshot [result](../project_files/images/validation/html/product.JPG)\
   ✓ shop Page screenshot [result](../project_files/images/validation/html/shop.JPG)
-  -  Manual testing performed for the folowing pages.\
+  -  Manual testing performed for the following pages.\
       ✓ Profile page\
       ✓ Update user profile\
       ✓ Reviews page\
-      ✓ Report problen\
+      ✓ Report a problem\
       ✓ Contact us page\
       ✓ Checkout page\
       ✓ Cart page\
@@ -38,7 +38,7 @@
 - **W3C CSS Validation**\
   ✓ All the CSS files are error free [result](../project_files/images/validation/css.JPG) corrected test errors [here](#W3C-CSS-Validation-errors)
 - **PEP8 compliance test**\
-  ✓ All the custom .py files are error free. Scaning found some errors and all of them was was corrected [error result here](#PEP8-compliance-test-errors)
+  ✓ All the custom .py files are error free. Scanning found some errors and all of them was was corrected [error result here](#PEP8-compliance-test-errors)
 
 - **Jshint**\
 All the javaScript files was tested using [jshint.com](https://jshint.com/)\
@@ -88,7 +88,7 @@ All the errors was resolved, majority of the errors was missing semicolon.\
 
 ### **As A Unregistered user**
 ✓ First time visitor is able to understand purpose of the website.\
-✓ User is able to easly navigate the website.\
+✓ User is able to easily navigate the website.\
 ✓ User is able to find products by description and product name.\
 ✓ Good product description and Product photography.\
 ✓ To be able make easy and secure payments as a guest user.\
@@ -98,7 +98,7 @@ All the errors was resolved, majority of the errors was missing semicolon.\
 ✓ All of the above and.\
 ✓ Saving shipping information for fast checkout.\
 ✓ Access to complete overview of existing orders.\
-✓ Self-manage of account details and shipping adresses for fast checkout.\
+✓ Self-manage of account details and shipping adress for fast checkout.\
 ✓ Access to order history and other documents.
 
 ### **As an Administrator**
@@ -113,7 +113,7 @@ All the errors was resolved, majority of the errors was missing semicolon.\
 ✓ Website Provide guest checkout option.\
 ✓ Save user deteails for fast checkout.\
 ✓ Offer range of Special Offers and deals.\
-✓ Fast and secure payment option integrated stripe payment proccessing.\
+✓ Fast and secure payment option integrated stripe payment processing..\
 ✓ Customer Support service and product reviews.
 
 
@@ -181,7 +181,7 @@ Friends and family members helped point out any bugs or issues.
 [Back to Readme.md](../README.md)
 ### **Bugs**
 
-Sripe iframe throws w3 html valitation errors.
+Stripe iframe throws w3 html valitation errors.
 
 -
   ```html
@@ -219,7 +219,7 @@ Sripe iframe throws w3 html valitation errors.
 
   ```javascript
 
-  // folowing code caused the issues
+  // following code caused the issues
   window.addEventListener('load', (event) => {
 
       const scrolling = document.querySelector(".scroll-wrapper");
@@ -253,21 +253,21 @@ Sripe iframe throws w3 html valitation errors.
 
 -
   ```python
-  #Folowing code created loop if cart was empty and previous url was cart
+  #following code created loop if cart was empty and previous url was cart
   if not cart:
       if url_back is not None:
           return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
       else:
           return redirect(reverse('shop'))
 
-  # To solve this probllem i have added donot include cart url
+  # To solve this probllem i have added do not include cart url
   if url_back is not None or url_back != 'cart':
 
   ```
 
 -
   ```python
-  # Issue with webhook handler recreating an failed order
+  # Issue with webhook handler  creating an failed order
   # the order was missing was missing "shipping name"
       full_name=shipping_details.name,
 
@@ -280,7 +280,7 @@ Sripe iframe throws w3 html valitation errors.
 -
   ```python
       # After deleting order caused an issue to aggregate product rating
-      # For this reason I have changed the code to resset the counter
+      # For this reason I have changed the code to reset the counter
       # Issue with this code
       def update_rating(self):
       """Agregate rating each time user rates the product"""
@@ -314,7 +314,7 @@ Sripe iframe throws w3 html valitation errors.
   ```
 
 - Status form was not validating\
-solution was to add folowing to the form [source](https://stackoverflow.com/questions/28551146/django-form-returns-is-valid-false-and-no-errors)
+solution was to add following to the form [source](https://stackoverflow.com/questions/28551146/django-form-returns-is-valid-false-and-no-errors)
   ```python
   data=request.POST or None
   ```
@@ -337,10 +337,10 @@ solution was to add folowing to the form [source](https://stackoverflow.com/ques
   products.order_by(F('rating').asc(nulls_last=True))
 
 
-- If cart is empty return user back to previose page but, if previose page was cart then raised key error.
+- If cart is empty return user back to previouse page but, if previouse page was cart then raised key error.
   ```python
   # To solve this i have used return two addresses for each scenario 
-  # if previos url was cart redirect to shopping else return previos url.
+  # if previous url was cart redirect to shopping else return previous url.
       cart = request.session.get('cart', {})
       url_back = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
       if url_back != None:
@@ -352,7 +352,7 @@ solution was to add folowing to the form [source](https://stackoverflow.com/ques
 - Cart issue.. after removeing cart items and if using back button going back to the cart, and trying to remove alredy deleted item again rised key error.
   ```python
   # To solve this issue.. I have added check function to check on POST if the item is cart session.
-  # If item in sot in the session items simply return to the user message.
+  # If item in set in the session items simply return to the user message.
     if request.POST and cart:
  
  - Tables cell misalignment.
@@ -467,7 +467,7 @@ Support messages
 
 - error
   ```css
-  /* I have romoved folowing property from css file */
+  /* I have romoved following property from css file */
 
   Value Error : max-height auto is not a max-height value : auto
   ```

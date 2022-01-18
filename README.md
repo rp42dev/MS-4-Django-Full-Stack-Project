@@ -1,4 +1,5 @@
  top
+
 ![top](project_files/images/surfaice/home.png)
 # *A Hat Shop*
 ## [View the live project here.](https://a-hat-shop.herokuapp.com/)
@@ -68,7 +69,7 @@ source: [code institute](https://codeinstitute.net/)
 
 ### **As A Unregistered user**
 1. First time visitor is able to understand purpose of the website.
-1. User is able to easly navigate the website.
+1. User is able to easily navigate the website.
 1. User is able to find products by description and product name.
 1. Good product description and Product photography.
 1. To be able make easy and secure payments as a guest user.
@@ -78,7 +79,7 @@ source: [code institute](https://codeinstitute.net/)
 1. All of the above and..
 1. Saving shipping information for fast checkout.
 1. Access to complete overview of existing orders.
-1. Self-manage of account details and shipping adresses for fast checkout.
+1. Self-manage of account details and shipping addresses for fast checkout.
 1. Access to order history and other documents.
 
 ### **As an Administrator**
@@ -91,7 +92,7 @@ source: [code institute](https://codeinstitute.net/)
 ### **Site Owner goals**
 1. Get the business online and expand online presence. 
 1. Drive new customers to the website Provide guest checkout option.
-1. Provide users with ability to create account, save shopping-cart and user deteails for fast checkout.
+1. Provide users with ability to create account, save shopping-cart and user details for fast checkout.
 1. Maximize sales, Offer range of Special Offers and deals.
 1. Offer customers a fast and secure payment option.
 1. Customer Support Improve customer satisfaction through better service
@@ -118,9 +119,9 @@ source: [code institute](https://codeinstitute.net/)
 ### **The website needs to enable the company to**
 1. Get the business online and expand online presence. 
 1. Showcase brand, website needs to have great product images with clear description.
-1. And Provide users ability to create account and save shopping-cart and user deteails.
+1. And Provide users ability to create account and save shopping-cart and user details.
 1. Provide method for customers with a quick, simple and safe way to pay.
-1. Provide offers, special deals, and increase potentialy new and existing customer         retention and loyalty.
+1. Provide offers, special deals, and increase potentialy new and existing customer retention and loyalty.
 1. Provide the customers with contact information and support.
 
 # [&#8686;](#top)
@@ -249,8 +250,8 @@ New updated relational database django models diagram [image](project_files/imag
 <img src="project_files/images/color.JPG" width=500>
 
 ### **Fonts**
--  For comments bootstrap classes "text-muted text-italic"
-- For small text or numbers bootstrap fort class "font-monospace"
+- For comments bootstrap classes "text-muted text-italic"
+- For small text or numbers bootstrap font class "font-monospace"
 - For forms and buttons google [Montserrat](https://fonts.google.com/specimen/Montserrat) with font-weight: 700;
 - For paragraph Text content google [Roboto+Slab](https://fonts.google.com/specimen/Roboto+Slab)
 
@@ -309,7 +310,7 @@ Index page screenshot [image](project_files/images/surfaice/home.png)
 Mobile version nav screenshot [image](project_files/images/surfaice/m-nav.png)\
 Desktop version nav screenshot [image](project_files/images/surfaice/pc-nav.png)
 - Link active change color if active links on each page.
-- Shop page has it's own navigation. Includes search and sorting functionatity.
+- Shop page has it's own navigation. Includes search and sorting functionality.
 - Shop page navigation shrinks while scrolling down and extends while scroll upwards and at top position nav is fully extended.
 - Shop page include go up link for user to get to the top of the page with one click
 
@@ -351,7 +352,7 @@ Cart screenshot [image](project_files/images/surfaice/cart.png)
 - Add items to the cart session Item id, item count, item price.
 - In cart context perform various calculations such as item times count, 
 - item count times price, shipping price, discount prie total, and finaly grand total.
-- Sunchronize inventory actual product quantity with cart session product quantity. Check each time the cart is accessed for inventory update then adjust acordingly. The products actual stock quantity is not changed in cart but only after successfull payment.
+- Sunchronize inventory actual product quantity with cart session product quantity. Check each time the cart is accessed for inventory update then adjust accordingly. The products actual stock quantity is not changed in cart but only after successful payment.
 
 ## **Checkout App** 
 
@@ -365,10 +366,10 @@ Use test payment details bellow.
 | Credit card | The card is declined with a decline code such as insufficient_funds. | Credit card number 4000 0000 0000 9995 with any expiry, CVC, and postal code. |
 
 Checkout page screenshot [image](project_files/images/surfaice/checkout.png)
-- Stripe checkout payment proccesor pay with credit card or debit card securely.
+- Stripe checkout payment processor pay with credit card or debit card securely.
 - For registered user form will populate with user details if shipping details was saved in profile details page.
 - Automated inventory updating. Automatically updates inventory whenever there is a stripe payment success or payment failure webhook received.
-- Order backup for failed orders if Stripe successfull payment Webhook receeived will create an order.
+- Order backup for failed orders if Stripe successful payment Webhook received will recreate order.
 
 **Order Model**
 | Field Name | Field type | options |
@@ -405,22 +406,21 @@ Checkout succes page screenshot [image](project_files/images/surfaice/success.pn
 - Button for user to confirm order reception.
 - Link to the product review page, only visible after product purchase and if order status has been marked as shipped.
 - Link to the problem resolution page for user to report an issue with Order, product or other.
-- For user with superuser privilages.. Change Order status form is available.
+- For user with superuser privileges.. Change Order status form is available.
     - Order status form options:
         - Submitted
-        - Payment received - *update automaticly after stripe payment succes webhook received*
+        - Payment received - *update automatically after stripe payment succes webhook received*
         - Proccessed
         - Shipped
         - Canceled
 
-## **Custommers App** 
+## **Customers App** 
 Profile page screenshot [image](project_files/images/surfaice/profile.png)
-- User can view resolution support tickets if any was submited, that link to the support message app.
+- User can view resolution support tickets if any was submited, that link to the support message app. 
 - User can view purchase history with Links to the success order summary page.
-
 Update or delete user profile.
 - A customer is able to add or update profile information and shopping address information.\
-    delete user profile form screenshoot [here](project_files/images/surfaice/profile-details.JPG)
+    delete user profile form screenshot [here](project_files/images/surfaice/profile-details.JPG)
 
 **UserAddress Model**
 | Field Name | Field type | options |
@@ -433,7 +433,7 @@ Update or delete user profile.
 |postcode|CharField|max_length=30, null=True, blank=True|
 |country |CountryField|blank_label='Country', null=True, blank=True|
 
-## **Adminidtration App**
+## **Administration App**
 Admin manage page screenshot [image](project_files/images/surfaice/manage.png)
 - Admin can Monitor and Update uncompleded user orders with links to the order summary page, 
 - Admin can view Inventory Items that are low stock or out of stock with links to product updates page. 
@@ -450,11 +450,11 @@ Admin manage page screenshot [image](project_files/images/surfaice/manage.png)
     Update or delete product form screenshot [image](project_files/images/surfaice/update.JPG)
 
 ## **Review App**
-Leave product review page screenshoot [image](project_files/images/surfaice/leave-review.png)
+Leave product review page screenshot [image](project_files/images/surfaice/leave-review.png)
 - Enable user to leave a review and rate the product based on 5-star rating.
 - Product review access is available for registered users and after product purchase.
 
-Product reviews page screenshoot [image](project_files/images/surfaice/review.png)
+Product reviews page screenshot [image](project_files/images/surfaice/review.png)
 - All the product reviews available to view for any user.
 
 **Review Model**
@@ -468,19 +468,19 @@ Product reviews page screenshoot [image](project_files/images/surfaice/review.pn
 |date |DateTimeField|auto_now_add=True|
 
 
-## **Suppord App** 
+## **Support App** 
 Sumbit support ticket [image](project_files/images/surfaice/submit.JPG)
 
-- Users can submit if any issues with account | order or oroduct 
+- Users can submit if any issues with account | order or product 
 
 Suppor Messsages [image](project_files/images/surfaice/support-messsages.png)
 
 - Support messages available after submitting support ticket. 
 - Users get notifications in nav bar for new, unread messages.
 - User can directly communicate with support team regarding the issue.
-- User with Superuser privilages has acces to Ticket status form.
+- User with Superuser privileges has access to Ticket status form.
     - Status form choices:
-        - Sumbitted
+        - Submitted
         - In review
         - Resolved
 
@@ -519,7 +519,7 @@ Contact us form [image](project_files/images/surfaice/contact.JPG)
 
 ### **Toasts for messages**
 - Bootstrap toast template used to display backend messages.
-- Message level checks levels 40 error, 30 warling, 25 success, and info for rest of the messages.
+- Message levels 40 error, 30 warling, 25 success, and info for rest of the messages.
 - Bootstrap Toast used to display cart content if user adds new item or hovers over cart icon in nav bar.
 - Support messages toast is shown if user hover over message icon in nav bar.
 
@@ -527,9 +527,10 @@ Contact us form [image](project_files/images/surfaice/contact.JPG)
 - Payment Proccessor to Accept varios payment options.
 - More work for checkout and after checkout functionality.
 - More work on inventory automation functionality.
-- More work on admin management interace functionality.
+- More work on admin management interface functionality.
 - Django Social Login, single sign-on for end users.
 - Improve Customer Service functionality, Messages etc..
+- Shop product gallery pagination.
 
 # [&#8686;](#top)
 # [TESTING](project_files/TESTING.md)
@@ -670,7 +671,7 @@ Ensure to add env.py to a .gitignore file before pushing your code to your repos
     ```
     git push heroku main
 
-Now you can add app to automaticly push updates from git.
+Now you can add app to automatically push updates from git.
 1. Log-Into [Heroku](https://id.heroku.com/login) "Link to Heroku login page" or [create an account](https://signup.heroku.com/login) "Link to Heroku create account page".
 2. Once logged in, Find and select "Deploy" tab 
 3. After selecting "Deploy" tab find and Select Deployment method "GitHub"
