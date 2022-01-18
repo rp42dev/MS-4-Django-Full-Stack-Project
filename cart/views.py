@@ -83,16 +83,16 @@ def add_to_cart(request, item_id):
         stock_cart = stock - cart[item_id]
         if stock_cart < 0:
             messages.warning(
-                request, f'Only {product.item_count}\
-                    {product.name} was in stock items.')
+                request, f'{product.item_count}\
+                    {product.name} in stock.')
             return redirect(redirect_url)
         else:
             cart[item_id] += quantity
     else:
         if stock < 0:
             messages.warning(
-                request, f'Only {product.item_count}\
-                    {product.name} was in stock items.')
+                request, f'{product.item_count}\
+                    {product.name} in stock.')
             return redirect(redirect_url)
 
         else:
@@ -131,7 +131,7 @@ def update_cart(request, item_id):
             else:
                 cart[item_id] -= 1
                 messages.success(
-                    request, (f'The hat {product.name} quantity was updated'
+                    request, (f'The hat {product.name} quantity updated'
                               f' to {cart[item_id]}.'))
         elif action == 'add':
             if product.item_count - cart[item_id] <= 0:
@@ -142,7 +142,7 @@ def update_cart(request, item_id):
             else:
                 cart[item_id] += 1
                 messages.success(
-                    request, (f'The hat {product.name} quantity was updated'
+                    request, (f'The hat {product.name} quantity updated'
                               f' to {cart[item_id]}.'))
 
     request.session['cart'] = cart
