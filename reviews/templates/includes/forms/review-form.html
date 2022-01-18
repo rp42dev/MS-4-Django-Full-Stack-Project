@@ -1,6 +1,7 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
+<!-- Review form -->
 <form id="ad-to-cart d-flex" class="form needs-validation" action="{% url 'review_view' item.id %}?order_id={{ order_id }}" method="POST"
     novalidate>
     {% csrf_token %}
@@ -13,22 +14,26 @@
             <span class="starz">★</span>
             <span class="starz">★</span>
         </div>
+
+        <!-- Hidden range input to get user feedback from 1 to 5 rating-->
         <input type="range" class="form-range hidden form-fontrol" name="raiting" min="1" value="0" max="5" step="1"
             id="star" onchange="Stars(this.value)" required>
         <label for="star" class="text-muted text-italic text-center w-100">Write your review</label>
         <div class="invalid-feedback">Rating is required</div>
 
+        <!-- Hidden field of the order id input -->
         <input type="hidden" value="{{ order_id }}" name="order_id">
     
     </div>
+
+    <!-- Review text field -->
     <div class="fw-bolder font-monospace">
         {{ form|crispy }}
     </div>
 
     <button id="review-submit"
-        class="btn btn-dark btn-xl text-uppercase flex-shrink-0 {% if availability == 0 %}disabled{% endif %}"
+        class="btn btn-dark btn-xl text-uppercase flex-shrink-0"
         type="submit">
-        <i class="bi-cart-fill me-1"></i>
         Submit review
     </button>
 

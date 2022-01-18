@@ -1,6 +1,6 @@
 {% load thumbnail %}
 <div class="col-md-6 mb-4 mb-md-0">
-    <!-- Review product -->
+    <!-- Review the product -->
     <div class="position-relative mb-3">
         {% thumbnail item.image "672" format="WEBP" as im %}
         <img class="card-img-top mb-md-0" src="{{ im.url }}"
@@ -17,6 +17,7 @@
     <h3 class="fw-bolder text-capitalize">{{ item.name }}</h3>
     <div class="small mb-1">SKU: {{ item.sku }}</div>
 
+    <!-- Include reviews stars -->
     {% include 'includes/item-stars.html' %}
 
     <div class="fs-5 mb-3">

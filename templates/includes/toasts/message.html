@@ -4,6 +4,7 @@
         {% for message in messages %}
         {% with message.level as level %}
 
+        <!-- Level 40 display error messages -->
         {% if level == 40 %}
         <div class="toast show align-items-center rounded-3 bg-white text-white shadow border-0" role="alert"
             aria-live="assertive" aria-atomic="true">
@@ -19,6 +20,7 @@
             </div>
         </div>
 
+         <!-- Level 30 display warning messages -->
         {% elif level == 30 %}
         <div class="toast bg-white show align-items-center rounded-3 text-white shadow border-0" role="alert"
             aria-live="assertive" aria-atomic="true">
@@ -33,6 +35,7 @@
             </div>
         </div>
 
+        <!-- Level 40 display success messages -->
         {% elif level == 25 %}
         <div class="toast show align-items-center bg-white rounded-3 shadow border-0" role="alert" aria-live="assertive"
             aria-atomic="true">
@@ -52,6 +55,7 @@
             </div>
         </div>
 
+         <!-- Display all the other types of messages -->
         {% else %}
         <div class="toast show align-items-center rounded-3 bg-white text-white shadow border-0" role="alert"
             aria-live="assertive" aria-atomic="true">
